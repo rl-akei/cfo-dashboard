@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-04-20T07:33:00Z",
+    "generated_at": "2026-04-20T19:54:31Z",
     "snapshot_id": "S17-2026",
     "source": "Qonto + Notion",
     "note": "CA avril = transactions bancaires (MEEDIA, VIYANA, FIREFIGTHGROUP, STROBIETTI, Stripe, cashbacks Notion+Qonto). Rolling 12m delta-updated. Burn_3m = operational recurring hors one-time."
@@ -1903,10 +1903,10 @@
   "delivery": {
     "target_hourly_rate": 200,
     "hourly_rate_effective": 176,
-    "hourly_rate_3m": 392,
+    "hourly_rate_3m": 403,
     "hourly_rate_done_projects": 127,
-    "total_client_hours_10m": 324.3,
-    "total_tracked_hours_10m": 939.5,
+    "total_client_hours_10m": 323.1,
+    "total_tracked_hours_10m": 953.4,
     "projects": [
       {
         "name": "OPTRA",
@@ -2044,17 +2044,17 @@
         "ca_signed": 1899,
         "ca_collected": 1899,
         "status": "active_new",
-        "active_period": "Avril 2026",
+        "active_period": "Avril 2026 (5h sur 1-20 avril)",
         "hourly_rate_signed": 380,
         "hourly_rate_collected": 380
       },
       {
         "name": "Station Krishna",
-        "hours": 5.0,
+        "hours": 4.9,
         "ca_signed": 6400,
         "ca_collected": 0,
         "status": "active_new",
-        "active_period": "Avril 2026 (en cours)",
+        "active_period": "Avril 2026 (4h52 sur 1-20 avril, projet en cours)",
         "hourly_rate_signed": 1280,
         "hourly_rate_collected": null
       }
@@ -2125,12 +2125,12 @@
       },
       {
         "month": "2026-04",
-        "client_hours": 11.1,
-        "total_hours": 52.3,
+        "client_hours": 9.9,
+        "total_hours": 66.2,
         "ca_collected": 8563,
-        "hourly_rate": 771
+        "hourly_rate": 865
       }
     ],
-    "notes": "Heures Timing uniquement (pas de comptabilisation des 'Unassigned/Untitled'). Hush/Blyynd CA corrige a 13K (signe et valide) vs 21K facture RL-Opportunity. Station Krishna = projet en cours (pas termine)."
+    "notes": "Timing mis a jour 2026-04-20. Heures 1-20 avril: 66h total dont 9.9h client (Nico 5h + Station Krishna 4.9h). Hush/Blyynd CA corrige a 13K (signe). Projets termines (done) = benchmark stable. Projets actifs (active) = en cours. 30h unassigned en avril (temps non catégorisé)."
   }
 }
