@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CFO Dashboard - Rama Logic</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --card: #12121a;
+    --card-hover: #1a1a28;
+    --border: #1e1e2e;
+    --text: #e0e0e0;
+    --text-dim: #888;
+    --green: #00d68f;
+    --red: #ff4d6a;
+    --orange: #ff9f43;
+    --blue: #3b82f6;
+    --purple: #a855f7;
+    --yellow: #fbbf24;
+    --cyan: #22d3ee;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: 'Inter', -apple-system, system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+  .header { padding: 20px 32px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .header h1 { font-size: 20px; font-weight: 700; }
+  .header h1 span { color: var(--blue); }
+  .header .meta { font-size: 12px; color: var(--text-dim); }
+  .header .meta .live { color: var(--green); }
+
+  .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+
+  /* KPI Cards */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+  .kpi-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; position: relative; overflow: hidden; transition: background 0.2s; }
+  .kpi-card:hover { background: var(--card-hover); }
+  .kpi-card .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); margin-bottom: 8px; }
+  .kpi-card .value { font-size: 28px; font-weight: 800; line-height: 1.1; }
+  .kpi-card .sub { font-size: 12px; color: var(--text-dim); margin-top: 6px; }
+  .kpi-card .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-top: 6px; }
+  .badge-green { background: rgba(0,214,143,0.15); color: var(--green); }
+  .badge-red { background: rgba(255,77,106,0.15); color: var(--red); }
+  .badge-orange { background: rgba(255,159,67,0.15); color: var(--orange); }
+  .badge-blue { background: rgba(59,130,246,0.15); color: var(--blue); }
+  .kpi-card .icon { position: absolute; top: 16px; right: 16px; font-size: 24px; opacity: 0.5; }
+  .kpi-card .sparkline { margin-top: 12px; height: 40px; }
+
+  .v-green { color: var(--green); }
+  .v-red { color: var(--red); }
+  .v-orange { color: var(--orange); }
+  .v-blue { color: var(--blue); }
+  .v-purple { color: var(--purple); }
+
+  /* Sections */
+  .section { margin-bottom: 24px; }
+  .section-title { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-dim); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .section-title .dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  /* Chart containers */
+  .chart-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .chart-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .chart-card h3 { font-size: 13px; font-weight: 600; margin-bottom: 16px; color: var(--text-dim); }
+  .chart-card canvas { max-height: 280px; }
+
+  .chart-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+
+  /* OKR Section */
+  .okr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .okr-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .okr-card .obj-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .okr-card .obj-angle { font-size: 11px; color: var(--text-dim); margin-bottom: 16px; }
+  .kr-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid var(--border); }
+  .kr-row .kr-name { flex: 1; font-size: 13px; }
+  .kr-row .kr-bar-bg { width: 120px; height: 6px; background: #1e1e2e; border-radius: 3px; overflow: hidden; }
+  .kr-row .kr-bar { height: 100%; border-radius: 3px; transition: width 0.8s ease; }
+  .kr-row .kr-pct { font-size: 13px; font-weight: 700; width: 50px; text-align: right; }
+  .kr-row .kr-status { font-size: 11px; width: 80px; text-align: center; padding: 2px 6px; border-radius: 4px; }
+
+  /* Alerts */
+  .alerts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+  .alert { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 8px; font-size: 13px; }
+  .alert-critical { background: rgba(255,77,106,0.08); border: 1px solid rgba(255,77,106,0.2); }
+  .alert-warning { background: rgba(255,159,67,0.08); border: 1px solid rgba(255,159,67,0.2); }
+  .alert-info { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); }
+  .alert .dot { min-width: 8px; height: 8px; border-radius: 50%; }
+  .alert-critical .dot { background: var(--red); }
+  .alert-warning .dot { background: var(--orange); }
+  .alert-info .dot { background: var(--blue); }
+  .alert .title { font-weight: 600; }
+  .alert .detail { color: var(--text-dim); margin-left: auto; }
+
+  /* Table */
+  .table-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .table-card h3 { font-size: 13px; font-weight: 600; padding: 16px 20px; color: var(--text-dim); border-bottom: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; padding: 10px 16px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-dim); background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--border); }
+  td { padding: 10px 16px; font-size: 13px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  /* Progress ring for OKR */
+  .progress-ring { position: relative; width: 48px; height: 48px; }
+  .progress-ring svg { transform: rotate(-90deg); }
+  .progress-ring .pct-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 11px; font-weight: 700; }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .chart-grid, .okr-grid { grid-template-columns: 1fr; }
+    .chart-grid-3 { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .kpi-grid { grid-template-columns: 1fr; }
+    .container { padding: 16px; }
+  }
+
+  .nav-tabs { display: flex; gap: 4px; padding: 0 32px; background: var(--card); border-bottom: 1px solid var(--border); }
+  .nav-tab { padding: 12px 20px; font-size: 13px; font-weight: 600; color: var(--text-dim); background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; }
+  .nav-tab:hover { color: var(--text); }
+  .nav-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  .filter-bar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .filter-btn { padding: 6px 12px; font-size: 11px; border-radius: 6px; border: 1px solid var(--border); background: var(--card); color: var(--text-dim); cursor: pointer; transition: all 0.2s; }
+  .filter-btn:hover, .filter-btn.active { background: var(--blue); color: white; border-color: var(--blue); }
+  .sub-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 16px; }
+  .sub-card .name { font-weight: 600; font-size: 14px; flex: 1; }
+  .sub-card .cost { font-size: 18px; font-weight: 800; }
+  .sub-card .meta { font-size: 11px; color: var(--text-dim); }
+  .sub-reco { padding: 8px 12px; border-radius: 6px; font-size: 12px; margin-top: 8px; }
+  .reco-cancel { background: rgba(255,77,106,0.1); border: 1px solid rgba(255,77,106,0.3); color: var(--red); }
+  .reco-evaluate { background: rgba(255,159,67,0.1); border: 1px solid rgba(255,159,67,0.3); color: var(--orange); }
+  .savings-card { background: linear-gradient(135deg, rgba(0,214,143,0.1), rgba(59,130,246,0.1)); border: 1px solid rgba(0,214,143,0.3); border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+  .savings-card .big { font-size: 32px; font-weight: 800; color: var(--green); }
+  .search-input { padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--card); color: var(--text); font-size: 13px; width: 250px; }
+
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Rama <span>Logic</span> - CFO Dashboard</h1>
+  <div class="meta">
+    <span class="live">&#9679;</span> Snapshot <strong id="snapshotId">S16-2026</strong> | <span id="snapshotDate">16 avril 2026</span>
+  </div>
+</div>
+
+<div class="nav-tabs">
+  <button class="nav-tab active" onclick="showTab('dashboard', this)">Dashboard</button>
+  <button class="nav-tab" onclick="showTab('transactions', this)">Depenses</button>
+  <button class="nav-tab" onclick="showTab('acquisition', this)">Acquisition</button>
+  <button class="nav-tab" onclick="showTab('sales', this)">Sales</button>
+  <button class="nav-tab" onclick="showTab('subscriptions', this)">Abonnements</button>
+</div>
+
+<div class="container">
+<div id="tab-dashboard" class="tab-content active">
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid" id="kpiGrid"></div>
+
+  <!-- Alerts -->
+  <div class="section">
+    <div class="section-title"><div class="dot" style="background:var(--red)"></div> Alertes</div>
+    <div class="alerts" id="alertsContainer"></div>
+  </div>
+
+  <!-- Revenue Charts -->
+  <div class="section">
+    <div class="section-title"><div class="dot" style="background:var(--blue)"></div> CA & Tendances</div>
+    <div class="chart-grid">
+      <div class="chart-card">
+        <h3>Evolution CA mensuel (facture vs encaisse vs depenses)</h3>
+        <canvas id="chartRevenue"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Repartition CA par client</h3>
+        <canvas id="chartClients"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- OKR vs Reality -->
+  <div class="section">
+    <div class="section-title"><div class="dot" style="background:var(--purple)"></div> OKR 2026 vs Realite Financiere</div>
+
+    <div class="chart-grid">
+      <div class="chart-card">
+        <h3>Trajectoire CA 2026 vs Objectif 150K (KR trimestriels)</h3>
+        <canvas id="chartOkrTrajectory"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Gap Analysis - CA signe vs cible par trimestre</h3>
+        <canvas id="chartOkrGap"></canvas>
+      </div>
+    </div>
+
+    <div class="okr-grid" id="okrGrid"></div>
+  </div>
+
+  <!-- Aging & Expenses -->
+  <div class="section">
+    <div class="section-title"><div class="dot" style="background:var(--orange)"></div> Pilotage Financier</div>
+    <div class="chart-grid-3">
+      <div class="chart-card">
+        <h3>Aging factures impayees</h3>
+        <canvas id="chartAging"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Marge mensuelle (CA - Depenses)</h3>
+        <canvas id="chartMargin"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Depenses par categorie</h3>
+        <canvas id="chartExpCat"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Aging detail table -->
+  <div class="section">
+    <div class="table-card">
+      <h3>Detail factures impayees - Total: <span class="v-red" id="totalUnpaid"></span></h3>
+      <table>
+        <thead><tr><th>Ref</th><th>Client</th><th>Montant</th><th>Echeance</th><th>Retard</th><th>Tranche</th></tr></thead>
+        <tbody id="agingTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- end tab-dashboard -->
+
+<div id="tab-transactions" class="tab-content">
+  <div class="section">
+    <div class="section-title"><div class="dot" style="background:var(--orange)"></div> Toutes les Depenses (fev-avr 2026)</div>
+    
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:16px">
+      <input type="text" class="search-input" id="txSearch" placeholder="Rechercher un fournisseur..." oninput="filterTransactions()">
+      <span id="txCount" style="font-size:12px;color:var(--text-dim)"></span>
+      <span id="txTotal" style="font-size:12px;color:var(--red);font-weight:700;margin-left:auto"></span>
+    </div>
+    
+    <div class="filter-bar" id="txFilters"></div>
+    
+    <div class="table-card">
+      <table>
+        <thead><tr><th>Date</th><th>Fournisseur</th><th>Montant</th><th>Cat. Qonto</th><th>Cat. Notion</th></tr></thead>
+        <tbody id="txTable"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="tab-subscriptions" class="tab-content">
+  <div class="section">
+    <div class="section-title"><div class="dot" style="background:var(--purple)"></div> Analyse Abonnements</div>
+    
+    <div class="savings-card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:12px;color:var(--text-dim);margin-bottom:4px">ECONOMIES POTENTIELLES / AN</div>
+          <div class="big" id="savingsAmount"></div>
+          <div style="font-size:13px;color:var(--text-dim);margin-top:4px" id="savingsDetail"></div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:12px;color:var(--text-dim);margin-bottom:4px">COUT TOTAL ABONNEMENTS</div>
+          <div style="font-size:24px;font-weight:800;color:var(--blue)" id="totalSubCost"></div>
+          <div style="font-size:13px;color:var(--text-dim);margin-top:4px" id="totalSubDetail"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section-title" style="color:var(--red)"><div class="dot" style="background:var(--red)"></div> A annuler</div>
+    <div id="subsCancel" style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px"></div>
+    
+    <div class="section-title" style="color:var(--orange)"><div class="dot" style="background:var(--orange)"></div> A evaluer</div>
+    <div id="subsEvaluate" style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px"></div>
+    
+    <div class="section-title" style="color:var(--green)"><div class="dot" style="background:var(--green)"></div> A garder (essentiels)</div>
+    <div class="table-card" style="margin-bottom:24px">
+      <table>
+        <thead><tr><th>Service</th><th>Cout</th><th>Frequence</th><th>Categorie</th><th>Impact</th><th>Description</th></tr></thead>
+        <tbody id="subsKeep"></tbody>
+      </table>
+    </div>
+    
+    <div class="chart-grid">
+      <div class="chart-card">
+        <h3>Repartition abonnements par categorie</h3>
+        <canvas id="chartSubCat"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Abonnements par statut</h3>
+        <canvas id="chartSubStatus"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="tab-acquisition" class="tab-content">
+  <div class="section">
+    <div class="section-title"><div class="dot" style="background:var(--cyan)"></div> ACQUISITION - LinkedIn & Leads</div>
+    
+    <div class="kpi-grid" id="acqKpiGrid"></div>
+    
+    <div class="chart-grid" style="margin-top:24px">
+      <div class="chart-card">
+        <h3>Posts LinkedIn publies par mois + Impressions</h3>
+        <canvas id="chartLkPosts"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Pipeline editorial</h3>
+        <canvas id="chartLkPipeline"></canvas>
+      </div>
+    </div>
+    
+    <div class="section-title" style="margin-top:24px"><div class="dot" style="background:var(--yellow)"></div> Top 8 posts par impressions</div>
+    <div class="table-card">
+      <table>
+        <thead><tr><th>Post</th><th>Date</th><th>Impressions</th><th>Reactions</th><th>Comments</th><th>Angle</th></tr></thead>
+        <tbody id="lkTopPosts"></tbody>
+      </table>
+    </div>
+    
+    <div class="chart-grid-3" style="margin-top:24px">
+      <div class="chart-card">
+        <h3>Angle des posts</h3>
+        <canvas id="chartLkAngle"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Format des posts</h3>
+        <canvas id="chartLkFormat"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Source des leads</h3>
+        <canvas id="chartLeadSrc"></canvas>
+      </div>
+    </div>
+    
+    <div class="section-title" style="margin-top:24px;color:var(--red)"><div class="dot" style="background:var(--red)"></div> Hot leads a convertir en R2</div>
+    <div class="table-card">
+      <table>
+        <thead><tr><th>Nom</th><th>1er RDV</th><th>R2</th><th>Opportunite</th><th>Action</th></tr></thead>
+        <tbody id="hotLeadsTable"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="tab-sales" class="tab-content">
+  <div class="section">
+    <div class="section-title"><div class="dot" style="background:var(--green)"></div> SALES - Pipeline & Conversion</div>
+    
+    <div class="kpi-grid" id="salesKpiGrid"></div>
+    
+    <div class="chart-grid" style="margin-top:24px">
+      <div class="chart-card">
+        <h3>Pipeline par stage (nb deals + montant)</h3>
+        <canvas id="chartPipelineStage"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Deals par source</h3>
+        <canvas id="chartDealsSource"></canvas>
+      </div>
+    </div>
+    
+    <div class="section-title" style="margin-top:24px;color:var(--red)"><div class="dot" style="background:var(--red)"></div> Deals a relancer d'urgence</div>
+    <div id="dealsRelaunch" style="display:flex;flex-direction:column;gap:8px"></div>
+    
+    <div class="chart-grid-3" style="margin-top:24px">
+      <div class="chart-card">
+        <h3>Deals par type</h3>
+        <canvas id="chartDealsType"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Closing rate</h3>
+        <canvas id="chartClosing"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>CA signe vs objectif trimestriel</h3>
+        <canvas id="chartCaSigned"></canvas>
+      </div>
+    </div>
+    
+    <div class="section-title" style="margin-top:24px"><div class="dot" style="background:var(--yellow)"></div> Top 10 deals (tous statuts)</div>
+    <div class="table-card">
+      <table>
+        <thead><tr><th>Rang</th><th>Deal</th><th>Montant HT</th><th>Statut</th></tr></thead>
+        <tbody id="topDealsTable"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+// ==========================================
+// DATA
+// ==========================================
+const DATA = {"meta": {"generated_at": "2026-04-16T21:00:00Z", "snapshot_id": "S16-2026", "source": "Qonto MCP + Notion MCP", "note": "CA avril corrige avec transactions bancaires reelles (invoice API sous-estime: virements directs + Stripe non reconcilies)"}, "treasury": {"total": 23632.89, "principal": 23632.89, "impots": 0, "are_mensuel": 2700}, "revenue": {"objective_2026": 150000, "ytd": 22000, "mtd": 5775, "rolling_12m": 54226, "projection_2026": 75429, "ecart_objectif": -74571, "by_month": [{"month": "2025-07", "invoiced": 990, "collected": 520, "expenses": 65}, {"month": "2025-08", "invoiced": 2895, "collected": 2895, "expenses": 52}, {"month": "2025-09", "invoiced": 11004, "collected": 5409, "expenses": 1797}, {"month": "2025-10", "invoiced": 20699, "collected": 5547, "expenses": 967}, {"month": "2025-11", "invoiced": 17495, "collected": 11705, "expenses": 225}, {"month": "2025-12", "invoiced": 7725, "collected": 6150, "expenses": 16}, {"month": "2026-01", "invoiced": 7408, "collected": 7408, "expenses": 3729}, {"month": "2026-02", "invoiced": 4711, "collected": 4711, "expenses": 724}, {"month": "2026-03", "invoiced": 4706, "collected": 4106, "expenses": 1539}, {"month": "2026-04", "invoiced": 5775, "collected": 5775, "expenses": 264}], "by_client": [{"name": "BLYYND", "amount": 21179, "pct": 0.27}, {"name": "OPTRA", "amount": 14373, "pct": 0.183}, {"name": "meedIA", "amount": 7680, "pct": 0.098}, {"name": "Firefightbox", "amount": 6930, "pct": 0.088}, {"name": "Emathea", "amount": 6000, "pct": 0.076}, {"name": "PROPERTY PARTNERS", "amount": 5400, "pct": 0.069}, {"name": "RC consulting", "amount": 4800, "pct": 0.061}, {"name": "STRUCTUDE", "amount": 2879, "pct": 0.037}, {"name": "Notion Labs Ireland", "amount": 2636, "pct": 0.034}, {"name": "FRONT", "amount": 2051, "pct": 0.026}, {"name": "UNLOCK FORMATION", "amount": 1890, "pct": 0.024}, {"name": "EFFICONEX", "amount": 990, "pct": 0.013}, {"name": "DISTRIME", "amount": 960, "pct": 0.012}, {"name": "Autres", "amount": 868, "pct": 0.011}]}, "kpis": {"dso": 88, "margin_pct": 0.716, "burn_3m": 1997, "runway_months": 11.8, "top3_pct": 0.55, "top3_clients": "BLYYND, OPTRA, meedIA", "invoices_total": 42, "invoices_paid": 28, "invoices_unpaid": 8, "invoices_canceled": 6}, "aging": {"buckets": [{"label": "0-30j", "amount": 300}, {"label": "30-60j", "amount": 0}, {"label": "60-90j", "amount": 0}, {"label": "90j+", "amount": 18453}], "total": 18753, "details": [{"ref": "FAC 21", "client": "OPTRA", "amount": 2895, "due": "2025-09-16", "days": 212}, {"ref": "FAC 22", "client": "PROPERTY PARTNERS", "amount": 2700, "due": "2025-09-19", "days": 209}, {"ref": "FAC 28", "client": "PROPERTY PARTNERS", "amount": 2700, "due": "2025-10-06", "days": 192}, {"ref": "FAC 27", "client": "OPTRA", "amount": 1788, "due": "2025-10-31", "days": 167}, {"ref": "FAC 26", "client": "OPTRA", "amount": 2895, "due": "2025-10-31", "days": 167}, {"ref": "FAC 38", "client": "OPTRA", "amount": 3900, "due": "2025-12-02", "days": 135}, {"ref": "FAC 47", "client": "Firefightbox", "amount": 1575, "due": "2025-12-19", "days": 118}, {"ref": "FAC 12", "client": "Notion Lab", "amount": 300, "due": "2026-04-07", "days": 9}]}, "tva": {"collected_mtd": 962, "deductible_mtd": 0, "forecast": 962, "by_month": [{"month": "2026-02", "collected": 785, "paid_dgfip": 883}, {"month": "2026-03", "collected": 331, "paid_dgfip": 338}, {"month": "2026-04", "collected": 962, "paid_dgfip": 0}]}, "expenses": {"by_supplier": [{"name": "GET YOUR GOALS CO", "amount": 2000}, {"name": "MAELIE GREVIN", "amount": 1856}, {"name": "SUMA AI", "amount": 1200}, {"name": "APPLE RETAIL", "amount": 1009}, {"name": "ADRIANA PEYRUSE", "amount": 750}, {"name": "ALCHI NINE", "amount": 480}, {"name": "SAS NEOVI", "amount": 442}, {"name": "LO DE CHA", "amount": 395}, {"name": "HOSTINGER", "amount": 366}, {"name": "ANTHROPIC", "amount": 364}, {"name": "WISPR FLOW", "amount": 258}, {"name": "SNCF", "amount": 153}, {"name": "Autres", "amount": 597}], "by_category": [{"qonto": "other_service", "notion": "Admin - Prestations diverses", "amount": 3312}, {"qonto": "marketing", "notion": "Commercial - Marketing & Com", "amount": 2608}, {"qonto": "other_expense", "notion": "Divers - A classer", "amount": 2244}, {"qonto": "tax", "notion": "Fiscal - Impots & Taxes", "amount": 1221}, {"qonto": "it_and_electronics", "notion": "Tech - Materiel IT", "amount": 1009}, {"qonto": "transport", "notion": "Deplacement - Transport", "amount": 429}, {"qonto": "online_service", "notion": "Tech - Abonnements SaaS", "amount": 314}, {"qonto": "food_and_grocery", "notion": "Bureau - Alimentation", "amount": 226}, {"qonto": "restaurant_and_bar", "notion": "Commercial - Repas clients", "amount": 161}]}, "okr": {"objectives": [{"id": "O1", "title": "Capitaliser 150K EUR dans la SASU et construire 2 lignes de revenu", "status": "In progress", "angle": "Croissance", "period": "2026", "key_results": [{"id": "KR1", "title": "CA signe T1 2026", "target": 15000, "result": 8300, "status": "Fail", "due": "2026-03-31"}, {"id": "KR2", "title": "CA signe T2 2026", "target": 40000, "result": 0, "status": "Not started", "due": "2026-06-30"}, {"id": "KR3", "title": "CA signe T3 2026", "target": 40000, "result": 0, "status": "Not started", "due": "2026-09-30"}, {"id": "KR4", "title": "CA signe T4 2026", "target": 35000, "result": 0, "status": "Not started", "due": "2026-12-31"}, {"id": "KR5", "title": "3 clients offre packagee COO", "target": 3, "result": 0, "status": "Not started", "due": "2026-09-30"}]}, {"id": "O2", "title": "Optimiser la machine Rama Logic", "status": "In progress", "angle": "Qualite", "period": "2026", "key_results": [{"id": "KR6", "title": "Automatiser 100% CRM, facturation, suivi", "target": 1, "result": 0, "status": "Not started", "due": "2026-12-31"}]}, {"id": "O3", "title": "Devenir la reference Notion & IA Ops pour les dirigeants", "status": "In progress", "angle": "Notoriete", "period": "2026", "key_results": [{"id": "KR7", "title": "96 posts LinkedIn S1", "target": 96, "result": 84, "status": "In progress", "due": "2026-06-30"}, {"id": "KR8", "title": "Newsletter 100 abonnes + 2 editions", "target": 100, "result": 0, "status": "Not started", "due": "2026-06-30"}]}, {"id": "O4", "title": "Construire une offre scalable IA-first", "status": "In progress", "angle": "Croissance", "period": "2026", "key_results": []}]}, "alerts": [{"level": "critical", "title": "OPTRA - 11 478 EUR impayes", "detail": "4 factures, 135-212j. Relance formelle + mise en demeure.", "metric": "aging"}, {"level": "critical", "title": "Altercosmeto 13 200 EUR silencieux +18j", "detail": "Proposal to send, deadline 31/03 depassee. Relancer Edouard KINI.", "metric": "sales"}, {"level": "critical", "title": "Sparken 6 400 EUR silencieux +18j", "detail": "Awaiting signature, aucun suivi. Relance immediate.", "metric": "sales"}, {"level": "critical", "title": "Sylvain Parmentier - devis non envoye", "detail": "R2 fait 27/02, devis toujours pas envoye. Lead le plus chaud qui refroidit.", "metric": "leads"}, {"level": "critical", "title": "PROPERTY PARTNERS 5 400 EUR impayes", "detail": "2 factures, 192-209j. Provision creance douteuse.", "metric": "aging"}, {"level": "critical", "title": "KR1 T1 en echec - 8.3K / 15K (55%)", "detail": "Gap de 6 700 EUR. Impact sur la trajectoire 150K.", "metric": "okr"}, {"level": "warning", "title": "Projection 2026 a 75K EUR", "detail": "Rythme insuffisant. Besoin de 15K/mois sur les 8.5 mois restants.", "metric": "revenue"}, {"level": "warning", "title": "Rythme LinkedIn ralenti", "detail": "5 posts en mars vs 11 en fevrier. 2 posts en avril. KR7 a 87.5%.", "metric": "acquisition"}, {"level": "warning", "title": "5 deals perdus pour 'Trop cher'", "detail": "Signal sur positionnement prix ou manque de proof ROI.", "metric": "sales"}, {"level": "warning", "title": "Concentration top 3 = 55%", "detail": "Diversifier le portefeuille.", "metric": "concentration"}, {"level": "warning", "title": "Newsletter KR8 a 0%", "detail": "Pas encore lancee. Pense a Brevo (250 EUR/an - a evaluer).", "metric": "acquisition"}, {"level": "info", "title": "KR7 LinkedIn 87.5%", "detail": "84/96 posts. En bonne voie pour juin.", "metric": "okr"}, {"level": "info", "title": "15 nouveaux leads en 30j", "detail": "5 leads en 7j. 6 hot leads a convertir en R2.", "metric": "leads"}], "snapshots_history": [{"week": "S16-2026", "date": "2026-04-16", "treasury": 23633, "ca_ytd": 22000, "projection": 75429, "dso": 88, "burn": 1997, "runway": 11.8, "margin": 0.716, "top3": 0.55, "unpaid": 18753}], "subscriptions": [{"name": "Google Workspace", "cost": 19.44, "freq": "Mensuel", "cat": "Tech - SaaS", "status": "Essentiel", "impact": "Critique", "engagement": "Annuel", "usage": "Pro", "desc": "Gmail pro, Drive, Agenda", "reco": null}, {"name": "Slack", "cost": 16.5, "freq": "Mensuel", "cat": "Tech - SaaS", "status": "Essentiel", "impact": "Critique", "engagement": "Sans engagement", "usage": "Pro", "desc": "Communication interne", "reco": null}, {"name": "ShieldApp", "cost": 25, "freq": "Mensuel", "cat": "Tech - SaaS", "status": "Essentiel", "impact": null, "engagement": null, "usage": null, "desc": "Analytics LinkedIn", "reco": null}, {"name": "Claude Max", "cost": 100, "freq": "Mensuel", "cat": "Tech - SaaS", "status": "Essentiel", "impact": "Critique", "engagement": "Sans engagement", "usage": "Pro", "desc": "IA production + automatisation", "reco": null}, {"name": "Notion", "cost": 208, "freq": "Annuel", "cat": "Tech - SaaS", "status": "Essentiel", "impact": "Critique", "engagement": "Annuel", "usage": "Pro", "desc": "Outil central - livraison clients", "reco": null}, {"name": "Kanbox", "cost": 302.4, "freq": "Annuel", "cat": "Tech - SaaS", "status": "Essentiel", "impact": "Important", "engagement": "Annuel", "usage": "Pro", "desc": "Automatisation LinkedIn, scraping", "reco": null}, {"name": "Make.com", "cost": 108, "freq": "Annuel", "cat": "Tech - SaaS", "status": "Utile", "impact": "Important", "engagement": "Annuel", "usage": "Pro", "desc": "Automatisations no-code", "reco": "ANNULER - Plus utilise depuis mars 2026. Tout passe par Claude."}, {"name": "Timing App", "cost": 100, "freq": "Annuel", "cat": "Tech - SaaS", "status": "Utile", "impact": "Moyen", "engagement": "Annuel", "usage": "Pro", "desc": "Time tracking Mac", "reco": "EVALUER - Impact moyen. Verifier utilisation reelle. Alt: Toggl gratuit."}, {"name": "Raycast Pro", "cost": 75.2, "freq": "Annuel", "cat": "Tech - SaaS", "status": "Utile", "impact": "Moyen", "engagement": "Annuel", "usage": "Pro", "desc": "Launcher Mac + IA", "reco": "EVALUER - Version gratuite suffisante? L'IA est redondante avec Claude."}, {"name": "Miro", "cost": 6.83, "freq": "Annuel", "cat": "Tech - SaaS", "status": "Utile", "impact": "Moyen", "engagement": "Annuel", "usage": "Pro", "desc": "Tableau blanc ateliers clients", "reco": "GARDER - Cout negligeable (82 EUR/an)."}, {"name": "Cal.com", "cost": 0, "freq": "Annuel", "cat": "Tech - SaaS", "status": "Utile", "impact": "Moyen", "engagement": "Annuel", "usage": "Pro", "desc": "Prise de RDV en ligne", "reco": null}, {"name": "Amazon Prime", "cost": 82.8, "freq": "Annuel", "cat": "Tech - SaaS", "status": "Essentiel", "impact": null, "engagement": null, "usage": "Mixte", "desc": "Livraison + streaming", "reco": "EVALUER - Usage mixte perso/pro. 83 EUR/an."}, {"name": "Namecheap", "cost": 7.62, "freq": "Annuel", "cat": "Tech - Infrastructure", "status": "Essentiel", "impact": "Important", "engagement": "Annuel", "usage": "Pro", "desc": "Noms de domaine", "reco": null}, {"name": "Dougs Comptabilite", "cost": 220.79, "freq": "Mensuel", "cat": "Admin - Comptabilite", "status": "Essentiel", "impact": "Critique", "engagement": "Annuel", "usage": "Pro", "desc": "Expert-comptable en ligne", "reco": null}, {"name": "Qonto", "cost": 250, "freq": "Annuel", "cat": "Admin - Services bancaires", "status": "Essentiel", "impact": "Critique", "engagement": "Annuel", "usage": "Pro", "desc": "Banque pro", "reco": null}, {"name": "Loyer bureau", "cost": 416, "freq": "Mensuel", "cat": "Admin - Loyer", "status": "Essentiel", "impact": "Important", "engagement": "N/A", "usage": "Pro", "desc": "Virement Sylvain - loyer espace travail", "reco": null}, {"name": "LinkedIn Premium", "cost": 799.9, "freq": "Annuel", "cat": "Marketing", "status": "Essentiel", "impact": "Important", "engagement": "Annuel", "usage": "Pro", "desc": "Sales Navigator - prospection", "reco": null}, {"name": "Brevo", "cost": 250, "freq": "Annuel", "cat": "Marketing", "status": "Utile", "impact": "Important", "engagement": "Annuel", "usage": "Pro", "desc": "Email marketing", "reco": "EVALUER - Est-il utilise activement pour la newsletter? Sinon free tier suffit."}, {"name": "Taap.it", "cost": 156, "freq": "Annuel", "cat": "Marketing", "status": "Utile", "impact": "Important", "engagement": "Annuel", "usage": "Pro", "desc": "Landing pages bootcamp", "reco": "EVALUER - Le bootcamp genere-t-il du revenu? Sinon Framer gratuit."}, {"name": "Canva Pro", "cost": 225, "freq": "Annuel", "cat": "Marketing", "status": "Utile", "impact": "Important", "engagement": "Annuel", "usage": "Pro", "desc": "Design posts LinkedIn", "reco": null}, {"name": "Scheduled.so", "cost": 144, "freq": "Annuel", "cat": "Marketing", "status": "Utile", "impact": "Important", "engagement": "Annuel", "usage": "Pro", "desc": "Planification posts LinkedIn", "reco": "EVALUER - Redundant si Claude schedule les posts?"}, {"name": "Hostinger", "cost": 110, "freq": "Annuel", "cat": "Tech - Infrastructure", "status": "Essentiel", "impact": null, "engagement": "Annuel", "usage": "Pro", "desc": "Hebergement web Openclaw", "reco": null}, {"name": "Avalon Coworking", "cost": 590, "freq": "Annuel", "cat": "Admin - Loyer", "status": "Utile", "impact": null, "engagement": "Annuel", "usage": "Pro", "desc": "Espace coworking", "reco": "EVALUER - 590 EUR/an. Utilisez-vous assez pour justifier vs cafe?"}, {"name": "Wispr Flow", "cost": 129, "freq": "Annuel", "cat": "Tech - SaaS", "status": "Essentiel", "impact": null, "engagement": "Annuel", "usage": "Pro", "desc": "Dictee vocale IA", "reco": null}], "transactions": [{"date": "2026-04-16", "amount": 39.9, "vendor": "C S SUSHI", "category": "food_and_grocery", "cat_notion": "Bureau - Alimentation"}, {"date": "2026-04-15", "amount": 249.99, "vendor": "Amazon", "category": "marketing", "cat_notion": "Commercial - Marketing & Com"}, {"date": "2026-04-14", "amount": 21.4, "vendor": "L'Apericerie", "category": "food_and_grocery", "cat_notion": "Bureau - Alimentation"}, {"date": "2026-04-14", "amount": 41.96, "vendor": "Amazon", "category": "marketing", "cat_notion": "Commercial - Marketing & Com"}, {"date": "2026-04-14", "amount": 8.0, "vendor": "LS Avalon", "category": "restaurant_and_bar", "cat_notion": "Commercial - Repas clients"}, {"date": "2026-04-13", "amount": 9.99, "vendor": "Google Play", "category": "online_service", "cat_notion": "Tech - Abonnements SaaS"}, {"date": "2026-04-11", "amount": 4.8, "vendor": "LS Avalon", "category": "restaurant_and_bar", "cat_notion": "Commercial - Repas clients"}, {"date": "2026-04-10", "amount": 6.8, "vendor": "LS Avalon", "category": "restaurant_and_bar", "cat_notion": "Commercial - Repas clients"}, {"date": "2026-04-10", "amount": 2.0, "vendor": "LS Avalon", "category": "restaurant_and_bar", "cat_notion": "Commercial - Repas clients"}, {"date": "2026-04-10", "amount": 4.4, "vendor": "LS Avalon", "category": "restaurant_and_bar", "cat_notion": "Commercial - Repas clients"}, {"date": "2026-04-09", "amount": 5.0, "vendor": "Bibiche", "category": "food_and_grocery", "cat_notion": "Bureau - Alimentation"}, {"date": "2026-04-08", "amount": 10.36, "vendor": "Paddle.net", "category": "marketing", "cat_notion": "Tech - Abonnements SaaS"}, {"date": "2026-04-08", "amount": 18.0, "vendor": "Weglot", "category": "marketing", "cat_notion": "Tech - Infrastructure"}, {"date": "2026-04-08", "amount": 37.48, "vendor": "ALLA MANO", "category": "other_service", "cat_notion": "Deplacement - Restauration"}, {"date": "2026-04-07", "amount": 263.76, "vendor": "Hostinger", "category": "marketing", "cat_notion": "Tech - Infrastructure"}, {"date": "2026-04-05", "amount": 799.9, "vendor": "LinkedIn Sales Navigator", "category": "marketing", "cat_notion": "Marketing"}, {"date": "2026-04-05", "amount": 24.4, "vendor": "LS Avalon", "category": "restaurant_and_bar", "cat_notion": "Commercial - Repas clients"}, {"date": "2026-04-04", "amount": 20.8, "vendor": "LE NIKA", "category": "food_and_grocery", "cat_notion": "Bureau - Alimentation"}, {"date": "2026-04-04", "amount": 3.4, "vendor": "Cafes du Monde", "category": "food_and_grocery", "cat_notion": "Bureau - Alimentation"}, {"date": "2026-04-04", "amount": 2.86, "vendor": "LE BOUCLIER D'OR", "category": "hotel_and_lodging", "cat_notion": "Deplacement - Hebergement"}, {"date": "2026-04-04", "amount": 5.9, "vendor": "PATISSERIE AVELLINA", "category": "food_and_grocery", "cat_notion": "Bureau - Alimentation"}, {"date": "2026-04-03", "amount": 2.1, "vendor": "CTS Strasbourg", "category": "other_service", "cat_notion": "Deplacement - Transport"}, {"date": "2026-04-03", "amount": 6.15, "vendor": "PAUL", "category": "restaurant_and_bar", "cat_notion": "Bureau - Alimentation"}, {"date": "2026-04-03", "amount": 35.8, "vendor": "Le Meteor", "category": "food_and_grocery", "cat_notion": "Bureau - Alimentation"}, {"date": "2026-04-03", "amount": 35.0, "vendor": "SumUp *YB TAXI", "category": "transport", "cat_notion": "Deplacement - Transport"}, {"date": "2026-04-03", "amount": 14.9, "vendor": "Bolt", "category": "transport", "cat_notion": "Deplacement - Transport"}, {"date": "2026-04-03", "amount": 13.3, "vendor": "Bolt", "category": "transport", "cat_notion": "Deplacement - Transport"}, {"date": "2026-04-02", "amount": 2.3, "vendor": "Maison Kayser", "category": "restaurant_and_bar", "cat_notion": "Bureau - Alimentation"}, {"date": "2026-04-02", "amount": 19.44, "vendor": "Google Workspace", "category": "online_service", "cat_notion": "Tech - Abonnements SaaS"}, {"date": "2026-04-02", "amount": 0.91, "vendor": "Google Cloud", "category": "online_service", "cat_notion": "Tech - Infrastructure"}, {"date": "2026-04-01", "amount": 27.8, "vendor": "Cafes Belleville", "category": "other_expense", "cat_notion": "Bureau - Alimentation"}, {"date": "2026-04-01", "amount": 29.0, "vendor": "Santa Monica", "category": "marketing", "cat_notion": "Divers"}, {"date": "2026-04-01", "amount": 416.63, "vendor": "Sylvain Ramaradjou (loyer)", "category": "other_expense", "cat_notion": "Admin - Loyer"}, {"date": "2026-04-01", "amount": 8.8, "vendor": "LS Avalon", "category": "restaurant_and_bar", "cat_notion": "Commercial - Repas clients"}, {"date": "2026-04-01", "amount": 6.4, "vendor": "LS Avalon", "category": "restaurant_and_bar", "cat_notion": "Commercial - Repas clients"}, {"date": "2026-03-31", "amount": 2196.8, "vendor": "GoCardless (Dougs)", "category": "other_service", "cat_notion": "Admin - Comptabilite"}, {"date": "2026-03-31", "amount": 21.74, "vendor": "Shield App", "category": "marketing", "cat_notion": "Tech - Abonnements SaaS"}, {"date": "2026-03-30", "amount": 82.8, "vendor": "Amazon Prime", "category": "marketing", "cat_notion": "Tech - Abonnements SaaS"}, {"date": "2026-03-29", "amount": 4.35, "vendor": "Emergent Labs", "category": "marketing", "cat_notion": "Tech - Abonnements SaaS"}, {"date": "2026-03-26", "amount": 220.79, "vendor": "GoCardless (Dougs)", "category": "other_service", "cat_notion": "Admin - Comptabilite"}, {"date": "2026-03-26", "amount": 7.99, "vendor": "EVY X INTERSPORT", "category": "marketing", "cat_notion": "Divers"}, {"date": "2026-03-25", "amount": 257.0, "vendor": "SNCF", "category": "transport", "cat_notion": "Deplacement - Transport"}, {"date": "2026-03-25", "amount": 55.0, "vendor": "SNCF", "category": "transport", "cat_notion": "Deplacement - Transport"}, {"date": "2026-03-25", "amount": 338.0, "vendor": "DGFIP", "category": "tax", "cat_notion": "Fiscal - Impots & Taxes"}, {"date": "2026-03-24", "amount": 129.0, "vendor": "Wispr Systems", "category": "marketing", "cat_notion": "Tech - Abonnements SaaS"}, {"date": "2026-03-24", "amount": 16.5, "vendor": "Slack", "category": "marketing", "cat_notion": "Tech - Abonnements SaaS"}, {"date": "2026-03-20", "amount": 583.4, "vendor": "Sylvain Ramaradjou", "category": "other_expense", "cat_notion": "Admin - Loyer"}, {"date": "2026-03-20", "amount": 264.51, "vendor": "KLARNA*AVALON", "category": "online_service", "cat_notion": "Admin - Loyer"}, {"date": "2026-03-19", "amount": 101.88, "vendor": "Hostinger", "category": "marketing", "cat_notion": "Tech - Infrastructure"}, {"date": "2026-03-18", "amount": 90.0, "vendor": "Claude.ai", "category": "marketing", "cat_notion": "Tech - Abonnements SaaS"}, {"date": "2026-03-17", "amount": 35.99, "vendor": "Amazon", "category": "other_service", "cat_notion": "Divers"}, {"date": "2026-03-17", "amount": 31.66, "vendor": "Amazon Pay", "category": "other_service", "cat_notion": "Divers"}, {"date": "2026-03-17", "amount": 43.82, "vendor": "Anthropic API", "category": "marketing", "cat_notion": "Tech - Abonnements SaaS"}, {"date": "2026-03-13", "amount": 800.0, "vendor": "SUMA AI", "category": "other_expense", "cat_notion": "RH - Prestations"}, {"date": "2026-03-13", "amount": 500.72, "vendor": "Amazon", "category": "marketing", "cat_notion": "Divers"}, {"date": "2026-03-09", "amount": 54.0, "vendor": "SNCF", "category": "transport", "cat_notion": "Deplacement - Transport"}, {"date": "2026-03-08", "amount": 18.0, "vendor": "Weglot", "category": "marketing", "cat_notion": "Tech - Infrastructure"}, {"date": "2026-03-03", "amount": 1008.95, "vendor": "Apple Retail", "category": "it_and_electronics", "cat_notion": "Tech - Materiel IT"}, {"date": "2026-03-02", "amount": 19.44, "vendor": "Google Workspace", "category": "online_service", "cat_notion": "Tech - Abonnements SaaS"}, {"date": "2026-03-01", "amount": 416.63, "vendor": "Sylvain Ramaradjou (loyer)", "category": "other_expense", "cat_notion": "Admin - Loyer"}, {"date": "2026-02-27", "amount": 18.5, "vendor": "LS Avalon", "category": "restaurant_and_bar", "cat_notion": "Commercial - Repas clients"}, {"date": "2026-02-26", "amount": 220.79, "vendor": "GoCardless (Dougs)", "category": "other_service", "cat_notion": "Admin - Comptabilite"}, {"date": "2026-02-25", "amount": 883.0, "vendor": "DGFIP", "category": "tax", "cat_notion": "Fiscal - Impots & Taxes"}, {"date": "2026-02-25", "amount": 16.5, "vendor": "Slack", "category": "marketing", "cat_notion": "Tech - Abonnements SaaS"}, {"date": "2026-02-23", "amount": 566.17, "vendor": "GoCardless (Dougs)", "category": "other_service", "cat_notion": "Admin - Comptabilite"}], "sub_analysis": {"total_monthly_recurring": 897.17, "total_annual_cost": 4342, "to_cancel": [{"name": "Make.com", "cost_annual": 108, "reason": "Plus utilise depuis mars 2026. Zero Make/n8n, tout Claude."}], "to_evaluate": [{"name": "Timing App", "cost_annual": 100, "reason": "Impact moyen. Toggl gratuit comme alternative."}, {"name": "Raycast Pro", "cost_annual": 75.2, "reason": "IA integree redondante avec Claude. Version gratuite suffisante?"}, {"name": "Brevo", "cost_annual": 250, "reason": "Newsletter pas encore lancee (KR8 a 0%). Free tier suffisant?"}, {"name": "Taap.it", "cost_annual": 156, "reason": "Landing pages bootcamp. Le bootcamp genere-t-il du revenu?"}, {"name": "Scheduled.so", "cost_annual": 144, "reason": "Planification LK. Redondant si Claude gere le scheduling?"}, {"name": "Amazon Prime", "cost_annual": 82.8, "reason": "Usage mixte perso/pro."}], "potential_savings": 833.2, "keep": ["Google Workspace", "Slack", "Claude Max", "Notion", "Kanbox", "Dougs", "Qonto", "Loyer", "LinkedIn Premium", "Hostinger", "Namecheap", "Wispr Flow", "ShieldApp", "Canva Pro", "Miro"]}, "acquisition": {"linkedin": {"posts_published_2026": 23, "total_impressions": 278185, "total_reactions": 1063, "total_comments": 3432, "total_shares": 3, "kr7_target": 96, "kr7_current": 84, "posts_per_month": [{"month": "2026-01", "count": 5}, {"month": "2026-02", "count": 11}, {"month": "2026-03", "count": 5}, {"month": "2026-04", "count": 2}], "top_posts": [{"title": "McKinsey facture 50k... Mon agent Claude le fait en 10 min", "date": "2026-02-25", "impressions": 210768, "reactions": 389, "comments": 2990, "angle": "Lead magnet"}, {"title": "Trump vient de bannir Anthropic", "date": "2026-03-02", "impressions": 15027, "reactions": 82, "comments": 42, "angle": "News"}, {"title": "Notion lance Custom Agents", "date": "2026-03-03", "impressions": 7286, "reactions": 53, "comments": 22, "angle": "News"}, {"title": "Mon setup IA fait le boulot d'un assistant", "date": "2026-03-30", "impressions": 4707, "reactions": 29, "comments": 47, "angle": "Build in public"}, {"title": "Mac vs PC", "date": "2026-01-15", "impressions": 4024, "reactions": 46, "comments": 41, "angle": "Story telling"}, {"title": "Evenement agents IA avec Notion", "date": "2026-03-27", "impressions": 3234, "reactions": 82, "comments": 22, "angle": "Build in public"}, {"title": "Je detestais LinkedIn", "date": "2026-02-05", "impressions": 2050, "reactions": 48, "comments": 33, "angle": "Story telling"}, {"title": "Hackathon Manus/Paatch (2eme)", "date": "2026-01-24", "impressions": 2009, "reactions": 59, "comments": 20, "angle": "Build in public"}], "angle_breakdown": [{"angle": "Story telling", "count": 5, "pct": 0.23}, {"angle": "News", "count": 5, "pct": 0.23}, {"angle": "Vente", "count": 4, "pct": 0.18}, {"angle": "Education", "count": 3, "pct": 0.14}, {"angle": "Build in public", "count": 3, "pct": 0.14}, {"angle": "Lead magnet", "count": 1, "pct": 0.05}, {"angle": "Non renseigne", "count": 1, "pct": 0.05}], "format_breakdown": [{"format": "image", "count": 20, "pct": 0.91}, {"format": "multi_assets", "count": 1, "pct": 0.05}, {"format": "text", "count": 1, "pct": 0.05}], "pipeline": {"ideas": 55, "writing": 4, "to_plan": 1, "ready_to_schedule": 0}}, "newsletter": {"kr8_target": 100, "kr8_current": 0, "editions_published": 0, "status": "Pas lancee"}, "leads": {"total_2026": 40, "last_30_days": 15, "last_7_days": 5, "hot_leads_1st_rdv_no_r2": 6, "by_source": [{"source": "LinkedIn outbound", "count": 25}, {"source": "Event / Inbound", "count": 5}, {"source": "Manual prospection", "count": 1}, {"source": "Non renseigne", "count": 5}], "hot_list": [{"name": "Joanna Angelique", "first_rdv": "2026-04-14", "r2": "2026-04-28", "opp": "L'Escalator", "action": "R2 cale - preparer la prop"}, {"name": "Sylvain Parmentier", "first_rdv": "2026-02-27", "r2": null, "opp": "Devis", "action": "URGENT - devis pas envoye depuis fev"}, {"name": "Chaharazad Zemouri", "first_rdv": "2026-04-13", "r2": null, "opp": "Dauphine", "action": "Organiser R2 cette semaine"}, {"name": "Oriane Kerleguer", "first_rdv": "2026-04-13", "r2": null, "opp": "Dauphine", "action": "Organiser R2 cette semaine"}, {"name": "Baptiste Dupuis", "first_rdv": "2026-04-13", "r2": null, "opp": "Dauphine", "action": "Organiser R2 cette semaine"}, {"name": "Jeanne Marchand", "first_rdv": "2026-04-13", "r2": null, "opp": "Dauphine", "action": "Organiser R2 cette semaine"}, {"name": "Damien Launay", "first_rdv": "2026-04-10", "r2": null, "opp": null, "action": "Qualifier + proposer R2"}, {"name": "Emma Castillo", "first_rdv": null, "r2": null, "opp": "L'Escalator", "action": "Confirmer RDV cal.com envoye 9/04"}]}}, "sales": {"pipeline_total": 59349, "pipeline_by_stage": [{"stage": "Lead", "count": 3, "amount": 11600}, {"stage": "Proposal to send", "count": 2, "amount": 17200}, {"stage": "Awaiting signature", "count": 2, "amount": 19400}, {"stage": "Contract signed", "count": 1, "amount": 6000}, {"stage": "Billing send", "count": 1, "amount": 3250}, {"stage": "Partial paid", "count": 1, "amount": 1899}], "closing_rate": 0.36, "closing_rate_strict": 0.22, "signed_2026": 8299, "signed_deals_2026": 2, "deals_by_source": [{"source": "Linkedin inbound", "count": 5, "amount": 34849, "won": 0, "lost": 3}, {"source": "Event", "count": 2, "amount": 27150, "won": 1, "lost": 0}, {"source": "Reseau", "count": 2, "amount": 8000, "won": 1, "lost": 0}, {"source": "Recommandation", "count": 2, "amount": 4698, "won": 1, "lost": 1}, {"source": "Non renseigne", "count": 4, "amount": 27649, "won": 0, "lost": 2}], "deals_by_type": [{"type": "Notion", "count": 8, "amount": 57448}, {"type": "COO/Service client", "count": 2, "amount": 28400}, {"type": "Automatisation", "count": 2, "amount": 15000}, {"type": "Audit/Conseil/IA", "count": 1, "amount": 13200}, {"type": "Formation Entreprise", "count": 1, "amount": 2000}, {"type": "Coaching", "count": 1, "amount": 1899}], "deals_to_relaunch": [{"name": "Altercosmeto - Performance IA", "status": "Proposal to send", "amount": 13200, "days_idle": 18, "action": "Relancer via Edouard KINI - deadline 31/03 depassee", "priority": "critical"}, {"name": "Sparken - Structuration Notion", "status": "Awaiting signature", "amount": 6400, "days_idle": 18, "action": "Pas de suivi recent - relance immediate", "priority": "critical"}, {"name": "Journee Notion Philippei", "status": "Proposal to send", "amount": 4000, "days_idle": 28, "action": "Envoyer la proposition", "priority": "warning"}, {"name": "Notion X Peppit", "status": "Awaiting signature", "amount": 13000, "days_idle": 7, "action": "Mail envoye 13/04 - relance fin semaine", "priority": "warning"}], "top_deals": [{"rank": 1, "name": "V2 implem", "amount": 26325, "status": "Paid"}, {"rank": 2, "name": "Altercosmeto", "amount": 13200, "status": "Proposal to send"}, {"rank": 3, "name": "Peppit", "amount": 13000, "status": "Awaiting signature"}, {"rank": 4, "name": "Marsail", "amount": 12000, "status": "Lost"}, {"rank": 5, "name": "GMAF", "amount": 9600, "status": "Lead"}, {"rank": 6, "name": "Sparken", "amount": 6400, "status": "Awaiting signature"}, {"rank": 7, "name": "Station Krishna", "amount": 6000, "status": "Contract signed"}, {"rank": 8, "name": "Solo Ali", "amount": 5000, "status": "Lost"}, {"rank": 9, "name": "La Poul'Aillee", "amount": 4999, "status": "Lost"}, {"rank": 10, "name": "Macro micro", "amount": 4999, "status": "Frozen"}], "main_loss_reason": "Trop cher", "loss_reason_count": 5}};
+
+// ==========================================
+// HELPERS
+// ==========================================
+const fmt = n => new Intl.NumberFormat('fr-FR').format(Math.round(n));
+const fmtK = n => n >= 1000 ? (n/1000).toFixed(1).replace('.0','') + 'K' : fmt(n);
+const fmtPct = n => (n * 100).toFixed(1) + '%';
+
+const chartDefaults = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: { legend: { labels: { color: '#888', font: { size: 11 } } } },
+  scales: {
+    x: { ticks: { color: '#666', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.04)' } },
+    y: { ticks: { color: '#666', font: { size: 10 }, callback: v => fmtK(v) + ' EUR' }, grid: { color: 'rgba(255,255,255,0.04)' } }
+  }
+};
+
+// ==========================================
+// KPI CARDS
+// ==========================================
+function renderKPIs() {
+  const d = DATA;
+  const cards = [
+    { label: 'Tresorerie', value: fmt(d.treasury.total) + ' EUR', icon: '\uD83D\uDCB0',
+      sub: `Principal: ${fmt(d.treasury.principal)} | Impots: ${fmt(d.treasury.impots)}`,
+      badge: d.treasury.total > 15000 ? ['Sain', 'green'] : ['Alerte', 'red'],
+      color: d.treasury.total > 15000 ? 'var(--green)' : 'var(--red)' },
+    { label: 'CA 2026 YTD', value: fmt(d.revenue.ytd) + ' EUR', icon: '\uD83D\uDCC8',
+      sub: `Objectif 150K: ${fmtPct(d.revenue.ytd/d.revenue.objective_2026)} | R12M: ${fmtK(d.revenue.rolling_12m)}`,
+      badge: [fmtPct(d.revenue.ytd/d.revenue.objective_2026), d.revenue.ytd/d.revenue.objective_2026 > 0.3 ? 'green' : 'red'],
+      color: 'var(--blue)' },
+    { label: 'Projection 2026', value: fmtK(d.revenue.projection_2026) + ' EUR', icon: '\uD83C\uDFAF',
+      sub: `Ecart: ${fmt(d.revenue.ecart_objectif)} EUR | Besoin: ${fmtK((150000 - d.revenue.ytd) / 8)}/mois`,
+      badge: d.revenue.projection_2026 >= 150000 ? ['En ligne', 'green'] : ['Gap ' + fmtK(Math.abs(d.revenue.ecart_objectif)), 'red'],
+      color: d.revenue.projection_2026 >= 150000 ? 'var(--green)' : 'var(--red)' },
+    { label: 'Runway', value: d.kpis.runway_months + ' mois', icon: '\u23F1',
+      sub: `Burn 3M: ${fmt(d.kpis.burn_3m)} EUR/mois | ARE: ${fmt(d.treasury.are_mensuel)}/mois`,
+      badge: d.kpis.runway_months > 6 ? ['Confortable', 'green'] : ['Attention', 'orange'],
+      color: d.kpis.runway_months > 6 ? 'var(--green)' : 'var(--orange)' },
+    { label: 'Marge brute', value: fmtPct(d.kpis.margin_pct), icon: '\uD83D\uDCCA',
+      sub: `CA YTD: ${fmtK(d.revenue.ytd)} | Dep: ${fmtK(d.revenue.ytd * (1 - d.kpis.margin_pct))}`,
+      badge: d.kpis.margin_pct > 0.5 ? ['Saine', 'green'] : ['Faible', 'orange'],
+      color: 'var(--purple)' },
+    { label: 'DSO', value: d.kpis.dso + ' jours', icon: '\u23F3',
+      sub: `Impayes: ${fmt(d.aging.total)} EUR | ${d.kpis.invoices_unpaid} factures`,
+      badge: d.kpis.dso > 60 ? ['Critique', 'red'] : d.kpis.dso > 30 ? ['Eleve', 'orange'] : ['OK', 'green'],
+      color: d.kpis.dso > 60 ? 'var(--red)' : 'var(--orange)' },
+    { label: 'Top 3 clients', value: fmtPct(d.kpis.top3_pct), icon: '\uD83D\uDC65',
+      sub: d.kpis.top3_clients,
+      badge: d.kpis.top3_pct > 0.5 ? ['Concentre', 'orange'] : ['Diversifie', 'green'],
+      color: d.kpis.top3_pct > 0.5 ? 'var(--orange)' : 'var(--green)' },
+    { label: 'TVA previsionnelle', value: fmt(d.tva.forecast) + ' EUR', icon: '\uD83C\uDFE6',
+      sub: `Collectee MTD: ${fmt(d.tva.collected_mtd)} | Declaration le 19`,
+      badge: ['Regime reel', 'blue'],
+      color: 'var(--blue)' }
+  ];
+
+  const grid = document.getElementById('kpiGrid');
+  grid.innerHTML = cards.map(c => `
+    <div class="kpi-card">
+      <div class="label">${c.label}</div>
+      <div class="value" style="color:${c.color}">${c.value}</div>
+      <div class="sub">${c.sub}</div>
+      <span class="badge badge-${c.badge[1]}">${c.badge[0]}</span>
+      <div class="icon">${c.icon}</div>
+    </div>
+  `).join('');
+}
+
+// ==========================================
+// ALERTS
+// ==========================================
+function renderAlerts() {
+  const container = document.getElementById('alertsContainer');
+  container.innerHTML = DATA.alerts.map(a => `
+    <div class="alert alert-${a.level}">
+      <div class="dot"></div>
+      <span class="title">${a.title}</span>
+      <span class="detail">${a.detail}</span>
+    </div>
+  `).join('');
+}
+
+// ==========================================
+// REVENUE CHART
+// ==========================================
+function renderRevenueChart() {
+  const months = DATA.revenue.by_month;
+  new Chart(document.getElementById('chartRevenue'), {
+    type: 'bar',
+    data: {
+      labels: months.map(m => m.month.replace('20','')),
+      datasets: [
+        { label: 'CA Facture', data: months.map(m => m.invoiced), backgroundColor: 'rgba(59,130,246,0.2)', borderColor: 'rgba(59,130,246,0.8)', borderWidth: 1 },
+        { label: 'CA Encaisse', data: months.map(m => m.collected), backgroundColor: 'rgba(0,214,143,0.3)', borderColor: 'rgba(0,214,143,0.8)', borderWidth: 1 },
+        { label: 'Depenses', data: months.map(m => m.expenses), backgroundColor: 'rgba(255,77,106,0.2)', borderColor: 'rgba(255,77,106,0.8)', borderWidth: 1 },
+        { label: 'Marge', type: 'line', data: months.map(m => m.collected - m.expenses), borderColor: '#fbbf24', borderWidth: 2, pointRadius: 3, fill: false }
+      ]
+    },
+    options: { ...chartDefaults, plugins: { ...chartDefaults.plugins, tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + fmt(ctx.raw) + ' EUR' } } } }
+  });
+}
+
+// ==========================================
+// CLIENTS DONUT
+// ==========================================
+function renderClientsChart() {
+  const clients = DATA.revenue.by_client.slice(0, 8);
+  const colors = ['#3b82f6','#00d68f','#a855f7','#ff9f43','#22d3ee','#ff4d6a','#fbbf24','#6366f1'];
+  new Chart(document.getElementById('chartClients'), {
+    type: 'doughnut',
+    data: {
+      labels: clients.map(c => c.name),
+      datasets: [{ data: clients.map(c => c.amount), backgroundColor: colors, borderWidth: 0 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'right', labels: { color: '#888', font: { size: 10 }, padding: 8 } },
+        tooltip: { callbacks: { label: ctx => ctx.label + ': ' + fmt(ctx.raw) + ' EUR (' + fmtPct(ctx.raw / DATA.revenue.by_client.reduce((s,c) => s+c.amount, 0)) + ')' } } }
+    }
+  });
+}
+
+// ==========================================
+// OKR TRAJECTORY CHART
+// ==========================================
+function renderOkrTrajectory() {
+  const months2026 = DATA.revenue.by_month.filter(m => m.month.startsWith('2026'));
+  let cumul = 0;
+  const cumulData = months2026.map(m => { cumul += m.collected; return cumul; });
+  const labels = months2026.map(m => m.month.replace('2026-',''));
+  const allLabels = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+
+  // KR cumulative targets
+  const krTargets = [
+    {month: '03', cumul: 15000},
+    {month: '06', cumul: 55000},
+    {month: '09', cumul: 95000},
+    {month: '12', cumul: 130000}
+  ];
+  const linearObj = allLabels.map((_, i) => 150000 / 12 * (i + 1));
+
+  new Chart(document.getElementById('chartOkrTrajectory'), {
+    type: 'line',
+    data: {
+      labels: allLabels,
+      datasets: [
+        { label: 'CA encaisse cumule', data: allLabels.map((m, i) => i < cumulData.length ? cumulData[i] : null), borderColor: '#00d68f', borderWidth: 3, pointRadius: 4, fill: false, spanGaps: false },
+        { label: 'Objectif lineaire 150K', data: linearObj, borderColor: 'rgba(255,255,255,0.15)', borderWidth: 1, borderDash: [5,5], pointRadius: 0, fill: false },
+        { label: 'Cibles KR trimestrielles', data: allLabels.map(m => { const kr = krTargets.find(k => k.month === m); return kr ? kr.cumul : null; }), borderColor: '#a855f7', borderWidth: 2, pointRadius: 6, pointStyle: 'crossRot', fill: false, spanGaps: false }
+      ]
+    },
+    options: { ...chartDefaults, scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, max: 160000 } } }
+  });
+}
+
+// ==========================================
+// OKR GAP CHART
+// ==========================================
+function renderOkrGap() {
+  const quarters = ['T1', 'T2', 'T3', 'T4'];
+  const targets = [15000, 40000, 40000, 35000];
+  const actuals = [8300, 0, 0, 0]; // KR results
+
+  new Chart(document.getElementById('chartOkrGap'), {
+    type: 'bar',
+    data: {
+      labels: quarters,
+      datasets: [
+        { label: 'Cible KR', data: targets, backgroundColor: 'rgba(168,85,247,0.3)', borderColor: 'rgba(168,85,247,0.8)', borderWidth: 1 },
+        { label: 'Realise', data: actuals, backgroundColor: actuals.map((a, i) => a >= targets[i] ? 'rgba(0,214,143,0.5)' : 'rgba(255,77,106,0.5)'), borderColor: actuals.map((a, i) => a >= targets[i] ? 'rgba(0,214,143,0.8)' : 'rgba(255,77,106,0.8)'), borderWidth: 1 }
+      ]
+    },
+    options: chartDefaults
+  });
+}
+
+// ==========================================
+// OKR CARDS
+// ==========================================
+function renderOkrCards() {
+  const grid = document.getElementById('okrGrid');
+  const angleColors = { Croissance: 'var(--green)', Qualite: 'var(--blue)', Notoriete: 'var(--yellow)', Reduction: 'var(--orange)' };
+
+  grid.innerHTML = DATA.okr.objectives.map(obj => {
+    const krs = obj.key_results.map(kr => {
+      const pct = kr.target > 0 ? Math.min(kr.result / kr.target, 1) : 0;
+      const pctDisplay = kr.target > 0 ? fmtPct(kr.result / kr.target) : '0%';
+      let barColor = pct >= 0.8 ? 'var(--green)' : pct >= 0.4 ? 'var(--orange)' : 'var(--red)';
+      let statusBg = kr.status === 'Fail' ? 'rgba(255,77,106,0.15)' : kr.status === 'In progress' ? 'rgba(59,130,246,0.15)' : 'rgba(255,255,255,0.05)';
+      let statusColor = kr.status === 'Fail' ? 'var(--red)' : kr.status === 'In progress' ? 'var(--blue)' : 'var(--text-dim)';
+      if (kr.status === 'Fail') barColor = 'var(--red)';
+
+      return `<div class="kr-row">
+        <div class="kr-name">${kr.title}<br><span style="color:var(--text-dim);font-size:11px">${kr.result}/${kr.target} | ${kr.due}</span></div>
+        <div class="kr-bar-bg"><div class="kr-bar" style="width:${pct*100}%;background:${barColor}"></div></div>
+        <div class="kr-pct" style="color:${barColor}">${pctDisplay}</div>
+        <div class="kr-status" style="background:${statusBg};color:${statusColor}">${kr.status}</div>
+      </div>`;
+    }).join('');
+
+    return `<div class="okr-card">
+      <div class="obj-title" style="color:${angleColors[obj.angle] || 'var(--text)'}">${obj.id} - ${obj.title}</div>
+      <div class="obj-angle">${obj.angle} | ${obj.period} | ${obj.status}</div>
+      ${krs || '<div style="color:var(--text-dim);font-size:12px;padding:12px 0">Aucun KR defini</div>'}
+    </div>`;
+  }).join('');
+}
+
+// ==========================================
+// AGING CHART
+// ==========================================
+function renderAgingChart() {
+  const buckets = DATA.aging.buckets;
+  new Chart(document.getElementById('chartAging'), {
+    type: 'bar',
+    data: {
+      labels: buckets.map(b => b.label),
+      datasets: [{
+        data: buckets.map(b => b.amount),
+        backgroundColor: ['rgba(0,214,143,0.5)', 'rgba(255,159,67,0.5)', 'rgba(255,159,67,0.7)', 'rgba(255,77,106,0.7)'],
+        borderColor: ['rgba(0,214,143,0.8)', 'rgba(255,159,67,0.8)', 'rgba(255,159,67,1)', 'rgba(255,77,106,1)'],
+        borderWidth: 1
+      }]
+    },
+    options: { ...chartDefaults, plugins: { ...chartDefaults.plugins, legend: { display: false } }, indexAxis: 'y' }
+  });
+}
+
+// ==========================================
+// MARGIN CHART
+// ==========================================
+function renderMarginChart() {
+  const months = DATA.revenue.by_month;
+  new Chart(document.getElementById('chartMargin'), {
+    type: 'bar',
+    data: {
+      labels: months.map(m => m.month.replace('20','')),
+      datasets: [{
+        label: 'Marge',
+        data: months.map(m => m.collected - m.expenses),
+        backgroundColor: months.map(m => (m.collected - m.expenses) >= 0 ? 'rgba(0,214,143,0.5)' : 'rgba(255,77,106,0.5)'),
+        borderColor: months.map(m => (m.collected - m.expenses) >= 0 ? 'rgba(0,214,143,0.8)' : 'rgba(255,77,106,0.8)'),
+        borderWidth: 1
+      }]
+    },
+    options: { ...chartDefaults, plugins: { ...chartDefaults.plugins, legend: { display: false } } }
+  });
+}
+
+// ==========================================
+// EXPENSES BY CATEGORY
+// ==========================================
+function renderExpCatChart() {
+  const cats = DATA.expenses.by_category;
+  const colors = ['#ff4d6a','#ff9f43','#fbbf24','#a855f7','#3b82f6','#22d3ee','#00d68f','#6366f1','#ec4899'];
+  new Chart(document.getElementById('chartExpCat'), {
+    type: 'doughnut',
+    data: {
+      labels: cats.map(c => c.notion),
+      datasets: [{ data: cats.map(c => c.amount), backgroundColor: colors, borderWidth: 0 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'right', labels: { color: '#888', font: { size: 9 }, padding: 6 } } }
+    }
+  });
+}
+
+// ==========================================
+// AGING TABLE
+// ==========================================
+function renderAgingTable() {
+  document.getElementById('totalUnpaid').textContent = fmt(DATA.aging.total) + ' EUR';
+  const tbody = document.getElementById('agingTable');
+  tbody.innerHTML = DATA.aging.details.map(f => {
+    const tranche = f.days <= 30 ? '0-30j' : f.days <= 60 ? '30-60j' : f.days <= 90 ? '60-90j' : '90j+';
+    const color = f.days > 90 ? 'var(--red)' : f.days > 60 ? 'var(--orange)' : 'var(--text)';
+    return `<tr>
+      <td>${f.ref}</td>
+      <td style="font-weight:600;color:${color}">${f.client}</td>
+      <td style="color:var(--red)">${fmt(f.amount)} EUR</td>
+      <td>${f.due}</td>
+      <td style="color:${color};font-weight:700">${f.days}j</td>
+      <td><span class="badge badge-${f.days > 90 ? 'red' : f.days > 30 ? 'orange' : 'green'}">${tranche}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+
+
+
+
+// ==========================================
+// ACQUISITION TAB
+// ==========================================
+function renderAcquisition() {
+  const acq = DATA.acquisition;
+  const lk = acq.linkedin;
+  
+  // KPIs
+  const kpis = [
+    { label: 'Posts publies 2026', value: lk.posts_published_2026, icon: '\uD83D\uDCDD', sub: `KR7: ${lk.kr7_current}/${lk.kr7_target} (${Math.round(lk.kr7_current/lk.kr7_target*100)}%)`, color: 'var(--blue)', badge: [Math.round(lk.kr7_current/lk.kr7_target*100) + '%', 'blue'] },
+    { label: 'Impressions totales', value: fmt(lk.total_impressions), icon: '\uD83D\uDC41', sub: `${fmt(lk.total_reactions)} reactions | ${fmt(lk.total_comments)} comments`, color: 'var(--cyan)', badge: ['Visible', 'blue'] },
+    { label: 'Nouveaux leads 30j', value: acq.leads.last_30_days, icon: '\uD83D\uDC65', sub: `${acq.leads.last_7_days} en 7j | ${acq.leads.hot_leads_1st_rdv_no_r2} hot leads`, color: 'var(--green)', badge: ['Actif', 'green'] },
+    { label: 'Newsletter', value: acq.newsletter.editions_published, icon: '\uD83D\uDCEC', sub: `KR8: ${acq.newsletter.kr8_current}/${acq.newsletter.kr8_target} abonnes`, color: 'var(--red)', badge: ['Non lancee', 'red'] }
+  ];
+  document.getElementById('acqKpiGrid').innerHTML = kpis.map(c => `
+    <div class="kpi-card">
+      <div class="label">${c.label}</div>
+      <div class="value" style="color:${c.color}">${c.value}</div>
+      <div class="sub">${c.sub}</div>
+      <span class="badge badge-${c.badge[1]}">${c.badge[0]}</span>
+      <div class="icon">${c.icon}</div>
+    </div>
+  `).join('');
+  
+  // LK posts per month
+  new Chart(document.getElementById('chartLkPosts'), {
+    type: 'bar',
+    data: {
+      labels: lk.posts_per_month.map(m => m.month.replace('2026-','')),
+      datasets: [{ label: 'Posts publies', data: lk.posts_per_month.map(m => m.count), backgroundColor: 'rgba(59,130,246,0.5)', borderColor: 'rgba(59,130,246,0.8)', borderWidth: 1 }]
+    },
+    options: { ...chartDefaults, scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, ticks: { ...chartDefaults.scales.y.ticks, callback: v => v } } } }
+  });
+  
+  // LK pipeline
+  new Chart(document.getElementById('chartLkPipeline'), {
+    type: 'bar',
+    data: {
+      labels: ['Ideas', 'Writing', 'To plan', 'Ready'],
+      datasets: [{ data: [lk.pipeline.ideas, lk.pipeline.writing, lk.pipeline.to_plan, lk.pipeline.ready_to_schedule], backgroundColor: ['rgba(136,136,136,0.4)', 'rgba(168,85,247,0.5)', 'rgba(251,191,36,0.5)', 'rgba(0,214,143,0.5)'], borderWidth: 0 }]
+    },
+    options: { ...chartDefaults, plugins: { ...chartDefaults.plugins, legend: { display: false } }, scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, ticks: { ...chartDefaults.scales.y.ticks, callback: v => v } } }, indexAxis: 'y' }
+  });
+  
+  // Top posts table
+  document.getElementById('lkTopPosts').innerHTML = lk.top_posts.map(p => {
+    const isViral = p.impressions > 10000;
+    return `<tr${isViral ? ' style="background:rgba(251,191,36,0.05)"' : ''}>
+      <td style="max-width:400px;font-weight:${isViral ? 700 : 500}">${p.title}</td>
+      <td>${p.date}</td>
+      <td style="color:var(--cyan);font-weight:700">${fmt(p.impressions)}</td>
+      <td>${p.reactions}</td>
+      <td>${p.comments}</td>
+      <td><span class="badge badge-blue">${p.angle}</span></td>
+    </tr>`;
+  }).join('');
+  
+  // Angle breakdown
+  new Chart(document.getElementById('chartLkAngle'), {
+    type: 'doughnut',
+    data: {
+      labels: lk.angle_breakdown.map(a => a.angle),
+      datasets: [{ data: lk.angle_breakdown.map(a => a.count), backgroundColor: ['#3b82f6','#00d68f','#ff4d6a','#fbbf24','#a855f7','#22d3ee','#888'], borderWidth: 0 }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#888', font: { size: 10 } } } } }
+  });
+  
+  // Format breakdown
+  new Chart(document.getElementById('chartLkFormat'), {
+    type: 'doughnut',
+    data: {
+      labels: lk.format_breakdown.map(f => f.format),
+      datasets: [{ data: lk.format_breakdown.map(f => f.count), backgroundColor: ['#3b82f6','#a855f7','#22d3ee','#fbbf24'], borderWidth: 0 }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#888', font: { size: 10 } } } } }
+  });
+  
+  // Lead sources
+  new Chart(document.getElementById('chartLeadSrc'), {
+    type: 'doughnut',
+    data: {
+      labels: acq.leads.by_source.map(s => s.source),
+      datasets: [{ data: acq.leads.by_source.map(s => s.count), backgroundColor: ['#3b82f6','#00d68f','#fbbf24','#888'], borderWidth: 0 }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#888', font: { size: 10 } } } } }
+  });
+  
+  // Hot leads
+  document.getElementById('hotLeadsTable').innerHTML = acq.leads.hot_list.map(l => {
+    const isUrgent = l.name.includes('Parmentier');
+    return `<tr>
+      <td style="font-weight:600;color:${isUrgent ? 'var(--red)' : 'var(--text)'}">${l.name}</td>
+      <td>${l.first_rdv || '-'}</td>
+      <td>${l.r2 ? '<span style="color:var(--green)">' + l.r2 + '</span>' : '<span style="color:var(--red)">Non schedule</span>'}</td>
+      <td>${l.opp || '-'}</td>
+      <td style="font-size:12px;color:${isUrgent ? 'var(--red)' : 'var(--orange)'}">${l.action}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ==========================================
+// SALES TAB
+// ==========================================
+function renderSales() {
+  const s = DATA.sales;
+  
+  // KPIs
+  const kpis = [
+    { label: 'Pipeline actif', value: fmt(s.pipeline_total) + ' EUR', icon: '\uD83D\uDCB5', sub: `${s.pipeline_by_stage.reduce((a,b) => a+b.count, 0)} deals actifs`, color: 'var(--green)', badge: ['Actif', 'green'] },
+    { label: 'CA signe 2026', value: fmt(s.signed_2026) + ' EUR', icon: '\u2705', sub: `${s.signed_deals_2026} deals confirmes`, color: 'var(--blue)', badge: [s.signed_deals_2026 + ' deals', 'blue'] },
+    { label: 'Closing rate', value: (s.closing_rate*100).toFixed(0) + '%', icon: '\uD83C\uDFAF', sub: `Strict: ${(s.closing_rate_strict*100).toFixed(0)}% | Raison perte: ${s.main_loss_reason}`, color: s.closing_rate > 0.3 ? 'var(--green)' : 'var(--orange)', badge: [s.closing_rate > 0.3 ? 'OK' : 'A ameliorer', s.closing_rate > 0.3 ? 'green' : 'orange'] },
+    { label: 'Deals a relancer', value: s.deals_to_relaunch.length, icon: '\u26A0', sub: `${s.deals_to_relaunch.filter(d => d.priority === 'critical').length} critiques`, color: 'var(--red)', badge: ['Urgent', 'red'] }
+  ];
+  document.getElementById('salesKpiGrid').innerHTML = kpis.map(c => `
+    <div class="kpi-card">
+      <div class="label">${c.label}</div>
+      <div class="value" style="color:${c.color}">${c.value}</div>
+      <div class="sub">${c.sub}</div>
+      <span class="badge badge-${c.badge[1]}">${c.badge[0]}</span>
+      <div class="icon">${c.icon}</div>
+    </div>
+  `).join('');
+  
+  // Pipeline by stage
+  new Chart(document.getElementById('chartPipelineStage'), {
+    type: 'bar',
+    data: {
+      labels: s.pipeline_by_stage.map(p => p.stage),
+      datasets: [{ label: 'Montant HT', data: s.pipeline_by_stage.map(p => p.amount), backgroundColor: 'rgba(0,214,143,0.4)', borderColor: 'rgba(0,214,143,0.8)', borderWidth: 1 }]
+    },
+    options: { ...chartDefaults, plugins: { ...chartDefaults.plugins, legend: { display: false } }, indexAxis: 'y' }
+  });
+  
+  // Deals by source
+  new Chart(document.getElementById('chartDealsSource'), {
+    type: 'bar',
+    data: {
+      labels: s.deals_by_source.map(d => d.source),
+      datasets: [
+        { label: 'Won', data: s.deals_by_source.map(d => d.won), backgroundColor: 'rgba(0,214,143,0.6)' },
+        { label: 'Lost', data: s.deals_by_source.map(d => d.lost), backgroundColor: 'rgba(255,77,106,0.6)' }
+      ]
+    },
+    options: { ...chartDefaults, scales: { ...chartDefaults.scales, x: { ...chartDefaults.scales.x, stacked: true }, y: { ...chartDefaults.scales.y, stacked: true, ticks: { ...chartDefaults.scales.y.ticks, callback: v => v } } } }
+  });
+  
+  // Deals to relaunch
+  document.getElementById('dealsRelaunch').innerHTML = s.deals_to_relaunch.map(d => {
+    const isCritical = d.priority === 'critical';
+    const bg = isCritical ? 'rgba(255,77,106,0.1)' : 'rgba(255,159,67,0.1)';
+    const border = isCritical ? 'rgba(255,77,106,0.3)' : 'rgba(255,159,67,0.3)';
+    const color = isCritical ? 'var(--red)' : 'var(--orange)';
+    return `<div class="sub-card" style="background:${bg};border-color:${border}">
+      <div class="name" style="color:${color};flex:1">
+        ${d.name}
+        <div style="font-size:11px;color:var(--text-dim);font-weight:400;margin-top:4px">${d.status} | ${d.days_idle}j sans action</div>
+      </div>
+      <div style="font-size:18px;font-weight:800;color:${color}">${fmt(d.amount)} EUR</div>
+      <div style="font-size:12px;color:var(--text);max-width:300px">${d.action}</div>
+    </div>`;
+  }).join('');
+  
+  // Deals by type
+  new Chart(document.getElementById('chartDealsType'), {
+    type: 'doughnut',
+    data: {
+      labels: s.deals_by_type.map(t => t.type),
+      datasets: [{ data: s.deals_by_type.map(t => t.amount), backgroundColor: ['#3b82f6','#00d68f','#a855f7','#fbbf24','#22d3ee','#ff4d6a'], borderWidth: 0 }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#888', font: { size: 10 } } } } }
+  });
+  
+  // Closing rate gauge
+  new Chart(document.getElementById('chartClosing'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Won', 'Lost'],
+      datasets: [{ data: [s.closing_rate * 100, (1 - s.closing_rate) * 100], backgroundColor: ['rgba(0,214,143,0.6)', 'rgba(255,77,106,0.2)'], borderWidth: 0 }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.raw.toFixed(0) + '%' } } } }
+  });
+  
+  // CA signed vs quarterly targets
+  new Chart(document.getElementById('chartCaSigned'), {
+    type: 'bar',
+    data: {
+      labels: ['T1', 'T2', 'T3', 'T4'],
+      datasets: [
+        { label: 'Cible', data: [15000, 40000, 40000, 35000], backgroundColor: 'rgba(168,85,247,0.3)' },
+        { label: 'Signe', data: [8300, 0, 0, 0], backgroundColor: 'rgba(0,214,143,0.5)' }
+      ]
+    },
+    options: chartDefaults
+  });
+  
+  // Top deals
+  document.getElementById('topDealsTable').innerHTML = s.top_deals.map(d => {
+    const statusColor = d.status === 'Paid' ? 'green' : d.status === 'Lost' ? 'red' : d.status === 'Frozen' ? 'orange' : 'blue';
+    return `<tr>
+      <td>${d.rank}</td>
+      <td style="font-weight:600">${d.name}</td>
+      <td style="color:var(--cyan)">${fmt(d.amount)} EUR</td>
+      <td><span class="badge badge-${statusColor}">${d.status}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+// ==========================================
+// TAB NAVIGATION
+// ==========================================
+function showTab(tab, el) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  el.classList.add('active');
+}
+
+// ==========================================
+// TRANSACTIONS TAB
+// ==========================================
+let activeFilter = 'all';
+function renderTransactions() {
+  const cats = [...new Set(DATA.transactions.map(t => t.cat_notion))].sort();
+  const filtersEl = document.getElementById('txFilters');
+  filtersEl.innerHTML = '<button class="filter-btn active" onclick="setFilter(&quot;all&quot;, this)">Toutes</button>' +
+    cats.map(c => '<button class="filter-btn" onclick="setFilter(&quot;' + c + '&quot;, this)">' + c + '</button>').join('');
+  filterTransactions();
+}
+
+function setFilter(cat, btn) {
+  activeFilter = cat;
+  document.querySelectorAll('#txFilters .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterTransactions();
+}
+
+function filterTransactions() {
+  const search = (document.getElementById('txSearch').value || '').toLowerCase();
+  const filtered = DATA.transactions.filter(t => {
+    const matchCat = activeFilter === 'all' || t.cat_notion === activeFilter;
+    const matchSearch = !search || t.vendor.toLowerCase().includes(search);
+    return matchCat && matchSearch;
+  });
+  
+  const tbody = document.getElementById('txTable');
+  tbody.innerHTML = filtered.map(t => {
+    const catColor = t.cat_notion.includes('Tech') ? 'var(--blue)' : t.cat_notion.includes('Admin') ? 'var(--purple)' : t.cat_notion.includes('Marketing') ? 'var(--yellow)' : t.cat_notion.includes('Deplacement') ? 'var(--cyan)' : t.cat_notion.includes('Fiscal') ? 'var(--red)' : 'var(--text-dim)';
+    return '<tr><td>' + t.date + '</td><td style="font-weight:600">' + t.vendor + '</td><td style="color:var(--red)">' + fmt(t.amount) + ' EUR</td><td style="font-size:11px;color:var(--text-dim)">' + t.category + '</td><td style="font-size:11px;color:' + catColor + '">' + t.cat_notion + '</td></tr>';
+  }).join('');
+  
+  const total = filtered.reduce((s, t) => s + t.amount, 0);
+  document.getElementById('txCount').textContent = filtered.length + ' transactions';
+  document.getElementById('txTotal').textContent = 'Total: ' + fmt(total) + ' EUR';
+}
+
+// ==========================================
+// SUBSCRIPTIONS TAB
+// ==========================================
+function renderSubscriptions() {
+  const analysis = DATA.sub_analysis;
+  document.getElementById('savingsAmount').textContent = fmt(analysis.potential_savings) + ' EUR/an';
+  document.getElementById('savingsDetail').textContent = analysis.to_cancel.length + ' a annuler + ' + analysis.to_evaluate.length + ' a evaluer';
+  
+  const totalAnnual = DATA.subscriptions.reduce((s, sub) => s + (sub.freq === 'Mensuel' ? sub.cost * 12 : sub.cost), 0);
+  document.getElementById('totalSubCost').textContent = fmt(totalAnnual) + ' EUR/an';
+  document.getElementById('totalSubDetail').textContent = DATA.subscriptions.length + ' abonnements actifs';
+  
+  // Cancel list
+  document.getElementById('subsCancel').innerHTML = analysis.to_cancel.map(s =>
+    '<div class="sub-card" style="border-color:rgba(255,77,106,0.3)"><div class="name" style="color:var(--red)">' + s.name + '</div><div><div class="cost" style="color:var(--red)">' + fmt(s.cost_annual) + ' EUR/an</div><div class="sub-reco reco-cancel">' + s.reason + '</div></div></div>'
+  ).join('');
+  
+  // Evaluate list
+  document.getElementById('subsEvaluate').innerHTML = analysis.to_evaluate.map(s =>
+    '<div class="sub-card" style="border-color:rgba(255,159,67,0.3)"><div class="name" style="color:var(--orange)">' + s.name + '</div><div><div class="cost" style="color:var(--orange)">' + fmt(s.cost_annual) + ' EUR/an</div><div class="sub-reco reco-evaluate">' + s.reason + '</div></div></div>'
+  ).join('');
+  
+  // Keep list
+  const keepSubs = DATA.subscriptions.filter(s => analysis.keep.includes(s.name));
+  document.getElementById('subsKeep').innerHTML = keepSubs.map(s => {
+    const annual = s.freq === 'Mensuel' ? s.cost * 12 : s.cost;
+    return '<tr><td style="font-weight:600">' + s.name + '</td><td>' + fmt(s.cost) + ' EUR</td><td>' + s.freq + '</td><td style="font-size:11px">' + (s.cat || '') + '</td><td><span class="badge badge-' + (s.impact === 'Critique' ? 'red' : s.impact === 'Important' ? 'orange' : 'blue') + '">' + (s.impact || '-') + '</span></td><td style="font-size:11px;color:var(--text-dim)">' + (s.desc || '') + '</td></tr>';
+  }).join('');
+  
+  // Chart by category
+  const byCat = {};
+  DATA.subscriptions.forEach(s => {
+    const cat = s.cat || 'Autre';
+    const annual = s.freq === 'Mensuel' ? s.cost * 12 : s.cost;
+    byCat[cat] = (byCat[cat] || 0) + annual;
+  });
+  new Chart(document.getElementById('chartSubCat'), {
+    type: 'doughnut',
+    data: {
+      labels: Object.keys(byCat),
+      datasets: [{ data: Object.values(byCat), backgroundColor: ['#3b82f6','#22d3ee','#a855f7','#6366f1','#fbbf24','#00d68f','#ff4d6a'], borderWidth: 0 }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#888', font: { size: 10 } } } } }
+  });
+  
+  // Chart by status
+  const byStatus = {};
+  DATA.subscriptions.forEach(s => { byStatus[s.status] = (byStatus[s.status] || 0) + 1; });
+  new Chart(document.getElementById('chartSubStatus'), {
+    type: 'bar',
+    data: {
+      labels: Object.keys(byStatus),
+      datasets: [{ data: Object.values(byStatus), backgroundColor: Object.keys(byStatus).map(s => s === 'Essentiel' ? 'rgba(0,214,143,0.5)' : s === 'Utile' ? 'rgba(59,130,246,0.5)' : 'rgba(255,159,67,0.5)'), borderWidth: 0 }]
+    },
+    options: { ...chartDefaults, plugins: { ...chartDefaults.plugins, legend: { display: false } }, scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, ticks: { ...chartDefaults.scales.y.ticks, callback: v => v } } } }
+  });
+}
+
+// ==========================================
+// INIT
+// ==========================================
+Chart.defaults.color = '#888';
+Chart.defaults.borderColor = 'rgba(255,255,255,0.04)';
+
+renderKPIs();
+renderAlerts();
+renderRevenueChart();
+renderClientsChart();
+renderOkrTrajectory();
+renderOkrGap();
+renderOkrCards();
+renderAgingChart();
+renderMarginChart();
+renderExpCatChart();
+renderAgingTable();
+renderTransactions();
+renderSubscriptions();
+renderAcquisition();
+renderSales();
+</script>
+</body>
+</html>
