@@ -150,6 +150,7 @@
   <button class="nav-tab active" onclick="showTab('dashboard', this)">Dashboard</button>
   <button class="nav-tab" onclick="showTab('transactions', this)">Depenses</button>
   <button class="nav-tab" onclick="showTab('acquisition', this)">Acquisition</button>
+  <button class="nav-tab" onclick="showTab('delivery', this)">Delivery</button>
   <button class="nav-tab" onclick="showTab('sales', this)">Sales</button>
   <button class="nav-tab" onclick="showTab('subscriptions', this)">Abonnements</button>
 </div>
@@ -295,6 +296,45 @@
         <canvas id="chartSubStatus"></canvas>
       </div>
     </div>
+  </div>
+</div>
+
+
+<div id="tab-delivery" class="tab-content">
+  <div class="section">
+    <div class="section-title"><div class="dot" style="background:#a855f7"></div> DELIVERY - Taux horaire & Productivite</div>
+    
+    <div class="kpi-grid" id="deliveryKpiGrid"></div>
+    
+    <div class="chart-grid" style="margin-top:24px">
+      <div class="chart-card">
+        <h3>Evolution taux horaire effectif mensuel (cible 200 EUR/h)</h3>
+        <canvas id="chartHourlyRate"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Productivite - Heures trackees par mois</h3>
+        <canvas id="chartHoursMonthly"></canvas>
+      </div>
+    </div>
+    
+    <div class="section-title" style="margin-top:24px;color:var(--green)"><div class="dot" style="background:var(--green)"></div> Projets actifs</div>
+    <div class="table-card">
+      <table>
+        <thead><tr><th>Client</th><th>Heures</th><th>CA signe</th><th>CA encaisse</th><th>Taux signe</th><th>Taux encaisse</th><th>Periode</th></tr></thead>
+        <tbody id="deliveryActiveProjects"></tbody>
+      </table>
+    </div>
+    
+    <div class="section-title" style="margin-top:24px"><div class="dot" style="background:var(--blue)"></div> Projets termines (benchmark)</div>
+    <div class="table-card">
+      <table>
+        <thead><tr><th>Client</th><th>Heures</th><th>CA signe</th><th>CA encaisse</th><th>Taux signe</th><th>Taux encaisse</th><th>Periode</th></tr></thead>
+        <tbody id="deliveryDoneProjects"></tbody>
+      </table>
+    </div>
+    
+    <div class="section-title" style="margin-top:24px"><div class="dot" style="background:var(--orange)"></div> Notes</div>
+    <div id="deliveryNotes" style="padding:16px;background:var(--card);border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--text-dim)"></div>
   </div>
 </div>
 
@@ -694,6 +734,89 @@ function renderAgingTable() {
 
 
 
+
+
+// ==========================================
+// DELIVERY TAB
+// ==========================================
+function renderDelivery() {
+  const d = DATA.delivery;
+  if (!d) return;
+  
+  const rateEffColor = d.hourly_rate_effective >= d.target_hourly_rate ? 'var(--green)' : 'var(--orange)';
+  const rate3mColor = d.hourly_rate_3m >= d.target_hourly_rate ? 'var(--green)' : 'var(--orange)';
+  const rateDoneColor = d.hourly_rate_done_projects >= d.target_hourly_rate ? 'var(--green)' : 'var(--red)';
+  
+  const kpis = [
+    { label: 'Taux horaire effectif (10M)', value: d.hourly_rate_effective + ' EUR/h', icon: '\uD83D\uDCB5', sub: 'CA encaisse / heures trackees clients', color: rateEffColor, badge: [(d.hourly_rate_effective - d.target_hourly_rate) + ' vs cible', d.hourly_rate_effective >= d.target_hourly_rate ? 'green' : 'orange'] },
+    { label: 'Taux horaire rolling 3M', value: d.hourly_rate_3m + ' EUR/h', icon: '\uD83D\uDCC8', sub: 'Fev-Mars-Avril 2026', color: rate3mColor, badge: [d.hourly_rate_3m >= d.target_hourly_rate ? 'Au-dessus cible' : 'En dessous', d.hourly_rate_3m >= d.target_hourly_rate ? 'green' : 'orange'] },
+    { label: 'Benchmark projets termines', value: d.hourly_rate_done_projects + ' EUR/h', icon: '\uD83C\uDFAF', sub: 'Historique (OPTRA, Cleany, ETIC, Structude...)', color: rateDoneColor, badge: ['Stable', 'blue'] },
+    { label: 'Heures clients 10M', value: d.total_client_hours_10m + 'h', icon: '\u23F1', sub: Math.round(d.total_client_hours_10m / d.total_tracked_hours_10m * 100) + '% du temps tracked (' + d.total_tracked_hours_10m + 'h)', color: 'var(--cyan)', badge: ['Juillet 2025 -> Avril 2026', 'blue'] }
+  ];
+  
+  document.getElementById('deliveryKpiGrid').innerHTML = kpis.map(c => `
+    <div class="kpi-card">
+      <div class="label">${c.label}</div>
+      <div class="value" style="color:${c.color}">${c.value}</div>
+      <div class="sub">${c.sub}</div>
+      <span class="badge badge-${c.badge[1]}">${c.badge[0]}</span>
+      <div class="icon">${c.icon}</div>
+    </div>
+  `).join('');
+  
+  // Chart: Hourly rate evolution
+  new Chart(document.getElementById('chartHourlyRate'), {
+    type: 'line',
+    data: {
+      labels: d.by_month.map(m => m.month.replace('20', '')),
+      datasets: [
+        { label: 'Taux horaire effectif (EUR/h)', data: d.by_month.map(m => m.hourly_rate), borderColor: '#a855f7', backgroundColor: 'rgba(168,85,247,0.1)', borderWidth: 3, pointRadius: 5, fill: true, tension: 0.3 },
+        { label: 'Cible 200 EUR/h', data: d.by_month.map(() => d.target_hourly_rate), borderColor: 'rgba(255,255,255,0.3)', borderWidth: 1, borderDash: [5,5], pointRadius: 0, fill: false }
+      ]
+    },
+    options: { ...chartDefaults, scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, ticks: { ...chartDefaults.scales.y.ticks, callback: v => v + ' EUR/h' } } } }
+  });
+  
+  // Chart: Hours monthly (productivite)
+  new Chart(document.getElementById('chartHoursMonthly'), {
+    type: 'bar',
+    data: {
+      labels: d.by_month.map(m => m.month.replace('20', '')),
+      datasets: [
+        { label: 'Heures clients', data: d.by_month.map(m => m.client_hours), backgroundColor: 'rgba(0,214,143,0.6)', borderColor: 'rgba(0,214,143,0.9)', borderWidth: 1, stack: 'a' },
+        { label: 'Heures totales tracked', data: d.by_month.map(m => m.total_hours - m.client_hours), backgroundColor: 'rgba(59,130,246,0.3)', borderColor: 'rgba(59,130,246,0.6)', borderWidth: 1, stack: 'a' }
+      ]
+    },
+    options: { ...chartDefaults, scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, stacked: true, ticks: { ...chartDefaults.scales.y.ticks, callback: v => v + 'h' } }, x: { ...chartDefaults.scales.x, stacked: true } } }
+  });
+  
+  // Tables
+  const renderProjectRow = (p) => {
+    const signed = p.ca_signed ? fmt(p.ca_signed) + ' EUR' : '-';
+    const collected = p.ca_collected ? fmt(p.ca_collected) + ' EUR' : '-';
+    const rateSigned = p.hourly_rate_signed ? '<span style="color:' + (p.hourly_rate_signed >= 200 ? 'var(--green)' : 'var(--orange)') + ';font-weight:700">' + p.hourly_rate_signed + ' EUR/h</span>' : '-';
+    const rateCollected = p.hourly_rate_collected ? '<span style="color:' + (p.hourly_rate_collected >= 200 ? 'var(--green)' : 'var(--orange)') + ';font-weight:700">' + p.hourly_rate_collected + ' EUR/h</span>' : '-';
+    const statusBadge = p.status === 'active_new' ? '<span class="badge badge-blue">Nouveau</span>' : p.status === 'done_unpaid' ? '<span class="badge badge-red">Fini impaye</span>' : '';
+    return `<tr>
+      <td style="font-weight:600">${p.name} ${statusBadge}</td>
+      <td style="color:var(--cyan);font-weight:700">${p.hours}h</td>
+      <td>${signed}</td>
+      <td>${collected}</td>
+      <td>${rateSigned}</td>
+      <td>${rateCollected}</td>
+      <td style="font-size:11px;color:var(--text-dim)">${p.active_period}</td>
+    </tr>`;
+  };
+  
+  const activeProjects = d.projects.filter(p => p.status === 'active' || p.status === 'active_new');
+  const doneProjects = d.projects.filter(p => p.status === 'done' || p.status === 'done_unpaid');
+  
+  document.getElementById('deliveryActiveProjects').innerHTML = activeProjects.map(renderProjectRow).join('');
+  document.getElementById('deliveryDoneProjects').innerHTML = doneProjects.map(renderProjectRow).join('');
+  
+  document.getElementById('deliveryNotes').textContent = d.notes;
+}
+
 // ==========================================
 // ACQUISITION TAB
 // ==========================================
@@ -1034,6 +1157,7 @@ async function initDashboard() {
     renderSubscriptions();
     renderAcquisition();
     renderSales();
+    renderDelivery();
   } catch (e) {
     document.body.innerHTML = '<div style="padding:40px;color:#ff4d6a;font-family:sans-serif"><h1>Erreur chargement data.json</h1><pre>' + e.message + '</pre></div>';
   }
