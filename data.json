@@ -980,87 +980,87 @@
   "alerts": [
     {
       "level": "critical",
-      "category": "aging",
-      "message": "OPTRA : 4 factures impayees (11 478 EUR) — 145 a 222 jours de retard. Actions legales a envisager.",
-      "action": "Relancer OPTRA (Adrien) par LR avec AR. Mise en demeure si pas de reponse sous 48h."
+      "title": "aging",
+      "detail": "OPTRA : 4 factures impayees (11 478 EUR) — 145 a 222 jours de retard. Actions legales a envisager.",
+      "metric": "Relancer OPTRA (Adrien) par LR avec AR. Mise en demeure si pas de reponse sous 48h."
     },
     {
       "level": "critical",
-      "category": "aging",
-      "message": "PROPERTY PARTNERS : 2 factures impayees (5 400 EUR) — 202 et 219 jours de retard.",
-      "action": "Mise en demeure urgente. Provision pour creance douteuse si pas de reponse 15j."
+      "title": "aging",
+      "detail": "PROPERTY PARTNERS : 2 factures impayees (5 400 EUR) — 202 et 219 jours de retard.",
+      "metric": "Mise en demeure urgente. Provision pour creance douteuse si pas de reponse 15j."
     },
     {
       "level": "critical",
-      "category": "sales",
-      "message": "CA signe T2 a 9 601/40 000 EUR (24%) — 65 jours restants. Il faut signer 30 399 EUR avant le 30 juin.",
-      "action": "Fermer Cerena (11 800) + Peppit (13 000) + Sparken (6 400) = 31 200 EUR. C'est jouable."
+      "title": "sales",
+      "detail": "CA signe T2 a 9 601/40 000 EUR (24%) — 65 jours restants. Il faut signer 30 399 EUR avant le 30 juin.",
+      "metric": "Fermer Cerena (11 800) + Peppit (13 000) + Sparken (6 400) = 31 200 EUR. C'est jouable."
     },
     {
       "level": "critical",
-      "category": "sales",
-      "message": "Journee Notion Philippe (4 000 EUR) : proposition non envoyee depuis 38 jours.",
-      "action": "Envoyer la proposition aujourd'hui ou clore definitivement le deal."
+      "title": "sales",
+      "detail": "Journee Notion Philippe (4 000 EUR) : proposition non envoyee depuis 38 jours.",
+      "metric": "Envoyer la proposition aujourd'hui ou clore definitivement le deal."
     },
     {
       "level": "critical",
-      "category": "sales",
-      "message": "Sparken (6 400 EUR) : attente signature depuis 33 jours. Deal en peril.",
-      "action": "Relance immediate. Proposer un call de cloture cette semaine."
+      "title": "sales",
+      "detail": "Sparken (6 400 EUR) : attente signature depuis 33 jours. Deal en peril.",
+      "metric": "Relance immediate. Proposer un call de cloture cette semaine."
     },
     {
       "level": "warning",
-      "category": "sales",
-      "message": "Altercosmeto (14 400 EUR) : idle depuis 28 jours, deadline 31/03 depassee de 26 jours.",
-      "action": "Relancer Edouard KINI. Proposition refaite ou fermeture."
+      "title": "sales",
+      "detail": "Altercosmeto (14 400 EUR) : idle depuis 28 jours, deadline 31/03 depassee de 26 jours.",
+      "metric": "Relancer Edouard KINI. Proposition refaite ou fermeture."
     },
     {
       "level": "warning",
-      "category": "sales",
-      "message": "Peppit (13 000 EUR) : idle 17 jours depuis mail du 13/04.",
-      "action": "Relancer aujourd'hui. Deal chaud mais qui refroidit vite."
+      "title": "sales",
+      "detail": "Peppit (13 000 EUR) : idle 17 jours depuis mail du 13/04.",
+      "metric": "Relancer aujourd'hui. Deal chaud mais qui refroidit vite."
     },
     {
       "level": "warning",
-      "category": "aging",
-      "message": "Firefightbox FAC-47 : 1 050 EUR restants — 128 jours de retard.",
-      "action": "Relance formelle. Provision pour creance douteuse si silence."
+      "title": "aging",
+      "detail": "Firefightbox FAC-47 : 1 050 EUR restants — 128 jours de retard.",
+      "metric": "Relance formelle. Provision pour creance douteuse si silence."
     },
     {
       "level": "warning",
-      "category": "revenue",
-      "message": "Projection 2026 a 74 364 EUR — ecart de -75 636 EUR vs objectif 150 000 EUR.",
-      "action": "Fermer 3 deals en mai pour redresser : Cerena + Peppit + Sparken = +31 200 EUR signes."
+      "title": "revenue",
+      "detail": "Projection 2026 a 74 364 EUR — ecart de -75 636 EUR vs objectif 150 000 EUR.",
+      "metric": "Fermer 3 deals en mai pour redresser : Cerena + Peppit + Sparken = +31 200 EUR signes."
     },
     {
       "level": "warning",
-      "category": "treasury",
-      "message": "Tresorerie -1 589 EUR vs semaine derniere (24 230 vs 25 819 EUR). Charges avril elevees.",
-      "action": "Surveiller. Linkedin 800 + Amazon 250 + Hostinger 264 + loyer 584 = 1 898 EUR cette semaine."
+      "title": "treasury",
+      "detail": "Tresorerie -1 589 EUR vs semaine derniere (24 230 vs 25 819 EUR). Charges avril elevees.",
+      "metric": "Surveiller. Linkedin 800 + Amazon 250 + Hostinger 264 + loyer 584 = 1 898 EUR cette semaine."
     },
     {
       "level": "info",
-      "category": "delivery",
-      "message": "Taux horaire 3M : 395 EUR/h vs cible 200. Ratio productivite excellent.",
-      "action": "Maintenir la selectivite projets. Surveiller baisse volume heures clients (10-19h/mois)."
+      "title": "delivery",
+      "detail": "Taux horaire 3M : 395 EUR/h vs cible 200. Ratio productivite excellent.",
+      "metric": "Maintenir la selectivite projets. Surveiller baisse volume heures clients (10-19h/mois)."
     },
     {
       "level": "info",
-      "category": "sales",
-      "message": "Nouveau deal Cerena (11 800 EUR, Awaiting signature) — propale envoyee 21/04.",
-      "action": "Confirmer le RDV de presentation avec Errol (CTO) cette semaine."
+      "title": "sales",
+      "detail": "Nouveau deal Cerena (11 800 EUR, Awaiting signature) — propale envoyee 21/04.",
+      "metric": "Confirmer le RDV de presentation avec Errol (CTO) cette semaine."
     },
     {
       "level": "info",
-      "category": "sales",
-      "message": "Station Krishna : Partial paid — acompte 2 500 EUR recu le 16/04. Projet operationnel.",
-      "action": "Demarrer le delivery. Prochaine facturation fin mai (conditions 5 mois lissees)."
+      "title": "sales",
+      "detail": "Station Krishna : Partial paid — acompte 2 500 EUR recu le 16/04. Projet operationnel.",
+      "metric": "Demarrer le delivery. Prochaine facturation fin mai (conditions 5 mois lissees)."
     },
     {
       "level": "info",
-      "category": "acquisition",
-      "message": "Newsletter edition 3 publiee 19/04 (Notion 3.4 Workers). KR8 : 3/6 editions (50%).",
-      "action": "Planifier edition 4 pour mi-mai. Sujet suggere : agents IA pour solopreneurs."
+      "title": "acquisition",
+      "detail": "Newsletter edition 3 publiee 19/04 (Notion 3.4 Workers). KR8 : 3/6 editions (50%).",
+      "metric": "Planifier edition 4 pour mi-mai. Sujet suggere : agents IA pour solopreneurs."
     }
   ],
   "acquisition": {
@@ -1185,7 +1185,24 @@
         "writing": 4,
         "to_plan": 1,
         "ready_to_schedule": 0
-      }
+      },
+      "format_breakdown": [
+        {
+          "format": "image",
+          "count": 20,
+          "pct": 0.91
+        },
+        {
+          "format": "multi_assets",
+          "count": 1,
+          "pct": 0.05
+        },
+        {
+          "format": "text",
+          "count": 1,
+          "pct": 0.05
+        }
+      ]
     },
     "newsletter": {
       "kr8_target": 6,
