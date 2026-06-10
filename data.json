@@ -3,7 +3,7 @@
   "generated_at": "2026-06-10T11:52:00Z",
   "snapshot_id": "S24-2026",
   "source": "Qonto + Notion + Timing",
-  "note": "Refresh manuel S24 mercredi 10/06. Tresorerie: 29 641 EUR (+6 543 vs S23). CA YTD: 35 839 EUR (+7 215). Semaine forte: PB-associes SIGNE 08/06 (8 500 HT) + acompte FAC-20 encaisse 09/06 (5 100 TTC); FAC-16 Praxelis (1 079) et FAC-19 Station Krishna (1 036) payees. Impayes: 17 676 EUR (-2 622) — FAC-18 Olympes encaissee 28/05 mais non lettree dans Qonto (exclue de l'aging). KR2 B26-1: 18 101/40 000 (45%), 20j restants. Nouveau lead FFN (deck 15-34K, presentation 15/06 16h — conflit potentiel avec audit PB Montpellier le meme jour). Olympes 53.1K = Lost (15/05); deal actif Olympes = COO 3j 1 950 HT. DSO 79j (-32). Pipeline/leads partiellement refresh (deals cles verifies un par un, pas de full pull)."
+  "note": "Refresh manuel S24 mercredi 10/06. Tresorerie: 29 641 EUR (+6 543 vs S23). CA YTD: 35 839 EUR (+7 215). Semaine forte: PB-associes SIGNE 08/06 (8 500 HT) + acompte FAC-20 encaisse 09/06 (5 100 TTC); FAC-16 Praxelis (1 079) et FAC-19 Station Krishna (1 036) payees. Impayes: 17 676 EUR (-2 622) — FAC-18 Olympes encaissee 28/05 mais non lettree dans Qonto (exclue de l'aging). KR2 B26-1: 18 101/40 000 (45%), 20j restants. Nouveau lead FFN (deck 15-34K, presentation 15/06 16h — conflit potentiel avec audit PB Montpellier le meme jour). Olympes 53.1K = Lost (15/05); deal actif Olympes = COO 3j 1 950 HT. DSO 79j (-32). Pipeline/leads partiellement refresh (deals cles verifies un par un, pas de full pull). | MAJ 10/06 aprem: Make+ShieldApp+ChatGPT annules, Cal.com gratuit, Netlify ajoute (8/mois), Hostinger 3 VPS engagement 2 ans. KPI CA YTD = CA signe (opportunites 2026)."
  },
  "treasury": {
   "total": 29641.15,
@@ -402,18 +402,6 @@
    "reco": null
   },
   {
-   "name": "ShieldApp",
-   "cost": 25,
-   "freq": "Mensuel",
-   "cat": "Tech - SaaS",
-   "status": "Essentiel",
-   "impact": null,
-   "engagement": null,
-   "usage": null,
-   "desc": "Analytics LinkedIn",
-   "reco": null
-  },
-  {
    "name": "Claude Max",
    "cost": 100,
    "freq": "Mensuel",
@@ -468,9 +456,9 @@
    "cat": "Tech - Infrastructure",
    "status": "Essentiel",
    "impact": null,
-   "engagement": "Annuel",
+   "engagement": "2 ans",
    "usage": "Pro",
-   "desc": "Hebergement VPS + domaines",
+   "desc": "3 VPS (engagement 2 ans) + domaines",
    "reco": null
   },
   {
@@ -511,15 +499,15 @@
   },
   {
    "name": "Cal.com",
-   "cost": 19,
+   "cost": 0,
    "freq": "Mensuel",
    "cat": "Tech - SaaS",
    "status": "Essentiel",
    "impact": null,
    "engagement": null,
    "usage": "Pro",
-   "desc": "Calendrier RDV prospects",
-   "reco": null
+   "desc": "Calendrier RDV prospects (plan gratuit)",
+   "reco": "Gratuit, confirme 10/06."
   },
   {
    "name": "Brevo",
@@ -558,18 +546,6 @@
    "reco": null
   },
   {
-   "name": "ChatGPT Plus",
-   "cost": 22,
-   "freq": "Mensuel",
-   "cat": "Tech - SaaS",
-   "status": "A evaluer",
-   "impact": null,
-   "engagement": null,
-   "usage": "Pro",
-   "desc": "Reference outil demo clients",
-   "reco": null
-  },
-  {
    "name": "Timing App",
    "cost": 13.3,
    "freq": "Mensuel",
@@ -604,18 +580,6 @@
    "usage": "Pro",
    "desc": "Planification posts LK",
    "reco": "Redondant si Claude gere le scheduling?"
-  },
-  {
-   "name": "Make.com",
-   "cost": 9,
-   "freq": "Mensuel",
-   "cat": "Tech - SaaS",
-   "status": "A annuler",
-   "impact": null,
-   "engagement": "Sans engagement",
-   "usage": "Pro",
-   "desc": "Automatisation abandonnee mars 2026",
-   "reco": "Annuler - zero Make depuis mars 2026."
   },
   {
    "name": "Taap.it",
@@ -664,6 +628,18 @@
    "usage": "Pro",
    "desc": "Gestion abonnements",
    "reco": "Ironique - outil de gestion d'abonnements"
+  },
+  {
+   "name": "Netlify",
+   "cost": 8,
+   "freq": "Mensuel",
+   "cat": "Tech - Infrastructure",
+   "status": "Essentiel",
+   "impact": "Important",
+   "engagement": "Sans engagement",
+   "usage": "Pro",
+   "desc": "Hosting sites (rama-logic-site + landings)",
+   "reco": null
   }
  ],
  "transactions": [
@@ -1034,14 +1010,9 @@
   }
  ],
  "sub_analysis": {
-  "total_monthly_recurring": 897.17,
-  "total_annual_cost": 4342,
+  "total_monthly_recurring": 453.86,
+  "total_annual_cost": 5446,
   "to_cancel": [
-   {
-    "name": "Make.com",
-    "cost_annual": 108,
-    "reason": "Plus utilise depuis mars 2026. Zero Make/n8n, tout Claude."
-   },
    {
     "name": "Squarespace",
     "cost_annual": 144,
@@ -1073,14 +1044,9 @@
     "name": "Scheduled.so",
     "cost_annual": 144,
     "reason": "Planification LK. Redondant si Claude gere le scheduling?"
-   },
-   {
-    "name": "ChatGPT Plus",
-    "cost_annual": 264,
-    "reason": "Reference pour demos clients. Vraiment necessaire?"
    }
   ],
-  "potential_savings": 1201.2,
+  "potential_savings": 931.2,
   "keep": [
    "Google Workspace",
    "Slack",
@@ -1092,10 +1058,10 @@
    "Hostinger",
    "Namecheap",
    "Wispr Flow",
-   "ShieldApp",
    "Canva Pro",
    "Miro",
-   "Cal.com"
+   "Cal.com",
+   "Netlify"
   ]
  },
  "okr": {
