@@ -1,2099 +1,2165 @@
 {
-  "meta": {
-    "generated_at": "2026-06-05T11:00:00Z",
-    "snapshot_id": "S23-2026",
-    "source": "Qonto + Notion + Timing",
-    "note": "Update S23 vendredi 05/06. Trésorerie: 23 098 EUR (-782 vs S22). CA YTD: 28 624 EUR. Impayes: 20 298 EUR (nouveaux: VIYANA FAC-19 1036 + OLYMPES FAC-18 780). Taux 3M: 247 EUR/h (baisse: +8h Olympes pre-sales mai). Taux 10M: 198 EUR/h. B26-1: 9 601/40 000 (24%), 25j restants. KR8 Newsletter 6/6 DONE. Workshop Atelier Agent go/no-go aujourd'hui (3 payants cible, 25 juin). VivaTech 3-4/06: nouveaux leads."
-  },
-  "treasury": {
-    "total": 23097.83,
-    "principal": 23097.83,
-    "impots": 0,
-    "are_mensuel": 2700
-  },
-  "revenue": {
-    "objective_2026": 150000,
-    "ytd": 28624,
-    "mtd": 20,
-    "rolling_12m": 60850,
-    "projection_2026": 65000,
-    "ecart_objectif": -85000,
-    "by_month": [
-      {
-        "month": "2025-07",
-        "invoiced": 990,
-        "collected": 520,
-        "expenses": 65
-      },
-      {
-        "month": "2025-08",
-        "invoiced": 2895,
-        "collected": 2895,
-        "expenses": 52
-      },
-      {
-        "month": "2025-09",
-        "invoiced": 11004,
-        "collected": 5409,
-        "expenses": 1797
-      },
-      {
-        "month": "2025-10",
-        "invoiced": 20699,
-        "collected": 5547,
-        "expenses": 967
-      },
-      {
-        "month": "2025-11",
-        "invoiced": 17495,
-        "collected": 11705,
-        "expenses": 225
-      },
-      {
-        "month": "2025-12",
-        "invoiced": 7725,
-        "collected": 6150,
-        "expenses": 16
-      },
-      {
-        "month": "2026-01",
-        "invoiced": 7408,
-        "collected": 7408,
-        "expenses": 3729
-      },
-      {
-        "month": "2026-02",
-        "invoiced": 4711,
-        "collected": 4711,
-        "expenses": 724
-      },
-      {
-        "month": "2026-03",
-        "invoiced": 4706,
-        "collected": 4106,
-        "expenses": 7524
-      },
-      {
-        "month": "2026-04",
-        "invoiced": 8563,
-        "collected": 8563,
-        "expenses": 3568
-      },
-      {
-        "month": "2026-05",
-        "invoiced": 5295,
-        "collected": 3816,
-        "expenses": 2835
-      },
-      {
-        "month": "2026-06",
-        "invoiced": 1036,
-        "collected": 20,
-        "expenses": 780
-      }
-    ],
-    "by_client": [
-      {
-        "name": "BLYYND",
-        "amount": 15300,
-        "pct": 0.252
-      },
-      {
-        "name": "meedIA",
-        "amount": 7680,
-        "pct": 0.126
-      },
-      {
-        "name": "Emathea",
-        "amount": 6000,
-        "pct": 0.099
-      },
-      {
-        "name": "RC consulting",
-        "amount": 4800,
-        "pct": 0.079
-      },
-      {
-        "name": "Notion Labs",
-        "amount": 3827,
-        "pct": 0.063
-      },
-      {
-        "name": "VIYANA / Station Krishna",
-        "amount": 3536,
-        "pct": 0.058
-      },
-      {
-        "name": "OPTRA",
-        "amount": 2895,
-        "pct": 0.048
-      },
-      {
-        "name": "Structude",
-        "amount": 2879,
-        "pct": 0.047
-      },
-      {
-        "name": "Firefightbox",
-        "amount": 2625,
-        "pct": 0.043
-      },
-      {
-        "name": "Autres",
-        "amount": 11288,
-        "pct": 0.186
-      }
-    ]
-  },
-  "kpis": {
-    "dso": 111,
-    "margin_pct": 0.706,
-    "burn_3m": 2200,
-    "runway_months": 10.5,
-    "top3_pct": 0.48,
-    "top3_clients": "BLYYND, meedIA, Emathea",
-    "invoices_total": 49,
-    "invoices_paid": 33,
-    "invoices_unpaid": 10,
-    "invoices_canceled": 6
-  },
-  "aging": {
-    "buckets": [
-      {
-        "label": "0-30j",
-        "amount": 2895
-      },
-      {
-        "label": "30-60j",
-        "amount": 0
-      },
-      {
-        "label": "60-90j",
-        "amount": 0
-      },
-      {
-        "label": "90j+",
-        "amount": 17403
-      }
-    ],
-    "total": 20298,
-    "details": [
-      {
-        "ref": "FAC 19",
-        "client": "VIYANA (Station Krishna)",
-        "amount": 1036,
-        "due": "2026-06-05",
-        "days": 0
-      },
-      {
-        "ref": "FAC 18",
-        "client": "OLYMPES",
-        "amount": 780,
-        "due": "2026-05-28",
-        "days": 8
-      },
-      {
-        "ref": "FAC 16",
-        "client": "PRAXELIS",
-        "amount": 1079,
-        "due": "2026-05-16",
-        "days": 20
-      },
-      {
-        "ref": "FAC 47",
-        "client": "Firefightbox",
-        "amount": 525,
-        "due": "2025-12-19",
-        "days": 168
-      },
-      {
-        "ref": "FAC 38",
-        "client": "OPTRA",
-        "amount": 3900,
-        "due": "2025-12-02",
-        "days": 185
-      },
-      {
-        "ref": "FAC 28",
-        "client": "PROPERTY PARTNERS",
-        "amount": 2700,
-        "due": "2025-10-06",
-        "days": 242
-      },
-      {
-        "ref": "FAC 27",
-        "client": "OPTRA",
-        "amount": 1788,
-        "due": "2025-10-31",
-        "days": 217
-      },
-      {
-        "ref": "FAC 26",
-        "client": "OPTRA",
-        "amount": 2895,
-        "due": "2025-10-31",
-        "days": 217
-      },
-      {
-        "ref": "FAC 22",
-        "client": "PROPERTY PARTNERS",
-        "amount": 2700,
-        "due": "2025-09-19",
-        "days": 259
-      },
-      {
-        "ref": "FAC 21",
-        "client": "OPTRA",
-        "amount": 2895,
-        "due": "2025-09-16",
-        "days": 262
-      }
-    ]
-  },
-  "tva": {
-    "collected_mtd": 0,
-    "deductible_mtd": 0,
-    "forecast": 0,
-    "by_month": [
-      {
-        "month": "2026-02",
-        "collected": 785,
-        "paid_dgfip": 883
-      },
-      {
-        "month": "2026-03",
-        "collected": 331,
-        "paid_dgfip": 338
-      },
-      {
-        "month": "2026-04",
-        "collected": 1427,
-        "paid_dgfip": 0
-      },
-      {
-        "month": "2026-05",
-        "collected": 624,
-        "paid_dgfip": 0
-      },
-      {
-        "month": "2026-06",
-        "collected": 0,
-        "paid_dgfip": 0
-      }
-    ]
-  },
-  "expenses": {
-    "by_supplier": [
-      {
-        "name": "GoCardless (Dougs)",
-        "amount": 2638
-      },
-      {
-        "name": "Sylvain Ramaradjou (loyer)",
-        "amount": 2001
-      },
-      {
-        "name": "SUMA AI (prestataire)",
-        "amount": 1600
-      },
-      {
-        "name": "LINKEDIN Sales Navigator",
-        "amount": 800
-      },
-      {
-        "name": "Klarna*Avalon (coworking)",
-        "amount": 1264
-      },
-      {
-        "name": "APPLE RETAIL",
-        "amount": 1009
-      },
-      {
-        "name": "Amazon",
-        "amount": 873
-      },
-      {
-        "name": "Hostinger",
-        "amount": 366
-      },
-      {
-        "name": "ANTHROPIC (API)",
-        "amount": 454
-      },
-      {
-        "name": "DGFIP",
-        "amount": 338
-      },
-      {
-        "name": "SNCF",
-        "amount": 434
-      },
-      {
-        "name": "Wispr Flow",
-        "amount": 129
-      },
-      {
-        "name": "Autres",
-        "amount": 2480
-      }
-    ],
-    "by_category": [
-      {
-        "qonto": "other_service",
-        "notion": "Admin - Prestations diverses",
-        "amount": 3712
-      },
-      {
-        "qonto": "marketing",
-        "notion": "Commercial - Marketing & Com",
-        "amount": 3020
-      },
-      {
-        "qonto": "other_expense",
-        "notion": "Divers - A classer",
-        "amount": 3200
-      },
-      {
-        "qonto": "it_and_electronics",
-        "notion": "Tech - Materiel IT",
-        "amount": 1009
-      },
-      {
-        "qonto": "online_service",
-        "notion": "Tech - Abonnements SaaS",
-        "amount": 612
-      },
-      {
-        "qonto": "transport",
-        "notion": "Deplacement - Transport",
-        "amount": 650
-      },
-      {
-        "qonto": "tax",
-        "notion": "Fiscal - Impots & Taxes",
-        "amount": 338
-      },
-      {
-        "qonto": "food_and_grocery",
-        "notion": "Bureau - Alimentation",
-        "amount": 350
-      },
-      {
-        "qonto": "restaurant_and_bar",
-        "notion": "Commercial - Repas clients",
-        "amount": 290
-      }
-    ]
-  },
-  "subscriptions": [
-    {
-      "name": "Google Workspace",
-      "cost": 19.44,
-      "freq": "Mensuel",
-      "cat": "Tech - SaaS",
-      "status": "Essentiel",
-      "impact": "Critique",
-      "engagement": "Annuel",
-      "usage": "Pro",
-      "desc": "Gmail pro, Drive, Agenda",
-      "reco": null
-    },
-    {
-      "name": "Slack",
-      "cost": 16.5,
-      "freq": "Mensuel",
-      "cat": "Tech - SaaS",
-      "status": "Essentiel",
-      "impact": "Critique",
-      "engagement": "Sans engagement",
-      "usage": "Pro",
-      "desc": "Communication interne",
-      "reco": null
-    },
-    {
-      "name": "ShieldApp",
-      "cost": 25,
-      "freq": "Mensuel",
-      "cat": "Tech - SaaS",
-      "status": "Essentiel",
-      "impact": null,
-      "engagement": null,
-      "usage": null,
-      "desc": "Analytics LinkedIn",
-      "reco": null
-    },
-    {
-      "name": "Claude Max",
-      "cost": 100,
-      "freq": "Mensuel",
-      "cat": "Tech - SaaS",
-      "status": "Essentiel",
-      "impact": "Critique",
-      "engagement": "Sans engagement",
-      "usage": "Pro",
-      "desc": "IA production + automatisation",
-      "reco": null
-    },
-    {
-      "name": "Notion",
-      "cost": 208,
-      "freq": "Annuel",
-      "cat": "Tech - SaaS",
-      "status": "Essentiel",
-      "impact": "Critique",
-      "engagement": "Annuel",
-      "usage": "Pro",
-      "desc": "Outil central - livraison clients",
-      "reco": null
-    },
-    {
-      "name": "LinkedIn Premium",
-      "cost": 799.9,
-      "freq": "Annuel",
-      "cat": "Marketing",
-      "status": "Essentiel",
-      "impact": "Critique",
-      "engagement": "Annuel",
-      "usage": "Pro",
-      "desc": "Sales Nav + prospection",
-      "reco": null
-    },
-    {
-      "name": "Qonto",
-      "cost": 250,
-      "freq": "Annuel",
-      "cat": "Admin - Services bancaires",
-      "status": "Essentiel",
-      "impact": "Critique",
-      "engagement": "Annuel",
-      "usage": "Pro",
-      "desc": "Compte bancaire professionnel",
-      "reco": null
-    },
-    {
-      "name": "Hostinger",
-      "cost": 23,
-      "freq": "Mensuel",
-      "cat": "Tech - Infrastructure",
-      "status": "Essentiel",
-      "impact": null,
-      "engagement": "Annuel",
-      "usage": "Pro",
-      "desc": "Hebergement VPS + domaines",
-      "reco": null
-    },
-    {
-      "name": "Canva Pro",
-      "cost": 15,
-      "freq": "Mensuel",
-      "cat": "Tech - SaaS",
-      "status": "Essentiel",
-      "impact": null,
-      "engagement": null,
-      "usage": "Pro",
-      "desc": "Design rapports + supports",
-      "reco": null
-    },
-    {
-      "name": "Miro",
-      "cost": 10,
-      "freq": "Mensuel",
-      "cat": "Tech - SaaS",
-      "status": "Essentiel",
-      "impact": null,
-      "engagement": null,
-      "usage": "Pro",
-      "desc": "Ateliers workshops clients",
-      "reco": null
-    },
-    {
-      "name": "Wispr Flow",
-      "cost": 12,
-      "freq": "Mensuel",
-      "cat": "Tech - SaaS",
-      "status": "Essentiel",
-      "impact": null,
-      "engagement": null,
-      "usage": "Pro",
-      "desc": "Dictee vocale",
-      "reco": null
-    },
-    {
-      "name": "Cal.com",
-      "cost": 19,
-      "freq": "Mensuel",
-      "cat": "Tech - SaaS",
-      "status": "Essentiel",
-      "impact": null,
-      "engagement": null,
-      "usage": "Pro",
-      "desc": "Calendrier RDV prospects",
-      "reco": null
-    },
-    {
-      "name": "Brevo",
-      "cost": 21,
-      "freq": "Mensuel",
-      "cat": "Marketing",
-      "status": "A evaluer",
-      "impact": null,
-      "engagement": "Sans engagement",
-      "usage": "Pro",
-      "desc": "Newsletter Rama Logic",
-      "reco": "Edition 7 prevue 07/06. Free tier suffisant si < 300 abonnes?"
-    },
-    {
-      "name": "Claude Pro",
-      "cost": 18,
-      "freq": "Mensuel",
-      "cat": "Tech - SaaS",
-      "status": "Essentiel",
-      "impact": null,
-      "engagement": "Sans engagement",
-      "usage": "Pro",
-      "desc": "IA analyse longue, coding",
-      "reco": null
-    },
-    {
-      "name": "Screenstudio",
-      "cost": 15,
-      "freq": "Mensuel",
-      "cat": "Tech - SaaS",
-      "status": "Essentiel",
-      "impact": null,
-      "engagement": null,
-      "usage": "Pro",
-      "desc": "Enregistrement ecran",
-      "reco": null
-    },
-    {
-      "name": "ChatGPT Plus",
-      "cost": 22,
-      "freq": "Mensuel",
-      "cat": "Tech - SaaS",
-      "status": "A evaluer",
-      "impact": null,
-      "engagement": null,
-      "usage": "Pro",
-      "desc": "Reference outil demo clients",
-      "reco": null
-    },
-    {
-      "name": "Timing App",
-      "cost": 8.5,
-      "freq": "Mensuel",
-      "cat": "Tech - SaaS",
-      "status": "A evaluer",
-      "impact": null,
-      "engagement": "Annuel",
-      "usage": "Pro",
-      "desc": "Tracking temps automatique",
-      "reco": "Impact moyen. Toggl gratuit comme alternative."
-    },
-    {
-      "name": "Raycast Pro",
-      "cost": 6.3,
-      "freq": "Mensuel",
-      "cat": "Tech - SaaS",
-      "status": "A evaluer",
-      "impact": null,
-      "engagement": "Annuel",
-      "usage": "Pro",
-      "desc": "Launcher + IA",
-      "reco": "Redondant avec Claude?"
-    },
-    {
-      "name": "Scheduled.so",
-      "cost": 12,
-      "freq": "Mensuel",
-      "cat": "Marketing",
-      "status": "A evaluer",
-      "impact": null,
-      "engagement": "Annuel",
-      "usage": "Pro",
-      "desc": "Planification posts LK",
-      "reco": "Redondant si Claude gere le scheduling?"
-    },
-    {
-      "name": "Make.com",
-      "cost": 9,
-      "freq": "Mensuel",
-      "cat": "Tech - SaaS",
-      "status": "A annuler",
-      "impact": null,
-      "engagement": "Sans engagement",
-      "usage": "Pro",
-      "desc": "Automatisation abandonnee mars 2026",
-      "reco": "Annuler - zero Make depuis mars 2026."
-    },
-    {
-      "name": "Taap.it",
-      "cost": 13,
-      "freq": "Mensuel",
-      "cat": "Marketing",
-      "status": "A evaluer",
-      "impact": null,
-      "engagement": "Annuel",
-      "usage": "Pro",
-      "desc": "Landing pages bootcamp",
-      "reco": "Le bootcamp genere-t-il du revenu?"
-    },
-    {
-      "name": "Squarespace",
-      "cost": 12,
-      "freq": "Mensuel",
-      "cat": "Autre",
-      "status": "A annuler",
-      "impact": null,
-      "engagement": "Annuel",
-      "usage": "Perso",
-      "desc": "Site mariage (compte pro)",
-      "reco": "Annuler. Usage personnel paye par le pro."
-    },
-    {
-      "name": "Namecheap",
-      "cost": 2.5,
-      "freq": "Mensuel",
-      "cat": "Tech - Infrastructure",
-      "status": "Essentiel",
-      "impact": null,
-      "engagement": "Annuel",
-      "usage": "Pro",
-      "desc": "Domaines",
-      "reco": null
-    },
-    {
-      "name": "Kondo",
-      "cost": 32,
-      "freq": "Mensuel",
-      "cat": "Tech - SaaS",
-      "status": "A evaluer",
-      "impact": null,
-      "engagement": "Sans engagement",
-      "usage": "Pro",
-      "desc": "Gestion abonnements",
-      "reco": "Ironique - outil de gestion d'abonnements"
-    }
+ "meta": {
+  "generated_at": "2026-06-05T11:00:00Z",
+  "snapshot_id": "S23-2026",
+  "source": "Qonto + Notion + Timing",
+  "note": "Update S23 vendredi 05/06. Trésorerie: 23 098 EUR (-782 vs S22). CA YTD: 28 624 EUR. Impayes: 20 298 EUR (nouveaux: VIYANA FAC-19 1036 + OLYMPES FAC-18 780). Taux 3M: 247 EUR/h (baisse: +8h Olympes pre-sales mai). Taux 10M: 198 EUR/h. B26-1: 9 601/40 000 (24%), 25j restants. KR8 Newsletter 6/6 DONE. Workshop Atelier Agent go/no-go aujourd'hui (3 payants cible, 25 juin). VivaTech 3-4/06: nouveaux leads."
+ },
+ "treasury": {
+  "total": 23097.83,
+  "principal": 23097.83,
+  "impots": 0,
+  "are_mensuel": 2700
+ },
+ "revenue": {
+  "objective_2026": 150000,
+  "ytd": 28624,
+  "mtd": 20,
+  "rolling_12m": 60850,
+  "projection_2026": 65000,
+  "ecart_objectif": -85000,
+  "by_month": [
+   {
+    "month": "2025-07",
+    "invoiced": 990,
+    "collected": 520,
+    "expenses": 65
+   },
+   {
+    "month": "2025-08",
+    "invoiced": 2895,
+    "collected": 2895,
+    "expenses": 52
+   },
+   {
+    "month": "2025-09",
+    "invoiced": 11004,
+    "collected": 5409,
+    "expenses": 1797
+   },
+   {
+    "month": "2025-10",
+    "invoiced": 20699,
+    "collected": 5547,
+    "expenses": 967
+   },
+   {
+    "month": "2025-11",
+    "invoiced": 17495,
+    "collected": 11705,
+    "expenses": 225
+   },
+   {
+    "month": "2025-12",
+    "invoiced": 7725,
+    "collected": 6150,
+    "expenses": 16
+   },
+   {
+    "month": "2026-01",
+    "invoiced": 7408,
+    "collected": 7408,
+    "expenses": 3729
+   },
+   {
+    "month": "2026-02",
+    "invoiced": 4711,
+    "collected": 4711,
+    "expenses": 724
+   },
+   {
+    "month": "2026-03",
+    "invoiced": 4706,
+    "collected": 4106,
+    "expenses": 7524
+   },
+   {
+    "month": "2026-04",
+    "invoiced": 8563,
+    "collected": 8563,
+    "expenses": 3568
+   },
+   {
+    "month": "2026-05",
+    "invoiced": 5295,
+    "collected": 3816,
+    "expenses": 2835
+   },
+   {
+    "month": "2026-06",
+    "invoiced": 1036,
+    "collected": 20,
+    "expenses": 780
+   }
   ],
-  "transactions": [
-    {
-      "date": "2026-06-05",
-      "amount": -30.19,
-      "vendor": "DESCRIPT",
-      "category": "Marketing",
-      "cat_notion": "Commercial - Marketing & Com",
-      "side": "debit"
-    },
-    {
-      "date": "2026-06-05",
-      "amount": -7.20,
-      "vendor": "LS Avalon",
-      "category": "Repas",
-      "cat_notion": "Commercial - Repas clients",
-      "side": "debit"
-    },
-    {
-      "date": "2026-06-04",
-      "amount": -29.30,
-      "vendor": "SNCF-VOYAGEURS",
-      "category": "transport",
-      "cat_notion": "Deplacement - Transport",
-      "side": "debit"
-    },
-    {
-      "date": "2026-06-04",
-      "amount": -22.20,
-      "vendor": "L'APERICERIE + Starbucks",
-      "category": "food_and_grocery",
-      "cat_notion": "Bureau - Alimentation",
-      "side": "debit"
-    },
-    {
-      "date": "2026-06-04",
-      "amount": -3.74,
-      "vendor": "Kyriad (hotel)",
-      "category": "transport",
-      "cat_notion": "Deplacement - Transport",
-      "side": "debit"
-    },
-    {
-      "date": "2026-06-03",
-      "amount": -41.00,
-      "vendor": "BOLT (transport) x3",
-      "category": "transport",
-      "cat_notion": "Deplacement - Transport",
-      "side": "debit"
-    },
-    {
-      "date": "2026-06-03",
-      "amount": -32.31,
-      "vendor": "AMAZON PAYMENTS",
-      "category": "other_expense",
-      "cat_notion": "Divers - A classer",
-      "side": "debit"
-    },
-    {
-      "date": "2026-06-02",
-      "amount": 20.17,
-      "vendor": "Qonto (cashback)",
-      "category": "CA",
-      "cat_notion": "CA",
-      "side": "credit",
-      "note": "Cashback Qonto juin 2026"
-    },
-    {
-      "date": "2026-06-02",
-      "amount": -19.44,
-      "vendor": "Google Workspace",
-      "category": "online_service",
-      "cat_notion": "Tech - Abonnements SaaS",
-      "side": "debit"
-    },
-    {
-      "date": "2026-06-01",
-      "amount": -416.63,
-      "vendor": "Sylvain Ramaradjou (loyer)",
-      "category": "Loyer",
-      "cat_notion": "Loyer",
-      "side": "debit"
-    },
-    {
-      "date": "2026-06-01",
-      "amount": -27.80,
-      "vendor": "CAFESBELLEVILLE.COM",
-      "category": "other_expense",
-      "cat_notion": "Divers - A classer",
-      "side": "debit"
-    },
-    {
-      "date": "2026-05-30",
-      "amount": -91.68,
-      "vendor": "AMAZON PAYMENTS + OPLUO",
-      "category": "marketing",
-      "cat_notion": "Commercial - Marketing & Com",
-      "side": "debit"
-    },
-    {
-      "date": "2026-05-29",
-      "amount": -16.40,
-      "vendor": "LS Avalon",
-      "category": "Repas",
-      "cat_notion": "Commercial - Repas clients",
-      "side": "debit"
-    },
-    {
-      "date": "2026-05-28",
-      "amount": 780.0,
-      "vendor": "OLYMPES",
-      "category": "CA",
-      "cat_notion": "CA",
-      "side": "credit",
-      "note": "FAC-18 Olympes (650 EUR HT + TVA 130). Encaisse 28/05."
-    },
-    {
-      "date": "2026-05-28",
-      "amount": -55.73,
-      "vendor": "Amazon + LS Avalon",
-      "category": "marketing",
-      "cat_notion": "Commercial - Marketing & Com",
-      "side": "debit"
-    },
-    {
-      "date": "2026-05-26",
-      "amount": -220.79,
-      "vendor": "GoCardless (Dougs)",
-      "category": "Comptabilite",
-      "cat_notion": "Comptabilite",
-      "side": "debit"
-    },
-    {
-      "date": "2026-05-26",
-      "amount": -16.0,
-      "vendor": "Netlify + EVY INTERSPORT",
-      "category": "Tech",
-      "cat_notion": "Tech - Abonnements SaaS",
-      "side": "debit"
-    },
-    {
-      "date": "2026-05-25",
-      "amount": -823.63,
-      "vendor": "SUMA AI + Slack",
-      "category": "other_expense",
-      "cat_notion": "Prestataire",
-      "side": "debit"
-    },
-    {
-      "date": "2026-05-21",
-      "amount": 1200.0,
-      "vendor": "OLYMPES",
-      "category": "CA",
-      "cat_notion": "CA",
-      "side": "credit",
-      "note": "FAC-17 Olympes mini deck+BP (1 000 EUR HT + TVA)."
-    },
-    {
-      "date": "2026-05-19",
-      "amount": -162.75,
-      "vendor": "Klarna*Avalon (coworking)",
-      "category": "Loyer",
-      "cat_notion": "Loyer",
-      "side": "debit"
-    },
-    {
-      "date": "2026-05-19",
-      "amount": -600.0,
-      "vendor": "get your goals",
-      "category": "other_expense",
-      "cat_notion": "Divers - A classer",
-      "side": "debit"
-    },
-    {
-      "date": "2026-05-18",
-      "amount": -90.0,
-      "vendor": "CLAUDE.AI",
-      "category": "Tech",
-      "cat_notion": "Tech - Abonnements SaaS",
-      "side": "debit"
-    },
-    {
-      "date": "2026-05-18",
-      "amount": -160.96,
-      "vendor": "SNCF + BKG HOTEL",
-      "category": "transport",
-      "cat_notion": "Deplacement - Transport",
-      "side": "debit"
-    },
-    {
-      "date": "2026-05-15",
-      "amount": 525.0,
-      "vendor": "FIREFIGTHGROUP",
-      "category": "CA",
-      "cat_notion": "CA",
-      "side": "credit",
-      "note": "FAC-47 Firefightbox paiement partiel M3 (reste 525 EUR)"
-    },
-    {
-      "date": "2026-05-13",
-      "amount": 256.26,
-      "vendor": "NOTION LABS, INC.",
-      "category": "CA",
-      "cat_notion": "CA",
-      "side": "credit",
-      "note": "Notion Partnership fees Mai (USD 300)"
-    },
-    {
-      "date": "2026-05-13",
-      "amount": -348.0,
-      "vendor": "AVALON (coworking)",
-      "category": "Loyer",
-      "cat_notion": "Loyer",
-      "side": "debit"
-    },
-    {
-      "date": "2026-05-05",
-      "amount": 1036.0,
-      "vendor": "VIYANA (Station Krishna)",
-      "category": "CA",
-      "cat_notion": "CA",
-      "side": "credit",
-      "note": "FAC-14 Station Krishna M2"
-    },
-    {
-      "date": "2026-05-02",
-      "amount": 18.6,
-      "vendor": "Notion Labs (affiliate)",
-      "category": "CA",
-      "cat_notion": "CA",
-      "side": "credit"
-    },
-    {
-      "date": "2026-05-01",
-      "amount": -273.6,
-      "vendor": "GoCardless (Dougs)",
-      "category": "Comptabilite",
-      "cat_notion": "Comptabilite",
-      "side": "debit"
-    },
-    {
-      "date": "2026-05-01",
-      "amount": -416.63,
-      "vendor": "Sylvain Ramaradjou (loyer)",
-      "category": "Loyer",
-      "cat_notion": "Loyer",
-      "side": "debit"
-    },
-    {
-      "date": "2026-04-16",
-      "amount": 2500.0,
-      "vendor": "VIYANA / Station Krishna",
-      "category": "CA",
-      "cat_notion": "CA",
-      "side": "credit",
-      "note": "Acompte 33% Station Krishna"
-    },
-    {
-      "date": "2026-04-14",
-      "amount": 3072.0,
-      "vendor": "MEEDIA",
-      "category": "CA",
-      "cat_notion": "CA",
-      "side": "credit",
-      "note": "FAC-08 meedIA Mars"
-    },
-    {
-      "date": "2026-04-13",
-      "amount": 977.7,
-      "vendor": "Stripe / Notion Labs",
-      "category": "CA",
-      "cat_notion": "CA",
-      "side": "credit",
-      "note": "Notion Partnership fees Avr"
-    },
-    {
-      "date": "2026-04-05",
-      "amount": -799.9,
-      "vendor": "LinkedIn Sales Navigator",
-      "category": "Marketing",
-      "cat_notion": "Marketing",
-      "side": "debit"
-    },
-    {
-      "date": "2026-03-30",
-      "amount": 1009.33,
-      "vendor": "Stripe / Notion Labs",
-      "category": "CA",
-      "cat_notion": "CA",
-      "side": "credit",
-      "note": "Notion Partnership fees Mar"
-    }
-  ],
-  "sub_analysis": {
-    "total_monthly_recurring": 897.17,
-    "total_annual_cost": 4342,
-    "to_cancel": [
-      {
-        "name": "Make.com",
-        "cost_annual": 108,
-        "reason": "Plus utilise depuis mars 2026. Zero Make/n8n, tout Claude."
-      },
-      {
-        "name": "Squarespace",
-        "cost_annual": 144,
-        "reason": "Site mariage perso paye sur compte pro. A annuler."
-      }
-    ],
-    "to_evaluate": [
-      {
-        "name": "Timing App",
-        "cost_annual": 100,
-        "reason": "Impact moyen. Toggl gratuit comme alternative."
-      },
-      {
-        "name": "Raycast Pro",
-        "cost_annual": 75.2,
-        "reason": "IA integree redondante avec Claude. Version gratuite suffisante?"
-      },
-      {
-        "name": "Brevo",
-        "cost_annual": 252,
-        "reason": "Edition 7 prevue 07/06. Free tier suffisant si < 300 abonnes?"
-      },
-      {
-        "name": "Taap.it",
-        "cost_annual": 156,
-        "reason": "Landing pages bootcamp. Le bootcamp genere-t-il du revenu?"
-      },
-      {
-        "name": "Scheduled.so",
-        "cost_annual": 144,
-        "reason": "Planification LK. Redondant si Claude gere le scheduling?"
-      },
-      {
-        "name": "ChatGPT Plus",
-        "cost_annual": 264,
-        "reason": "Reference pour demos clients. Vraiment necessaire?"
-      }
-    ],
-    "potential_savings": 1141.2,
-    "keep": [
-      "Google Workspace",
-      "Slack",
-      "Claude Max",
-      "Notion",
-      "Qonto",
-      "Loyer",
-      "LinkedIn Premium",
-      "Hostinger",
-      "Namecheap",
-      "Wispr Flow",
-      "ShieldApp",
-      "Canva Pro",
-      "Miro",
-      "Cal.com"
-    ]
-  },
-  "okr": {
-    "objectives": [
-      {
-        "id": "O1",
-        "title": "Capitaliser 150K EUR dans la SASU et construire 2 lignes de revenu",
-        "status": "In progress",
-        "angle": "Croissance",
-        "period": "2026",
-        "key_results": [
-          {
-            "id": "KR1",
-            "title": "CA signe T1 2026",
-            "target": 15000,
-            "result": 8300,
-            "status": "Fail",
-            "due": "2026-03-31"
-          },
-          {
-            "id": "KR2",
-            "title": "CA signe T2 2026",
-            "target": 40000,
-            "result": 9601,
-            "status": "In progress",
-            "due": "2026-06-30"
-          },
-          {
-            "id": "KR3",
-            "title": "CA signe T3 2026",
-            "target": 40000,
-            "result": 0,
-            "status": "Not started",
-            "due": "2026-09-30"
-          },
-          {
-            "id": "KR4",
-            "title": "CA signe T4 2026",
-            "target": 35000,
-            "result": 0,
-            "status": "Not started",
-            "due": "2026-12-31"
-          },
-          {
-            "id": "KR5",
-            "title": "3 clients offre packagee COO/Notion <=25h",
-            "target": 3,
-            "result": 0,
-            "status": "Not started",
-            "due": "2026-09-30"
-          }
-        ]
-      },
-      {
-        "id": "O2",
-        "title": "Optimiser la machine Rama Logic : automatiser, reduire delivery, maximiser taux horaire",
-        "status": "In progress",
-        "angle": "Qualite",
-        "period": "2026",
-        "key_results": [
-          {
-            "id": "KR6",
-            "title": "Automatiser 100% CRM, facturation, suivi projet",
-            "target": 1,
-            "result": 0,
-            "status": "Not started",
-            "due": "2026-12-31"
-          }
-        ]
-      },
-      {
-        "id": "O3",
-        "title": "Devenir la reference Notion & IA Ops pour les dirigeants",
-        "status": "In progress",
-        "angle": "Notoriete",
-        "period": "2026",
-        "key_results": [
-          {
-            "id": "KR7",
-            "title": "96 posts LinkedIn S1 2026",
-            "target": 144,
-            "result": 141,
-            "status": "In progress",
-            "due": "2026-06-30"
-          },
-          {
-            "id": "KR8",
-            "title": "Newsletter 100 abonnes + 6 editions S1",
-            "target": 6,
-            "result": 6,
-            "status": "In progress",
-            "due": "2026-06-30"
-          }
-        ]
-      },
-      {
-        "id": "O4",
-        "title": "Construire une offre scalable IA-first (sans dependance humaine)",
-        "status": "In progress",
-        "angle": "Croissance",
-        "period": "2026",
-        "key_results": []
-      }
-    ]
-  },
-  "alerts": [
-    {
-      "level": "critical",
-      "title": "sales",
-      "detail": "KR2 T2 2026 : 9 601/40 000 EUR (24%) — 25 jours restants au 05/06.",
-      "metric": "Il faut signer 30 399 EUR avant le 30 juin. PB-associes accord verbal 8 500 (prop non envoyee 7j apres R2), Cerena 11 800, EVMT 8 400, Shika 6 400, Dauphine 990. Workshop 25/06 potentiel 400-4000 EUR. Urgence maximale."
-    },
-    {
-      "level": "critical",
-      "title": "aging",
-      "detail": "OPTRA : 4 factures impayees (11 478 EUR) — 185 a 262 jours de retard.",
-      "metric": "Mise en demeure formelle. Provision pour creance douteuse recommandee."
-    },
-    {
-      "level": "critical",
-      "title": "aging",
-      "detail": "PROPERTY PARTNERS : 2 factures impayees (5 400 EUR) — 242 et 259 jours de retard.",
-      "metric": "Mise en demeure urgente. Provision pour creance douteuse si pas de reponse 15j."
-    },
-    {
-      "level": "critical",
-      "title": "sales",
-      "detail": "PB-associes (8 500 EUR) : accord verbal R2 le 29/05 — contrat NON envoye 7 jours apres.",
-      "metric": "Demi-vie d'un accord verbal = 24-48h. Envoyer le contrat MAINTENANT. Chaque jour supplementaire = risque de refroidissement."
-    },
-    {
-      "level": "critical",
-      "title": "sales",
-      "detail": "Altercosmeto (14 400 EUR) : 68 jours idle. Fermeture imminente.",
-      "metric": "Dernier contact Edouard KINI. Proposition refaite ou fermeture definitive cette semaine."
-    },
-    {
-      "level": "warning",
-      "title": "delivery",
-      "detail": "Workshop Atelier Agent 25 juin : go/no-go AUJOURD'HUI 05/06 (≥3 payants confirms).",
-      "metric": "Si oui : revenue potentiel 1200-4000 EUR (3-10 places 399 EUR). Posts LK en cadence 02/06-24/06. Lien Stripe a creer et diffuser immediatement."
-    },
-    {
-      "level": "warning",
-      "title": "sales",
-      "detail": "Sparken - Structuration Notion (6 400 EUR) : 73 jours idle. Ultimatum expire.",
-      "metric": "Appel direct + deadline 24h ferme. Clore si pas de retour immediat."
-    },
-    {
-      "level": "warning",
-      "title": "sales",
-      "detail": "Peppit (13 000 EUR) : 57 jours idle. Deal froid.",
-      "metric": "Relancer immediatement. Proposer call de cloture avant 10/06."
-    },
-    {
-      "level": "warning",
-      "title": "sales",
-      "detail": "EVMT V1 (8 400 EUR) : 28 jours sans signature apres visio positive du 08/05.",
-      "metric": "Relancer Jerome OGOR cette semaine. 8 400 EUR V1 + 7 200 EUR/mois V2 en jeu."
-    },
-    {
-      "level": "warning",
-      "title": "revenue",
-      "detail": "Projection 2026 a 65 000 EUR — ecart de -85 000 EUR vs objectif 150 000 EUR.",
-      "metric": "Signer PB-associes + EVMT + Cerena = +28 700 EUR. Projection passerait a ~93K."
-    },
-    {
-      "level": "info",
-      "title": "delivery",
-      "detail": "Station Krishna : FAC-19 emise aujourd'hui (1 036 EUR TTC, M3). Paiement attendu sous 5j.",
-      "metric": "Total collecte SK : 3 536 EUR. Reste 2 864 EUR (FAC-19 + solde). Taux horaire signe : 278 EUR/h sur 23h."
-    },
-    {
-      "level": "info",
-      "title": "acquisition",
-      "detail": "KR7 LK : ~141/144 posts publies (98%). KR8 Newsletter : 6/6 DONE. Edition 7 prevue 07/06.",
-      "metric": "3 posts restants en 25 jours pour boucler KR7. Rythme actuel largement suffisant."
-    },
-    {
-      "level": "info",
-      "title": "acquisition",
-      "detail": "VivaTech 3-4/06 : participation Sylvain. ~10-15 nouveaux contacts Notion dans RL-Contacts.",
-      "metric": "Qualifier les leads VivaTech cette semaine. Potentiel R1 sur 2-3 profils."
-    },
-    {
-      "level": "info",
-      "title": "delivery",
-      "detail": "Taux horaire 3M (mar-avr-mai): 247 EUR/h > cible 200. Taux 10M: 198 EUR/h.",
-      "metric": "Baisse vs S22 (279 EUR/h): +8h Olympes pre-sales en mai sans CA supplementaire. Hors pre-sales: taux stable."
-    }
-  ],
-  "acquisition": {
-    "linkedin": {
-      "posts_published_2026": 141,
-      "total_impressions": 278185,
-      "total_reactions": 1063,
-      "total_comments": 3432,
-      "total_shares": 3,
-      "kr7_target": 144,
-      "kr7_current": 141,
-      "posts_per_month": [
-        {
-          "month": "2026-01",
-          "count": 5
-        },
-        {
-          "month": "2026-02",
-          "count": 11
-        },
-        {
-          "month": "2026-03",
-          "count": 5
-        },
-        {
-          "month": "2026-04",
-          "count": 41
-        },
-        {
-          "month": "2026-05",
-          "count": 38
-        },
-        {
-          "month": "2026-06",
-          "count": 5
-        }
-      ],
-      "top_posts": [
-        {
-          "title": "McKinsey facture 50k... Mon agent Claude le fait en 10 min",
-          "date": "2026-02-25",
-          "impressions": 210768,
-          "reactions": 389,
-          "comments": 2990,
-          "angle": "Lead magnet"
-        },
-        {
-          "title": "Trump vient de bannir Anthropic",
-          "date": "2026-03-02",
-          "impressions": 15027,
-          "reactions": 82,
-          "comments": 42,
-          "angle": "News"
-        },
-        {
-          "title": "Notion lance Custom Agents",
-          "date": "2026-03-03",
-          "impressions": 7286,
-          "reactions": 53,
-          "comments": 22,
-          "angle": "News"
-        },
-        {
-          "title": "Mon setup IA fait le boulot d'un assistant",
-          "date": "2026-03-30",
-          "impressions": 4707,
-          "reactions": 29,
-          "comments": 47,
-          "angle": "Build in public"
-        },
-        {
-          "title": "Mac vs PC",
-          "date": "2026-01-15",
-          "impressions": 4024,
-          "reactions": 46,
-          "comments": 41,
-          "angle": "Story telling"
-        },
-        {
-          "title": "Mars 2026. J'ai supprime Make.com et n8n. 60 jours plus tard, voici ce qui a change.",
-          "date": "2026-05-12",
-          "impressions": null,
-          "reactions": null,
-          "comments": null,
-          "angle": "Build in public"
-        },
-        {
-          "title": "+340% de revenus pour les solos qui ont bascule sur les agents IA",
-          "date": "2026-05-29",
-          "impressions": null,
-          "reactions": null,
-          "comments": null,
-          "angle": "Education"
-        },
-        {
-          "title": "VivaTech (jour J) — ce que j'ai retenu du plus grand salon tech d'Europe",
-          "date": "2026-06-03",
-          "impressions": null,
-          "reactions": null,
-          "comments": null,
-          "angle": "News"
-        }
-      ],
-      "angle_breakdown": [
-        {
-          "angle": "News",
-          "count": 7,
-          "pct": 0.27
-        },
-        {
-          "angle": "Build in public",
-          "count": 6,
-          "pct": 0.23
-        },
-        {
-          "angle": "Story telling",
-          "count": 5,
-          "pct": 0.19
-        },
-        {
-          "angle": "Vente",
-          "count": 4,
-          "pct": 0.15
-        },
-        {
-          "angle": "Education",
-          "count": 3,
-          "pct": 0.12
-        },
-        {
-          "angle": "Lead magnet",
-          "count": 1,
-          "pct": 0.04
-        }
-      ],
-      "pipeline": {
-        "ideas": 55,
-        "writing": 6,
-        "to_plan": 1,
-        "ready_to_schedule": 0
-      },
-      "format_breakdown": [
-        {
-          "format": "image",
-          "count": 20,
-          "pct": 0.91
-        },
-        {
-          "format": "multi_assets",
-          "count": 1,
-          "pct": 0.05
-        },
-        {
-          "format": "text",
-          "count": 1,
-          "pct": 0.05
-        }
-      ]
-    },
-    "newsletter": {
-      "kr8_target": 6,
-      "kr8_current": 6,
-      "editions_published": 6,
-      "status": "Edition 6 envoyee fin mai. KR8 6/6 COMPLETE. Edition 7 en preparation — envoi prevu 07/06/2026 (sujet: Notion SSOT)."
-    },
-    "leads": {
-      "total_2026": 60,
-      "last_30_days": 20,
-      "last_7_days": 8,
-      "hot_leads_1st_rdv_no_r2": 1,
-      "by_source": [
-        {
-          "source": "LinkedIn outbound",
-          "count": 25
-        },
-        {
-          "source": "Event / Inbound",
-          "count": 16
-        },
-        {
-          "source": "Manual prospection",
-          "count": 1
-        },
-        {
-          "source": "Non renseigne",
-          "count": 18
-        }
-      ],
-      "hot_list": [
-        {
-          "name": "Raphael Barbaza (PB-associes)",
-          "first_rdv": "2026-05-06",
-          "r2": "2026-05-29",
-          "opp": "Hub Notion PB-associes — Build 8 sem (8 500 EUR)",
-          "action": "Accord verbal R2 29/05. Contrat non envoye 7 jours apres. ENVOYER LE CONTRAT MAINTENANT."
-        },
-        {
-          "name": "Nouri Yahi (Shika Consulting)",
-          "first_rdv": "2026-05-11",
-          "r2": "2026-05-18",
-          "opp": "Shika Consulting — Audit + 2 processus revus (6 400 EUR)",
-          "action": "R2 realisee le 18/05. 25 jours sans retour. Relancer Nouri cette semaine en urgence."
-        },
-        {
-          "name": "Mathieu Leo (La Clairiere Group)",
-          "first_rdv": "2026-05-13",
-          "r2": null,
-          "opp": "Notion + Claude Multi-Spheres (7 500 EUR)",
-          "action": "R1 13/05. En attente retour Mathieu pour R2. Relancer si silence 7j."
-        },
-        {
-          "name": "Chaharazad Zemouri (Dauphine)",
-          "first_rdv": "2026-04-15",
-          "r2": "2026-04-29",
-          "opp": "Dauphine Incubateur v2 modulaire (990 EUR Discovery)",
-          "action": "Propale v2 envoyee 26/05. Deadline retour depasse. Relancer Oriane + Baptiste."
-        }
-      ]
-    }
-  },
-  "sales": {
-    "pipeline_total": 89389,
-    "pipeline_by_stage": [
-      {
-        "stage": "Lead",
-        "count": 4,
-        "amount": 5200
-      },
-      {
-        "stage": "Proposal to send",
-        "count": 6,
-        "amount": 38400
-      },
-      {
-        "stage": "Awaiting signature",
-        "count": 5,
-        "amount": 33340
-      },
-      {
-        "stage": "Contract signed",
-        "count": 0,
-        "amount": 0
-      },
-      {
-        "stage": "Billing send",
-        "count": 1,
-        "amount": 3250
-      },
-      {
-        "stage": "Partial paid",
-        "count": 2,
-        "amount": 9199
-      }
-    ],
-    "closing_rate": 0.36,
-    "closing_rate_strict": 0.22,
-    "signed_2026": 18900,
-    "signed_deals_2026": 8,
-    "deals_by_source": [
-      {
-        "source": "Linkedin inbound",
-        "count": 5,
-        "amount": 34849,
-        "won": 0,
-        "lost": 4
-      },
-      {
-        "source": "Event",
-        "count": 2,
-        "amount": 27150,
-        "won": 1,
-        "lost": 0
-      },
-      {
-        "source": "Reseau",
-        "count": 4,
-        "amount": 28300,
-        "won": 1,
-        "lost": 0
-      },
-      {
-        "source": "Recommandation",
-        "count": 3,
-        "amount": 13098,
-        "won": 1,
-        "lost": 1
-      },
-      {
-        "source": "Non renseigne",
-        "count": 4,
-        "amount": 27649,
-        "won": 0,
-        "lost": 2
-      }
-    ],
-    "deals_by_type": [
-      {
-        "type": "Notion",
-        "count": 12,
-        "amount": 91748
-      },
-      {
-        "type": "COO/Service client",
-        "count": 3,
-        "amount": 81500
-      },
-      {
-        "type": "Automatisation",
-        "count": 2,
-        "amount": 15000
-      },
-      {
-        "type": "Audit/Conseil/IA",
-        "count": 2,
-        "amount": 19600
-      },
-      {
-        "type": "Formation Entreprise",
-        "count": 1,
-        "amount": 2000
-      },
-      {
-        "type": "Coaching",
-        "count": 1,
-        "amount": 1899
-      }
-    ],
-    "deals_to_relaunch": [
-      {
-        "name": "Journee Notion Philippe",
-        "status": "Proposal to send",
-        "amount": 4000,
-        "days_idle": 78,
-        "action": "CLORE ou envoyer la prop immediatement — 78 jours de paralysie",
-        "priority": "critical"
-      },
-      {
-        "name": "Sparken - Structuration Notion",
-        "status": "Awaiting signature",
-        "amount": 6400,
-        "days_idle": 73,
-        "action": "ULTIMATUM EXPIRE - Appel direct + deadline 24h. Clore si silence.",
-        "priority": "critical"
-      },
-      {
-        "name": "Altercosmeto - Performance IA",
-        "status": "Proposal to send",
-        "amount": 14400,
-        "days_idle": 68,
-        "action": "Dernier contact Edouard KINI. Fermeture definitive si silence cette semaine.",
-        "priority": "critical"
-      },
-      {
-        "name": "PB-associes — Hub Notion",
-        "status": "Proposal to send",
-        "amount": 8500,
-        "days_idle": 7,
-        "action": "Accord verbal 29/05. Contrat non envoye 7j. ENVOYER CONTRAT MAINTENANT.",
-        "priority": "critical"
-      },
-      {
-        "name": "Peppit",
-        "status": "Awaiting signature",
-        "amount": 13000,
-        "days_idle": 57,
-        "action": "Relancer avant le 10/06. Proposer call de cloture urgent.",
-        "priority": "warning"
-      },
-      {
-        "name": "Shika Consulting",
-        "status": "Proposal to send",
-        "amount": 6400,
-        "days_idle": 25,
-        "action": "R2 realisee 18/05. 25 jours sans retour. Relancer Nouri cette semaine.",
-        "priority": "warning"
-      },
-      {
-        "name": "EVMT V1",
-        "status": "Proposal to send",
-        "amount": 8400,
-        "days_idle": 28,
-        "action": "Relancer Jerome OGOR cette semaine. Visio 08/05 positive mais pas encore signe.",
-        "priority": "warning"
-      }
-    ],
-    "top_deals": [
-      {
-        "rank": 1,
-        "name": "V2 implem (BLYYND)",
-        "amount": 26325,
-        "status": "Paid"
-      },
-      {
-        "rank": 2,
-        "name": "Altercosmeto",
-        "amount": 14400,
-        "status": "Proposal to send"
-      },
-      {
-        "rank": 3,
-        "name": "Notion X Peppit",
-        "amount": 13000,
-        "status": "Awaiting signature"
-      },
-      {
-        "rank": 4,
-        "name": "Cerena (Serena)",
-        "amount": 11800,
-        "status": "Awaiting signature"
-      },
-      {
-        "rank": 5,
-        "name": "PB-associes — Hub Notion",
-        "amount": 8500,
-        "status": "Proposal to send"
-      },
-      {
-        "rank": 6,
-        "name": "EVMT V1",
-        "amount": 8400,
-        "status": "Proposal to send"
-      },
-      {
-        "rank": 7,
-        "name": "Mathieu Leo / La Clairiere",
-        "amount": 7500,
-        "status": "Proposal to send"
-      },
-      {
-        "rank": 8,
-        "name": "Sparken",
-        "amount": 6400,
-        "status": "Awaiting signature"
-      },
-      {
-        "rank": 9,
-        "name": "Shika Consulting",
-        "amount": 6400,
-        "status": "Proposal to send"
-      },
-      {
-        "rank": 10,
-        "name": "Station Krishna",
-        "amount": 6400,
-        "status": "Partial paid"
-      }
-    ],
-    "main_loss_reason": "Trop cher",
-    "loss_reason_count": 7
-  },
-  "delivery": {
-    "target_hourly_rate": 200,
-    "hourly_rate_effective": 198,
-    "hourly_rate_3m": 247,
-    "hourly_rate_done_projects": 132,
-    "total_client_hours_10m": 290,
-    "total_tracked_hours_10m": 918,
-    "projects": [
-      {
-        "name": "OPTRA",
-        "hours": 85.2,
-        "ca_signed": 14373,
-        "ca_collected": 2895,
-        "hourly_rate_signed": 169,
-        "hourly_rate_collected": 34,
-        "status": "done",
-        "active_period": "Jul-Nov 2025",
-        "hours_estimated": null,
-        "overrun_flag": false
-      },
-      {
-        "name": "Cleany",
-        "hours": 30.8,
-        "ca_signed": null,
-        "ca_collected": null,
-        "hourly_rate_signed": null,
-        "hourly_rate_collected": null,
-        "status": "done",
-        "active_period": "Jul-Sep 2025",
-        "hours_estimated": null,
-        "overrun_flag": false
-      },
-      {
-        "name": "Formation Digital (ETIC)",
-        "hours": 26.1,
-        "ca_signed": 2458,
-        "ca_collected": 2458,
-        "hourly_rate_signed": 94,
-        "hourly_rate_collected": 94,
-        "status": "done",
-        "active_period": "Sep-Oct 2025",
-        "hours_estimated": null,
-        "overrun_flag": false
-      },
-      {
-        "name": "Structude",
-        "hours": 15.1,
-        "ca_signed": 2879,
-        "ca_collected": 2879,
-        "hourly_rate_signed": 191,
-        "hourly_rate_collected": 191,
-        "status": "done",
-        "active_period": "Sep-Oct 2025",
-        "hours_estimated": null,
-        "overrun_flag": false
-      },
-      {
-        "name": "Property Partners",
-        "hours": 11.6,
-        "ca_signed": 5400,
-        "ca_collected": 0,
-        "hourly_rate_signed": 466,
-        "hourly_rate_collected": null,
-        "status": "done_unpaid",
-        "active_period": "Oct 2025",
-        "hours_estimated": null,
-        "overrun_flag": false
-      },
-      {
-        "name": "Arkel",
-        "hours": 4.2,
-        "ca_signed": null,
-        "ca_collected": null,
-        "hourly_rate_signed": null,
-        "hourly_rate_collected": null,
-        "status": "done",
-        "active_period": "Nov 2025",
-        "hours_estimated": null,
-        "overrun_flag": false
-      },
-      {
-        "name": "Constance",
-        "hours": 3.0,
-        "ca_signed": null,
-        "ca_collected": null,
-        "hourly_rate_signed": null,
-        "hourly_rate_collected": null,
-        "status": "done",
-        "active_period": "Nov 2025",
-        "hours_estimated": null,
-        "overrun_flag": false
-      },
-      {
-        "name": "Enfant Argus",
-        "hours": 2.9,
-        "ca_signed": null,
-        "ca_collected": null,
-        "hourly_rate_signed": null,
-        "hourly_rate_collected": null,
-        "status": "done",
-        "active_period": "Jul 2025",
-        "hours_estimated": null,
-        "overrun_flag": false
-      },
-      {
-        "name": "Hush (BLYYND)",
-        "hours": 32.2,
-        "ca_signed": 26325,
-        "ca_collected": 15300,
-        "hourly_rate_signed": 817,
-        "hourly_rate_collected": 475,
-        "status": "active",
-        "active_period": "Oct 2025 - en cours",
-        "hours_estimated": null,
-        "overrun_flag": false,
-        "note": "Heures Timing incompletes (Dec/Jan non trackes). Taux horaire eleve = surestimation probable."
-      },
-      {
-        "name": "meedIA (Notion)",
-        "hours": 25.2,
-        "ca_signed": 7680,
-        "ca_collected": 7680,
-        "hourly_rate_signed": 305,
-        "hourly_rate_collected": 305,
-        "status": "active",
-        "active_period": "Fev 2026 - en cours",
-        "hours_estimated": null,
-        "overrun_flag": false,
-        "note": "0 heures trackees depuis mars. Total reel estime ~42h. Taux horaire surestime."
-      },
-      {
-        "name": "Firefighter",
-        "hours": 9.1,
-        "ca_signed": 3150,
-        "ca_collected": 2625,
-        "hourly_rate_signed": 346,
-        "hourly_rate_collected": 289,
-        "status": "active",
-        "active_period": "Nov 2025 - en cours",
-        "hours_estimated": null,
-        "overrun_flag": false,
-        "note": "Paiement partiel M3 recu 15/05 (525 EUR). Reste 525 EUR sur FAC-47."
-      },
-      {
-        "name": "Jesse",
-        "hours": 5.2,
-        "ca_signed": null,
-        "ca_collected": null,
-        "hourly_rate_signed": null,
-        "hourly_rate_collected": null,
-        "status": "active",
-        "active_period": "Nov 2025 - en cours",
-        "hours_estimated": null,
-        "overrun_flag": false
-      },
-      {
-        "name": "Riad",
-        "hours": 2.0,
-        "ca_signed": null,
-        "ca_collected": null,
-        "hourly_rate_signed": null,
-        "hourly_rate_collected": null,
-        "status": "active",
-        "active_period": "Mar 2026",
-        "hours_estimated": null,
-        "overrun_flag": false
-      },
-      {
-        "name": "Station Krishna",
-        "hours": 23.0,
-        "ca_signed": 6400,
-        "ca_collected": 3536,
-        "hourly_rate_signed": 278,
-        "hourly_rate_collected": 154,
-        "status": "active_new",
-        "active_period": "Avr 2026 - en cours",
-        "hours_estimated": null,
-        "overrun_flag": false,
-        "note": "23h total (6.6h avr + 16.4h mai). FAC-19 emise 05/06 (1 036 TTC, M3, impayee). Reste 2 864 EUR a encaisser."
-      },
-      {
-        "name": "Nico-Accompagnement",
-        "hours": 10.4,
-        "ca_signed": 1582,
-        "ca_collected": 1200,
-        "hourly_rate_signed": 152,
-        "hourly_rate_collected": 115,
-        "status": "active_new",
-        "active_period": "Avr 2026 - en cours",
-        "hours_estimated": null,
-        "overrun_flag": false,
-        "note": "Coaching 6 semaines. Paiement partiel (STROBIETTI 1 200 EUR recu 02/04). Solde 382 EUR."
-      },
-      {
-        "name": "Olympes",
-        "hours": 23.8,
-        "ca_signed": 1650,
-        "ca_collected": 1000,
-        "hourly_rate_signed": 69,
-        "hourly_rate_collected": 42,
-        "status": "active",
-        "active_period": "Mai-Juin 2026",
-        "hours_estimated": null,
-        "overrun_flag": false,
-        "note": "17h mai + 6.8h juin. Inclut ~9h pre-sales deal COO PERDU (53 100 EUR). Mini deal: 1 000 HT (FAC-17 payee) + 650 HT (FAC-18 impayee). Taux effectif hors pre-sales: ~115 EUR/h."
-      }
-    ],
-    "by_month": [
-      {
-        "month": "2025-07",
-        "client_hours": 66.5,
-        "total_hours": 111.1,
-        "ca_collected": 520,
-        "hourly_rate": 8
-      },
-      {
-        "month": "2025-08",
-        "client_hours": 15.5,
-        "total_hours": 63.3,
-        "ca_collected": 2895,
-        "hourly_rate": 187
-      },
-      {
-        "month": "2025-09",
-        "client_hours": 54.9,
-        "total_hours": 98.1,
-        "ca_collected": 5409,
-        "hourly_rate": 99
-      },
-      {
-        "month": "2025-10",
-        "client_hours": 69.2,
-        "total_hours": 115.1,
-        "ca_collected": 5547,
-        "hourly_rate": 80
-      },
-      {
-        "month": "2025-11",
-        "client_hours": 31.8,
-        "total_hours": 77.5,
-        "ca_collected": 11705,
-        "hourly_rate": 368
-      },
-      {
-        "month": "2025-12",
-        "client_hours": 19.3,
-        "total_hours": 124.0,
-        "ca_collected": 6150,
-        "hourly_rate": 319
-      },
-      {
-        "month": "2026-01",
-        "client_hours": 22.8,
-        "total_hours": 97.4,
-        "ca_collected": 7408,
-        "hourly_rate": 325
-      },
-      {
-        "month": "2026-02",
-        "client_hours": 18.7,
-        "total_hours": 95.2,
-        "ca_collected": 4711,
-        "hourly_rate": 252
-      },
-      {
-        "month": "2026-03",
-        "client_hours": 14.5,
-        "total_hours": 105.2,
-        "ca_collected": 4106,
-        "hourly_rate": 283
-      },
-      {
-        "month": "2026-04",
-        "client_hours": 12.73,
-        "total_hours": 102.0,
-        "ca_collected": 8563,
-        "hourly_rate": 673
-      },
-      {
-        "month": "2026-05",
-        "client_hours": 39.64,
-        "total_hours": 79.0,
-        "ca_collected": 3816,
-        "hourly_rate": 96
-      },
-      {
-        "month": "2026-06",
-        "client_hours": 6.75,
-        "total_hours": 24.5,
-        "ca_collected": 20,
-        "hourly_rate": 3
-      }
-    ],
-    "notes": "Taux 3M (mar-avr-mai): 247 EUR/h (was 279 — baisse: +8h Olympes pre-sales mai sans CA supplementaire). Taux 10M: 198 EUR/h (was 207). Station Krishna: 23h, 278 EUR/h signe, FAC-19 emise 05/06 (1 036 EUR). Olympes: 23.8h total dont ~9h pre-sales deal perdu. Nico: 10.4h, 152 EUR/h signe. meedIA 0h depuis mars. OPTRA + Property Partners: 16 878 EUR creances douteuses. DSO: 111j."
-  },
-  "snapshots_history": [
-    {
-      "week": "S23-2026",
-      "date": "2026-06-05",
-      "treasury": 23098,
-      "ca_ytd": 28624,
-      "projection": 65000,
-      "dso": 111,
-      "burn": 2200,
-      "runway": 10.5,
-      "margin": 0.706,
-      "top3": 0.48,
-      "unpaid": 20298
-    },
-    {
-      "week": "S22-2026",
-      "date": "2026-05-29",
-      "treasury": 23880,
-      "ca_ytd": 28604,
-      "projection": 65000,
-      "dso": 95,
-      "burn": 2200,
-      "runway": 10.9,
-      "margin": 0.706,
-      "top3": 0.48,
-      "unpaid": 18482
-    },
-    {
-      "week": "S22-2026",
-      "date": "2026-05-26",
-      "treasury": 24292,
-      "ca_ytd": 27824,
-      "projection": 65000,
-      "dso": 95,
-      "burn": 2200,
-      "runway": 11.0,
-      "margin": 0.706,
-      "top3": 0.48,
-      "unpaid": 18482
-    },
-    {
-      "week": "S21-2026",
-      "date": "2026-05-22",
-      "treasury": 24292,
-      "ca_ytd": 27824,
-      "projection": 65000,
-      "dso": 95,
-      "burn": 2200,
-      "runway": 11.0,
-      "margin": 0.706,
-      "top3": 0.48,
-      "unpaid": 18482
-    },
-    {
-      "week": "S20-2026",
-      "date": "2026-05-15",
-      "treasury": 24256,
-      "ca_ytd": 26624,
-      "projection": 71000,
-      "dso": 90,
-      "burn": 2200,
-      "runway": 11.0,
-      "margin": 0.706,
-      "top3": 0.49,
-      "unpaid": 17703
-    },
-    {
-      "week": "S19-2026",
-      "date": "2026-05-08",
-      "treasury": 23935,
-      "ca_ytd": 25843,
-      "projection": 72801,
-      "dso": 114,
-      "burn": 2200,
-      "runway": 10.9,
-      "margin": 0.706,
-      "top3": 0.50,
-      "unpaid": 18204
-    },
-    {
-      "week": "S18-2026",
-      "date": "2026-05-01",
-      "treasury": 23452,
-      "ca_ytd": 24788,
-      "projection": 74364,
-      "dso": 125,
-      "burn": 2200,
-      "runway": 10.7,
-      "margin": 0.706,
-      "top3": 0.52,
-      "unpaid": 18204
-    },
-    {
-      "week": "S17-2026",
-      "date": "2026-04-26",
-      "treasury": 24230,
-      "ca_ytd": 24788,
-      "projection": 74364,
-      "dso": 120,
-      "burn": 2200,
-      "runway": 11.0,
-      "margin": 0.706,
-      "top3": 0.52,
-      "unpaid": 18729
-    },
-    {
-      "week": "S17-2026",
-      "date": "2026-04-20",
-      "treasury": 25819,
-      "ca_ytd": 24788,
-      "projection": 82251,
-      "dso": 120,
-      "burn": 2200,
-      "runway": 11.7,
-      "margin": 0.706,
-      "top3": 0.52,
-      "unpaid": 18729
-    },
-    {
-      "week": "S16-2026",
-      "date": "2026-04-16",
-      "treasury": 23633,
-      "ca_ytd": 22000,
-      "projection": 75429,
-      "dso": 88,
-      "burn": 1997,
-      "runway": 11.8,
-      "margin": 0.716,
-      "top3": 0.55,
-      "unpaid": 18753
-    }
+  "by_client": [
+   {
+    "name": "BLYYND",
+    "amount": 15300,
+    "pct": 0.252
+   },
+   {
+    "name": "meedIA",
+    "amount": 7680,
+    "pct": 0.126
+   },
+   {
+    "name": "Emathea",
+    "amount": 6000,
+    "pct": 0.099
+   },
+   {
+    "name": "RC consulting",
+    "amount": 4800,
+    "pct": 0.079
+   },
+   {
+    "name": "Notion Labs",
+    "amount": 3827,
+    "pct": 0.063
+   },
+   {
+    "name": "VIYANA / Station Krishna",
+    "amount": 3536,
+    "pct": 0.058
+   },
+   {
+    "name": "OPTRA",
+    "amount": 2895,
+    "pct": 0.048
+   },
+   {
+    "name": "Structude",
+    "amount": 2879,
+    "pct": 0.047
+   },
+   {
+    "name": "Firefightbox",
+    "amount": 2625,
+    "pct": 0.043
+   },
+   {
+    "name": "Autres",
+    "amount": 11288,
+    "pct": 0.186
+   }
   ]
+ },
+ "kpis": {
+  "dso": 111,
+  "margin_pct": 0.706,
+  "burn_3m": 2200,
+  "runway_months": 10.5,
+  "top3_pct": 0.48,
+  "top3_clients": "BLYYND, meedIA, Emathea",
+  "invoices_total": 49,
+  "invoices_paid": 33,
+  "invoices_unpaid": 10,
+  "invoices_canceled": 6
+ },
+ "aging": {
+  "buckets": [
+   {
+    "label": "0-30j",
+    "amount": 2895
+   },
+   {
+    "label": "30-60j",
+    "amount": 0
+   },
+   {
+    "label": "60-90j",
+    "amount": 0
+   },
+   {
+    "label": "90j+",
+    "amount": 17403
+   }
+  ],
+  "total": 20298,
+  "details": [
+   {
+    "ref": "FAC 19",
+    "client": "VIYANA (Station Krishna)",
+    "amount": 1036,
+    "due": "2026-06-05",
+    "days": 0
+   },
+   {
+    "ref": "FAC 18",
+    "client": "OLYMPES",
+    "amount": 780,
+    "due": "2026-05-28",
+    "days": 8
+   },
+   {
+    "ref": "FAC 16",
+    "client": "PRAXELIS",
+    "amount": 1079,
+    "due": "2026-05-16",
+    "days": 20
+   },
+   {
+    "ref": "FAC 47",
+    "client": "Firefightbox",
+    "amount": 525,
+    "due": "2025-12-19",
+    "days": 168
+   },
+   {
+    "ref": "FAC 38",
+    "client": "OPTRA",
+    "amount": 3900,
+    "due": "2025-12-02",
+    "days": 185
+   },
+   {
+    "ref": "FAC 28",
+    "client": "PROPERTY PARTNERS",
+    "amount": 2700,
+    "due": "2025-10-06",
+    "days": 242
+   },
+   {
+    "ref": "FAC 27",
+    "client": "OPTRA",
+    "amount": 1788,
+    "due": "2025-10-31",
+    "days": 217
+   },
+   {
+    "ref": "FAC 26",
+    "client": "OPTRA",
+    "amount": 2895,
+    "due": "2025-10-31",
+    "days": 217
+   },
+   {
+    "ref": "FAC 22",
+    "client": "PROPERTY PARTNERS",
+    "amount": 2700,
+    "due": "2025-09-19",
+    "days": 259
+   },
+   {
+    "ref": "FAC 21",
+    "client": "OPTRA",
+    "amount": 2895,
+    "due": "2025-09-16",
+    "days": 262
+   }
+  ]
+ },
+ "tva": {
+  "collected_mtd": 0,
+  "deductible_mtd": 0,
+  "forecast": 0,
+  "by_month": [
+   {
+    "month": "2026-02",
+    "collected": 785,
+    "paid_dgfip": 883
+   },
+   {
+    "month": "2026-03",
+    "collected": 331,
+    "paid_dgfip": 338
+   },
+   {
+    "month": "2026-04",
+    "collected": 1427,
+    "paid_dgfip": 0
+   },
+   {
+    "month": "2026-05",
+    "collected": 624,
+    "paid_dgfip": 0
+   },
+   {
+    "month": "2026-06",
+    "collected": 0,
+    "paid_dgfip": 0
+   }
+  ]
+ },
+ "expenses": {
+  "by_supplier": [
+   {
+    "name": "GoCardless (Dougs)",
+    "amount": 2638
+   },
+   {
+    "name": "Sylvain Ramaradjou (loyer)",
+    "amount": 2001
+   },
+   {
+    "name": "SUMA AI (prestataire)",
+    "amount": 1600
+   },
+   {
+    "name": "LINKEDIN Sales Navigator",
+    "amount": 800
+   },
+   {
+    "name": "Klarna*Avalon (coworking)",
+    "amount": 1264
+   },
+   {
+    "name": "APPLE RETAIL",
+    "amount": 1009
+   },
+   {
+    "name": "Amazon",
+    "amount": 873
+   },
+   {
+    "name": "Hostinger",
+    "amount": 366
+   },
+   {
+    "name": "ANTHROPIC (API)",
+    "amount": 454
+   },
+   {
+    "name": "DGFIP",
+    "amount": 338
+   },
+   {
+    "name": "SNCF",
+    "amount": 434
+   },
+   {
+    "name": "Wispr Flow",
+    "amount": 129
+   },
+   {
+    "name": "Autres",
+    "amount": 2480
+   }
+  ],
+  "by_category": [
+   {
+    "qonto": "other_service",
+    "notion": "Admin - Prestations diverses",
+    "amount": 3712
+   },
+   {
+    "qonto": "marketing",
+    "notion": "Commercial - Marketing & Com",
+    "amount": 3020
+   },
+   {
+    "qonto": "other_expense",
+    "notion": "Divers - A classer",
+    "amount": 3200
+   },
+   {
+    "qonto": "it_and_electronics",
+    "notion": "Tech - Materiel IT",
+    "amount": 1009
+   },
+   {
+    "qonto": "online_service",
+    "notion": "Tech - Abonnements SaaS",
+    "amount": 612
+   },
+   {
+    "qonto": "transport",
+    "notion": "Deplacement - Transport",
+    "amount": 650
+   },
+   {
+    "qonto": "tax",
+    "notion": "Fiscal - Impots & Taxes",
+    "amount": 338
+   },
+   {
+    "qonto": "food_and_grocery",
+    "notion": "Bureau - Alimentation",
+    "amount": 350
+   },
+   {
+    "qonto": "restaurant_and_bar",
+    "notion": "Commercial - Repas clients",
+    "amount": 290
+   }
+  ]
+ },
+ "subscriptions": [
+  {
+   "name": "Google Workspace",
+   "cost": 19.44,
+   "freq": "Mensuel",
+   "cat": "Tech - SaaS",
+   "status": "Essentiel",
+   "impact": "Critique",
+   "engagement": "Annuel",
+   "usage": "Pro",
+   "desc": "Gmail pro, Drive, Agenda",
+   "reco": null
+  },
+  {
+   "name": "Slack",
+   "cost": 16.5,
+   "freq": "Mensuel",
+   "cat": "Tech - SaaS",
+   "status": "Essentiel",
+   "impact": "Critique",
+   "engagement": "Sans engagement",
+   "usage": "Pro",
+   "desc": "Communication interne",
+   "reco": null
+  },
+  {
+   "name": "ShieldApp",
+   "cost": 25,
+   "freq": "Mensuel",
+   "cat": "Tech - SaaS",
+   "status": "Essentiel",
+   "impact": null,
+   "engagement": null,
+   "usage": null,
+   "desc": "Analytics LinkedIn",
+   "reco": null
+  },
+  {
+   "name": "Claude Max",
+   "cost": 100,
+   "freq": "Mensuel",
+   "cat": "Tech - SaaS",
+   "status": "Essentiel",
+   "impact": "Critique",
+   "engagement": "Sans engagement",
+   "usage": "Pro",
+   "desc": "IA production + automatisation",
+   "reco": null
+  },
+  {
+   "name": "Notion",
+   "cost": 208,
+   "freq": "Annuel",
+   "cat": "Tech - SaaS",
+   "status": "Essentiel",
+   "impact": "Critique",
+   "engagement": "Annuel",
+   "usage": "Pro",
+   "desc": "Outil central - livraison clients",
+   "reco": null
+  },
+  {
+   "name": "LinkedIn Premium",
+   "cost": 799.9,
+   "freq": "Annuel",
+   "cat": "Marketing",
+   "status": "Essentiel",
+   "impact": "Critique",
+   "engagement": "Annuel",
+   "usage": "Pro",
+   "desc": "Sales Nav + prospection",
+   "reco": null
+  },
+  {
+   "name": "Qonto",
+   "cost": 250,
+   "freq": "Annuel",
+   "cat": "Admin - Services bancaires",
+   "status": "Essentiel",
+   "impact": "Critique",
+   "engagement": "Annuel",
+   "usage": "Pro",
+   "desc": "Compte bancaire professionnel",
+   "reco": null
+  },
+  {
+   "name": "Hostinger",
+   "cost": 23,
+   "freq": "Mensuel",
+   "cat": "Tech - Infrastructure",
+   "status": "Essentiel",
+   "impact": null,
+   "engagement": "Annuel",
+   "usage": "Pro",
+   "desc": "Hebergement VPS + domaines",
+   "reco": null
+  },
+  {
+   "name": "Canva Pro",
+   "cost": 15,
+   "freq": "Mensuel",
+   "cat": "Tech - SaaS",
+   "status": "Essentiel",
+   "impact": null,
+   "engagement": null,
+   "usage": "Pro",
+   "desc": "Design rapports + supports",
+   "reco": null
+  },
+  {
+   "name": "Miro",
+   "cost": 10,
+   "freq": "Mensuel",
+   "cat": "Tech - SaaS",
+   "status": "Essentiel",
+   "impact": null,
+   "engagement": null,
+   "usage": "Pro",
+   "desc": "Ateliers workshops clients",
+   "reco": null
+  },
+  {
+   "name": "Wispr Flow",
+   "cost": 12,
+   "freq": "Mensuel",
+   "cat": "Tech - SaaS",
+   "status": "Essentiel",
+   "impact": null,
+   "engagement": null,
+   "usage": "Pro",
+   "desc": "Dictee vocale",
+   "reco": null
+  },
+  {
+   "name": "Cal.com",
+   "cost": 19,
+   "freq": "Mensuel",
+   "cat": "Tech - SaaS",
+   "status": "Essentiel",
+   "impact": null,
+   "engagement": null,
+   "usage": "Pro",
+   "desc": "Calendrier RDV prospects",
+   "reco": null
+  },
+  {
+   "name": "Brevo",
+   "cost": 21,
+   "freq": "Mensuel",
+   "cat": "Marketing",
+   "status": "A evaluer",
+   "impact": null,
+   "engagement": "Sans engagement",
+   "usage": "Pro",
+   "desc": "Newsletter Rama Logic",
+   "reco": "Edition 7 prevue 07/06. Free tier suffisant si < 300 abonnes?"
+  },
+  {
+   "name": "Claude Pro",
+   "cost": 18,
+   "freq": "Mensuel",
+   "cat": "Tech - SaaS",
+   "status": "Essentiel",
+   "impact": null,
+   "engagement": "Sans engagement",
+   "usage": "Pro",
+   "desc": "IA analyse longue, coding",
+   "reco": null
+  },
+  {
+   "name": "Screenstudio",
+   "cost": 15,
+   "freq": "Mensuel",
+   "cat": "Tech - SaaS",
+   "status": "Essentiel",
+   "impact": null,
+   "engagement": null,
+   "usage": "Pro",
+   "desc": "Enregistrement ecran",
+   "reco": null
+  },
+  {
+   "name": "ChatGPT Plus",
+   "cost": 22,
+   "freq": "Mensuel",
+   "cat": "Tech - SaaS",
+   "status": "A evaluer",
+   "impact": null,
+   "engagement": null,
+   "usage": "Pro",
+   "desc": "Reference outil demo clients",
+   "reco": null
+  },
+  {
+   "name": "Timing App",
+   "cost": 8.5,
+   "freq": "Mensuel",
+   "cat": "Tech - SaaS",
+   "status": "A evaluer",
+   "impact": null,
+   "engagement": "Annuel",
+   "usage": "Pro",
+   "desc": "Tracking temps automatique",
+   "reco": "Impact moyen. Toggl gratuit comme alternative."
+  },
+  {
+   "name": "Raycast Pro",
+   "cost": 6.3,
+   "freq": "Mensuel",
+   "cat": "Tech - SaaS",
+   "status": "A evaluer",
+   "impact": null,
+   "engagement": "Annuel",
+   "usage": "Pro",
+   "desc": "Launcher + IA",
+   "reco": "Redondant avec Claude?"
+  },
+  {
+   "name": "Scheduled.so",
+   "cost": 12,
+   "freq": "Mensuel",
+   "cat": "Marketing",
+   "status": "A evaluer",
+   "impact": null,
+   "engagement": "Annuel",
+   "usage": "Pro",
+   "desc": "Planification posts LK",
+   "reco": "Redondant si Claude gere le scheduling?"
+  },
+  {
+   "name": "Make.com",
+   "cost": 9,
+   "freq": "Mensuel",
+   "cat": "Tech - SaaS",
+   "status": "A annuler",
+   "impact": null,
+   "engagement": "Sans engagement",
+   "usage": "Pro",
+   "desc": "Automatisation abandonnee mars 2026",
+   "reco": "Annuler - zero Make depuis mars 2026."
+  },
+  {
+   "name": "Taap.it",
+   "cost": 13,
+   "freq": "Mensuel",
+   "cat": "Marketing",
+   "status": "A evaluer",
+   "impact": null,
+   "engagement": "Annuel",
+   "usage": "Pro",
+   "desc": "Landing pages bootcamp",
+   "reco": "Le bootcamp genere-t-il du revenu?"
+  },
+  {
+   "name": "Squarespace",
+   "cost": 12,
+   "freq": "Mensuel",
+   "cat": "Autre",
+   "status": "A annuler",
+   "impact": null,
+   "engagement": "Annuel",
+   "usage": "Perso",
+   "desc": "Site mariage (compte pro)",
+   "reco": "Annuler. Usage personnel paye par le pro."
+  },
+  {
+   "name": "Namecheap",
+   "cost": 2.5,
+   "freq": "Mensuel",
+   "cat": "Tech - Infrastructure",
+   "status": "Essentiel",
+   "impact": null,
+   "engagement": "Annuel",
+   "usage": "Pro",
+   "desc": "Domaines",
+   "reco": null
+  },
+  {
+   "name": "Kondo",
+   "cost": 32,
+   "freq": "Mensuel",
+   "cat": "Tech - SaaS",
+   "status": "A evaluer",
+   "impact": null,
+   "engagement": "Sans engagement",
+   "usage": "Pro",
+   "desc": "Gestion abonnements",
+   "reco": "Ironique - outil de gestion d'abonnements"
+  }
+ ],
+ "transactions": [
+  {
+   "date": "2026-06-05",
+   "amount": -30.19,
+   "vendor": "DESCRIPT",
+   "category": "Marketing",
+   "cat_notion": "Commercial - Marketing & Com",
+   "side": "debit"
+  },
+  {
+   "date": "2026-06-05",
+   "amount": -7.2,
+   "vendor": "LS Avalon",
+   "category": "Repas",
+   "cat_notion": "Commercial - Repas clients",
+   "side": "debit"
+  },
+  {
+   "date": "2026-06-04",
+   "amount": -29.3,
+   "vendor": "SNCF-VOYAGEURS",
+   "category": "transport",
+   "cat_notion": "Deplacement - Transport",
+   "side": "debit"
+  },
+  {
+   "date": "2026-06-04",
+   "amount": -22.2,
+   "vendor": "L'APERICERIE + Starbucks",
+   "category": "food_and_grocery",
+   "cat_notion": "Bureau - Alimentation",
+   "side": "debit"
+  },
+  {
+   "date": "2026-06-04",
+   "amount": -3.74,
+   "vendor": "Kyriad (hotel)",
+   "category": "transport",
+   "cat_notion": "Deplacement - Transport",
+   "side": "debit"
+  },
+  {
+   "date": "2026-06-03",
+   "amount": -41.0,
+   "vendor": "BOLT (transport) x3",
+   "category": "transport",
+   "cat_notion": "Deplacement - Transport",
+   "side": "debit"
+  },
+  {
+   "date": "2026-06-03",
+   "amount": -32.31,
+   "vendor": "AMAZON PAYMENTS",
+   "category": "other_expense",
+   "cat_notion": "Divers - A classer",
+   "side": "debit"
+  },
+  {
+   "date": "2026-06-02",
+   "amount": 20.17,
+   "vendor": "Qonto (cashback)",
+   "category": "CA",
+   "cat_notion": "CA",
+   "side": "credit",
+   "note": "Cashback Qonto juin 2026"
+  },
+  {
+   "date": "2026-06-02",
+   "amount": -19.44,
+   "vendor": "Google Workspace",
+   "category": "online_service",
+   "cat_notion": "Tech - Abonnements SaaS",
+   "side": "debit"
+  },
+  {
+   "date": "2026-06-01",
+   "amount": -416.63,
+   "vendor": "Sylvain Ramaradjou (loyer)",
+   "category": "Loyer",
+   "cat_notion": "Loyer",
+   "side": "debit"
+  },
+  {
+   "date": "2026-06-01",
+   "amount": -27.8,
+   "vendor": "CAFESBELLEVILLE.COM",
+   "category": "other_expense",
+   "cat_notion": "Divers - A classer",
+   "side": "debit"
+  },
+  {
+   "date": "2026-05-30",
+   "amount": -91.68,
+   "vendor": "AMAZON PAYMENTS + OPLUO",
+   "category": "marketing",
+   "cat_notion": "Commercial - Marketing & Com",
+   "side": "debit"
+  },
+  {
+   "date": "2026-05-29",
+   "amount": -16.4,
+   "vendor": "LS Avalon",
+   "category": "Repas",
+   "cat_notion": "Commercial - Repas clients",
+   "side": "debit"
+  },
+  {
+   "date": "2026-05-28",
+   "amount": 780.0,
+   "vendor": "OLYMPES",
+   "category": "CA",
+   "cat_notion": "CA",
+   "side": "credit",
+   "note": "FAC-18 Olympes (650 EUR HT + TVA 130). Encaisse 28/05."
+  },
+  {
+   "date": "2026-05-28",
+   "amount": -55.73,
+   "vendor": "Amazon + LS Avalon",
+   "category": "marketing",
+   "cat_notion": "Commercial - Marketing & Com",
+   "side": "debit"
+  },
+  {
+   "date": "2026-05-26",
+   "amount": -220.79,
+   "vendor": "GoCardless (Dougs)",
+   "category": "Comptabilite",
+   "cat_notion": "Comptabilite",
+   "side": "debit"
+  },
+  {
+   "date": "2026-05-26",
+   "amount": -16.0,
+   "vendor": "Netlify + EVY INTERSPORT",
+   "category": "Tech",
+   "cat_notion": "Tech - Abonnements SaaS",
+   "side": "debit"
+  },
+  {
+   "date": "2026-05-25",
+   "amount": -823.63,
+   "vendor": "SUMA AI + Slack",
+   "category": "other_expense",
+   "cat_notion": "Prestataire",
+   "side": "debit"
+  },
+  {
+   "date": "2026-05-21",
+   "amount": 1200.0,
+   "vendor": "OLYMPES",
+   "category": "CA",
+   "cat_notion": "CA",
+   "side": "credit",
+   "note": "FAC-17 Olympes mini deck+BP (1 000 EUR HT + TVA)."
+  },
+  {
+   "date": "2026-05-19",
+   "amount": -162.75,
+   "vendor": "Klarna*Avalon (coworking)",
+   "category": "Loyer",
+   "cat_notion": "Loyer",
+   "side": "debit"
+  },
+  {
+   "date": "2026-05-19",
+   "amount": -600.0,
+   "vendor": "get your goals",
+   "category": "other_expense",
+   "cat_notion": "Divers - A classer",
+   "side": "debit"
+  },
+  {
+   "date": "2026-05-18",
+   "amount": -90.0,
+   "vendor": "CLAUDE.AI",
+   "category": "Tech",
+   "cat_notion": "Tech - Abonnements SaaS",
+   "side": "debit"
+  },
+  {
+   "date": "2026-05-18",
+   "amount": -160.96,
+   "vendor": "SNCF + BKG HOTEL",
+   "category": "transport",
+   "cat_notion": "Deplacement - Transport",
+   "side": "debit"
+  },
+  {
+   "date": "2026-05-15",
+   "amount": 525.0,
+   "vendor": "FIREFIGTHGROUP",
+   "category": "CA",
+   "cat_notion": "CA",
+   "side": "credit",
+   "note": "FAC-47 Firefightbox paiement partiel M3 (reste 525 EUR)"
+  },
+  {
+   "date": "2026-05-13",
+   "amount": 256.26,
+   "vendor": "NOTION LABS, INC.",
+   "category": "CA",
+   "cat_notion": "CA",
+   "side": "credit",
+   "note": "Notion Partnership fees Mai (USD 300)"
+  },
+  {
+   "date": "2026-05-13",
+   "amount": -348.0,
+   "vendor": "AVALON (coworking)",
+   "category": "Loyer",
+   "cat_notion": "Loyer",
+   "side": "debit"
+  },
+  {
+   "date": "2026-05-05",
+   "amount": 1036.0,
+   "vendor": "VIYANA (Station Krishna)",
+   "category": "CA",
+   "cat_notion": "CA",
+   "side": "credit",
+   "note": "FAC-14 Station Krishna M2"
+  },
+  {
+   "date": "2026-05-02",
+   "amount": 18.6,
+   "vendor": "Notion Labs (affiliate)",
+   "category": "CA",
+   "cat_notion": "CA",
+   "side": "credit"
+  },
+  {
+   "date": "2026-05-01",
+   "amount": -273.6,
+   "vendor": "GoCardless (Dougs)",
+   "category": "Comptabilite",
+   "cat_notion": "Comptabilite",
+   "side": "debit"
+  },
+  {
+   "date": "2026-05-01",
+   "amount": -416.63,
+   "vendor": "Sylvain Ramaradjou (loyer)",
+   "category": "Loyer",
+   "cat_notion": "Loyer",
+   "side": "debit"
+  },
+  {
+   "date": "2026-04-16",
+   "amount": 2500.0,
+   "vendor": "VIYANA / Station Krishna",
+   "category": "CA",
+   "cat_notion": "CA",
+   "side": "credit",
+   "note": "Acompte 33% Station Krishna"
+  },
+  {
+   "date": "2026-04-14",
+   "amount": 3072.0,
+   "vendor": "MEEDIA",
+   "category": "CA",
+   "cat_notion": "CA",
+   "side": "credit",
+   "note": "FAC-08 meedIA Mars"
+  },
+  {
+   "date": "2026-04-13",
+   "amount": 977.7,
+   "vendor": "Stripe / Notion Labs",
+   "category": "CA",
+   "cat_notion": "CA",
+   "side": "credit",
+   "note": "Notion Partnership fees Avr"
+  },
+  {
+   "date": "2026-04-05",
+   "amount": -799.9,
+   "vendor": "LinkedIn Sales Navigator",
+   "category": "Marketing",
+   "cat_notion": "Marketing",
+   "side": "debit"
+  },
+  {
+   "date": "2026-03-30",
+   "amount": 1009.33,
+   "vendor": "Stripe / Notion Labs",
+   "category": "CA",
+   "cat_notion": "CA",
+   "side": "credit",
+   "note": "Notion Partnership fees Mar"
+  }
+ ],
+ "sub_analysis": {
+  "total_monthly_recurring": 897.17,
+  "total_annual_cost": 4342,
+  "to_cancel": [
+   {
+    "name": "Make.com",
+    "cost_annual": 108,
+    "reason": "Plus utilise depuis mars 2026. Zero Make/n8n, tout Claude."
+   },
+   {
+    "name": "Squarespace",
+    "cost_annual": 144,
+    "reason": "Site mariage perso paye sur compte pro. A annuler."
+   }
+  ],
+  "to_evaluate": [
+   {
+    "name": "Timing App",
+    "cost_annual": 100,
+    "reason": "Impact moyen. Toggl gratuit comme alternative."
+   },
+   {
+    "name": "Raycast Pro",
+    "cost_annual": 75.2,
+    "reason": "IA integree redondante avec Claude. Version gratuite suffisante?"
+   },
+   {
+    "name": "Brevo",
+    "cost_annual": 252,
+    "reason": "Edition 7 prevue 07/06. Free tier suffisant si < 300 abonnes?"
+   },
+   {
+    "name": "Taap.it",
+    "cost_annual": 156,
+    "reason": "Landing pages bootcamp. Le bootcamp genere-t-il du revenu?"
+   },
+   {
+    "name": "Scheduled.so",
+    "cost_annual": 144,
+    "reason": "Planification LK. Redondant si Claude gere le scheduling?"
+   },
+   {
+    "name": "ChatGPT Plus",
+    "cost_annual": 264,
+    "reason": "Reference pour demos clients. Vraiment necessaire?"
+   }
+  ],
+  "potential_savings": 1141.2,
+  "keep": [
+   "Google Workspace",
+   "Slack",
+   "Claude Max",
+   "Notion",
+   "Qonto",
+   "Loyer",
+   "LinkedIn Premium",
+   "Hostinger",
+   "Namecheap",
+   "Wispr Flow",
+   "ShieldApp",
+   "Canva Pro",
+   "Miro",
+   "Cal.com"
+  ]
+ },
+ "okr": {
+  "objectives": [
+   {
+    "id": "O1",
+    "title": "Capitaliser 150K EUR dans la SASU et construire 2 lignes de revenu",
+    "status": "In progress",
+    "angle": "Croissance",
+    "period": "2026",
+    "key_results": [
+     {
+      "id": "KR1",
+      "title": "CA signe T1 2026",
+      "target": 15000,
+      "result": 8300,
+      "status": "Fail",
+      "due": "2026-03-31"
+     },
+     {
+      "id": "KR2",
+      "title": "CA signe T2 2026",
+      "target": 40000,
+      "result": 9601,
+      "status": "In progress",
+      "due": "2026-06-30"
+     },
+     {
+      "id": "KR3",
+      "title": "CA signe T3 2026",
+      "target": 40000,
+      "result": 0,
+      "status": "Not started",
+      "due": "2026-09-30"
+     },
+     {
+      "id": "KR4",
+      "title": "CA signe T4 2026",
+      "target": 35000,
+      "result": 0,
+      "status": "Not started",
+      "due": "2026-12-31"
+     },
+     {
+      "id": "KR5",
+      "title": "3 clients offre packagee COO/Notion <=25h",
+      "target": 3,
+      "result": 0,
+      "status": "Not started",
+      "due": "2026-09-30"
+     }
+    ]
+   },
+   {
+    "id": "O2",
+    "title": "Optimiser la machine Rama Logic : automatiser, reduire delivery, maximiser taux horaire",
+    "status": "In progress",
+    "angle": "Qualite",
+    "period": "2026",
+    "key_results": [
+     {
+      "id": "KR6",
+      "title": "Automatiser 100% CRM, facturation, suivi projet",
+      "target": 1,
+      "result": 0,
+      "status": "Not started",
+      "due": "2026-12-31"
+     }
+    ]
+   },
+   {
+    "id": "O3",
+    "title": "Devenir la reference Notion & IA Ops pour les dirigeants",
+    "status": "In progress",
+    "angle": "Notoriete",
+    "period": "2026",
+    "key_results": [
+     {
+      "id": "KR7",
+      "title": "96 posts LinkedIn S1 2026",
+      "target": 144,
+      "result": 141,
+      "status": "In progress",
+      "due": "2026-06-30"
+     },
+     {
+      "id": "KR8",
+      "title": "Newsletter 100 abonnes + 6 editions S1",
+      "target": 6,
+      "result": 6,
+      "status": "In progress",
+      "due": "2026-06-30"
+     }
+    ]
+   },
+   {
+    "id": "O4",
+    "title": "Construire une offre scalable IA-first (sans dependance humaine)",
+    "status": "In progress",
+    "angle": "Croissance",
+    "period": "2026",
+    "key_results": []
+   }
+  ]
+ },
+ "alerts": [
+  {
+   "level": "critical",
+   "title": "sales",
+   "detail": "KR2 T2 2026 : 9 601/40 000 EUR (24%) — 25 jours restants au 05/06.",
+   "metric": "Il faut signer 30 399 EUR avant le 30 juin. PB-associes accord verbal 8 500 (prop non envoyee 7j apres R2), Cerena 11 800, EVMT 8 400, Shika 6 400, Dauphine 990. Workshop 25/06 potentiel 400-4000 EUR. Urgence maximale."
+  },
+  {
+   "level": "critical",
+   "title": "aging",
+   "detail": "OPTRA : 4 factures impayees (11 478 EUR) — 185 a 262 jours de retard.",
+   "metric": "Mise en demeure formelle. Provision pour creance douteuse recommandee."
+  },
+  {
+   "level": "critical",
+   "title": "aging",
+   "detail": "PROPERTY PARTNERS : 2 factures impayees (5 400 EUR) — 242 et 259 jours de retard.",
+   "metric": "Mise en demeure urgente. Provision pour creance douteuse si pas de reponse 15j."
+  },
+  {
+   "level": "critical",
+   "title": "sales",
+   "detail": "PB-associes (8 500 EUR) : accord verbal R2 le 29/05 — contrat NON envoye 7 jours apres.",
+   "metric": "Demi-vie d'un accord verbal = 24-48h. Envoyer le contrat MAINTENANT. Chaque jour supplementaire = risque de refroidissement."
+  },
+  {
+   "level": "critical",
+   "title": "sales",
+   "detail": "Altercosmeto (14 400 EUR) : 68 jours idle. Fermeture imminente.",
+   "metric": "Dernier contact Edouard KINI. Proposition refaite ou fermeture definitive cette semaine."
+  },
+  {
+   "level": "warning",
+   "title": "delivery",
+   "detail": "Workshop Atelier Agent 25 juin : go/no-go AUJOURD'HUI 05/06 (≥3 payants confirms).",
+   "metric": "Si oui : revenue potentiel 1200-4000 EUR (3-10 places 399 EUR). Posts LK en cadence 02/06-24/06. Lien Stripe a creer et diffuser immediatement."
+  },
+  {
+   "level": "warning",
+   "title": "sales",
+   "detail": "Sparken - Structuration Notion (6 400 EUR) : 73 jours idle. Ultimatum expire.",
+   "metric": "Appel direct + deadline 24h ferme. Clore si pas de retour immediat."
+  },
+  {
+   "level": "warning",
+   "title": "sales",
+   "detail": "Peppit (13 000 EUR) : 57 jours idle. Deal froid.",
+   "metric": "Relancer immediatement. Proposer call de cloture avant 10/06."
+  },
+  {
+   "level": "warning",
+   "title": "sales",
+   "detail": "EVMT V1 (8 400 EUR) : 28 jours sans signature apres visio positive du 08/05.",
+   "metric": "Relancer Jerome OGOR cette semaine. 8 400 EUR V1 + 7 200 EUR/mois V2 en jeu."
+  },
+  {
+   "level": "warning",
+   "title": "revenue",
+   "detail": "Projection 2026 a 65 000 EUR — ecart de -85 000 EUR vs objectif 150 000 EUR.",
+   "metric": "Signer PB-associes + EVMT + Cerena = +28 700 EUR. Projection passerait a ~93K."
+  },
+  {
+   "level": "info",
+   "title": "delivery",
+   "detail": "Station Krishna : FAC-19 emise aujourd'hui (1 036 EUR TTC, M3). Paiement attendu sous 5j.",
+   "metric": "Total collecte SK : 3 536 EUR. Reste 2 864 EUR (FAC-19 + solde). Taux horaire signe : 278 EUR/h sur 23h."
+  },
+  {
+   "level": "info",
+   "title": "acquisition",
+   "detail": "KR7 LK : ~141/144 posts publies (98%). KR8 Newsletter : 6/6 DONE. Edition 7 prevue 07/06.",
+   "metric": "3 posts restants en 25 jours pour boucler KR7. Rythme actuel largement suffisant."
+  },
+  {
+   "level": "info",
+   "title": "acquisition",
+   "detail": "VivaTech 3-4/06 : participation Sylvain. ~10-15 nouveaux contacts Notion dans RL-Contacts.",
+   "metric": "Qualifier les leads VivaTech cette semaine. Potentiel R1 sur 2-3 profils."
+  },
+  {
+   "level": "info",
+   "title": "delivery",
+   "detail": "Taux horaire 3M (mar-avr-mai): 247 EUR/h > cible 200. Taux 10M: 198 EUR/h.",
+   "metric": "Baisse vs S22 (279 EUR/h): +8h Olympes pre-sales en mai sans CA supplementaire. Hors pre-sales: taux stable."
+  }
+ ],
+ "acquisition": {
+  "linkedin": {
+   "posts_published_2026": 141,
+   "total_impressions": 278185,
+   "total_reactions": 1063,
+   "total_comments": 3432,
+   "total_shares": 3,
+   "kr7_target": 144,
+   "kr7_current": 141,
+   "posts_per_month": [
+    {
+     "month": "2026-01",
+     "count": 5
+    },
+    {
+     "month": "2026-02",
+     "count": 11
+    },
+    {
+     "month": "2026-03",
+     "count": 5
+    },
+    {
+     "month": "2026-04",
+     "count": 41
+    },
+    {
+     "month": "2026-05",
+     "count": 38
+    },
+    {
+     "month": "2026-06",
+     "count": 5
+    }
+   ],
+   "top_posts": [
+    {
+     "title": "McKinsey facture 50k... Mon agent Claude le fait en 10 min",
+     "date": "2026-02-25",
+     "impressions": 210768,
+     "reactions": 389,
+     "comments": 2990,
+     "angle": "Lead magnet"
+    },
+    {
+     "title": "Trump vient de bannir Anthropic",
+     "date": "2026-03-02",
+     "impressions": 15027,
+     "reactions": 82,
+     "comments": 42,
+     "angle": "News"
+    },
+    {
+     "title": "Notion lance Custom Agents",
+     "date": "2026-03-03",
+     "impressions": 7286,
+     "reactions": 53,
+     "comments": 22,
+     "angle": "News"
+    },
+    {
+     "title": "Mon setup IA fait le boulot d'un assistant",
+     "date": "2026-03-30",
+     "impressions": 4707,
+     "reactions": 29,
+     "comments": 47,
+     "angle": "Build in public"
+    },
+    {
+     "title": "Mac vs PC",
+     "date": "2026-01-15",
+     "impressions": 4024,
+     "reactions": 46,
+     "comments": 41,
+     "angle": "Story telling"
+    },
+    {
+     "title": "Mars 2026. J'ai supprime Make.com et n8n. 60 jours plus tard, voici ce qui a change.",
+     "date": "2026-05-12",
+     "impressions": null,
+     "reactions": null,
+     "comments": null,
+     "angle": "Build in public"
+    },
+    {
+     "title": "+340% de revenus pour les solos qui ont bascule sur les agents IA",
+     "date": "2026-05-29",
+     "impressions": null,
+     "reactions": null,
+     "comments": null,
+     "angle": "Education"
+    },
+    {
+     "title": "VivaTech (jour J) — ce que j'ai retenu du plus grand salon tech d'Europe",
+     "date": "2026-06-03",
+     "impressions": null,
+     "reactions": null,
+     "comments": null,
+     "angle": "News"
+    }
+   ],
+   "angle_breakdown": [
+    {
+     "angle": "News",
+     "count": 7,
+     "pct": 0.27
+    },
+    {
+     "angle": "Build in public",
+     "count": 6,
+     "pct": 0.23
+    },
+    {
+     "angle": "Story telling",
+     "count": 5,
+     "pct": 0.19
+    },
+    {
+     "angle": "Vente",
+     "count": 4,
+     "pct": 0.15
+    },
+    {
+     "angle": "Education",
+     "count": 3,
+     "pct": 0.12
+    },
+    {
+     "angle": "Lead magnet",
+     "count": 1,
+     "pct": 0.04
+    }
+   ],
+   "pipeline": {
+    "ideas": 55,
+    "writing": 6,
+    "to_plan": 1,
+    "ready_to_schedule": 0
+   },
+   "format_breakdown": [
+    {
+     "format": "image",
+     "count": 20,
+     "pct": 0.91
+    },
+    {
+     "format": "multi_assets",
+     "count": 1,
+     "pct": 0.05
+    },
+    {
+     "format": "text",
+     "count": 1,
+     "pct": 0.05
+    }
+   ]
+  },
+  "newsletter": {
+   "kr8_target": 6,
+   "kr8_current": 6,
+   "editions_published": 6,
+   "status": "Edition 6 envoyee fin mai. KR8 6/6 COMPLETE. Edition 7 en preparation — envoi prevu 07/06/2026 (sujet: Notion SSOT)."
+  },
+  "leads": {
+   "total_2026": 60,
+   "last_30_days": 20,
+   "last_7_days": 8,
+   "hot_leads_1st_rdv_no_r2": 1,
+   "by_source": [
+    {
+     "source": "LinkedIn outbound",
+     "count": 25
+    },
+    {
+     "source": "Event / Inbound",
+     "count": 16
+    },
+    {
+     "source": "Manual prospection",
+     "count": 1
+    },
+    {
+     "source": "Non renseigne",
+     "count": 18
+    }
+   ],
+   "hot_list": [
+    {
+     "name": "Raphael Barbaza (PB-associes)",
+     "first_rdv": "2026-05-06",
+     "r2": "2026-05-29",
+     "opp": "Hub Notion PB-associes — Build 8 sem (8 500 EUR)",
+     "action": "Accord verbal R2 29/05. Contrat non envoye 7 jours apres. ENVOYER LE CONTRAT MAINTENANT."
+    },
+    {
+     "name": "Nouri Yahi (Shika Consulting)",
+     "first_rdv": "2026-05-11",
+     "r2": "2026-05-18",
+     "opp": "Shika Consulting — Audit + 2 processus revus (6 400 EUR)",
+     "action": "R2 realisee le 18/05. 25 jours sans retour. Relancer Nouri cette semaine en urgence."
+    },
+    {
+     "name": "Mathieu Leo (La Clairiere Group)",
+     "first_rdv": "2026-05-13",
+     "r2": null,
+     "opp": "Notion + Claude Multi-Spheres (7 500 EUR)",
+     "action": "R1 13/05. En attente retour Mathieu pour R2. Relancer si silence 7j."
+    },
+    {
+     "name": "Chaharazad Zemouri (Dauphine)",
+     "first_rdv": "2026-04-15",
+     "r2": "2026-04-29",
+     "opp": "Dauphine Incubateur v2 modulaire (990 EUR Discovery)",
+     "action": "Propale v2 envoyee 26/05. Deadline retour depasse. Relancer Oriane + Baptiste."
+    }
+   ]
+  }
+ },
+ "sales": {
+  "pipeline_total": 89389,
+  "pipeline_by_stage": [
+   {
+    "stage": "Lead",
+    "count": 4,
+    "amount": 5200
+   },
+   {
+    "stage": "Proposal to send",
+    "count": 6,
+    "amount": 38400
+   },
+   {
+    "stage": "Awaiting signature",
+    "count": 5,
+    "amount": 33340
+   },
+   {
+    "stage": "Contract signed",
+    "count": 0,
+    "amount": 0
+   },
+   {
+    "stage": "Billing send",
+    "count": 1,
+    "amount": 3250
+   },
+   {
+    "stage": "Partial paid",
+    "count": 2,
+    "amount": 9199
+   }
+  ],
+  "closing_rate": 0.36,
+  "closing_rate_strict": 0.22,
+  "signed_2026": 18900,
+  "signed_deals_2026": 8,
+  "deals_by_source": [
+   {
+    "source": "Linkedin inbound",
+    "count": 5,
+    "amount": 34849,
+    "won": 0,
+    "lost": 4
+   },
+   {
+    "source": "Event",
+    "count": 2,
+    "amount": 27150,
+    "won": 1,
+    "lost": 0
+   },
+   {
+    "source": "Reseau",
+    "count": 4,
+    "amount": 28300,
+    "won": 1,
+    "lost": 0
+   },
+   {
+    "source": "Recommandation",
+    "count": 3,
+    "amount": 13098,
+    "won": 1,
+    "lost": 1
+   },
+   {
+    "source": "Non renseigne",
+    "count": 4,
+    "amount": 27649,
+    "won": 0,
+    "lost": 2
+   }
+  ],
+  "deals_by_type": [
+   {
+    "type": "Notion",
+    "count": 12,
+    "amount": 91748
+   },
+   {
+    "type": "COO/Service client",
+    "count": 3,
+    "amount": 81500
+   },
+   {
+    "type": "Automatisation",
+    "count": 2,
+    "amount": 15000
+   },
+   {
+    "type": "Audit/Conseil/IA",
+    "count": 2,
+    "amount": 19600
+   },
+   {
+    "type": "Formation Entreprise",
+    "count": 1,
+    "amount": 2000
+   },
+   {
+    "type": "Coaching",
+    "count": 1,
+    "amount": 1899
+   }
+  ],
+  "deals_to_relaunch": [
+   {
+    "name": "Journee Notion Philippe",
+    "status": "Proposal to send",
+    "amount": 4000,
+    "days_idle": 78,
+    "action": "CLORE ou envoyer la prop immediatement — 78 jours de paralysie",
+    "priority": "critical"
+   },
+   {
+    "name": "Sparken - Structuration Notion",
+    "status": "Awaiting signature",
+    "amount": 6400,
+    "days_idle": 73,
+    "action": "ULTIMATUM EXPIRE - Appel direct + deadline 24h. Clore si silence.",
+    "priority": "critical"
+   },
+   {
+    "name": "Altercosmeto - Performance IA",
+    "status": "Proposal to send",
+    "amount": 14400,
+    "days_idle": 68,
+    "action": "Dernier contact Edouard KINI. Fermeture definitive si silence cette semaine.",
+    "priority": "critical"
+   },
+   {
+    "name": "PB-associes — Hub Notion",
+    "status": "Proposal to send",
+    "amount": 8500,
+    "days_idle": 7,
+    "action": "Accord verbal 29/05. Contrat non envoye 7j. ENVOYER CONTRAT MAINTENANT.",
+    "priority": "critical"
+   },
+   {
+    "name": "Peppit",
+    "status": "Awaiting signature",
+    "amount": 13000,
+    "days_idle": 57,
+    "action": "Relancer avant le 10/06. Proposer call de cloture urgent.",
+    "priority": "warning"
+   },
+   {
+    "name": "Shika Consulting",
+    "status": "Proposal to send",
+    "amount": 6400,
+    "days_idle": 25,
+    "action": "R2 realisee 18/05. 25 jours sans retour. Relancer Nouri cette semaine.",
+    "priority": "warning"
+   },
+   {
+    "name": "EVMT V1",
+    "status": "Proposal to send",
+    "amount": 8400,
+    "days_idle": 28,
+    "action": "Relancer Jerome OGOR cette semaine. Visio 08/05 positive mais pas encore signe.",
+    "priority": "warning"
+   }
+  ],
+  "top_deals": [
+   {
+    "rank": 1,
+    "name": "V2 implem (BLYYND)",
+    "amount": 26325,
+    "status": "Paid"
+   },
+   {
+    "rank": 2,
+    "name": "Altercosmeto",
+    "amount": 14400,
+    "status": "Proposal to send"
+   },
+   {
+    "rank": 3,
+    "name": "Notion X Peppit",
+    "amount": 13000,
+    "status": "Awaiting signature"
+   },
+   {
+    "rank": 4,
+    "name": "Cerena (Serena)",
+    "amount": 11800,
+    "status": "Awaiting signature"
+   },
+   {
+    "rank": 5,
+    "name": "PB-associes — Hub Notion",
+    "amount": 8500,
+    "status": "Proposal to send"
+   },
+   {
+    "rank": 6,
+    "name": "EVMT V1",
+    "amount": 8400,
+    "status": "Proposal to send"
+   },
+   {
+    "rank": 7,
+    "name": "Mathieu Leo / La Clairiere",
+    "amount": 7500,
+    "status": "Proposal to send"
+   },
+   {
+    "rank": 8,
+    "name": "Sparken",
+    "amount": 6400,
+    "status": "Awaiting signature"
+   },
+   {
+    "rank": 9,
+    "name": "Shika Consulting",
+    "amount": 6400,
+    "status": "Proposal to send"
+   },
+   {
+    "rank": 10,
+    "name": "Station Krishna",
+    "amount": 6400,
+    "status": "Partial paid"
+   }
+  ],
+  "main_loss_reason": "Trop cher",
+  "loss_reason_count": 7
+ },
+ "delivery": {
+  "target_hourly_rate": 200,
+  "hourly_rate_effective": 198,
+  "hourly_rate_3m": 247,
+  "hourly_rate_done_projects": 132,
+  "total_client_hours_10m": 290,
+  "total_tracked_hours_10m": 918,
+  "projects": [
+   {
+    "name": "OPTRA",
+    "hours": 85.2,
+    "ca_signed": 14373,
+    "ca_collected": 2895,
+    "hourly_rate_signed": 169,
+    "hourly_rate_collected": 34,
+    "status": "done",
+    "active_period": "Jul-Nov 2025",
+    "hours_estimated": null,
+    "overrun_flag": false
+   },
+   {
+    "name": "Cleany",
+    "hours": 30.8,
+    "ca_signed": null,
+    "ca_collected": null,
+    "hourly_rate_signed": null,
+    "hourly_rate_collected": null,
+    "status": "done",
+    "active_period": "Jul-Sep 2025",
+    "hours_estimated": null,
+    "overrun_flag": false
+   },
+   {
+    "name": "Formation Digital (ETIC)",
+    "hours": 26.1,
+    "ca_signed": 2458,
+    "ca_collected": 2458,
+    "hourly_rate_signed": 94,
+    "hourly_rate_collected": 94,
+    "status": "done",
+    "active_period": "Sep-Oct 2025",
+    "hours_estimated": null,
+    "overrun_flag": false
+   },
+   {
+    "name": "Structude",
+    "hours": 15.1,
+    "ca_signed": 2879,
+    "ca_collected": 2879,
+    "hourly_rate_signed": 191,
+    "hourly_rate_collected": 191,
+    "status": "done",
+    "active_period": "Sep-Oct 2025",
+    "hours_estimated": null,
+    "overrun_flag": false
+   },
+   {
+    "name": "Property Partners",
+    "hours": 11.6,
+    "ca_signed": 5400,
+    "ca_collected": 0,
+    "hourly_rate_signed": 466,
+    "hourly_rate_collected": null,
+    "status": "done_unpaid",
+    "active_period": "Oct 2025",
+    "hours_estimated": null,
+    "overrun_flag": false
+   },
+   {
+    "name": "Arkel",
+    "hours": 4.2,
+    "ca_signed": null,
+    "ca_collected": null,
+    "hourly_rate_signed": null,
+    "hourly_rate_collected": null,
+    "status": "done",
+    "active_period": "Nov 2025",
+    "hours_estimated": null,
+    "overrun_flag": false
+   },
+   {
+    "name": "Constance",
+    "hours": 3.0,
+    "ca_signed": null,
+    "ca_collected": null,
+    "hourly_rate_signed": null,
+    "hourly_rate_collected": null,
+    "status": "done",
+    "active_period": "Nov 2025",
+    "hours_estimated": null,
+    "overrun_flag": false
+   },
+   {
+    "name": "Enfant Argus",
+    "hours": 2.9,
+    "ca_signed": null,
+    "ca_collected": null,
+    "hourly_rate_signed": null,
+    "hourly_rate_collected": null,
+    "status": "done",
+    "active_period": "Jul 2025",
+    "hours_estimated": null,
+    "overrun_flag": false
+   },
+   {
+    "name": "Hush (BLYYND)",
+    "hours": 32.2,
+    "ca_signed": 26325,
+    "ca_collected": 15300,
+    "hourly_rate_signed": 817,
+    "hourly_rate_collected": 475,
+    "status": "active",
+    "active_period": "Oct 2025 - en cours",
+    "hours_estimated": null,
+    "overrun_flag": false,
+    "note": "Heures Timing incompletes (Dec/Jan non trackes). Taux horaire eleve = surestimation probable."
+   },
+   {
+    "name": "meedIA (Notion)",
+    "hours": 25.2,
+    "ca_signed": 7680,
+    "ca_collected": 7680,
+    "hourly_rate_signed": 305,
+    "hourly_rate_collected": 305,
+    "status": "active",
+    "active_period": "Fev 2026 - en cours",
+    "hours_estimated": null,
+    "overrun_flag": false,
+    "note": "0 heures trackees depuis mars. Total reel estime ~42h. Taux horaire surestime."
+   },
+   {
+    "name": "Firefighter",
+    "hours": 9.1,
+    "ca_signed": 3150,
+    "ca_collected": 2625,
+    "hourly_rate_signed": 346,
+    "hourly_rate_collected": 289,
+    "status": "active",
+    "active_period": "Nov 2025 - en cours",
+    "hours_estimated": null,
+    "overrun_flag": false,
+    "note": "Paiement partiel M3 recu 15/05 (525 EUR). Reste 525 EUR sur FAC-47."
+   },
+   {
+    "name": "Jesse",
+    "hours": 5.2,
+    "ca_signed": null,
+    "ca_collected": null,
+    "hourly_rate_signed": null,
+    "hourly_rate_collected": null,
+    "status": "active",
+    "active_period": "Nov 2025 - en cours",
+    "hours_estimated": null,
+    "overrun_flag": false
+   },
+   {
+    "name": "Riad",
+    "hours": 2.0,
+    "ca_signed": null,
+    "ca_collected": null,
+    "hourly_rate_signed": null,
+    "hourly_rate_collected": null,
+    "status": "active",
+    "active_period": "Mar 2026",
+    "hours_estimated": null,
+    "overrun_flag": false
+   },
+   {
+    "name": "Station Krishna",
+    "hours": 23.0,
+    "ca_signed": 6400,
+    "ca_collected": 3536,
+    "hourly_rate_signed": 278,
+    "hourly_rate_collected": 154,
+    "status": "active_new",
+    "active_period": "Avr 2026 - en cours",
+    "hours_estimated": null,
+    "overrun_flag": false,
+    "note": "23h total (6.6h avr + 16.4h mai). FAC-19 emise 05/06 (1 036 TTC, M3, impayee). Reste 2 864 EUR a encaisser."
+   },
+   {
+    "name": "Nico-Accompagnement",
+    "hours": 10.4,
+    "ca_signed": 1582,
+    "ca_collected": 1200,
+    "hourly_rate_signed": 152,
+    "hourly_rate_collected": 115,
+    "status": "active_new",
+    "active_period": "Avr 2026 - en cours",
+    "hours_estimated": null,
+    "overrun_flag": false,
+    "note": "Coaching 6 semaines. Paiement partiel (STROBIETTI 1 200 EUR recu 02/04). Solde 382 EUR."
+   },
+   {
+    "name": "Olympes",
+    "hours": 23.8,
+    "ca_signed": 1650,
+    "ca_collected": 1000,
+    "hourly_rate_signed": 69,
+    "hourly_rate_collected": 42,
+    "status": "active",
+    "active_period": "Mai-Juin 2026",
+    "hours_estimated": null,
+    "overrun_flag": false,
+    "note": "17h mai + 6.8h juin. Inclut ~9h pre-sales deal COO PERDU (53 100 EUR). Mini deal: 1 000 HT (FAC-17 payee) + 650 HT (FAC-18 impayee). Taux effectif hors pre-sales: ~115 EUR/h."
+   }
+  ],
+  "by_month": [
+   {
+    "month": "2025-07",
+    "client_hours": 66.5,
+    "total_hours": 111.1,
+    "ca_collected": 520,
+    "hourly_rate": 8
+   },
+   {
+    "month": "2025-08",
+    "client_hours": 15.5,
+    "total_hours": 63.3,
+    "ca_collected": 2895,
+    "hourly_rate": 187
+   },
+   {
+    "month": "2025-09",
+    "client_hours": 54.9,
+    "total_hours": 98.1,
+    "ca_collected": 5409,
+    "hourly_rate": 99
+   },
+   {
+    "month": "2025-10",
+    "client_hours": 69.2,
+    "total_hours": 115.1,
+    "ca_collected": 5547,
+    "hourly_rate": 80
+   },
+   {
+    "month": "2025-11",
+    "client_hours": 31.8,
+    "total_hours": 77.5,
+    "ca_collected": 11705,
+    "hourly_rate": 368
+   },
+   {
+    "month": "2025-12",
+    "client_hours": 19.3,
+    "total_hours": 124.0,
+    "ca_collected": 6150,
+    "hourly_rate": 319
+   },
+   {
+    "month": "2026-01",
+    "client_hours": 22.8,
+    "total_hours": 97.4,
+    "ca_collected": 7408,
+    "hourly_rate": 325
+   },
+   {
+    "month": "2026-02",
+    "client_hours": 18.7,
+    "total_hours": 95.2,
+    "ca_collected": 4711,
+    "hourly_rate": 252
+   },
+   {
+    "month": "2026-03",
+    "client_hours": 14.5,
+    "total_hours": 105.2,
+    "ca_collected": 4106,
+    "hourly_rate": 283
+   },
+   {
+    "month": "2026-04",
+    "client_hours": 12.73,
+    "total_hours": 102.0,
+    "ca_collected": 8563,
+    "hourly_rate": 673
+   },
+   {
+    "month": "2026-05",
+    "client_hours": 39.64,
+    "total_hours": 79.0,
+    "ca_collected": 3816,
+    "hourly_rate": 96
+   },
+   {
+    "month": "2026-06",
+    "client_hours": 6.75,
+    "total_hours": 24.5,
+    "ca_collected": 20,
+    "hourly_rate": 3
+   }
+  ],
+  "notes": "Taux 3M (mar-avr-mai): 247 EUR/h (was 279 — baisse: +8h Olympes pre-sales mai sans CA supplementaire). Taux 10M: 198 EUR/h (was 207). Station Krishna: 23h, 278 EUR/h signe, FAC-19 emise 05/06 (1 036 EUR). Olympes: 23.8h total dont ~9h pre-sales deal perdu. Nico: 10.4h, 152 EUR/h signe. meedIA 0h depuis mars. OPTRA + Property Partners: 16 878 EUR creances douteuses. DSO: 111j."
+ },
+ "snapshots_history": [
+  {
+   "week": "S23-2026",
+   "date": "2026-06-05",
+   "treasury": 23098,
+   "ca_ytd": 28624,
+   "projection": 65000,
+   "dso": 111,
+   "burn": 2200,
+   "runway": 10.5,
+   "margin": 0.706,
+   "top3": 0.48,
+   "unpaid": 20298
+  },
+  {
+   "week": "S22-2026",
+   "date": "2026-05-29",
+   "treasury": 23880,
+   "ca_ytd": 28604,
+   "projection": 65000,
+   "dso": 95,
+   "burn": 2200,
+   "runway": 10.9,
+   "margin": 0.706,
+   "top3": 0.48,
+   "unpaid": 18482
+  },
+  {
+   "week": "S22-2026",
+   "date": "2026-05-26",
+   "treasury": 24292,
+   "ca_ytd": 27824,
+   "projection": 65000,
+   "dso": 95,
+   "burn": 2200,
+   "runway": 11.0,
+   "margin": 0.706,
+   "top3": 0.48,
+   "unpaid": 18482
+  },
+  {
+   "week": "S21-2026",
+   "date": "2026-05-22",
+   "treasury": 24292,
+   "ca_ytd": 27824,
+   "projection": 65000,
+   "dso": 95,
+   "burn": 2200,
+   "runway": 11.0,
+   "margin": 0.706,
+   "top3": 0.48,
+   "unpaid": 18482
+  },
+  {
+   "week": "S20-2026",
+   "date": "2026-05-15",
+   "treasury": 24256,
+   "ca_ytd": 26624,
+   "projection": 71000,
+   "dso": 90,
+   "burn": 2200,
+   "runway": 11.0,
+   "margin": 0.706,
+   "top3": 0.49,
+   "unpaid": 17703
+  },
+  {
+   "week": "S19-2026",
+   "date": "2026-05-08",
+   "treasury": 23935,
+   "ca_ytd": 25843,
+   "projection": 72801,
+   "dso": 114,
+   "burn": 2200,
+   "runway": 10.9,
+   "margin": 0.706,
+   "top3": 0.5,
+   "unpaid": 18204
+  },
+  {
+   "week": "S18-2026",
+   "date": "2026-05-01",
+   "treasury": 23452,
+   "ca_ytd": 24788,
+   "projection": 74364,
+   "dso": 125,
+   "burn": 2200,
+   "runway": 10.7,
+   "margin": 0.706,
+   "top3": 0.52,
+   "unpaid": 18204
+  },
+  {
+   "week": "S17-2026",
+   "date": "2026-04-26",
+   "treasury": 24230,
+   "ca_ytd": 24788,
+   "projection": 74364,
+   "dso": 120,
+   "burn": 2200,
+   "runway": 11.0,
+   "margin": 0.706,
+   "top3": 0.52,
+   "unpaid": 18729
+  },
+  {
+   "week": "S17-2026",
+   "date": "2026-04-20",
+   "treasury": 25819,
+   "ca_ytd": 24788,
+   "projection": 82251,
+   "dso": 120,
+   "burn": 2200,
+   "runway": 11.7,
+   "margin": 0.706,
+   "top3": 0.52,
+   "unpaid": 18729
+  },
+  {
+   "week": "S16-2026",
+   "date": "2026-04-16",
+   "treasury": 23633,
+   "ca_ytd": 22000,
+   "projection": 75429,
+   "dso": 88,
+   "burn": 1997,
+   "runway": 11.8,
+   "margin": 0.716,
+   "top3": 0.55,
+   "unpaid": 18753
+  }
+ ],
+ "actions": {
+  "week": "S24-2026",
+  "generated_at": "2026-06-10T12:00:00Z",
+  "items": [
+   {
+    "id": "S24-1",
+    "title": "PB-associes signe : envoyer la facture d'acompte 50% + caler le kick-off",
+    "why": "Deal Hub Notion (8 500 EUR) signe fin S23. Pas encore facture : chaque jour sans facture decale l'encaissement.",
+    "impact": "+4 250 EUR encaissables sous 15j",
+    "kr_id": "31b1b4b9-aefa-8111-a1ff-d94db2a332c7",
+    "kr_name": "B26-1 (40K CA signe T2)",
+    "priority": "critical",
+    "due_date": "2026-06-12",
+    "tag": "Finance"
+   },
+   {
+    "id": "S24-2",
+    "title": "OPTRA : mise en demeure formelle sur les 4 factures impayees (11 478 EUR)",
+    "why": "185 a 262 jours de retard, relances simples epuisees. Represente 57% des impayes totaux (20 298 EUR).",
+    "impact": "DSO 111j vers ~70j si encaisse",
+    "kr_id": "34e1b4b9-aefa-819a-bd54-cd8da9bea65a",
+    "kr_name": "B26-3 (Treso >=25K, burn <=2K)",
+    "priority": "critical",
+    "due_date": "2026-06-13",
+    "tag": "Finance"
+   },
+   {
+    "id": "S24-3",
+    "title": "Peppit (13 000 EUR) : proposer un call de cloture cette semaine",
+    "why": "57 jours idle en Awaiting signature. B26-1 a 24% avec 20 jours restants : c'est le plus gros levier actionnable.",
+    "impact": "+13 000 EUR vers les 40K T2",
+    "kr_id": "31b1b4b9-aefa-8111-a1ff-d94db2a332c7",
+    "kr_name": "B26-1 (40K CA signe T2)",
+    "priority": "high",
+    "due_date": "2026-06-12",
+    "tag": "Sales"
+   },
+   {
+    "id": "S24-4",
+    "title": "Altercosmeto (14 400 EUR) : dernier appel direct avec deadline 48h, sinon clore",
+    "why": "68 jours idle apres la propale. Un gros deal qui pourrit fausse le pipeline : decision nette plutot qu'attente.",
+    "impact": "Pipeline realiste + focus sur les deals chauds",
+    "kr_id": "31b1b4b9-aefa-8111-a1ff-d94db2a332c7",
+    "kr_name": "B26-1 (40K CA signe T2)",
+    "priority": "high",
+    "due_date": "2026-06-13",
+    "tag": "Sales"
+   },
+   {
+    "id": "S24-5",
+    "title": "PROPERTY PARTNERS (5 400 EUR) : basculer en recouvrement (injonction de payer)",
+    "why": "242 et 259 jours de retard : hors du champ de la relance amiable.",
+    "impact": "+5 400 EUR ou provision propre dans les comptes",
+    "kr_id": "34e1b4b9-aefa-819a-bd54-cd8da9bea65a",
+    "kr_name": "B26-3 (Treso >=25K, burn <=2K)",
+    "priority": "medium",
+    "due_date": "2026-06-16",
+    "tag": "Finance"
+   }
+  ],
+  "previous": {
+   "week": "S23-2026",
+   "items": [],
+   "done_rate": null
+  }
+ }
 }

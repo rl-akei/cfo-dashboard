@@ -116,6 +116,33 @@
     .container { padding: 16px; }
   }
 
+  /* Actions a entreprendre */
+  .actions-list { display: flex; flex-direction: column; gap: 10px; }
+  .action-card { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--blue); border-radius: 10px; padding: 16px; display: flex; gap: 16px; align-items: flex-start; }
+  .action-card.prio-critical { border-left-color: var(--red); }
+  .action-card.prio-high { border-left-color: var(--orange); }
+  .action-card.prio-medium { border-left-color: var(--blue); }
+  .action-card .a-num { font-size: 20px; font-weight: 800; color: var(--text-dim); min-width: 28px; }
+  .action-card .a-body { flex: 1; }
+  .action-card .a-title { font-size: 14px; font-weight: 700; }
+  .action-card .a-why { font-size: 12px; color: var(--text-dim); margin-top: 4px; line-height: 1.5; }
+  .action-card .a-impact { font-size: 12px; color: var(--green); margin-top: 4px; }
+  .action-card .a-meta { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; align-items: center; }
+  .btn-push { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--blue); background: rgba(59,130,246,0.12); color: var(--blue); font-weight: 600; font-size: 12px; cursor: pointer; white-space: nowrap; transition: all 0.2s; font-family: inherit; }
+  .btn-push:hover { background: rgba(59,130,246,0.25); }
+  .btn-push:disabled { opacity: 0.5; cursor: wait; }
+  .btn-pushed { display: inline-block; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--green); background: rgba(0,214,143,0.12); color: var(--green); font-weight: 600; font-size: 12px; text-decoration: none; white-space: nowrap; }
+  .prev-actions { margin-top: 16px; }
+  .prev-actions h4 { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+
+  /* Ressenti */
+  .ressenti-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .ressenti-card textarea { width: 100%; min-height: 90px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); padding: 12px; font-family: inherit; font-size: 13px; resize: vertical; margin-bottom: 12px; }
+  .ressenti-card textarea:focus { outline: none; border-color: var(--blue); }
+  .ressenti-card select { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); padding: 8px 12px; font-family: inherit; font-size: 13px; }
+  .ressenti-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .ressenti-status { font-size: 12px; margin-left: auto; }
+
   .nav-tabs { display: flex; gap: 4px; padding: 0 32px; background: var(--card); border-bottom: 1px solid var(--border); }
   .nav-tab { padding: 12px 20px; font-size: 13px; font-weight: 600; color: var(--text-dim); background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; }
   .nav-tab:hover { color: var(--text); }
@@ -165,6 +192,33 @@
   <div class="section">
     <div class="section-title"><div class="dot" style="background:var(--red)"></div> Alertes</div>
     <div class="alerts" id="alertsContainer"></div>
+  </div>
+
+  <!-- Actions a entreprendre -->
+  <div class="section" id="actionsSection" style="display:none">
+    <div class="section-title"><div class="dot" style="background:var(--yellow)"></div> Plan d'action <span id="actionsWeek" style="color:var(--yellow)"></span> <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-dim)">— valide pour pousser dans RL-To do</span></div>
+    <div class="actions-list" id="actionsContainer"></div>
+    <div class="prev-actions" id="prevActionsWrap"></div>
+  </div>
+
+  <!-- Ressenti -->
+  <div class="section">
+    <div class="section-title"><div class="dot" style="background:var(--cyan)"></div> Mon ressenti de la semaine</div>
+    <div class="ressenti-card">
+      <textarea id="ressentiText" placeholder="Comment tu sens le business cette semaine ? Ce qui te preoccupe, ce qui avance bien... (part directement dans RL-Weekly Review & Prep)"></textarea>
+      <div class="ressenti-row">
+        <select id="ressentiAvis">
+          <option value="">Avis (optionnel)</option>
+          <option>🔥 Super productive</option>
+          <option>🏋️ Satisfait</option>
+          <option>♻️ Pas assez focus</option>
+          <option>😓 Down</option>
+          <option>🌴 Vacances</option>
+        </select>
+        <button class="btn-push" id="ressentiBtn" onclick="sendRessenti()">Envoyer dans Notion</button>
+        <span class="ressenti-status" id="ressentiStatus"></span>
+      </div>
+    </div>
   </div>
 
   <!-- Revenue Charts -->
@@ -508,6 +562,114 @@ function renderKPIs() {
       <div class="icon">${c.icon}</div>
     </div>
   `).join('');
+}
+
+// ==========================================
+// ACTIONS A ENTREPRENDRE + RESSENTI (CFO API)
+// ==========================================
+const CFO_API = 'https://umami.ramalogic.com/cfo-api';
+
+function cfoToken(force) {
+  let t = localStorage.getItem('cfo_api_token');
+  if (!t || force) {
+    t = prompt('Token CFO API (saisi une seule fois, stocke dans ce navigateur) :');
+    if (t) localStorage.setItem('cfo_api_token', t.trim());
+  }
+  return localStorage.getItem('cfo_api_token');
+}
+
+async function cfoPost(route, payload) {
+  const token = cfoToken();
+  if (!token) throw new Error('Token manquant');
+  const res = await fetch(CFO_API + route, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-CFO-Token': token },
+    body: JSON.stringify(payload)
+  });
+  if (res.status === 401) { localStorage.removeItem('cfo_api_token'); throw new Error('Token invalide — reclique pour le ressaisir'); }
+  const j = await res.json();
+  if (!j.ok) throw new Error(j.error || 'Erreur API');
+  return j;
+}
+
+const pushedKey = (week, id) => 'cfo_pushed_' + week + '_' + id;
+
+function renderActions() {
+  const a = DATA.actions;
+  const section = document.getElementById('actionsSection');
+  if (!a || !a.items || !a.items.length) return;
+  section.style.display = 'block';
+  document.getElementById('actionsWeek').textContent = a.week;
+
+  const prioLabel = { critical: ['CRITIQUE', 'red'], high: ['PRIORITAIRE', 'orange'], medium: ['A PLANIFIER', 'blue'] };
+  document.getElementById('actionsContainer').innerHTML = a.items.map((it, i) => {
+    const pushedUrl = localStorage.getItem(pushedKey(a.week, it.id));
+    const [pl, pc] = prioLabel[it.priority] || [it.priority, 'blue'];
+    const btn = pushedUrl
+      ? `<a class="btn-pushed" href="${pushedUrl}" target="_blank">&#10003; Dans RL-To do</a>`
+      : `<button class="btn-push" onclick="pushAction(${i}, this)">&rarr; RL-To do</button>`;
+    return `<div class="action-card prio-${it.priority}">
+      <div class="a-num">${i + 1}</div>
+      <div class="a-body">
+        <div class="a-title">${it.title}</div>
+        <div class="a-why">${it.why}</div>
+        ${it.impact ? `<div class="a-impact">Impact : ${it.impact}</div>` : ''}
+        <div class="a-meta">
+          <span class="badge badge-${pc}">${pl}</span>
+          ${it.kr_name ? `<span class="badge badge-blue">${it.kr_name}</span>` : ''}
+          ${it.due_date ? `<span class="badge badge-orange">Pour le ${it.due_date}</span>` : ''}
+        </div>
+      </div>
+      ${btn}
+    </div>`;
+  }).join('');
+
+  const prev = a.previous;
+  const wrap = document.getElementById('prevActionsWrap');
+  if (prev && prev.items && prev.items.length) {
+    const stMap = { 'Done': ['Fait', 'green'], 'In progress': ['En cours', 'blue'], 'Need to be reviewed': ['A review', 'blue'], 'Not started': ['Pas demarre', 'orange'], 'not_pushed': ['Non validee', 'red'] };
+    const doneRate = prev.done_rate != null ? ` — ${Math.round(prev.done_rate * 100)}% faites` : '';
+    wrap.innerHTML = `<h4>Suivi semaine precedente (${prev.week})${doneRate}</h4>
+      <div class="table-card"><table><tbody>` +
+      prev.items.map(p => {
+        const [sl, sc] = stMap[p.status] || [p.status, 'blue'];
+        const link = p.notion_url ? `<a href="${p.notion_url}" target="_blank" style="color:var(--blue);font-size:11px">Notion &nearr;</a>` : '';
+        return `<tr><td>${p.title}</td><td style="width:120px"><span class="badge badge-${sc}">${sl}</span></td><td style="width:70px">${link}</td></tr>`;
+      }).join('') + '</tbody></table></div>';
+  } else { wrap.innerHTML = ''; }
+}
+
+async function pushAction(i, btn) {
+  const a = DATA.actions;
+  const it = a.items[i];
+  btn.disabled = true; btn.textContent = 'Envoi...';
+  try {
+    const j = await cfoPost('/action', { ...it, week: a.week });
+    localStorage.setItem(pushedKey(a.week, it.id), j.url);
+    renderActions();
+  } catch (e) {
+    btn.disabled = false; btn.innerHTML = '&rarr; RL-To do';
+    alert('Echec : ' + e.message);
+  }
+}
+
+async function sendRessenti() {
+  const text = document.getElementById('ressentiText').value.trim();
+  const avis = document.getElementById('ressentiAvis').value;
+  const status = document.getElementById('ressentiStatus');
+  const btn = document.getElementById('ressentiBtn');
+  if (!text) { status.style.color = 'var(--orange)'; status.textContent = 'Ecris ton ressenti d\'abord.'; return; }
+  btn.disabled = true; btn.textContent = 'Envoi...';
+  try {
+    const j = await cfoPost('/ressenti', avis ? { text, avis } : { text });
+    status.style.color = 'var(--green)';
+    status.innerHTML = `&#10003; Envoye dans la Weekly Review <a href="${j.url}" target="_blank" style="color:var(--green)">ouvrir &nearr;</a>`;
+    document.getElementById('ressentiText').value = '';
+  } catch (e) {
+    status.style.color = 'var(--red)';
+    status.textContent = 'Echec : ' + e.message;
+  }
+  btn.disabled = false; btn.textContent = 'Envoyer dans Notion';
 }
 
 // ==========================================
@@ -1144,6 +1306,7 @@ async function initDashboard() {
     document.getElementById('snapshotDate').textContent = DATA.meta.generated_at.split('T')[0];
     renderKPIs();
     renderAlerts();
+    renderActions();
     renderRevenueChart();
     renderClientsChart();
     renderOkrTrajectory();
