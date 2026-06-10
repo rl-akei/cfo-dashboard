@@ -4,170 +4,232 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CFO Dashboard - Rama Logic</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@300,400,500,600&f[]=boska@501&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
-  :root {
-    --bg: #0a0a0f;
-    --card: #12121a;
-    --card-hover: #1a1a28;
-    --border: #1e1e2e;
-    --text: #e0e0e0;
-    --text-dim: #888;
-    --green: #00d68f;
-    --red: #ff4d6a;
-    --orange: #ff9f43;
-    --blue: #3b82f6;
-    --purple: #a855f7;
-    --yellow: #fbbf24;
-    --cyan: #22d3ee;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: 'Inter', -apple-system, system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+/* Hallmark · genre: modern-minimal · macrostructure: Workbench (app dashboard, IA preserved)
+ * design-system: RamaLogic-DESIGN.md (locked) · designed-as-app
+ * theme: Rama Logic (cream paper · aloe dominant · mindaro accent <10% · warm semantics)
+ * pre-emit critique: P4 H5 E4 S4 R5 V4 */
+:root {
+  /* Brand — Rama Logic (RamaLogic-DESIGN.md) */
+  --cream: #FFFCF7;
+  --cream-2: #F8F4EC;
+  --beige: #D2CFC9;
+  --beige-soft: #E8E4DC;
+  --ink: #0D1A14;
+  --slate: #5C6661;
+  --aloe-dark: #475E54;
+  --aloe: #6A8D7E;
+  --aloe-light: #B4C6BE;
+  --mindaro-dark: #9FA55F;
+  --mindaro: #DFE971;
+  --mindaro-light: #F6FBC6;
+  --blue-dark: #6F94A6;
+  --blue-norm: #A7DEF9;
+  --blue-light: #D3EEFC;
+  /* Semantic states — warm-derived, never pure red/grey */
+  --crit: #B0563C;
+  --warn: #C28E3F;
+  --ok: var(--aloe);
+  --info: var(--blue-dark);
+  /* Legacy aliases consumed by the render JS (var(--green) etc.) */
+  --bg: var(--cream);
+  --card: var(--cream);
+  --card-hover: var(--cream-2);
+  --border: var(--beige-soft);
+  --text: var(--ink);
+  --text-dim: var(--slate);
+  --green: var(--ok);
+  --red: var(--crit);
+  --orange: var(--warn);
+  --blue: var(--info);
+  --purple: var(--aloe-dark);
+  --yellow: var(--mindaro-dark);
+  --cyan: var(--blue-dark);
+  /* Type */
+  --font-display: "Clash Grotesk", "General Sans", sans-serif;
+  --font-body: "Clash Grotesk", "General Sans", sans-serif;
+  --font-accent: "Boska", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  /* Depth — warm, ink-based */
+  --shadow-sm: 0 1px 2px rgba(13,26,20,0.06);
+  --shadow-md: 0 4px 12px -2px rgba(13,26,20,0.08);
+  /* Radii */
+  --r-input: 8px;
+  --r-card: 16px;
+  --r-pill: 9999px;
+  /* Motion */
+  --ease-std: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 150ms;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { overflow-x: clip; }
+body { font-family: var(--font-body); font-weight: 400; background: var(--bg); color: var(--text); min-height: 100vh; -webkit-font-smoothing: antialiased; }
 
-  .header { padding: 20px 32px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-  .header h1 { font-size: 20px; font-weight: 700; }
-  .header h1 span { color: var(--blue); }
-  .header .meta { font-size: 12px; color: var(--text-dim); }
-  .header .meta .live { color: var(--green); }
+.header { padding: 24px 32px 20px; border-bottom: 1px solid var(--beige-soft); display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+.header h1 { font-family: var(--font-display); font-size: 20px; font-weight: 500; letter-spacing: -0.01em; color: var(--ink); }
+.header h1 span { color: var(--aloe); }
+.header .meta { font-family: var(--font-accent); font-style: italic; font-weight: 500; font-size: 15px; color: var(--slate); }
+.header .meta strong { font-family: var(--font-mono); font-style: normal; font-weight: 500; font-size: 12px; color: var(--aloe-dark); }
+.header .meta .live { color: var(--aloe); font-style: normal; }
 
-  .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+.container { max-width: 1400px; margin: 0 auto; padding: 32px 24px 96px; }
 
-  /* KPI Cards */
-  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
-  .kpi-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; position: relative; overflow: hidden; transition: background 0.2s; }
-  .kpi-card:hover { background: var(--card-hover); }
-  .kpi-card .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); margin-bottom: 8px; }
-  .kpi-card .value { font-size: 28px; font-weight: 800; line-height: 1.1; }
-  .kpi-card .sub { font-size: 12px; color: var(--text-dim); margin-top: 6px; }
-  .kpi-card .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-top: 6px; }
-  .badge-green { background: rgba(0,214,143,0.15); color: var(--green); }
-  .badge-red { background: rgba(255,77,106,0.15); color: var(--red); }
-  .badge-orange { background: rgba(255,159,67,0.15); color: var(--orange); }
-  .badge-blue { background: rgba(59,130,246,0.15); color: var(--blue); }
-  .kpi-card .icon { position: absolute; top: 16px; right: 16px; font-size: 24px; opacity: 0.5; }
-  .kpi-card .sparkline { margin-top: 12px; height: 40px; }
+/* KPI Cards */
+.kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 48px; }
+.kpi-card { background: var(--card); border: 1px solid var(--beige-soft); border-radius: var(--r-card); padding: 24px; position: relative; overflow: hidden; transition: border-color var(--dur-fast) var(--ease-std), transform var(--dur-fast) var(--ease-std); box-shadow: var(--shadow-sm); }
+.kpi-card:hover { border-color: var(--aloe-light); transform: translateY(-2px); }
+.kpi-card .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--slate); margin-bottom: 10px; font-weight: 500; }
+.kpi-card .value { font-family: var(--font-mono); font-size: 26px; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.kpi-card .sub { font-size: 12px; color: var(--slate); margin-top: 8px; line-height: 1.5; overflow-wrap: anywhere; }
+.kpi-card .badge { display: inline-block; padding: 3px 10px; border-radius: var(--r-pill); font-size: 11px; font-weight: 500; margin-top: 10px; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: var(--r-pill); font-size: 11px; font-weight: 500; }
+.badge-green { background: rgba(106,141,126,0.14); color: var(--aloe-dark); }
+.badge-red { background: rgba(176,86,60,0.12); color: var(--crit); }
+.badge-orange { background: rgba(194,142,63,0.14); color: #8F6526; }
+.badge-blue { background: rgba(111,148,166,0.14); color: #4E707F; }
+.kpi-card .icon { display: none; }
+.kpi-card .sparkline { margin-top: 12px; height: 40px; }
 
-  .v-green { color: var(--green); }
-  .v-red { color: var(--red); }
-  .v-orange { color: var(--orange); }
-  .v-blue { color: var(--blue); }
-  .v-purple { color: var(--purple); }
+.v-green { color: var(--ok); }
+.v-red { color: var(--crit); }
+.v-orange { color: var(--warn); }
+.v-blue { color: var(--info); }
+.v-purple { color: var(--aloe-dark); }
 
-  /* Sections */
-  .section { margin-bottom: 24px; }
-  .section-title { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-dim); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
-  .section-title .dot { width: 8px; height: 8px; border-radius: 50%; }
+/* Sections */
+.section { margin-bottom: 56px; }
+.section-title { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--aloe-dark); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.section-title .dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+.section-title::after { content: ""; flex: 1; height: 1px; background: var(--beige-soft); margin-left: 8px; }
 
-  /* Chart containers */
-  .chart-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 24px; }
-  .chart-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
-  .chart-card h3 { font-size: 13px; font-weight: 600; margin-bottom: 16px; color: var(--text-dim); }
-  .chart-card canvas { max-height: 280px; }
+/* Chart containers */
+.chart-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 24px; }
+.chart-card { background: var(--card); border: 1px solid var(--beige-soft); border-radius: var(--r-card); padding: 24px; box-shadow: var(--shadow-sm); }
+.chart-card h3 { font-size: 13px; font-weight: 500; margin-bottom: 16px; color: var(--slate); }
+.chart-card canvas { max-height: 280px; }
 
-  .chart-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+.chart-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 24px; }
 
-  /* OKR Section */
-  .okr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
-  .okr-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
-  .okr-card .obj-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-  .okr-card .obj-angle { font-size: 11px; color: var(--text-dim); margin-bottom: 16px; }
-  .kr-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid var(--border); }
-  .kr-row .kr-name { flex: 1; font-size: 13px; }
-  .kr-row .kr-bar-bg { width: 120px; height: 6px; background: #1e1e2e; border-radius: 3px; overflow: hidden; }
-  .kr-row .kr-bar { height: 100%; border-radius: 3px; transition: width 0.8s ease; }
-  .kr-row .kr-pct { font-size: 13px; font-weight: 700; width: 50px; text-align: right; }
-  .kr-row .kr-status { font-size: 11px; width: 80px; text-align: center; padding: 2px 6px; border-radius: 4px; }
+/* OKR Section */
+.okr-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 24px; }
+.okr-card { background: var(--card); border: 1px solid var(--beige-soft); border-radius: var(--r-card); padding: 24px; box-shadow: var(--shadow-sm); }
+.okr-card .obj-title { font-family: var(--font-display); font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+.okr-card .obj-angle { font-size: 11px; color: var(--slate); margin-bottom: 16px; }
+.kr-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--beige-soft); }
+.kr-row .kr-name { flex: 1; font-size: 13px; min-width: 0; overflow-wrap: anywhere; }
+.kr-row .kr-bar-bg { width: 120px; height: 5px; background: var(--beige-soft); border-radius: 3px; overflow: hidden; flex: none; }
+.kr-row .kr-bar { height: 100%; border-radius: 3px; transition: width 600ms var(--ease-out); }
+.kr-row .kr-pct { font-family: var(--font-mono); font-size: 12px; font-weight: 600; width: 50px; text-align: right; font-variant-numeric: tabular-nums; }
+.kr-row .kr-status { font-size: 11px; width: 80px; text-align: center; padding: 3px 6px; border-radius: var(--r-pill); flex: none; }
 
-  /* Alerts */
-  .alerts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
-  .alert { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 8px; font-size: 13px; }
-  .alert-critical { background: rgba(255,77,106,0.08); border: 1px solid rgba(255,77,106,0.2); }
-  .alert-warning { background: rgba(255,159,67,0.08); border: 1px solid rgba(255,159,67,0.2); }
-  .alert-info { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); }
-  .alert .dot { min-width: 8px; height: 8px; border-radius: 50%; }
-  .alert-critical .dot { background: var(--red); }
-  .alert-warning .dot { background: var(--orange); }
-  .alert-info .dot { background: var(--blue); }
-  .alert .title { font-weight: 600; }
-  .alert .detail { color: var(--text-dim); margin-left: auto; }
+/* Alerts */
+.alerts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+.alert { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: var(--r-input); font-size: 13px; flex-wrap: wrap; }
+.alert-critical { background: rgba(176,86,60,0.07); border: 1px solid rgba(176,86,60,0.22); }
+.alert-warning { background: rgba(194,142,63,0.08); border: 1px solid rgba(194,142,63,0.25); }
+.alert-info { background: rgba(111,148,166,0.08); border: 1px solid rgba(111,148,166,0.22); }
+.alert .dot { min-width: 7px; height: 7px; border-radius: 50%; }
+.alert-critical .dot { background: var(--crit); }
+.alert-warning .dot { background: var(--warn); }
+.alert-info .dot { background: var(--info); }
+.alert .title { font-weight: 500; }
+.alert .detail { color: var(--slate); margin-left: auto; }
 
-  /* Table */
-  .table-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-  .table-card h3 { font-size: 13px; font-weight: 600; padding: 16px 20px; color: var(--text-dim); border-bottom: 1px solid var(--border); }
-  table { width: 100%; border-collapse: collapse; }
-  th { text-align: left; padding: 10px 16px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-dim); background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--border); }
-  td { padding: 10px 16px; font-size: 13px; border-bottom: 1px solid var(--border); }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: rgba(255,255,255,0.02); }
+/* Table */
+.table-card { background: var(--card); border: 1px solid var(--beige-soft); border-radius: var(--r-card); overflow: hidden; box-shadow: var(--shadow-sm); }
+.table-card h3 { font-size: 13px; font-weight: 500; padding: 16px 20px; color: var(--slate); border-bottom: 1px solid var(--beige-soft); }
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; padding: 10px 16px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; color: var(--slate); background: var(--cream-2); border-bottom: 1px solid var(--beige-soft); }
+td { padding: 11px 16px; font-size: 13px; border-bottom: 1px solid var(--beige-soft); }
+td:has(> span), td { font-variant-numeric: tabular-nums; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--cream-2); }
 
-  /* Progress ring for OKR */
-  .progress-ring { position: relative; width: 48px; height: 48px; }
-  .progress-ring svg { transform: rotate(-90deg); }
-  .progress-ring .pct-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 11px; font-weight: 700; }
+/* Progress ring for OKR */
+.progress-ring { position: relative; width: 48px; height: 48px; }
+.progress-ring svg { transform: rotate(-90deg); }
+.progress-ring .pct-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 11px; font-weight: 600; }
 
-  /* Responsive */
-  @media (max-width: 1024px) {
-    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-    .chart-grid, .okr-grid { grid-template-columns: 1fr; }
-    .chart-grid-3 { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 640px) {
-    .kpi-grid { grid-template-columns: 1fr; }
-    .container { padding: 16px; }
-  }
+/* Actions a entreprendre */
+.actions-list { display: flex; flex-direction: column; gap: 10px; }
+.action-card { background: var(--card); border: 1px solid var(--beige-soft); border-left: 3px solid var(--info); border-radius: 12px; padding: 20px; display: flex; gap: 16px; align-items: flex-start; box-shadow: var(--shadow-sm); transition: border-color var(--dur-fast) var(--ease-std); }
+.action-card:hover { border-color: var(--aloe-light); }
+.action-card.prio-critical { border-left-color: var(--crit); }
+.action-card.prio-high { border-left-color: var(--warn); }
+.action-card.prio-medium { border-left-color: var(--info); }
+.action-card .a-num { font-family: var(--font-mono); font-size: 18px; font-weight: 600; color: var(--beige); min-width: 26px; line-height: 1.3; }
+.action-card .a-body { flex: 1; min-width: 0; }
+.action-card .a-title { font-family: var(--font-display); font-size: 15px; font-weight: 500; overflow-wrap: anywhere; }
+.action-card .a-why { font-size: 12.5px; color: var(--slate); margin-top: 4px; line-height: 1.55; }
+.action-card .a-impact { font-size: 12.5px; color: var(--aloe-dark); margin-top: 4px; font-weight: 500; }
+.action-card .a-meta { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; align-items: center; }
+.btn-push { padding: 9px 18px; border-radius: var(--r-pill); border: 1px solid var(--aloe-dark); background: var(--aloe-dark); color: var(--cream); font-weight: 500; font-size: 12.5px; cursor: pointer; white-space: nowrap; transition: background var(--dur-fast) var(--ease-std), border-color var(--dur-fast) var(--ease-std); font-family: inherit; }
+.btn-push:hover { background: var(--ink); border-color: var(--ink); }
+.btn-push:focus-visible, .nav-tab:focus-visible, .filter-btn:focus-visible, .search-input:focus-visible { outline: 2px solid var(--aloe-dark); outline-offset: 2px; }
+.btn-push:disabled { opacity: 0.5; cursor: wait; }
+.btn-pushed { display: inline-block; padding: 9px 18px; border-radius: var(--r-pill); border: 1px solid var(--aloe); background: rgba(180,198,190,0.25); color: var(--aloe-dark); font-weight: 500; font-size: 12.5px; text-decoration: none; white-space: nowrap; }
+.prev-actions { margin-top: 20px; }
+.prev-actions h4 { font-size: 11px; color: var(--slate); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; margin-bottom: 8px; }
 
-  /* Actions a entreprendre */
-  .actions-list { display: flex; flex-direction: column; gap: 10px; }
-  .action-card { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--blue); border-radius: 10px; padding: 16px; display: flex; gap: 16px; align-items: flex-start; }
-  .action-card.prio-critical { border-left-color: var(--red); }
-  .action-card.prio-high { border-left-color: var(--orange); }
-  .action-card.prio-medium { border-left-color: var(--blue); }
-  .action-card .a-num { font-size: 20px; font-weight: 800; color: var(--text-dim); min-width: 28px; }
-  .action-card .a-body { flex: 1; }
-  .action-card .a-title { font-size: 14px; font-weight: 700; }
-  .action-card .a-why { font-size: 12px; color: var(--text-dim); margin-top: 4px; line-height: 1.5; }
-  .action-card .a-impact { font-size: 12px; color: var(--green); margin-top: 4px; }
-  .action-card .a-meta { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; align-items: center; }
-  .btn-push { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--blue); background: rgba(59,130,246,0.12); color: var(--blue); font-weight: 600; font-size: 12px; cursor: pointer; white-space: nowrap; transition: all 0.2s; font-family: inherit; }
-  .btn-push:hover { background: rgba(59,130,246,0.25); }
-  .btn-push:disabled { opacity: 0.5; cursor: wait; }
-  .btn-pushed { display: inline-block; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--green); background: rgba(0,214,143,0.12); color: var(--green); font-weight: 600; font-size: 12px; text-decoration: none; white-space: nowrap; }
-  .prev-actions { margin-top: 16px; }
-  .prev-actions h4 { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+/* Ressenti */
+.ressenti-card { background: var(--mindaro-light); border: 1px solid var(--beige-soft); border-radius: var(--r-card); padding: 24px; }
+.ressenti-card textarea { width: 100%; min-height: 90px; background: var(--cream); border: 1px solid var(--beige); border-radius: var(--r-input); color: var(--ink); padding: 12px 14px; font-family: inherit; font-size: 14px; line-height: 1.6; resize: vertical; margin-bottom: 12px; }
+.ressenti-card textarea::placeholder { color: var(--slate); opacity: 0.7; }
+.ressenti-card textarea:focus { outline: 2px solid var(--aloe-dark); outline-offset: 0; border-color: var(--aloe-dark); }
+.ressenti-card select { background: var(--cream); border: 1px solid var(--beige); border-radius: var(--r-input); color: var(--ink); padding: 9px 12px; font-family: inherit; font-size: 13px; }
+.ressenti-card select:focus-visible { outline: 2px solid var(--aloe-dark); outline-offset: 0; }
+.ressenti-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.ressenti-status { font-size: 12.5px; margin-left: auto; }
 
-  /* Ressenti */
-  .ressenti-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
-  .ressenti-card textarea { width: 100%; min-height: 90px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); padding: 12px; font-family: inherit; font-size: 13px; resize: vertical; margin-bottom: 12px; }
-  .ressenti-card textarea:focus { outline: none; border-color: var(--blue); }
-  .ressenti-card select { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); padding: 8px 12px; font-family: inherit; font-size: 13px; }
-  .ressenti-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
-  .ressenti-status { font-size: 12px; margin-left: auto; }
+/* Responsive */
+@media (max-width: 1024px) {
+  .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .chart-grid, .okr-grid { grid-template-columns: 1fr; }
+  .chart-grid-3 { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .kpi-grid { grid-template-columns: 1fr; }
+  .container { padding: 20px 16px 64px; }
+  .alert .detail { margin-left: 19px; width: 100%; }
+  .action-card { flex-wrap: wrap; }
+}
 
-  .nav-tabs { display: flex; gap: 4px; padding: 0 32px; background: var(--card); border-bottom: 1px solid var(--border); }
-  .nav-tab { padding: 12px 20px; font-size: 13px; font-weight: 600; color: var(--text-dim); background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; }
-  .nav-tab:hover { color: var(--text); }
-  .nav-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
-  .filter-bar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
-  .filter-btn { padding: 6px 12px; font-size: 11px; border-radius: 6px; border: 1px solid var(--border); background: var(--card); color: var(--text-dim); cursor: pointer; transition: all 0.2s; }
-  .filter-btn:hover, .filter-btn.active { background: var(--blue); color: white; border-color: var(--blue); }
-  .sub-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 16px; }
-  .sub-card .name { font-weight: 600; font-size: 14px; flex: 1; }
-  .sub-card .cost { font-size: 18px; font-weight: 800; }
-  .sub-card .meta { font-size: 11px; color: var(--text-dim); }
-  .sub-reco { padding: 8px 12px; border-radius: 6px; font-size: 12px; margin-top: 8px; }
-  .reco-cancel { background: rgba(255,77,106,0.1); border: 1px solid rgba(255,77,106,0.3); color: var(--red); }
-  .reco-evaluate { background: rgba(255,159,67,0.1); border: 1px solid rgba(255,159,67,0.3); color: var(--orange); }
-  .savings-card { background: linear-gradient(135deg, rgba(0,214,143,0.1), rgba(59,130,246,0.1)); border: 1px solid rgba(0,214,143,0.3); border-radius: 12px; padding: 24px; margin-bottom: 24px; }
-  .savings-card .big { font-size: 32px; font-weight: 800; color: var(--green); }
-  .search-input { padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--card); color: var(--text); font-size: 13px; width: 250px; }
+.nav-tabs { display: flex; gap: 4px; padding: 0 24px; background: var(--cream); border-bottom: 1px solid var(--beige-soft); overflow-x: auto; }
+.nav-tab { padding: 14px 18px; font-size: 13.5px; font-weight: 500; font-family: inherit; color: var(--slate); background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent; transition: color var(--dur-fast) var(--ease-std), border-color var(--dur-fast) var(--ease-std); white-space: nowrap; }
+.nav-tab:hover { color: var(--ink); }
+.nav-tab.active { color: var(--aloe-dark); border-bottom-color: var(--aloe-dark); }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+.filter-bar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.filter-btn { padding: 7px 14px; font-size: 12px; border-radius: var(--r-pill); border: 1px solid var(--beige); background: var(--cream); color: var(--slate); cursor: pointer; font-family: inherit; transition: all var(--dur-fast) var(--ease-std); }
+.filter-btn:hover, .filter-btn.active { background: var(--aloe-dark); color: var(--cream); border-color: var(--aloe-dark); }
+.sub-card { background: var(--card); border: 1px solid var(--beige-soft); border-radius: 12px; padding: 18px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.sub-card .name { font-weight: 500; font-size: 14px; flex: 1; min-width: 160px; }
+.sub-card .cost { font-family: var(--font-mono); font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.sub-card .meta { font-size: 11px; color: var(--slate); }
+.sub-reco { padding: 8px 12px; border-radius: var(--r-input); font-size: 12px; margin-top: 8px; }
+.reco-cancel { background: rgba(176,86,60,0.08); border: 1px solid rgba(176,86,60,0.25); color: var(--crit); }
+.reco-evaluate { background: rgba(194,142,63,0.08); border: 1px solid rgba(194,142,63,0.25); color: #8F6526; }
+.savings-card { background: var(--mindaro-light); border: 1px solid var(--mindaro-dark); border-radius: var(--r-card); padding: 28px; margin-bottom: 24px; }
+.savings-card .big { font-family: var(--font-mono); font-size: 30px; font-weight: 600; color: var(--aloe-dark); font-variant-numeric: tabular-nums; }
+.search-input { padding: 9px 14px; border-radius: var(--r-input); border: 1px solid var(--beige); background: var(--cream); color: var(--ink); font-size: 13px; width: 250px; max-width: 100%; font-family: inherit; }
+.search-input:focus { outline: 2px solid var(--aloe-dark); outline-offset: 0; border-color: var(--aloe-dark); }
 
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
 </style>
 </head>
 <body>
 <div class="header">
-  <h1>Rama <span>Logic</span> - CFO Dashboard</h1>
+  <h1>Rama <span>Logic</span> · CFO Cockpit</h1>
   <div class="meta">
     <span class="live">&#9679;</span> Snapshot <strong id="snapshotId">S16-2026</strong> | <span id="snapshotDate">16 avril 2026</span>
   </div>
@@ -196,7 +258,7 @@
 
   <!-- Actions a entreprendre -->
   <div class="section" id="actionsSection" style="display:none">
-    <div class="section-title"><div class="dot" style="background:var(--yellow)"></div> Plan d'action <span id="actionsWeek" style="color:var(--yellow)"></span> <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-dim)">— valide pour pousser dans RL-To do</span></div>
+    <div class="section-title"><div class="dot" style="background:var(--mindaro-dark)"></div> Plan d'action <span id="actionsWeek" style="color:var(--mindaro-dark)"></span> <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-dim)">· a valider vers RL-To do</span></div>
     <div class="actions-list" id="actionsContainer"></div>
     <div class="prev-actions" id="prevActionsWrap"></div>
   </div>
@@ -356,7 +418,7 @@
 
 <div id="tab-delivery" class="tab-content">
   <div class="section">
-    <div class="section-title"><div class="dot" style="background:#a855f7"></div> DELIVERY - Taux horaire & Productivite</div>
+    <div class="section-title"><div class="dot" style="background:#475E54"></div> DELIVERY - Taux horaire & Productivite</div>
     
     <div class="kpi-grid" id="deliveryKpiGrid"></div>
     
@@ -505,10 +567,10 @@ const fmtPct = n => (n * 100).toFixed(1) + '%';
 const chartDefaults = {
   responsive: true,
   maintainAspectRatio: false,
-  plugins: { legend: { labels: { color: '#888', font: { size: 11 } } } },
+  plugins: { legend: { labels: { color: '#5C6661', font: { size: 11 } } } },
   scales: {
-    x: { ticks: { color: '#666', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.04)' } },
-    y: { ticks: { color: '#666', font: { size: 10 }, callback: v => fmtK(v) + ' EUR' }, grid: { color: 'rgba(255,255,255,0.04)' } }
+    x: { ticks: { color: '#5C6661', font: { size: 10 } }, grid: { color: 'rgba(13,26,20,0.05)' } },
+    y: { ticks: { color: '#5C6661', font: { size: 10 }, callback: v => fmtK(v) + ' EUR' }, grid: { color: 'rgba(13,26,20,0.05)' } }
   }
 };
 
@@ -586,7 +648,7 @@ async function cfoPost(route, payload) {
     headers: { 'Content-Type': 'application/json', 'X-CFO-Token': token },
     body: JSON.stringify(payload)
   });
-  if (res.status === 401) { localStorage.removeItem('cfo_api_token'); throw new Error('Token invalide — reclique pour le ressaisir'); }
+  if (res.status === 401) { localStorage.removeItem('cfo_api_token'); throw new Error('Token invalide : reclique pour le ressaisir'); }
   const j = await res.json();
   if (!j.ok) throw new Error(j.error || 'Erreur API');
   return j;
@@ -628,7 +690,7 @@ function renderActions() {
   const wrap = document.getElementById('prevActionsWrap');
   if (prev && prev.items && prev.items.length) {
     const stMap = { 'Done': ['Fait', 'green'], 'In progress': ['En cours', 'blue'], 'Need to be reviewed': ['A review', 'blue'], 'Not started': ['Pas demarre', 'orange'], 'not_pushed': ['Non validee', 'red'] };
-    const doneRate = prev.done_rate != null ? ` — ${Math.round(prev.done_rate * 100)}% faites` : '';
+    const doneRate = prev.done_rate != null ? ` · ${Math.round(prev.done_rate * 100)}% faites` : '';
     wrap.innerHTML = `<h4>Suivi semaine precedente (${prev.week})${doneRate}</h4>
       <div class="table-card"><table><tbody>` +
       prev.items.map(p => {
@@ -696,10 +758,10 @@ function renderRevenueChart() {
     data: {
       labels: months.map(m => m.month.replace('20','')),
       datasets: [
-        { label: 'CA Facture', data: months.map(m => m.invoiced), backgroundColor: 'rgba(59,130,246,0.2)', borderColor: 'rgba(59,130,246,0.8)', borderWidth: 1 },
-        { label: 'CA Encaisse', data: months.map(m => m.collected), backgroundColor: 'rgba(0,214,143,0.3)', borderColor: 'rgba(0,214,143,0.8)', borderWidth: 1 },
-        { label: 'Depenses', data: months.map(m => m.expenses), backgroundColor: 'rgba(255,77,106,0.2)', borderColor: 'rgba(255,77,106,0.8)', borderWidth: 1 },
-        { label: 'Marge', type: 'line', data: months.map(m => m.collected - m.expenses), borderColor: '#fbbf24', borderWidth: 2, pointRadius: 3, fill: false }
+        { label: 'CA Facture', data: months.map(m => m.invoiced), backgroundColor: 'rgba(111,148,166,0.2)', borderColor: 'rgba(111,148,166,0.8)', borderWidth: 1 },
+        { label: 'CA Encaisse', data: months.map(m => m.collected), backgroundColor: 'rgba(106,141,126,0.3)', borderColor: 'rgba(106,141,126,0.8)', borderWidth: 1 },
+        { label: 'Depenses', data: months.map(m => m.expenses), backgroundColor: 'rgba(176,86,60,0.2)', borderColor: 'rgba(176,86,60,0.8)', borderWidth: 1 },
+        { label: 'Marge', type: 'line', data: months.map(m => m.collected - m.expenses), borderColor: '#9FA55F', borderWidth: 2, pointRadius: 3, fill: false }
       ]
     },
     options: { ...chartDefaults, plugins: { ...chartDefaults.plugins, tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + fmt(ctx.raw) + ' EUR' } } } }
@@ -711,7 +773,7 @@ function renderRevenueChart() {
 // ==========================================
 function renderClientsChart() {
   const clients = DATA.revenue.by_client.slice(0, 8);
-  const colors = ['#3b82f6','#00d68f','#a855f7','#ff9f43','#22d3ee','#ff4d6a','#fbbf24','#6366f1'];
+  const colors = ['#6F94A6','#6A8D7E','#475E54','#C28E3F','#A7DEF9','#B0563C','#9FA55F','#8A8378'];
   new Chart(document.getElementById('chartClients'), {
     type: 'doughnut',
     data: {
@@ -720,7 +782,7 @@ function renderClientsChart() {
     },
     options: {
       responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { position: 'right', labels: { color: '#888', font: { size: 10 }, padding: 8 } },
+      plugins: { legend: { position: 'right', labels: { color: '#5C6661', font: { size: 10 }, padding: 8 } },
         tooltip: { callbacks: { label: ctx => ctx.label + ': ' + fmt(ctx.raw) + ' EUR (' + fmtPct(ctx.raw / DATA.revenue.by_client.reduce((s,c) => s+c.amount, 0)) + ')' } } }
     }
   });
@@ -750,9 +812,9 @@ function renderOkrTrajectory() {
     data: {
       labels: allLabels,
       datasets: [
-        { label: 'CA encaisse cumule', data: allLabels.map((m, i) => i < cumulData.length ? cumulData[i] : null), borderColor: '#00d68f', borderWidth: 3, pointRadius: 4, fill: false, spanGaps: false },
-        { label: 'Objectif lineaire 150K', data: linearObj, borderColor: 'rgba(255,255,255,0.15)', borderWidth: 1, borderDash: [5,5], pointRadius: 0, fill: false },
-        { label: 'Cibles KR trimestrielles', data: allLabels.map(m => { const kr = krTargets.find(k => k.month === m); return kr ? kr.cumul : null; }), borderColor: '#a855f7', borderWidth: 2, pointRadius: 6, pointStyle: 'crossRot', fill: false, spanGaps: false }
+        { label: 'CA encaisse cumule', data: allLabels.map((m, i) => i < cumulData.length ? cumulData[i] : null), borderColor: '#6A8D7E', borderWidth: 3, pointRadius: 4, fill: false, spanGaps: false },
+        { label: 'Objectif lineaire 150K', data: linearObj, borderColor: 'rgba(13,26,20,0.18)', borderWidth: 1, borderDash: [5,5], pointRadius: 0, fill: false },
+        { label: 'Cibles KR trimestrielles', data: allLabels.map(m => { const kr = krTargets.find(k => k.month === m); return kr ? kr.cumul : null; }), borderColor: '#475E54', borderWidth: 2, pointRadius: 6, pointStyle: 'crossRot', fill: false, spanGaps: false }
       ]
     },
     options: { ...chartDefaults, scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, max: 160000 } } }
@@ -772,8 +834,8 @@ function renderOkrGap() {
     data: {
       labels: quarters,
       datasets: [
-        { label: 'Cible KR', data: targets, backgroundColor: 'rgba(168,85,247,0.3)', borderColor: 'rgba(168,85,247,0.8)', borderWidth: 1 },
-        { label: 'Realise', data: actuals, backgroundColor: actuals.map((a, i) => a >= targets[i] ? 'rgba(0,214,143,0.5)' : 'rgba(255,77,106,0.5)'), borderColor: actuals.map((a, i) => a >= targets[i] ? 'rgba(0,214,143,0.8)' : 'rgba(255,77,106,0.8)'), borderWidth: 1 }
+        { label: 'Cible KR', data: targets, backgroundColor: 'rgba(71,94,84,0.3)', borderColor: 'rgba(71,94,84,0.8)', borderWidth: 1 },
+        { label: 'Realise', data: actuals, backgroundColor: actuals.map((a, i) => a >= targets[i] ? 'rgba(106,141,126,0.5)' : 'rgba(176,86,60,0.5)'), borderColor: actuals.map((a, i) => a >= targets[i] ? 'rgba(106,141,126,0.8)' : 'rgba(176,86,60,0.8)'), borderWidth: 1 }
       ]
     },
     options: chartDefaults
@@ -792,7 +854,7 @@ function renderOkrCards() {
       const pct = kr.target > 0 ? Math.min(kr.result / kr.target, 1) : 0;
       const pctDisplay = kr.target > 0 ? fmtPct(kr.result / kr.target) : '0%';
       let barColor = pct >= 0.8 ? 'var(--green)' : pct >= 0.4 ? 'var(--orange)' : 'var(--red)';
-      let statusBg = kr.status === 'Fail' ? 'rgba(255,77,106,0.15)' : kr.status === 'In progress' ? 'rgba(59,130,246,0.15)' : 'rgba(255,255,255,0.05)';
+      let statusBg = kr.status === 'Fail' ? 'rgba(176,86,60,0.15)' : kr.status === 'In progress' ? 'rgba(111,148,166,0.15)' : 'rgba(13,26,20,0.05)';
       let statusColor = kr.status === 'Fail' ? 'var(--red)' : kr.status === 'In progress' ? 'var(--blue)' : 'var(--text-dim)';
       if (kr.status === 'Fail') barColor = 'var(--red)';
 
@@ -823,8 +885,8 @@ function renderAgingChart() {
       labels: buckets.map(b => b.label),
       datasets: [{
         data: buckets.map(b => b.amount),
-        backgroundColor: ['rgba(0,214,143,0.5)', 'rgba(255,159,67,0.5)', 'rgba(255,159,67,0.7)', 'rgba(255,77,106,0.7)'],
-        borderColor: ['rgba(0,214,143,0.8)', 'rgba(255,159,67,0.8)', 'rgba(255,159,67,1)', 'rgba(255,77,106,1)'],
+        backgroundColor: ['rgba(106,141,126,0.5)', 'rgba(194,142,63,0.5)', 'rgba(194,142,63,0.7)', 'rgba(176,86,60,0.7)'],
+        borderColor: ['rgba(106,141,126,0.8)', 'rgba(194,142,63,0.8)', 'rgba(194,142,63,1)', 'rgba(176,86,60,1)'],
         borderWidth: 1
       }]
     },
@@ -844,8 +906,8 @@ function renderMarginChart() {
       datasets: [{
         label: 'Marge',
         data: months.map(m => m.collected - m.expenses),
-        backgroundColor: months.map(m => (m.collected - m.expenses) >= 0 ? 'rgba(0,214,143,0.5)' : 'rgba(255,77,106,0.5)'),
-        borderColor: months.map(m => (m.collected - m.expenses) >= 0 ? 'rgba(0,214,143,0.8)' : 'rgba(255,77,106,0.8)'),
+        backgroundColor: months.map(m => (m.collected - m.expenses) >= 0 ? 'rgba(106,141,126,0.5)' : 'rgba(176,86,60,0.5)'),
+        borderColor: months.map(m => (m.collected - m.expenses) >= 0 ? 'rgba(106,141,126,0.8)' : 'rgba(176,86,60,0.8)'),
         borderWidth: 1
       }]
     },
@@ -858,7 +920,7 @@ function renderMarginChart() {
 // ==========================================
 function renderExpCatChart() {
   const cats = DATA.expenses.by_category;
-  const colors = ['#ff4d6a','#ff9f43','#fbbf24','#a855f7','#3b82f6','#22d3ee','#00d68f','#6366f1','#ec4899'];
+  const colors = ['#B0563C','#C28E3F','#9FA55F','#475E54','#6F94A6','#A7DEF9','#6A8D7E','#8A8378','#A66A52'];
   new Chart(document.getElementById('chartExpCat'), {
     type: 'doughnut',
     data: {
@@ -867,7 +929,7 @@ function renderExpCatChart() {
     },
     options: {
       responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { position: 'right', labels: { color: '#888', font: { size: 9 }, padding: 6 } } }
+      plugins: { legend: { position: 'right', labels: { color: '#5C6661', font: { size: 9 }, padding: 6 } } }
     }
   });
 }
@@ -932,8 +994,8 @@ function renderDelivery() {
     data: {
       labels: d.by_month.map(m => m.month.replace('20', '')),
       datasets: [
-        { label: 'Taux horaire effectif (EUR/h)', data: d.by_month.map(m => m.hourly_rate), borderColor: '#a855f7', backgroundColor: 'rgba(168,85,247,0.1)', borderWidth: 3, pointRadius: 5, fill: true, tension: 0.3 },
-        { label: 'Cible 200 EUR/h', data: d.by_month.map(() => d.target_hourly_rate), borderColor: 'rgba(255,255,255,0.3)', borderWidth: 1, borderDash: [5,5], pointRadius: 0, fill: false }
+        { label: 'Taux horaire effectif (EUR/h)', data: d.by_month.map(m => m.hourly_rate), borderColor: '#475E54', backgroundColor: 'rgba(71,94,84,0.1)', borderWidth: 3, pointRadius: 5, fill: true, tension: 0.3 },
+        { label: 'Cible 200 EUR/h', data: d.by_month.map(() => d.target_hourly_rate), borderColor: 'rgba(13,26,20,0.28)', borderWidth: 1, borderDash: [5,5], pointRadius: 0, fill: false }
       ]
     },
     options: { ...chartDefaults, scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, ticks: { ...chartDefaults.scales.y.ticks, callback: v => v + ' EUR/h' } } } }
@@ -945,8 +1007,8 @@ function renderDelivery() {
     data: {
       labels: d.by_month.map(m => m.month.replace('20', '')),
       datasets: [
-        { label: 'Heures clients', data: d.by_month.map(m => m.client_hours), backgroundColor: 'rgba(0,214,143,0.6)', borderColor: 'rgba(0,214,143,0.9)', borderWidth: 1, stack: 'a' },
-        { label: 'Heures totales tracked', data: d.by_month.map(m => m.total_hours - m.client_hours), backgroundColor: 'rgba(59,130,246,0.3)', borderColor: 'rgba(59,130,246,0.6)', borderWidth: 1, stack: 'a' }
+        { label: 'Heures clients', data: d.by_month.map(m => m.client_hours), backgroundColor: 'rgba(106,141,126,0.6)', borderColor: 'rgba(106,141,126,0.9)', borderWidth: 1, stack: 'a' },
+        { label: 'Heures totales tracked', data: d.by_month.map(m => m.total_hours - m.client_hours), backgroundColor: 'rgba(111,148,166,0.3)', borderColor: 'rgba(111,148,166,0.6)', borderWidth: 1, stack: 'a' }
       ]
     },
     options: { ...chartDefaults, scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, stacked: true, ticks: { ...chartDefaults.scales.y.ticks, callback: v => v + 'h' } }, x: { ...chartDefaults.scales.x, stacked: true } } }
@@ -1008,7 +1070,7 @@ function renderAcquisition() {
     type: 'bar',
     data: {
       labels: lk.posts_per_month.map(m => m.month.replace('2026-','')),
-      datasets: [{ label: 'Posts publies', data: lk.posts_per_month.map(m => m.count), backgroundColor: 'rgba(59,130,246,0.5)', borderColor: 'rgba(59,130,246,0.8)', borderWidth: 1 }]
+      datasets: [{ label: 'Posts publies', data: lk.posts_per_month.map(m => m.count), backgroundColor: 'rgba(111,148,166,0.5)', borderColor: 'rgba(111,148,166,0.8)', borderWidth: 1 }]
     },
     options: { ...chartDefaults, scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, ticks: { ...chartDefaults.scales.y.ticks, callback: v => v } } } }
   });
@@ -1018,7 +1080,7 @@ function renderAcquisition() {
     type: 'bar',
     data: {
       labels: ['Ideas', 'Writing', 'To plan', 'Ready'],
-      datasets: [{ data: [lk.pipeline.ideas, lk.pipeline.writing, lk.pipeline.to_plan, lk.pipeline.ready_to_schedule], backgroundColor: ['rgba(136,136,136,0.4)', 'rgba(168,85,247,0.5)', 'rgba(251,191,36,0.5)', 'rgba(0,214,143,0.5)'], borderWidth: 0 }]
+      datasets: [{ data: [lk.pipeline.ideas, lk.pipeline.writing, lk.pipeline.to_plan, lk.pipeline.ready_to_schedule], backgroundColor: ['rgba(92,102,97,0.4)', 'rgba(71,94,84,0.5)', 'rgba(159,165,95,0.5)', 'rgba(106,141,126,0.5)'], borderWidth: 0 }]
     },
     options: { ...chartDefaults, plugins: { ...chartDefaults.plugins, legend: { display: false } }, scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, ticks: { ...chartDefaults.scales.y.ticks, callback: v => v } } }, indexAxis: 'y' }
   });
@@ -1026,7 +1088,7 @@ function renderAcquisition() {
   // Top posts table
   document.getElementById('lkTopPosts').innerHTML = lk.top_posts.map(p => {
     const isViral = p.impressions > 10000;
-    return `<tr${isViral ? ' style="background:rgba(251,191,36,0.05)"' : ''}>
+    return `<tr${isViral ? ' style="background:rgba(159,165,95,0.05)"' : ''}>
       <td style="max-width:400px;font-weight:${isViral ? 700 : 500}">${p.title}</td>
       <td>${p.date}</td>
       <td style="color:var(--cyan);font-weight:700">${fmt(p.impressions)}</td>
@@ -1041,9 +1103,9 @@ function renderAcquisition() {
     type: 'doughnut',
     data: {
       labels: lk.angle_breakdown.map(a => a.angle),
-      datasets: [{ data: lk.angle_breakdown.map(a => a.count), backgroundColor: ['#3b82f6','#00d68f','#ff4d6a','#fbbf24','#a855f7','#22d3ee','#888'], borderWidth: 0 }]
+      datasets: [{ data: lk.angle_breakdown.map(a => a.count), backgroundColor: ['#6F94A6','#6A8D7E','#B0563C','#9FA55F','#475E54','#A7DEF9','#5C6661'], borderWidth: 0 }]
     },
-    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#888', font: { size: 10 } } } } }
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#5C6661', font: { size: 10 } } } } }
   });
   
   // Format breakdown
@@ -1051,9 +1113,9 @@ function renderAcquisition() {
     type: 'doughnut',
     data: {
       labels: lk.format_breakdown.map(f => f.format),
-      datasets: [{ data: lk.format_breakdown.map(f => f.count), backgroundColor: ['#3b82f6','#a855f7','#22d3ee','#fbbf24'], borderWidth: 0 }]
+      datasets: [{ data: lk.format_breakdown.map(f => f.count), backgroundColor: ['#6F94A6','#475E54','#A7DEF9','#9FA55F'], borderWidth: 0 }]
     },
-    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#888', font: { size: 10 } } } } }
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#5C6661', font: { size: 10 } } } } }
   });
   
   // Lead sources
@@ -1061,9 +1123,9 @@ function renderAcquisition() {
     type: 'doughnut',
     data: {
       labels: acq.leads.by_source.map(s => s.source),
-      datasets: [{ data: acq.leads.by_source.map(s => s.count), backgroundColor: ['#3b82f6','#00d68f','#fbbf24','#888'], borderWidth: 0 }]
+      datasets: [{ data: acq.leads.by_source.map(s => s.count), backgroundColor: ['#6F94A6','#6A8D7E','#9FA55F','#5C6661'], borderWidth: 0 }]
     },
-    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#888', font: { size: 10 } } } } }
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#5C6661', font: { size: 10 } } } } }
   });
   
   // Hot leads
@@ -1107,7 +1169,7 @@ function renderSales() {
     type: 'bar',
     data: {
       labels: s.pipeline_by_stage.map(p => p.stage),
-      datasets: [{ label: 'Montant HT', data: s.pipeline_by_stage.map(p => p.amount), backgroundColor: 'rgba(0,214,143,0.4)', borderColor: 'rgba(0,214,143,0.8)', borderWidth: 1 }]
+      datasets: [{ label: 'Montant HT', data: s.pipeline_by_stage.map(p => p.amount), backgroundColor: 'rgba(106,141,126,0.4)', borderColor: 'rgba(106,141,126,0.8)', borderWidth: 1 }]
     },
     options: { ...chartDefaults, plugins: { ...chartDefaults.plugins, legend: { display: false } }, indexAxis: 'y' }
   });
@@ -1118,8 +1180,8 @@ function renderSales() {
     data: {
       labels: s.deals_by_source.map(d => d.source),
       datasets: [
-        { label: 'Won', data: s.deals_by_source.map(d => d.won), backgroundColor: 'rgba(0,214,143,0.6)' },
-        { label: 'Lost', data: s.deals_by_source.map(d => d.lost), backgroundColor: 'rgba(255,77,106,0.6)' }
+        { label: 'Won', data: s.deals_by_source.map(d => d.won), backgroundColor: 'rgba(106,141,126,0.6)' },
+        { label: 'Lost', data: s.deals_by_source.map(d => d.lost), backgroundColor: 'rgba(176,86,60,0.6)' }
       ]
     },
     options: { ...chartDefaults, scales: { ...chartDefaults.scales, x: { ...chartDefaults.scales.x, stacked: true }, y: { ...chartDefaults.scales.y, stacked: true, ticks: { ...chartDefaults.scales.y.ticks, callback: v => v } } } }
@@ -1128,8 +1190,8 @@ function renderSales() {
   // Deals to relaunch
   document.getElementById('dealsRelaunch').innerHTML = s.deals_to_relaunch.map(d => {
     const isCritical = d.priority === 'critical';
-    const bg = isCritical ? 'rgba(255,77,106,0.1)' : 'rgba(255,159,67,0.1)';
-    const border = isCritical ? 'rgba(255,77,106,0.3)' : 'rgba(255,159,67,0.3)';
+    const bg = isCritical ? 'rgba(176,86,60,0.1)' : 'rgba(194,142,63,0.1)';
+    const border = isCritical ? 'rgba(176,86,60,0.3)' : 'rgba(194,142,63,0.3)';
     const color = isCritical ? 'var(--red)' : 'var(--orange)';
     return `<div class="sub-card" style="background:${bg};border-color:${border}">
       <div class="name" style="color:${color};flex:1">
@@ -1146,9 +1208,9 @@ function renderSales() {
     type: 'doughnut',
     data: {
       labels: s.deals_by_type.map(t => t.type),
-      datasets: [{ data: s.deals_by_type.map(t => t.amount), backgroundColor: ['#3b82f6','#00d68f','#a855f7','#fbbf24','#22d3ee','#ff4d6a'], borderWidth: 0 }]
+      datasets: [{ data: s.deals_by_type.map(t => t.amount), backgroundColor: ['#6F94A6','#6A8D7E','#475E54','#9FA55F','#A7DEF9','#B0563C'], borderWidth: 0 }]
     },
-    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#888', font: { size: 10 } } } } }
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#5C6661', font: { size: 10 } } } } }
   });
   
   // Closing rate gauge
@@ -1156,7 +1218,7 @@ function renderSales() {
     type: 'doughnut',
     data: {
       labels: ['Won', 'Lost'],
-      datasets: [{ data: [s.closing_rate * 100, (1 - s.closing_rate) * 100], backgroundColor: ['rgba(0,214,143,0.6)', 'rgba(255,77,106,0.2)'], borderWidth: 0 }]
+      datasets: [{ data: [s.closing_rate * 100, (1 - s.closing_rate) * 100], backgroundColor: ['rgba(106,141,126,0.6)', 'rgba(176,86,60,0.2)'], borderWidth: 0 }]
     },
     options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.raw.toFixed(0) + '%' } } } }
   });
@@ -1167,8 +1229,8 @@ function renderSales() {
     data: {
       labels: ['T1', 'T2', 'T3', 'T4'],
       datasets: [
-        { label: 'Cible', data: [15000, 40000, 40000, 35000], backgroundColor: 'rgba(168,85,247,0.3)' },
-        { label: 'Signe', data: [8300, 0, 0, 0], backgroundColor: 'rgba(0,214,143,0.5)' }
+        { label: 'Cible', data: [15000, 40000, 40000, 35000], backgroundColor: 'rgba(71,94,84,0.3)' },
+        { label: 'Signe', data: [8300, 0, 0, 0], backgroundColor: 'rgba(106,141,126,0.5)' }
       ]
     },
     options: chartDefaults
@@ -1248,12 +1310,12 @@ function renderSubscriptions() {
   
   // Cancel list
   document.getElementById('subsCancel').innerHTML = analysis.to_cancel.map(s =>
-    '<div class="sub-card" style="border-color:rgba(255,77,106,0.3)"><div class="name" style="color:var(--red)">' + s.name + '</div><div><div class="cost" style="color:var(--red)">' + fmt(s.cost_annual) + ' EUR/an</div><div class="sub-reco reco-cancel">' + s.reason + '</div></div></div>'
+    '<div class="sub-card" style="border-color:rgba(176,86,60,0.3)"><div class="name" style="color:var(--red)">' + s.name + '</div><div><div class="cost" style="color:var(--red)">' + fmt(s.cost_annual) + ' EUR/an</div><div class="sub-reco reco-cancel">' + s.reason + '</div></div></div>'
   ).join('');
   
   // Evaluate list
   document.getElementById('subsEvaluate').innerHTML = analysis.to_evaluate.map(s =>
-    '<div class="sub-card" style="border-color:rgba(255,159,67,0.3)"><div class="name" style="color:var(--orange)">' + s.name + '</div><div><div class="cost" style="color:var(--orange)">' + fmt(s.cost_annual) + ' EUR/an</div><div class="sub-reco reco-evaluate">' + s.reason + '</div></div></div>'
+    '<div class="sub-card" style="border-color:rgba(194,142,63,0.3)"><div class="name" style="color:var(--orange)">' + s.name + '</div><div><div class="cost" style="color:var(--orange)">' + fmt(s.cost_annual) + ' EUR/an</div><div class="sub-reco reco-evaluate">' + s.reason + '</div></div></div>'
   ).join('');
   
   // Keep list
@@ -1274,9 +1336,9 @@ function renderSubscriptions() {
     type: 'doughnut',
     data: {
       labels: Object.keys(byCat),
-      datasets: [{ data: Object.values(byCat), backgroundColor: ['#3b82f6','#22d3ee','#a855f7','#6366f1','#fbbf24','#00d68f','#ff4d6a'], borderWidth: 0 }]
+      datasets: [{ data: Object.values(byCat), backgroundColor: ['#6F94A6','#A7DEF9','#475E54','#8A8378','#9FA55F','#6A8D7E','#B0563C'], borderWidth: 0 }]
     },
-    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#888', font: { size: 10 } } } } }
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#5C6661', font: { size: 10 } } } } }
   });
   
   // Chart by status
@@ -1286,7 +1348,7 @@ function renderSubscriptions() {
     type: 'bar',
     data: {
       labels: Object.keys(byStatus),
-      datasets: [{ data: Object.values(byStatus), backgroundColor: Object.keys(byStatus).map(s => s === 'Essentiel' ? 'rgba(0,214,143,0.5)' : s === 'Utile' ? 'rgba(59,130,246,0.5)' : 'rgba(255,159,67,0.5)'), borderWidth: 0 }]
+      datasets: [{ data: Object.values(byStatus), backgroundColor: Object.keys(byStatus).map(s => s === 'Essentiel' ? 'rgba(106,141,126,0.5)' : s === 'Utile' ? 'rgba(111,148,166,0.5)' : 'rgba(194,142,63,0.5)'), borderWidth: 0 }]
     },
     options: { ...chartDefaults, plugins: { ...chartDefaults.plugins, legend: { display: false } }, scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, ticks: { ...chartDefaults.scales.y.ticks, callback: v => v } } } }
   });
@@ -1295,8 +1357,8 @@ function renderSubscriptions() {
 // ==========================================
 // INIT
 // ==========================================
-Chart.defaults.color = '#888';
-Chart.defaults.borderColor = 'rgba(255,255,255,0.04)';
+Chart.defaults.color = '#5C6661';
+Chart.defaults.borderColor = 'rgba(13,26,20,0.05)';
 
 async function initDashboard() {
   try {
@@ -1322,7 +1384,7 @@ async function initDashboard() {
     renderSales();
     renderDelivery();
   } catch (e) {
-    document.body.innerHTML = '<div style="padding:40px;color:#ff4d6a;font-family:sans-serif"><h1>Erreur chargement data.json</h1><pre>' + e.message + '</pre></div>';
+    document.body.innerHTML = '<div style="padding:40px;color:#B0563C;font-family:sans-serif"><h1>Erreur chargement data.json</h1><pre>' + e.message + '</pre></div>';
   }
 }
 initDashboard();

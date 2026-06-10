@@ -1,0 +1,54 @@
+/* Rama Logic design tokens · source: RamaLogic-DESIGN.md · mirror of index.html :root */
+:root {
+  /* Brand — Rama Logic (RamaLogic-DESIGN.md) */
+  --cream: #FFFCF7;
+  --cream-2: #F8F4EC;
+  --beige: #D2CFC9;
+  --beige-soft: #E8E4DC;
+  --ink: #0D1A14;
+  --slate: #5C6661;
+  --aloe-dark: #475E54;
+  --aloe: #6A8D7E;
+  --aloe-light: #B4C6BE;
+  --mindaro-dark: #9FA55F;
+  --mindaro: #DFE971;
+  --mindaro-light: #F6FBC6;
+  --blue-dark: #6F94A6;
+  --blue-norm: #A7DEF9;
+  --blue-light: #D3EEFC;
+  /* Semantic states — warm-derived, never pure red/grey */
+  --crit: #B0563C;
+  --warn: #C28E3F;
+  --ok: var(--aloe);
+  --info: var(--blue-dark);
+  /* Legacy aliases consumed by the render JS (var(--green) etc.) */
+  --bg: var(--cream);
+  --card: var(--cream);
+  --card-hover: var(--cream-2);
+  --border: var(--beige-soft);
+  --text: var(--ink);
+  --text-dim: var(--slate);
+  --green: var(--ok);
+  --red: var(--crit);
+  --orange: var(--warn);
+  --blue: var(--info);
+  --purple: var(--aloe-dark);
+  --yellow: var(--mindaro-dark);
+  --cyan: var(--blue-dark);
+  /* Type */
+  --font-display: "Clash Grotesk", "General Sans", sans-serif;
+  --font-body: "Clash Grotesk", "General Sans", sans-serif;
+  --font-accent: "Boska", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  /* Depth — warm, ink-based */
+  --shadow-sm: 0 1px 2px rgba(13,26,20,0.06);
+  --shadow-md: 0 4px 12px -2px rgba(13,26,20,0.08);
+  /* Radii */
+  --r-input: 8px;
+  --r-card: 16px;
+  --r-pill: 9999px;
+  /* Motion */
+  --ease-std: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 150ms;
+}
