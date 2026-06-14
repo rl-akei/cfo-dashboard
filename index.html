@@ -237,10 +237,10 @@ tr:hover td { background: var(--cream-2); }
 
 <div class="nav-tabs">
   <button class="nav-tab active" onclick="showTab('dashboard', this)">Dashboard</button>
-  <button class="nav-tab" onclick="showTab('transactions', this)">Depenses</button>
   <button class="nav-tab" onclick="showTab('acquisition', this)">Acquisition</button>
-  <button class="nav-tab" onclick="showTab('delivery', this)">Delivery</button>
   <button class="nav-tab" onclick="showTab('sales', this)">Sales</button>
+  <button class="nav-tab" onclick="showTab('delivery', this)">Delivery</button>
+  <button class="nav-tab" onclick="showTab('transactions', this)">Depenses</button>
   <button class="nav-tab" onclick="showTab('subscriptions', this)">Abonnements</button>
 </div>
 
@@ -250,17 +250,32 @@ tr:hover td { background: var(--cream-2); }
   <!-- KPI Cards -->
   <div class="kpi-grid" id="kpiGrid"></div>
 
+  <!-- 3 actions cash a entreprendre -->
+  <div class="section" id="actionsSection" style="display:none">
+    <div class="section-title"><div class="dot" style="background:var(--mindaro-dark)"></div> 3 actions cash a entreprendre <span id="actionsWeek" style="color:var(--mindaro-dark)"></span> <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-dim)">· valider vers RL-To do</span></div>
+    <div class="actions-list" id="actionsContainer"></div>
+    <div class="prev-actions" id="prevActionsWrap"></div>
+  </div>
+
+  <!-- Funnel cash (principal) -->
+  <div class="section" id="funnelSection">
+    <div class="section-title"><div class="dot" style="background:var(--aloe)"></div> Funnel cash &mdash; Contractualise &rarr; Facture &rarr; Encaisse (par annee)</div>
+    <div class="chart-grid">
+      <div class="chart-card">
+        <h3>Contractualise (opportunites) vs Facture (Qonto) vs Encaisse (banque)</h3>
+        <canvas id="chartFunnel"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Conversion &amp; EBITDA cash par annee</h3>
+        <div id="funnelStats"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Alerts -->
   <div class="section">
     <div class="section-title"><div class="dot" style="background:var(--red)"></div> Alertes</div>
     <div class="alerts" id="alertsContainer"></div>
-  </div>
-
-  <!-- Actions a entreprendre -->
-  <div class="section" id="actionsSection" style="display:none">
-    <div class="section-title"><div class="dot" style="background:var(--mindaro-dark)"></div> Plan d'action <span id="actionsWeek" style="color:var(--mindaro-dark)"></span> <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-dim)">· a valider vers RL-To do</span></div>
-    <div class="actions-list" id="actionsContainer"></div>
-    <div class="prev-actions" id="prevActionsWrap"></div>
   </div>
 
   <!-- Ressenti -->
@@ -370,6 +385,10 @@ tr:hover td { background: var(--cream-2); }
 </div>
 
 <div id="tab-subscriptions" class="tab-content">
+  <div class="section" id="subsActionsSection" style="display:none">
+    <div class="section-title"><div class="dot" style="background:var(--mindaro-dark)"></div> 3 actions a entreprendre <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-dim)">· valider vers RL-To do</span></div>
+    <div class="actions-list" id="subsActionsContainer"></div>
+  </div>
   <div class="section">
     <div class="section-title"><div class="dot" style="background:var(--purple)"></div> Analyse Abonnements</div>
     
@@ -417,6 +436,10 @@ tr:hover td { background: var(--cream-2); }
 
 
 <div id="tab-delivery" class="tab-content">
+  <div class="section" id="deliveryActionsSection" style="display:none">
+    <div class="section-title"><div class="dot" style="background:var(--mindaro-dark)"></div> 3 actions a entreprendre <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-dim)">· valider vers RL-To do</span></div>
+    <div class="actions-list" id="deliveryActionsContainer"></div>
+  </div>
   <div class="section">
     <div class="section-title"><div class="dot" style="background:#475E54"></div> DELIVERY - Taux horaire & Productivite</div>
     
@@ -455,6 +478,10 @@ tr:hover td { background: var(--cream-2); }
 </div>
 
 <div id="tab-acquisition" class="tab-content">
+  <div class="section" id="acqActionsSection" style="display:none">
+    <div class="section-title"><div class="dot" style="background:var(--mindaro-dark)"></div> 3 actions a entreprendre <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-dim)">· valider vers RL-To do</span></div>
+    <div class="actions-list" id="acqActionsContainer"></div>
+  </div>
   <div class="section">
     <div class="section-title"><div class="dot" style="background:var(--cyan)"></div> ACQUISITION - LinkedIn & Leads</div>
     
@@ -505,6 +532,10 @@ tr:hover td { background: var(--cream-2); }
 </div>
 
 <div id="tab-sales" class="tab-content">
+  <div class="section" id="salesActionsSection" style="display:none">
+    <div class="section-title"><div class="dot" style="background:var(--mindaro-dark)"></div> 3 actions a entreprendre <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-dim)">· valider vers RL-To do</span></div>
+    <div class="actions-list" id="salesActionsContainer"></div>
+  </div>
   <div class="section">
     <div class="section-title"><div class="dot" style="background:var(--green)"></div> SALES - Pipeline & Conversion</div>
     
@@ -614,6 +645,18 @@ function renderKPIs() {
       color: 'var(--blue)' }
   ];
 
+  // EBITDA cash (encaisse - depenses d'exploitation) — insere en tete de 2e ligne
+  if (d.ebitda && d.ebitda.current) {
+    const cy = (d.ebitda.by_year || []).find(y => y.year === d.ebitda.current.year) || {};
+    const m = d.ebitda.current.margin;
+    cards.splice(4, 0, {
+      label: 'EBITDA ' + d.ebitda.current.year + ' (cash)', value: fmt(d.ebitda.current.ebitda) + ' EUR', icon: '💹',
+      sub: `Marge ${fmtPct(m)} | encaisse ${fmtK(cy.revenue || 0)} - OPEX ${fmtK(cy.opex || 0)}`,
+      badge: [m >= 0.3 ? 'Sain' : 'Faible', m >= 0.3 ? 'green' : 'orange'],
+      color: 'var(--aloe-dark)'
+    });
+  }
+
   const grid = document.getElementById('kpiGrid');
   grid.innerHTML = cards.map(c => `
     <div class="kpi-card">
@@ -656,38 +699,74 @@ async function cfoPost(route, payload) {
 
 const pushedKey = (week, id) => 'cfo_pushed_' + week + '_' + id;
 
-function renderActions() {
+const prioLabel = { critical: ['CRITIQUE', 'red'], high: ['PRIORITAIRE', 'orange'], medium: ['A PLANIFIER', 'blue'] };
+
+// section -> conteneurs DOM. Chaque section affiche 3 actions a entreprendre.
+const ACTION_SECTIONS = {
+  dashboard:     { sec: 'actionsSection',         cont: 'actionsContainer' },
+  acquisition:   { sec: 'acqActionsSection',      cont: 'acqActionsContainer' },
+  sales:         { sec: 'salesActionsSection',    cont: 'salesActionsContainer' },
+  delivery:      { sec: 'deliveryActionsSection', cont: 'deliveryActionsContainer' },
+  subscriptions: { sec: 'subsActionsSection',     cont: 'subsActionsContainer' },
+};
+
+function sectionItems(sectionKey) {
   const a = DATA.actions;
-  const section = document.getElementById('actionsSection');
-  if (!a || !a.items || !a.items.length) return;
-  section.style.display = 'block';
-  document.getElementById('actionsWeek').textContent = a.week;
+  if (!a) return [];
+  if (a.by_section && a.by_section[sectionKey]) return a.by_section[sectionKey];
+  // retro-compat : ancien schema (liste plate) -> tout sur le dashboard
+  if (sectionKey === 'dashboard' && a.items) return a.items;
+  return [];
+}
 
-  const prioLabel = { critical: ['CRITIQUE', 'red'], high: ['PRIORITAIRE', 'orange'], medium: ['A PLANIFIER', 'blue'] };
-  document.getElementById('actionsContainer').innerHTML = a.items.map((it, i) => {
-    const pushedUrl = localStorage.getItem(pushedKey(a.week, it.id));
-    const [pl, pc] = prioLabel[it.priority] || [it.priority, 'blue'];
-    const btn = pushedUrl
-      ? `<a class="btn-pushed" href="${pushedUrl}" target="_blank">&#10003; Dans RL-To do</a>`
-      : `<button class="btn-push" onclick="pushAction(${i}, this)">&rarr; RL-To do</button>`;
-    return `<div class="action-card prio-${it.priority}">
-      <div class="a-num">${i + 1}</div>
-      <div class="a-body">
-        <div class="a-title">${it.title}</div>
-        <div class="a-why">${it.why}</div>
-        ${it.impact ? `<div class="a-impact">Impact : ${it.impact}</div>` : ''}
-        <div class="a-meta">
-          <span class="badge badge-${pc}">${pl}</span>
-          ${it.kr_name ? `<span class="badge badge-blue">${it.kr_name}</span>` : ''}
-          ${it.due_date ? `<span class="badge badge-orange">Pour le ${it.due_date}</span>` : ''}
-        </div>
+function actionCardHTML(sectionKey, it, i, week) {
+  const pushedUrl = localStorage.getItem(pushedKey(week, it.id));
+  const [pl, pc] = prioLabel[it.priority] || [it.priority, 'blue'];
+  const btn = pushedUrl
+    ? `<a class="btn-pushed" href="${pushedUrl}" target="_blank">&#10003; Dans RL-To do</a>`
+    : `<button class="btn-push" onclick="pushAction('${sectionKey}', ${i}, this)">&rarr; RL-To do</button>`;
+  return `<div class="action-card prio-${it.priority}">
+    <div class="a-num">${i + 1}</div>
+    <div class="a-body">
+      <div class="a-title">${it.title}</div>
+      <div class="a-why">${it.why}</div>
+      ${it.impact ? `<div class="a-impact">Impact : ${it.impact}</div>` : ''}
+      <div class="a-meta">
+        <span class="badge badge-${pc}">${pl}</span>
+        ${it.kr_name ? `<span class="badge badge-blue">${it.kr_name}</span>` : ''}
+        ${it.due_date ? `<span class="badge badge-orange">Pour le ${it.due_date}</span>` : ''}
       </div>
-      ${btn}
-    </div>`;
-  }).join('');
+    </div>
+    ${btn}
+  </div>`;
+}
 
-  const prev = a.previous;
+function renderSectionActions(sectionKey) {
+  const cfg = ACTION_SECTIONS[sectionKey];
+  if (!cfg) return;
+  const section = document.getElementById(cfg.sec);
+  const cont = document.getElementById(cfg.cont);
+  if (!section || !cont) return;
+  const items = sectionItems(sectionKey).slice(0, 3);
+  if (!items.length) { section.style.display = 'none'; return; }
+  section.style.display = 'block';
+  const week = DATA.actions.week;
+  cont.innerHTML = items.map((it, i) => actionCardHTML(sectionKey, it, i, week)).join('');
+}
+
+function renderAllActions() {
+  Object.keys(ACTION_SECTIONS).forEach(renderSectionActions);
+  const a = DATA.actions;
+  const w = document.getElementById('actionsWeek');
+  if (w && a && a.week) w.textContent = a.week;
+  renderPrevActions();
+}
+
+function renderPrevActions() {
+  const a = DATA.actions;
   const wrap = document.getElementById('prevActionsWrap');
+  if (!wrap) return;
+  const prev = a && a.previous;
   if (prev && prev.items && prev.items.length) {
     const stMap = { 'Done': ['Fait', 'green'], 'In progress': ['En cours', 'blue'], 'Need to be reviewed': ['A review', 'blue'], 'Not started': ['Pas demarre', 'orange'], 'not_pushed': ['Non validee', 'red'] };
     const doneRate = prev.done_rate != null ? ` · ${Math.round(prev.done_rate * 100)}% faites` : '';
@@ -701,18 +780,68 @@ function renderActions() {
   } else { wrap.innerHTML = ''; }
 }
 
-async function pushAction(i, btn) {
-  const a = DATA.actions;
-  const it = a.items[i];
+async function pushAction(sectionKey, i, btn) {
+  const it = sectionItems(sectionKey)[i];
+  if (!it) return;
   btn.disabled = true; btn.textContent = 'Envoi...';
   try {
-    const j = await cfoPost('/action', { ...it, week: a.week });
-    localStorage.setItem(pushedKey(a.week, it.id), j.url);
-    renderActions();
+    const j = await cfoPost('/action', { ...it, week: DATA.actions.week });
+    localStorage.setItem(pushedKey(DATA.actions.week, it.id), j.url);
+    renderSectionActions(sectionKey);
   } catch (e) {
     btn.disabled = false; btn.innerHTML = '&rarr; RL-To do';
     alert('Echec : ' + e.message);
   }
+}
+
+// ==========================================
+// FUNNEL CASH + EBITDA (par annee)
+// ==========================================
+function renderFunnel() {
+  const f = DATA.funnel;
+  if (!f || !f.by_year || !f.by_year.length) {
+    const sec = document.getElementById('funnelSection');
+    if (sec) sec.style.display = 'none';
+    return;
+  }
+  const years = f.by_year;
+  const yLabel = y => y.ytd ? y.year + ' (YTD)' : String(y.year);
+
+  new Chart(document.getElementById('chartFunnel'), {
+    type: 'bar',
+    data: {
+      labels: years.map(yLabel),
+      datasets: [
+        { label: 'Contractualise', data: years.map(y => y.contracted), backgroundColor: 'rgba(71,94,84,0.8)', borderColor: '#475E54', borderWidth: 1 },
+        { label: 'Facture', data: years.map(y => y.invoiced), backgroundColor: 'rgba(111,148,166,0.55)', borderColor: '#6F94A6', borderWidth: 1 },
+        { label: 'Encaisse', data: years.map(y => y.collected), backgroundColor: 'rgba(106,141,126,0.65)', borderColor: '#6A8D7E', borderWidth: 1 }
+      ]
+    },
+    options: { ...chartDefaults, plugins: { ...chartDefaults.plugins, tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + (ctx.raw == null ? 'n/d' : fmt(ctx.raw) + ' EUR') } } } }
+  });
+
+  const ebByYear = {};
+  ((DATA.ebitda && DATA.ebitda.by_year) || []).forEach(e => { ebByYear[e.year] = e; });
+  const rows = years.map(y => {
+    const e = ebByYear[y.year];
+    const contracted = y.contracted == null ? '<span style="color:var(--text-dim)">n/d</span>' : fmt(y.contracted) + ' EUR';
+    const ebVal = e ? `${fmt(e.ebitda)} EUR<br><span style="font-weight:400;color:var(--text-dim);font-size:11px">marge ${fmtPct(e.margin)}</span>` : '&mdash;';
+    return `<tr>
+      <td style="font-weight:600">${yLabel(y)}</td>
+      <td>${contracted}</td>
+      <td>${fmt(y.invoiced)} EUR</td>
+      <td style="color:var(--aloe-dark);font-weight:600">${fmt(y.collected)} EUR</td>
+      <td style="color:var(--aloe-dark);font-weight:700">${ebVal}</td>
+    </tr>`;
+  }).join('');
+  document.getElementById('funnelStats').innerHTML = `
+    <div class="table-card" style="box-shadow:none;border:none">
+      <table>
+        <thead><tr><th>Annee</th><th>Contractualise</th><th>Facture</th><th>Encaisse</th><th>EBITDA cash</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+    ${f.note ? `<div style="font-size:11px;color:var(--text-dim);margin-top:12px;line-height:1.5">${f.note}</div>` : ''}`;
 }
 
 async function sendRessenti() {
@@ -1368,7 +1497,8 @@ async function initDashboard() {
     document.getElementById('snapshotDate').textContent = DATA.meta.generated_at.split('T')[0];
     renderKPIs();
     renderAlerts();
-    renderActions();
+    renderAllActions();
+    renderFunnel();
     renderRevenueChart();
     renderClientsChart();
     renderOkrTrajectory();
