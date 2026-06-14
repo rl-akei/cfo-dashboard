@@ -849,7 +849,9 @@ function renderFunnel() {
         priorTxt = `<br><span style="font-weight:400;color:var(--text-dim);font-size:11px">report autre annee : 0 EUR</span>`;
       }
     }
-    const ebVal = e ? `${fmt(e.ebitda)} EUR<br><span style="font-weight:400;color:var(--text-dim);font-size:11px">marge ${fmtPct(e.margin)}</span>` : '&mdash;';
+    const ebVal = (e && e.ebitda != null)
+      ? `${fmt(e.ebitda)} EUR<br><span style="font-weight:400;color:var(--text-dim);font-size:11px">marge ${fmtPct(e.margin)}</span>`
+      : '<span style="color:var(--text-dim)">n/d</span>';
     return `<tr>
       <td style="font-weight:600">${yLabel(y)}</td>
       <td>${contracted}</td>

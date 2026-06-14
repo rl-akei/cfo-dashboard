@@ -2415,14 +2415,14 @@
     }
   },
   "funnel": {
-    "note": "Contractualise = deals signes dans l'annee (RL-Opportunity, Prix Negocie HT). Facture = factures Qonto emises dans l'annee. Encaisse = paiements recus. Report (orange) = cash encaisse cette annee sur des factures emises une annee anterieure : ~0 ici car les factures sont emises ET encaissees dans l'annee. Le vrai decalage cross-annee est l'ecart Contractualise -> Encaisse (2025 : 99K signes, 32K encaisses dans l'annee ; le reste est facture/encaisse en 2026 ou en impaye). 2026 = YTD.",
+    "note": "Base HT. Contractualise = deals signes dans l'annee (RL-Opportunity). Facture = factures emises (2025 = Drive H1 fev-juin + Qonto des 25/07 ; 2026 = Qonto). Encaisse = factures payees (HT). Report autre annee ~0 (factures emises et encaissees dans l'annee). 2025 facture : 39 015 (Drive H1) + 3 263 (juillet Drive) + 43 212 (Qonto) ; FAC 14/15/19 non localisees. 2026 = YTD. NB : l'encaisse funnel (factures payees HT) differe du cash bank TTC de la carte EBITDA.",
     "by_year": [
       {
         "year": 2025,
         "contracted": 99218,
-        "invoiced": 60808,
-        "collected": 32226,
-        "collected_current": 32226,
+        "invoiced": 85490,
+        "collected": 66587,
+        "collected_current": 66587,
         "collected_prior": 0,
         "collected_prior_detail": [],
         "ytd": false
@@ -2430,9 +2430,9 @@
       {
         "year": 2026,
         "contracted": 28300,
-        "invoiced": 37092,
-        "collected": 35839,
-        "collected_current": 35839,
+        "invoiced": 28454,
+        "collected": 26384,
+        "collected_current": 26384,
         "collected_prior": 0,
         "collected_prior_detail": [],
         "ytd": true
@@ -2441,15 +2441,16 @@
   },
   "ebitda": {
     "basis": "cash",
-    "note": "EBITDA cash = CA encaisse - depenses d'exploitation (hors TVA, impots, ARE).",
+    "note": "EBITDA cash 2026 = CA encaisse bank - depenses d'exploitation (hors TVA/impots/ARE). 2025 : EBITDA non calcule (depenses H1 2025 hors Qonto non consolidees).",
     "by_year": [
       {
         "year": 2025,
-        "revenue": 32226,
-        "opex": 3122,
-        "ebitda": 29104,
-        "margin": 0.903,
-        "ytd": false
+        "revenue": 66587,
+        "opex": null,
+        "ebitda": null,
+        "margin": null,
+        "ytd": false,
+        "partial": true
       },
       {
         "year": 2026,
