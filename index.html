@@ -841,9 +841,13 @@ function renderFunnel() {
     const contracted = y.contracted == null ? '<span style="color:var(--text-dim)">n/d</span>' : fmt(y.contracted) + ' EUR';
     const prior = priorOf(y);
     let priorTxt = '';
-    if (prior > 0) {
-      const det = (y.collected_prior_detail || []).map(p => `${fmt(p.amount)} de ${p.from_year}`).join(', ');
-      priorTxt = `<br><span style="font-weight:400;color:#8F6526;font-size:11px">dont ${det || (fmt(prior) + ' report')} (autre annee)</span>`;
+    if (y.collected_prior != null) {
+      if (prior > 0) {
+        const det = (y.collected_prior_detail || []).map(p => `${fmt(p.amount)} de ${p.from_year}`).join(', ');
+        priorTxt = `<br><span style="font-weight:400;color:#8F6526;font-size:11px">dont ${det || (fmt(prior) + ' report')} (autre annee)</span>`;
+      } else {
+        priorTxt = `<br><span style="font-weight:400;color:var(--text-dim);font-size:11px">report autre annee : 0 EUR</span>`;
+      }
     }
     const ebVal = e ? `${fmt(e.ebitda)} EUR<br><span style="font-weight:400;color:var(--text-dim);font-size:11px">marge ${fmtPct(e.margin)}</span>` : '&mdash;';
     return `<tr>
