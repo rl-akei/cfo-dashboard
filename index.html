@@ -610,6 +610,8 @@ const chartDefaults = {
 // ==========================================
 function renderKPIs() {
   const d = DATA;
+  const fy26 = (d.funnel && d.funnel.by_year || []).find(y => y.year === 2026) || {};
+  const encRate = fy26.invoiced ? fy26.collected / fy26.invoiced : null;
   const cards = [
     { label: 'Tresorerie', value: fmt(d.treasury.total) + ' EUR', icon: '\uD83D\uDCB0',
       sub: `Principal: ${fmt(d.treasury.principal)} | Impots: ${fmt(d.treasury.impots)}`,
@@ -627,9 +629,9 @@ function renderKPIs() {
       sub: `Burn 3M: ${fmt(d.kpis.burn_3m)} EUR/mois | ARE: ${fmt(d.treasury.are_mensuel)}/mois`,
       badge: d.kpis.runway_months > 6 ? ['Confortable', 'green'] : ['Attention', 'orange'],
       color: d.kpis.runway_months > 6 ? 'var(--green)' : 'var(--orange)' },
-    { label: 'Marge brute', value: fmtPct(d.kpis.margin_pct), icon: '\uD83D\uDCCA',
-      sub: `CA YTD: ${fmtK(d.revenue.ytd)} | Dep: ${fmtK(d.revenue.ytd * (1 - d.kpis.margin_pct))}`,
-      badge: d.kpis.margin_pct > 0.5 ? ['Saine', 'green'] : ['Faible', 'orange'],
+    { label: 'Taux encaissement HT', value: encRate != null ? fmtPct(encRate) : 'n/d', icon: '\uD83D\uDCCA',
+      sub: `Facture HT ${fmtK(fy26.invoiced || 0)} | Encaisse HT ${fmtK(fy26.collected || 0)} (${fy26.year || 2026})`,
+      badge: encRate != null && encRate >= 0.85 ? ['Bon', 'green'] : ['A surveiller', 'orange'],
       color: 'var(--purple)' },
     { label: 'DSO', value: d.kpis.dso + ' jours', icon: '\u23F3',
       sub: `Impayes: ${fmt(d.aging.total)} EUR | ${d.kpis.invoices_unpaid} factures`,
@@ -1096,14 +1098,15 @@ function renderAgingTable() {
   document.getElementById('totalUnpaid').textContent = fmt(DATA.aging.total) + ' EUR';
   const tbody = document.getElementById('agingTable');
   tbody.innerHTML = DATA.aging.details.map(f => {
-    const tranche = f.days <= 30 ? '0-30j' : f.days <= 60 ? '30-60j' : f.days <= 90 ? '60-90j' : '90j+';
+    const tranche = f.days < 0 ? 'A echoir' : f.days <= 30 ? '0-30j' : f.days <= 60 ? '30-60j' : f.days <= 90 ? '60-90j' : '90j+';
     const color = f.days > 90 ? 'var(--red)' : f.days > 60 ? 'var(--orange)' : 'var(--text)';
+    const daysTxt = f.days < 0 ? 'a echoir' : f.days + 'j';
     return `<tr>
       <td>${f.ref}</td>
       <td style="font-weight:600;color:${color}">${f.client}</td>
       <td style="color:var(--red)">${fmt(f.amount)} EUR</td>
       <td>${f.due}</td>
-      <td style="color:${color};font-weight:700">${f.days}j</td>
+      <td style="color:${color};font-weight:700">${daysTxt}</td>
       <td><span class="badge badge-${f.days > 90 ? 'red' : f.days > 30 ? 'orange' : 'green'}">${tranche}</span></td>
     </tr>`;
   }).join('');

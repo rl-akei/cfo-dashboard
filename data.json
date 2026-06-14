@@ -166,7 +166,7 @@
     "buckets": [
       {
         "label": "0-30j",
-        "amount": 273
+        "amount": 2070
       },
       {
         "label": "30-60j",
@@ -178,68 +178,90 @@
       },
       {
         "label": "90j+",
-        "amount": 17403
+        "amount": 15639
       }
     ],
-    "total": 17676,
+    "total": 17709,
     "details": [
       {
-        "ref": "FAC 21 (2026)",
-        "client": "Notion Labs (320 USD ~273 EUR)",
-        "amount": 273,
-        "due": "2026-06-08",
-        "days": 4
-      },
-      {
-        "ref": "FAC 47",
-        "client": "Firefightbox (reste apres acompte)",
-        "amount": 525,
-        "due": "2025-12-19",
-        "days": 175
-      },
-      {
-        "ref": "FAC 38",
+        "ref": "09-FAC 21",
         "client": "OPTRA",
-        "amount": 3900,
-        "due": "2025-12-02",
-        "days": 192
-      },
-      {
-        "ref": "FAC 28",
-        "client": "PROPERTY PARTNERS",
-        "amount": 2700,
-        "due": "2025-10-06",
-        "days": 249
-      },
-      {
-        "ref": "FAC 27",
-        "client": "OPTRA",
-        "amount": 1788,
-        "due": "2025-10-31",
-        "days": 224
-      },
-      {
-        "ref": "FAC 26",
-        "client": "OPTRA",
-        "amount": 2895,
-        "due": "2025-10-31",
-        "days": 224
-      },
-      {
-        "ref": "FAC 22",
-        "client": "PROPERTY PARTNERS",
-        "amount": 2700,
-        "due": "2025-09-19",
-        "days": 266
-      },
-      {
-        "ref": "FAC 21",
-        "client": "OPTRA",
-        "amount": 2895,
+        "amount": 2412,
         "due": "2025-09-16",
-        "days": 269
+        "days": 271
+      },
+      {
+        "ref": "09-FAC 22",
+        "client": "PROPERTY PARTNERS",
+        "amount": 2250,
+        "due": "2025-09-19",
+        "days": 268
+      },
+      {
+        "ref": "10-FAC 28",
+        "client": "PROPERTY PARTNERS",
+        "amount": 2250,
+        "due": "2025-10-06",
+        "days": 251
+      },
+      {
+        "ref": "10-FAC 27",
+        "client": "OPTRA",
+        "amount": 1490,
+        "due": "2025-10-31",
+        "days": 226
+      },
+      {
+        "ref": "10-FAC 26",
+        "client": "OPTRA",
+        "amount": 2412,
+        "due": "2025-10-31",
+        "days": 226
+      },
+      {
+        "ref": "11-FAC 38",
+        "client": "OPTRA",
+        "amount": 3250,
+        "due": "2025-12-02",
+        "days": 194
+      },
+      {
+        "ref": "12-FAC 47",
+        "client": "Firefightbox",
+        "amount": 1575,
+        "due": "2025-12-19",
+        "days": 177
+      },
+      {
+        "ref": "05-FAC 18",
+        "client": "OLYMPES",
+        "amount": 650,
+        "due": "2026-05-28",
+        "days": 17
+      },
+      {
+        "ref": "06-FAC 21",
+        "client": "Notion Lab",
+        "amount": 320,
+        "due": "2026-06-08",
+        "days": 6
+      },
+      {
+        "ref": "06-FAC 22",
+        "client": "MAIKERS",
+        "amount": 900,
+        "due": "2026-07-10",
+        "days": -26
+      },
+      {
+        "ref": "06-FAC 23",
+        "client": "DEV3PACK",
+        "amount": 200,
+        "due": "2026-07-11",
+        "days": -27
       }
-    ]
+    ],
+    "basis": "HT"
   },
   "tva": {
     "collected_mtd": 1202,
