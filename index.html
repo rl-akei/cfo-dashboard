@@ -650,8 +650,8 @@ function renderKPIs() {
     const cy = (d.ebitda.by_year || []).find(y => y.year === d.ebitda.current.year) || {};
     const m = d.ebitda.current.margin;
     cards.splice(4, 0, {
-      label: 'EBITDA ' + d.ebitda.current.year + ' (cash)', value: fmt(d.ebitda.current.ebitda) + ' EUR', icon: '💹',
-      sub: `Marge ${fmtPct(m)} | encaisse ${fmtK(cy.revenue || 0)} - OPEX ${fmtK(cy.opex || 0)}`,
+      label: 'EBITDA ' + d.ebitda.current.year + ' (HT)', value: fmt(d.ebitda.current.ebitda) + ' EUR', icon: '💹',
+      sub: `Marge ${fmtPct(m)} | encaisse HT ${fmtK(cy.revenue || 0)} - charges HT ${fmtK(cy.opex || 0)}${cy.opex_estimated ? ' (est.)' : ''}`,
       badge: [m >= 0.3 ? 'Sain' : 'Faible', m >= 0.3 ? 'green' : 'orange'],
       color: 'var(--aloe-dark)'
     });

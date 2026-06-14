@@ -2440,8 +2440,8 @@
     ]
   },
   "ebitda": {
-    "basis": "cash",
-    "note": "EBITDA cash 2026 = CA encaisse bank - depenses d'exploitation (hors TVA/impots/ARE). 2025 : EBITDA non calcule (depenses H1 2025 hors Qonto non consolidees).",
+    "basis": "HT",
+    "note": "EBITDA HT (V1) = encaisse HT (factures Qonto payees) - charges d'exploitation HT (debits Qonto - TVA, ESTIMATION ~20%, a rendre exact via le FEC Tiime, hors TVA/impots/ARE). 2025 = n/d (charges H1 hors Qonto).",
     "by_year": [
       {
         "year": 2025,
@@ -2454,17 +2454,18 @@
       },
       {
         "year": 2026,
-        "revenue": 35839,
-        "opex": 21422,
-        "ebitda": 14417,
-        "margin": 0.402,
-        "ytd": true
+        "revenue": 26384,
+        "opex": 17852,
+        "ebitda": 8532,
+        "margin": 0.323,
+        "ytd": true,
+        "opex_estimated": true
       }
     ],
     "current": {
       "year": 2026,
-      "ebitda": 14417,
-      "margin": 0.402
+      "ebitda": 8532,
+      "margin": 0.323
     }
   }
 }
