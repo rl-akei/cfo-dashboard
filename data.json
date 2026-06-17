@@ -1349,9 +1349,9 @@
           "posts_this_month": 0,
           "posts_last_month": 0,
           "mom_pct": null,
-          "key_metric_label": "Vues (API a venir)",
-          "key_metric": null,
-          "ytd": 0
+          "key_metric_label": "Vues (mois)",
+          "key_metric": 249,
+          "ytd": 3
         }
       ]
     },
@@ -1520,9 +1520,9 @@
           "posts_this_month": 0,
           "posts_last_month": 0,
           "mom_pct": null,
-          "ytd": 0,
+          "ytd": 3,
           "by_month": [],
-          "stats_source": "roadmap_api"
+          "stats_source": "api"
         }
       ],
       "linkedin": {
