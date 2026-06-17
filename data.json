@@ -1306,174 +1306,384 @@
     }
   ],
   "acquisition": {
-    "linkedin": {
-      "posts_published_2026": 146,
-      "total_impressions": 278185,
-      "total_reactions": 1063,
-      "total_comments": 3432,
-      "total_shares": 3,
-      "kr7_target": 144,
-      "kr7_current": 146,
-      "posts_per_month": [
+    "summary": {
+      "r1_this_month": 8,
+      "r1_last_month": 13,
+      "networks": [
+        {
+          "network": "LinkedIn",
+          "connection": "LI@sylvain-ramaradjou",
+          "posts_published_2026": 146,
+          "key_metric_label": "Impressions",
+          "key_metric": 278185
+        },
+        {
+          "network": "Instagram",
+          "connection": "IG@cafe.ramalogic",
+          "posts_published_2026": 0,
+          "key_metric_label": "Posts",
+          "key_metric": 0
+        },
+        {
+          "network": "TikTok",
+          "connection": "TK@cafe.ramalogic",
+          "posts_published_2026": 0,
+          "key_metric_label": "Posts",
+          "key_metric": 0
+        },
+        {
+          "network": "YouTube",
+          "connection": "YT@RamaLogic",
+          "posts_published_2026": 0,
+          "key_metric_label": "Vues (API a venir)",
+          "key_metric": null
+        }
+      ]
+    },
+    "site": {
+      "summary": {
+        "clicks": 22,
+        "impressions": 70,
+        "position": 4.2,
+        "ctr": 0.314,
+        "organic_share": 0.066
+      },
+      "by_month": [
         {
           "month": "2026-01",
-          "count": 5
+          "clicks": 7,
+          "impressions": 115,
+          "position": 3.4
         },
         {
           "month": "2026-02",
-          "count": 11
+          "clicks": 14,
+          "impressions": 79,
+          "position": 3.1
         },
         {
           "month": "2026-03",
-          "count": 5
+          "clicks": 20,
+          "impressions": 102,
+          "position": 3.1
         },
         {
           "month": "2026-04",
-          "count": 41
+          "clicks": 20,
+          "impressions": 115,
+          "position": 3.7
         },
         {
           "month": "2026-05",
-          "count": 38
+          "clicks": 13,
+          "impressions": 62,
+          "position": 4.7
         },
         {
           "month": "2026-06",
-          "count": 10
+          "clicks": 19,
+          "impressions": 52,
+          "position": 2.8
         }
       ],
-      "top_posts": [
+      "top_queries": [
         {
-          "title": "McKinsey facture 50k... Mon agent Claude le fait en 10 min",
-          "date": "2026-02-25",
-          "impressions": 210768,
-          "reactions": 389,
-          "comments": 2990,
-          "angle": "Lead magnet"
+          "query": "sylvain ramaradjou",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 2.0
         },
         {
-          "title": "Trump vient de bannir Anthropic",
-          "date": "2026-03-02",
-          "impressions": 15027,
-          "reactions": 82,
-          "comments": 42,
-          "angle": "News"
+          "query": "ramatics",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 31.3
         },
         {
-          "title": "Notion lance Custom Agents",
-          "date": "2026-03-03",
-          "impressions": 7286,
-          "reactions": 53,
-          "comments": 22,
-          "angle": "News"
-        },
-        {
-          "title": "Mon setup IA fait le boulot d'un assistant",
-          "date": "2026-03-30",
-          "impressions": 4707,
-          "reactions": 29,
-          "comments": 47,
-          "angle": "Build in public"
-        },
-        {
-          "title": "Mac vs PC",
-          "date": "2026-01-15",
-          "impressions": 4024,
-          "reactions": 46,
-          "comments": 41,
-          "angle": "Story telling"
-        },
-        {
-          "title": "Mars 2026. J'ai supprime Make.com et n8n. 60 jours plus tard, voici ce qui a change.",
-          "date": "2026-05-12",
-          "impressions": null,
-          "reactions": null,
-          "comments": null,
-          "angle": "Build in public"
-        },
-        {
-          "title": "+340% de revenus pour les solos qui ont bascule sur les agents IA",
-          "date": "2026-05-29",
-          "impressions": null,
-          "reactions": null,
-          "comments": null,
-          "angle": "Education"
-        },
-        {
-          "title": "VivaTech (jour J) — ce que j'ai retenu du plus grand salon tech d'Europe",
-          "date": "2026-06-03",
-          "impressions": null,
-          "reactions": null,
-          "comments": null,
-          "angle": "News"
-        },
-        {
-          "title": "33% des logiciels B2B seront remplaces par des agents IA d'ici 2027",
-          "date": "2026-06-12",
-          "impressions": null,
-          "reactions": null,
-          "comments": null,
-          "angle": "Education"
+          "query": "rama relais",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 39.0
         }
       ],
-      "angle_breakdown": [
+      "striking_distance": [],
+      "traffic_mix": [
         {
-          "angle": "News",
-          "count": 7,
-          "pct": 0.27
+          "source": "LinkedIn",
+          "views": 225
         },
         {
-          "angle": "Build in public",
-          "count": 6,
-          "pct": 0.23
+          "source": "YouTube",
+          "views": 16
         },
         {
-          "angle": "Story telling",
-          "count": 5,
-          "pct": 0.19
-        },
-        {
-          "angle": "Vente",
-          "count": 4,
-          "pct": 0.15
-        },
-        {
-          "angle": "Education",
-          "count": 3,
-          "pct": 0.12
-        },
-        {
-          "angle": "Lead magnet",
-          "count": 1,
-          "pct": 0.04
+          "source": "Google (organique)",
+          "views": 17
         }
       ],
-      "pipeline": {
-        "ideas": 55,
-        "writing": 6,
-        "to_plan": 1,
-        "ready_to_schedule": 0
-      },
-      "format_breakdown": [
+      "notes": "GSC 28j (latence ~2j) + Umami. SEO greenfield : 87% du trafic refere vient de LinkedIn, ~7% de Google. Aucune requete en striking-distance (pos 5-20) encore. Vieilles URLs Framer /fr/* a rediriger (301)."
+    },
+    "content": {
+      "by_network": [
         {
-          "format": "image",
-          "count": 20,
-          "pct": 0.91
+          "network": "LinkedIn",
+          "connection": "LI@sylvain-ramaradjou",
+          "posts_published_2026": 146,
+          "impressions": 278185,
+          "reactions": 1063,
+          "comments": 3432,
+          "shares": 3,
+          "by_month": [
+            {
+              "month": "2026-01",
+              "count": 5
+            },
+            {
+              "month": "2026-02",
+              "count": 11
+            },
+            {
+              "month": "2026-03",
+              "count": 5
+            },
+            {
+              "month": "2026-04",
+              "count": 41
+            },
+            {
+              "month": "2026-05",
+              "count": 38
+            },
+            {
+              "month": "2026-06",
+              "count": 10
+            }
+          ],
+          "stats_source": "notion"
         },
         {
-          "format": "multi_assets",
-          "count": 1,
-          "pct": 0.05
+          "network": "Instagram",
+          "connection": "IG@cafe.ramalogic",
+          "posts_published_2026": 0,
+          "by_month": [],
+          "stats_source": "notion_cadence"
         },
         {
-          "format": "text",
-          "count": 1,
-          "pct": 0.05
+          "network": "TikTok",
+          "connection": "TK@cafe.ramalogic",
+          "posts_published_2026": 0,
+          "by_month": [],
+          "stats_source": "notion_cadence"
+        },
+        {
+          "network": "YouTube",
+          "connection": "YT@RamaLogic",
+          "posts_published_2026": 0,
+          "by_month": [],
+          "stats_source": "roadmap_api"
         }
-      ]
+      ],
+      "linkedin": {
+        "posts_published_2026": 146,
+        "total_impressions": 278185,
+        "total_reactions": 1063,
+        "total_comments": 3432,
+        "total_shares": 3,
+        "kr7_target": 144,
+        "kr7_current": 146,
+        "posts_per_month": [
+          {
+            "month": "2026-01",
+            "count": 5
+          },
+          {
+            "month": "2026-02",
+            "count": 11
+          },
+          {
+            "month": "2026-03",
+            "count": 5
+          },
+          {
+            "month": "2026-04",
+            "count": 41
+          },
+          {
+            "month": "2026-05",
+            "count": 38
+          },
+          {
+            "month": "2026-06",
+            "count": 10
+          }
+        ],
+        "top_posts": [
+          {
+            "title": "McKinsey facture 50k... Mon agent Claude le fait en 10 min",
+            "date": "2026-02-25",
+            "impressions": 210768,
+            "reactions": 389,
+            "comments": 2990,
+            "angle": "Lead magnet"
+          },
+          {
+            "title": "Trump vient de bannir Anthropic",
+            "date": "2026-03-02",
+            "impressions": 15027,
+            "reactions": 82,
+            "comments": 42,
+            "angle": "News"
+          },
+          {
+            "title": "Notion lance Custom Agents",
+            "date": "2026-03-03",
+            "impressions": 7286,
+            "reactions": 53,
+            "comments": 22,
+            "angle": "News"
+          },
+          {
+            "title": "Mon setup IA fait le boulot d'un assistant",
+            "date": "2026-03-30",
+            "impressions": 4707,
+            "reactions": 29,
+            "comments": 47,
+            "angle": "Build in public"
+          },
+          {
+            "title": "Mac vs PC",
+            "date": "2026-01-15",
+            "impressions": 4024,
+            "reactions": 46,
+            "comments": 41,
+            "angle": "Story telling"
+          },
+          {
+            "title": "Mars 2026. J'ai supprime Make.com et n8n. 60 jours plus tard, voici ce qui a change.",
+            "date": "2026-05-12",
+            "impressions": null,
+            "reactions": null,
+            "comments": null,
+            "angle": "Build in public"
+          },
+          {
+            "title": "+340% de revenus pour les solos qui ont bascule sur les agents IA",
+            "date": "2026-05-29",
+            "impressions": null,
+            "reactions": null,
+            "comments": null,
+            "angle": "Education"
+          },
+          {
+            "title": "VivaTech (jour J) — ce que j'ai retenu du plus grand salon tech d'Europe",
+            "date": "2026-06-03",
+            "impressions": null,
+            "reactions": null,
+            "comments": null,
+            "angle": "News"
+          },
+          {
+            "title": "33% des logiciels B2B seront remplaces par des agents IA d'ici 2027",
+            "date": "2026-06-12",
+            "impressions": null,
+            "reactions": null,
+            "comments": null,
+            "angle": "Education"
+          }
+        ],
+        "angle_breakdown": [
+          {
+            "angle": "News",
+            "count": 7,
+            "pct": 0.27
+          },
+          {
+            "angle": "Build in public",
+            "count": 6,
+            "pct": 0.23
+          },
+          {
+            "angle": "Story telling",
+            "count": 5,
+            "pct": 0.19
+          },
+          {
+            "angle": "Vente",
+            "count": 4,
+            "pct": 0.15
+          },
+          {
+            "angle": "Education",
+            "count": 3,
+            "pct": 0.12
+          },
+          {
+            "angle": "Lead magnet",
+            "count": 1,
+            "pct": 0.04
+          }
+        ],
+        "pipeline": {
+          "ideas": 55,
+          "writing": 6,
+          "to_plan": 1,
+          "ready_to_schedule": 0
+        },
+        "format_breakdown": [
+          {
+            "format": "image",
+            "count": 20,
+            "pct": 0.91
+          },
+          {
+            "format": "multi_assets",
+            "count": 1,
+            "pct": 0.05
+          },
+          {
+            "format": "text",
+            "count": 1,
+            "pct": 0.05
+          }
+        ]
+      }
     },
     "newsletter": {
       "kr8_target": 6,
       "kr8_current": 6,
       "editions_published": 6,
+      "subscribers": 160,
+      "brevo": {
+        "avg_open_rate": 0.557,
+        "avg_click_rate": 0.0,
+        "editions": [
+          {
+            "n": 6,
+            "subject": "Tout le monde veut des agents. Personne ne veut construire le socle",
+            "sent": 61,
+            "delivered": 61,
+            "open_rate": 0.557,
+            "click_rate": 0.0,
+            "date": "2026-06-01",
+            "url": "https://app.brevo.com/camp/template/59/message-setup"
+          }
+        ],
+        "note": "Brevo ne capture les stats que pour les envois par liste. Editions #2/#3 parties via segment = stats non remontees. Edition #6 (liste Newsletter formulaire, 61 envois) = 55.7% d'ouverture.",
+        "lists": [
+          {
+            "name": "Newsletter final",
+            "subs": 160
+          },
+          {
+            "name": "Newsletter formulaire",
+            "subs": 79
+          },
+          {
+            "name": "Deja inscrit",
+            "subs": 106
+          }
+        ]
+      },
       "status": "KR8 6/6 COMPLETE. Edition 7 (sujet: Notion SSOT) preparee pour envoi ~07-09/06 — statut d'envoi Brevo a confirmer."
     },
     "leads": {
@@ -2258,39 +2468,109 @@
           "tag": "Finance"
         }
       ],
-      "acquisition": [
+      "site": [
         {
-          "id": "S25-acq-1",
-          "title": "Convertir le hot lead 1er RDV sans R2 en R2 cette semaine",
-          "why": "1 hot lead a un 1er RDV mais aucun R2 cale. Sans R2, il refroidit.",
-          "impact": "1 deal qualifie de plus dans le pipeline T2",
+          "id": "S25-site-1",
+          "title": "Rediriger en 301 les vieilles URLs Framer /fr/*",
+          "why": "Elles captent encore des impressions GSC mais diluent l'autorite sur les nouvelles URLs Astro.",
+          "impact": "Consolide le ranking, evite le contenu duplique",
           "kr_id": "31b1b4b9-aefa-81de-9dc6-c4231eed224b",
           "kr_name": "Acquisition (LK/NL S1)",
           "priority": "high",
-          "due_date": "2026-06-18",
-          "tag": "Marketing"
+          "due_date": "2026-06-20",
+          "tag": "Operation"
         },
         {
-          "id": "S25-acq-2",
-          "title": "Lancer la newsletter edition 7 (Notion SSOT) preparee",
-          "why": "KR8 6/6 atteint mais l'edition 7 est prete et non envoyee. Le momentum se perd.",
-          "impact": "Maintient le canal newsletter actif (KR8)",
+          "id": "S25-site-2",
+          "title": "Publier 1 article blog ciblant une requete metier (ex: agent IA Notion PME)",
+          "why": "Le SEO ne ressort que sur la marque ; ~7% du trafic refere vient de Google vs 87% LinkedIn.",
+          "impact": "Amorce l'organique, sort du 100% brand",
           "kr_id": "31b1b4b9-aefa-81de-9dc6-c4231eed224b",
           "kr_name": "Acquisition (LK/NL S1)",
           "priority": "medium",
-          "due_date": "2026-06-17",
+          "due_date": "2026-06-22",
           "tag": "Marketing"
         },
         {
-          "id": "S25-acq-3",
-          "title": "Capitaliser sur l'angle lead-magnet (post 210K impressions) pour 2 posts LK",
-          "why": "Le post McKinsey/Claude a fait 210K impressions. L'angle convertit, il faut le reexploiter.",
-          "impact": "Visibilite + leads inbound sur le canal le plus performant",
+          "id": "S25-site-3",
+          "title": "Tracker les CTA cas-clients dans Umami",
+          "why": "Aucune mesure site->lead aujourd'hui, impossible de relier le SEO au funnel R1.",
+          "impact": "Relie l'acquisition site aux 8 R1/mois",
+          "kr_id": "31b1b4b9-aefa-81de-9dc6-c4231eed224b",
+          "kr_name": "Acquisition (LK/NL S1)",
+          "priority": "medium",
+          "due_date": "2026-06-21",
+          "tag": "Automation"
+        }
+      ],
+      "content": [
+        {
+          "id": "S25-cont-1",
+          "title": "Demarrer YouTube : publier la 1ere video (pipeline /video pret)",
+          "why": "0 contenu publie sur YT/IG/TikTok en 2026 ; 87% du trafic depend de LinkedIn seul.",
+          "impact": "Ouvre un 2e canal de reach, derisque la dependance LK",
+          "kr_id": "31b1b4b9-aefa-81de-9dc6-c4231eed224b",
+          "kr_name": "Acquisition (LK/NL S1)",
+          "priority": "high",
+          "due_date": "2026-06-22",
+          "tag": "Growth"
+        },
+        {
+          "id": "S25-cont-2",
+          "title": "Recycler le post lead-magnet (210K impressions) en carrousel + reel IG/TikTok",
+          "why": "Meilleur angle de l'annee, non exploite sur les nouveaux reseaux.",
+          "impact": "Reutilise l'asset le plus performant cross-reseau",
           "kr_id": "31b1b4b9-aefa-81de-9dc6-c4231eed224b",
           "kr_name": "Acquisition (LK/NL S1)",
           "priority": "medium",
           "due_date": "2026-06-20",
-          "tag": "Growth"
+          "tag": "Marketing"
+        },
+        {
+          "id": "S25-cont-3",
+          "title": "Basculer 20% des posts LK vers l'angle Vente/Credibilite (sous-exploite)",
+          "why": "146 posts publies 2026 (KR7 depasse) mais angle oriente reach, peu conversion.",
+          "impact": "Oriente le reach vers la conversion R1",
+          "kr_id": "31b1b4b9-aefa-81de-9dc6-c4231eed224b",
+          "kr_name": "Acquisition (LK/NL S1)",
+          "priority": "medium",
+          "due_date": "2026-06-21",
+          "tag": "Marketing"
+        }
+      ],
+      "newsletter": [
+        {
+          "id": "S25-news-1",
+          "title": "Connecter toutes les editions a une LISTE Brevo (pas un segment)",
+          "why": "Editions #2/#3 parties en segment = stats ouverture/clic perdues ; seul #6 est mesure (55.7%).",
+          "impact": "Rend la perf newsletter mesurable a chaque envoi",
+          "kr_id": "31b1b4b9-aefa-81de-9dc6-c4231eed224b",
+          "kr_name": "Acquisition (LK/NL S1)",
+          "priority": "high",
+          "due_date": "2026-06-20",
+          "tag": "Automation"
+        },
+        {
+          "id": "S25-news-2",
+          "title": "Envoyer l'edition #7 (Notion SSOT) deja preparee",
+          "why": "Cadence bi-mensuelle a tenir, KR8 a 6/6.",
+          "impact": "Maintient la regularite d'envoi",
+          "kr_id": "31b1b4b9-aefa-81de-9dc6-c4231eed224b",
+          "kr_name": "Acquisition (LK/NL S1)",
+          "priority": "medium",
+          "due_date": "2026-06-18",
+          "tag": "Marketing"
+        },
+        {
+          "id": "S25-news-3",
+          "title": "Fusionner les listes newsletter (final 160 / formulaire 79 / deja inscrit 106)",
+          "why": "Audience eclatee sur 3 listes, base d'envoi sale.",
+          "impact": "Base propre, meilleure delivrabilite",
+          "kr_id": "31b1b4b9-aefa-81de-9dc6-c4231eed224b",
+          "kr_name": "Acquisition (LK/NL S1)",
+          "priority": "medium",
+          "due_date": "2026-06-23",
+          "tag": "Operation"
         }
       ],
       "sales": [

@@ -478,41 +478,72 @@ tr:hover td { background: var(--cream-2); }
 </div>
 
 <div id="tab-acquisition" class="tab-content">
-  <div class="section" id="acqActionsSection" style="display:none">
-    <div class="section-title"><div class="dot" style="background:var(--mindaro-dark)"></div> 3 actions a entreprendre <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-dim)">· valider vers RL-To do</span></div>
-    <div class="actions-list" id="acqActionsContainer"></div>
+
+  <!-- HERO : metrics cles par reseau + R1 generes -->
+  <div class="section">
+    <div class="section-title"><div class="dot" style="background:var(--aloe)"></div> Funnel d'acquisition &mdash; Reach par reseau &amp; R1 generes ce mois</div>
+    <div class="kpi-grid" id="acqHeroGrid"></div>
+  </div>
+
+  <!-- 1. SITE (SEO) -->
+  <div class="section" id="siteActionsSection" style="display:none">
+    <div class="section-title"><div class="dot" style="background:var(--mindaro-dark)"></div> 3 actions Site a entreprendre <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-dim)">· valider vers RL-To do</span></div>
+    <div class="actions-list" id="siteActionsContainer"></div>
   </div>
   <div class="section">
-    <div class="section-title"><div class="dot" style="background:var(--cyan)"></div> ACQUISITION - LinkedIn & Leads</div>
-    
-    <div class="kpi-grid" id="acqKpiGrid"></div>
-    
+    <div class="section-title"><div class="dot" style="background:var(--blue)"></div> 1 &middot; SITE &mdash; SEO &amp; trafic organique</div>
+    <div class="kpi-grid" id="siteKpiGrid"></div>
     <div class="chart-grid" style="margin-top:24px">
       <div class="chart-card">
-        <h3>Posts LinkedIn publies par mois + Impressions</h3>
-        <canvas id="chartLkPosts"></canvas>
+        <h3>Ranking Google par mois (clics, impressions, position)</h3>
+        <canvas id="chartSiteTrend"></canvas>
       </div>
       <div class="chart-card">
-        <h3>Pipeline editorial</h3>
+        <h3>Origine du trafic refere (Umami)</h3>
+        <canvas id="chartSiteTraffic"></canvas>
+      </div>
+    </div>
+    <div class="section-title" style="margin-top:24px"><div class="dot" style="background:var(--yellow)"></div> Requetes Google &mdash; top &amp; quick-wins</div>
+    <div class="table-card">
+      <table>
+        <thead><tr><th>Requete</th><th>Position</th><th>Impressions</th><th>Clics</th></tr></thead>
+        <tbody id="siteQueriesTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 2. CONTENU (multi-reseaux) -->
+  <div class="section" id="contentActionsSection" style="display:none">
+    <div class="section-title"><div class="dot" style="background:var(--mindaro-dark)"></div> 3 actions Contenu a entreprendre <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-dim)">· valider vers RL-To do</span></div>
+    <div class="actions-list" id="contentActionsContainer"></div>
+  </div>
+  <div class="section">
+    <div class="section-title"><div class="dot" style="background:var(--cyan)"></div> 2 &middot; CONTENU &mdash; Reseaux sociaux <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-dim)">· RL-SM Contents (Status = Published, par Connection)</span></div>
+    <div class="kpi-grid" id="contentNetGrid"></div>
+    <div class="chart-grid" style="margin-top:24px">
+      <div class="chart-card">
+        <h3>Posts publies par mois &amp; par reseau</h3>
+        <canvas id="chartContentByNetwork"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Pipeline editorial LinkedIn</h3>
         <canvas id="chartLkPipeline"></canvas>
       </div>
     </div>
-    
-    <div class="section-title" style="margin-top:24px"><div class="dot" style="background:var(--yellow)"></div> Top 8 posts par impressions</div>
+    <div class="section-title" style="margin-top:24px"><div class="dot" style="background:var(--yellow)"></div> Top posts LinkedIn par impressions</div>
     <div class="table-card">
       <table>
         <thead><tr><th>Post</th><th>Date</th><th>Impressions</th><th>Reactions</th><th>Comments</th><th>Angle</th></tr></thead>
         <tbody id="lkTopPosts"></tbody>
       </table>
     </div>
-    
     <div class="chart-grid-3" style="margin-top:24px">
       <div class="chart-card">
-        <h3>Angle des posts</h3>
+        <h3>Angle des posts (LinkedIn)</h3>
         <canvas id="chartLkAngle"></canvas>
       </div>
       <div class="chart-card">
-        <h3>Format des posts</h3>
+        <h3>Format des posts (LinkedIn)</h3>
         <canvas id="chartLkFormat"></canvas>
       </div>
       <div class="chart-card">
@@ -520,8 +551,37 @@ tr:hover td { background: var(--cream-2); }
         <canvas id="chartLeadSrc"></canvas>
       </div>
     </div>
-    
-    <div class="section-title" style="margin-top:24px;color:var(--red)"><div class="dot" style="background:var(--red)"></div> Hot leads a convertir en R2</div>
+  </div>
+
+  <!-- 3. NEWSLETTER (Brevo) -->
+  <div class="section" id="newsletterActionsSection" style="display:none">
+    <div class="section-title"><div class="dot" style="background:var(--mindaro-dark)"></div> 3 actions Newsletter a entreprendre <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-dim)">· valider vers RL-To do</span></div>
+    <div class="actions-list" id="newsletterActionsContainer"></div>
+  </div>
+  <div class="section">
+    <div class="section-title"><div class="dot" style="background:var(--purple)"></div> 3 &middot; NEWSLETTER &mdash; Brevo</div>
+    <div class="kpi-grid" id="nlKpiGrid"></div>
+    <div class="chart-grid" style="margin-top:24px">
+      <div class="chart-card">
+        <h3>Performance par edition (taux d'ouverture)</h3>
+        <canvas id="chartNlPerf"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Abonnes par liste</h3>
+        <canvas id="chartNlLists"></canvas>
+      </div>
+    </div>
+    <div class="table-card" style="margin-top:24px">
+      <table>
+        <thead><tr><th>Edition</th><th>Date</th><th>Envoyes</th><th>Ouverture</th><th>Clic</th></tr></thead>
+        <tbody id="nlEditionsTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Conversion : hot leads -->
+  <div class="section">
+    <div class="section-title" style="color:var(--red)"><div class="dot" style="background:var(--red)"></div> Hot leads a convertir en R2</div>
     <div class="table-card">
       <table>
         <thead><tr><th>Nom</th><th>1er RDV</th><th>R2</th><th>Opportunite</th><th>Action</th></tr></thead>
@@ -706,7 +766,9 @@ const prioLabel = { critical: ['CRITIQUE', 'red'], high: ['PRIORITAIRE', 'orange
 // section -> conteneurs DOM. Chaque section affiche 3 actions a entreprendre.
 const ACTION_SECTIONS = {
   dashboard:     { sec: 'actionsSection',         cont: 'actionsContainer' },
-  acquisition:   { sec: 'acqActionsSection',      cont: 'acqActionsContainer' },
+  site:          { sec: 'siteActionsSection',     cont: 'siteActionsContainer' },
+  content:       { sec: 'contentActionsSection',  cont: 'contentActionsContainer' },
+  newsletter:    { sec: 'newsletterActionsSection', cont: 'newsletterActionsContainer' },
   sales:         { sec: 'salesActionsSection',    cont: 'salesActionsContainer' },
   delivery:      { sec: 'deliveryActionsSection', cont: 'deliveryActionsContainer' },
   subscriptions: { sec: 'subsActionsSection',     cont: 'subsActionsContainer' },
@@ -1204,89 +1266,177 @@ function renderDelivery() {
 // ==========================================
 function renderAcquisition() {
   const acq = DATA.acquisition;
-  const lk = acq.linkedin;
-  
-  // KPIs
-  const kpis = [
-    { label: 'Posts publies 2026', value: lk.posts_published_2026, icon: '\uD83D\uDCDD', sub: `KR7: ${lk.kr7_current}/${lk.kr7_target} (${Math.round(lk.kr7_current/lk.kr7_target*100)}%)`, color: 'var(--blue)', badge: [Math.round(lk.kr7_current/lk.kr7_target*100) + '%', 'blue'] },
-    { label: 'Impressions totales', value: fmt(lk.total_impressions), icon: '\uD83D\uDC41', sub: `${fmt(lk.total_reactions)} reactions | ${fmt(lk.total_comments)} comments`, color: 'var(--cyan)', badge: ['Visible', 'blue'] },
-    { label: 'Nouveaux leads 30j', value: acq.leads.last_30_days, icon: '\uD83D\uDC65', sub: `${acq.leads.last_7_days} en 7j | ${acq.leads.hot_leads_1st_rdv_no_r2} hot leads`, color: 'var(--green)', badge: ['Actif', 'green'] },
-    { label: 'Newsletter', value: acq.newsletter.editions_published, icon: '\uD83D\uDCEC', sub: `KR8: ${acq.newsletter.kr8_current}/${acq.newsletter.kr8_target} abonnes`, color: 'var(--red)', badge: ['Non lancee', 'red'] }
-  ];
-  document.getElementById('acqKpiGrid').innerHTML = kpis.map(c => `
+  const su = acq.summary || {};
+  const site = acq.site || {};
+  const content = acq.content || {};
+  const lk = content.linkedin || {};
+  const nl = acq.newsletter || {};
+  const NETC = { LinkedIn:'#6F94A6', Instagram:'#B0563C', TikTok:'#475E54', YouTube:'#C0392B' };
+  const card = c => `
     <div class="kpi-card">
       <div class="label">${c.label}</div>
-      <div class="value" style="color:${c.color}">${c.value}</div>
-      <div class="sub">${c.sub}</div>
-      <span class="badge badge-${c.badge[1]}">${c.badge[0]}</span>
-      <div class="icon">${c.icon}</div>
-    </div>
-  `).join('');
-  
-  // LK posts per month
-  new Chart(document.getElementById('chartLkPosts'), {
-    type: 'bar',
-    data: {
-      labels: lk.posts_per_month.map(m => m.month.replace('2026-','')),
-      datasets: [{ label: 'Posts publies', data: lk.posts_per_month.map(m => m.count), backgroundColor: 'rgba(111,148,166,0.5)', borderColor: 'rgba(111,148,166,0.8)', borderWidth: 1 }]
-    },
-    options: { ...chartDefaults, scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, ticks: { ...chartDefaults.scales.y.ticks, callback: v => v } } } }
+      <div class="value" style="color:${c.color||'var(--ink)'}">${c.value}</div>
+      <div class="sub">${c.sub||''}</div>
+      ${c.badge ? `<span class="badge badge-${c.badge[1]}">${c.badge[0]}</span>` : ''}
+      ${c.icon ? `<div class="icon">${c.icon}</div>` : ''}
+    </div>`;
+
+  // ===== HERO : reach par reseau + R1 =====
+  const netCards = (su.networks||[]).map(n => {
+    const active = (n.posts_published_2026||0) > 0;
+    const metric = n.key_metric == null ? 'API a venir' : fmt(n.key_metric);
+    return { label:n.network, value:n.posts_published_2026||0,
+      sub: active ? `${n.key_metric_label}: ${metric}` : 'a demarrer',
+      color: NETC[n.network]||'var(--ink)',
+      badge: active ? ['Actif','green'] : ['0 publie','orange'] };
   });
-  
-  // LK pipeline
-  new Chart(document.getElementById('chartLkPipeline'), {
-    type: 'bar',
-    data: {
-      labels: ['Ideas', 'Writing', 'To plan', 'Ready'],
-      datasets: [{ data: [lk.pipeline.ideas, lk.pipeline.writing, lk.pipeline.to_plan, lk.pipeline.ready_to_schedule], backgroundColor: ['rgba(92,102,97,0.4)', 'rgba(71,94,84,0.5)', 'rgba(159,165,95,0.5)', 'rgba(106,141,126,0.5)'], borderWidth: 0 }]
-    },
-    options: { ...chartDefaults, plugins: { ...chartDefaults.plugins, legend: { display: false } }, scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, ticks: { ...chartDefaults.scales.y.ticks, callback: v => v } } }, indexAxis: 'y' }
+  const r1d = (su.r1_this_month||0) - (su.r1_last_month||0);
+  const r1arrow = r1d > 0 ? `&#9650; +${r1d}` : (r1d < 0 ? `&#9660; ${r1d}` : '&middot; stable');
+  const r1col = r1d >= 0 ? 'var(--green)' : 'var(--red)';
+  const heroCards = netCards.concat([{
+    label:'R1 generes ce mois', value: (su.r1_this_month ?? '\u2014'),
+    sub:`M-1: ${su.r1_last_month ?? '\u2014'} &middot; <span style="color:${r1col};font-weight:600">${r1arrow}</span>`,
+    color:'var(--aloe-dark)', badge:['1er RDV','blue'], icon:'\uD83E\uDD1D' }]);
+  document.getElementById('acqHeroGrid').innerHTML = heroCards.map(card).join('');
+
+  // ===== 1. SITE (SEO) =====
+  const ss = site.summary || {};
+  const siteCards = [
+    { label:'Clics Google (28j)', value: ss.clicks ?? 0, sub:`CTR ${Math.round((ss.ctr||0)*100)}%`, color:'var(--blue)', badge:['GSC','blue'] },
+    { label:'Impressions (28j)', value: ss.impressions ?? 0, sub:'requetes affichees', color:'var(--cyan)' },
+    { label:'Position moyenne', value:(ss.position ?? 0).toFixed(1), sub:'sur les requetes', color:(ss.position||99)<=5?'var(--green)':'var(--orange)', badge:[(ss.position||99)<=5?'Top 5':'A pousser',(ss.position||99)<=5?'green':'orange'] },
+    { label:'Part organique', value: Math.round((ss.organic_share||0)*100)+'%', sub:'vs LinkedIn (social)', color:'var(--purple)', badge:['Greenfield','orange'] }
+  ];
+  document.getElementById('siteKpiGrid').innerHTML = siteCards.map(card).join('');
+
+  const sm = site.by_month || [];
+  new Chart(document.getElementById('chartSiteTrend'), {
+    type:'bar',
+    data:{ labels: sm.map(m=>m.month.replace('2026-','')), datasets:[
+      { type:'bar', label:'Clics', data: sm.map(m=>m.clicks), backgroundColor:'rgba(106,141,126,0.65)', yAxisID:'y', order:2 },
+      { type:'bar', label:'Impressions', data: sm.map(m=>m.impressions), backgroundColor:'rgba(167,222,249,0.65)', yAxisID:'y', order:3 },
+      { type:'line', label:'Position', data: sm.map(m=>m.position), borderColor:'#B0563C', backgroundColor:'#B0563C', yAxisID:'y1', tension:0.3, order:1 }
+    ]},
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ labels:{ color:'#5C6661', font:{size:10} } } },
+      scales:{ x:{ grid:{display:false}, ticks:{color:'#5C6661',font:{size:10}} },
+        y:{ position:'left', grid:{color:'rgba(0,0,0,0.04)'}, ticks:{color:'#5C6661',font:{size:10}} },
+        y1:{ position:'right', reverse:true, grid:{display:false}, ticks:{color:'#B0563C',font:{size:10}}, title:{display:true,text:'Position',color:'#B0563C',font:{size:9}} } } }
   });
-  
-  // Top posts table
-  document.getElementById('lkTopPosts').innerHTML = lk.top_posts.map(p => {
+
+  new Chart(document.getElementById('chartSiteTraffic'), {
+    type:'doughnut',
+    data:{ labels:(site.traffic_mix||[]).map(t=>t.source), datasets:[{ data:(site.traffic_mix||[]).map(t=>t.views), backgroundColor:['#6F94A6','#C0392B','#9FA55F'], borderWidth:0 }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ position:'right', labels:{color:'#5C6661',font:{size:10}} } } }
+  });
+
+  const sq = site.top_queries || [];
+  document.getElementById('siteQueriesTable').innerHTML = sq.length ? sq.map(q => `
+    <tr>
+      <td style="font-weight:500">${q.query}</td>
+      <td>${q.position.toFixed(1)}</td>
+      <td>${q.impressions}</td>
+      <td>${q.clicks}</td>
+    </tr>`).join('') : `<tr><td colspan="4" style="color:var(--text-dim)">Aucune requete hors marque (SEO en amorcage)</td></tr>`;
+
+  // ===== 2. CONTENU (multi-reseaux) =====
+  const byNet = content.by_network || [];
+  const netDetailCards = byNet.map(n => {
+    const active = (n.posts_published_2026||0) > 0;
+    let sub;
+    if (n.stats_source === 'roadmap_api') sub = 'Stats API a venir';
+    else if (active && n.impressions != null) sub = `${fmt(n.impressions)} impr &middot; ${fmt(n.reactions||0)} react`;
+    else if (active) sub = 'cadence suivie';
+    else sub = 'a demarrer';
+    return { label:n.network, value:n.posts_published_2026||0, sub,
+      color: NETC[n.network]||'var(--ink)',
+      badge: active ? ['Publie','green'] : (n.stats_source==='roadmap_api' ? ['Roadmap','blue'] : ['0','orange']) };
+  });
+  document.getElementById('contentNetGrid').innerHTML = netDetailCards.map(card).join('');
+
+  const MONTHS = ['2026-01','2026-02','2026-03','2026-04','2026-05','2026-06'];
+  const netDatasets = byNet.map(n => {
+    const mm = {}; (n.by_month||[]).forEach(x => mm[x.month] = x.count);
+    return { label:n.network, data: MONTHS.map(m=>mm[m]||0), backgroundColor:(NETC[n.network]||'#6F94A6')+'cc', borderWidth:0, stack:'s' };
+  });
+  new Chart(document.getElementById('chartContentByNetwork'), {
+    type:'bar',
+    data:{ labels: MONTHS.map(m=>m.replace('2026-','')), datasets: netDatasets },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ labels:{color:'#5C6661',font:{size:10}} } },
+      scales:{ x:{ stacked:true, grid:{display:false}, ticks:{color:'#5C6661',font:{size:10}} },
+        y:{ stacked:true, grid:{color:'rgba(0,0,0,0.04)'}, ticks:{color:'#5C6661',font:{size:10}} } } }
+  });
+
+  if (lk.pipeline) new Chart(document.getElementById('chartLkPipeline'), {
+    type:'bar',
+    data:{ labels:['Ideas','Writing','To plan','Ready'], datasets:[{ data:[lk.pipeline.ideas,lk.pipeline.writing,lk.pipeline.to_plan,lk.pipeline.ready_to_schedule], backgroundColor:['rgba(92,102,97,0.4)','rgba(71,94,84,0.5)','rgba(159,165,95,0.5)','rgba(106,141,126,0.5)'], borderWidth:0 }] },
+    options:{ ...chartDefaults, plugins:{ ...chartDefaults.plugins, legend:{ display:false } }, scales:{ ...chartDefaults.scales, y:{ ...chartDefaults.scales.y, ticks:{ ...chartDefaults.scales.y.ticks, callback:v=>v } } }, indexAxis:'y' }
+  });
+
+  document.getElementById('lkTopPosts').innerHTML = (lk.top_posts||[]).map(p => {
     const isViral = p.impressions > 10000;
     return `<tr${isViral ? ' style="background:rgba(159,165,95,0.05)"' : ''}>
       <td style="max-width:400px;font-weight:${isViral ? 700 : 500}">${p.title}</td>
       <td>${p.date}</td>
-      <td style="color:var(--cyan);font-weight:700">${fmt(p.impressions)}</td>
-      <td>${p.reactions}</td>
-      <td>${p.comments}</td>
+      <td style="color:var(--cyan);font-weight:700">${p.impressions==null?'\u2014':fmt(p.impressions)}</td>
+      <td>${p.reactions==null?'\u2014':p.reactions}</td>
+      <td>${p.comments==null?'\u2014':p.comments}</td>
       <td><span class="badge badge-blue">${p.angle}</span></td>
     </tr>`;
   }).join('');
-  
-  // Angle breakdown
-  new Chart(document.getElementById('chartLkAngle'), {
-    type: 'doughnut',
-    data: {
-      labels: lk.angle_breakdown.map(a => a.angle),
-      datasets: [{ data: lk.angle_breakdown.map(a => a.count), backgroundColor: ['#6F94A6','#6A8D7E','#B0563C','#9FA55F','#475E54','#A7DEF9','#5C6661'], borderWidth: 0 }]
-    },
-    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#5C6661', font: { size: 10 } } } } }
+
+  if (lk.angle_breakdown) new Chart(document.getElementById('chartLkAngle'), {
+    type:'doughnut',
+    data:{ labels:lk.angle_breakdown.map(a=>a.angle), datasets:[{ data:lk.angle_breakdown.map(a=>a.count), backgroundColor:['#6F94A6','#6A8D7E','#B0563C','#9FA55F','#475E54','#A7DEF9','#5C6661'], borderWidth:0 }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ position:'right', labels:{color:'#5C6661',font:{size:10}} } } }
   });
-  
-  // Format breakdown
-  new Chart(document.getElementById('chartLkFormat'), {
-    type: 'doughnut',
-    data: {
-      labels: lk.format_breakdown.map(f => f.format),
-      datasets: [{ data: lk.format_breakdown.map(f => f.count), backgroundColor: ['#6F94A6','#475E54','#A7DEF9','#9FA55F'], borderWidth: 0 }]
-    },
-    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#5C6661', font: { size: 10 } } } } }
+  if (lk.format_breakdown) new Chart(document.getElementById('chartLkFormat'), {
+    type:'doughnut',
+    data:{ labels:lk.format_breakdown.map(f=>f.format), datasets:[{ data:lk.format_breakdown.map(f=>f.count), backgroundColor:['#6F94A6','#475E54','#A7DEF9','#9FA55F'], borderWidth:0 }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ position:'right', labels:{color:'#5C6661',font:{size:10}} } } }
   });
-  
-  // Lead sources
   new Chart(document.getElementById('chartLeadSrc'), {
-    type: 'doughnut',
-    data: {
-      labels: acq.leads.by_source.map(s => s.source),
-      datasets: [{ data: acq.leads.by_source.map(s => s.count), backgroundColor: ['#6F94A6','#6A8D7E','#9FA55F','#5C6661'], borderWidth: 0 }]
-    },
-    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#5C6661', font: { size: 10 } } } } }
+    type:'doughnut',
+    data:{ labels:acq.leads.by_source.map(s=>s.source), datasets:[{ data:acq.leads.by_source.map(s=>s.count), backgroundColor:['#6F94A6','#6A8D7E','#9FA55F','#5C6661'], borderWidth:0 }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ position:'right', labels:{color:'#5C6661',font:{size:10}} } } }
   });
-  
-  // Hot leads
+
+  // ===== 3. NEWSLETTER (Brevo) =====
+  const br = nl.brevo || {};
+  const nlCards = [
+    { label:'Abonnes', value: fmt(nl.subscribers||0), sub:'liste principale', color:'var(--purple)', badge:['Brevo','blue'] },
+    { label:'Ouverture moyenne', value: Math.round((br.avg_open_rate||0)*100)+'%', sub:'editions mesurees', color:'var(--green)', badge:[(br.avg_open_rate||0)>=0.3?'Bon':'\u2014',(br.avg_open_rate||0)>=0.3?'green':'orange'] },
+    { label:'Taux de clic moyen', value: Math.round((br.avg_click_rate||0)*100)+'%', sub:'a ameliorer', color:'var(--orange)' },
+    { label:'Editions publiees', value:`${nl.kr8_current||0}/${nl.kr8_target||0}`, sub:'KR8', color:'var(--blue)', badge:[(nl.kr8_current>=nl.kr8_target)?'KR8 OK':'En cours',(nl.kr8_current>=nl.kr8_target)?'green':'orange'] }
+  ];
+  document.getElementById('nlKpiGrid').innerHTML = nlCards.map(card).join('');
+
+  const eds = br.editions || [];
+  new Chart(document.getElementById('chartNlPerf'), {
+    type:'bar',
+    data:{ labels: eds.map(e=>'#'+e.n), datasets:[
+      { label:'Ouverture %', data: eds.map(e=>Math.round((e.open_rate||0)*100)), backgroundColor:'rgba(106,141,126,0.65)' },
+      { label:'Clic %', data: eds.map(e=>Math.round((e.click_rate||0)*100)), backgroundColor:'rgba(176,86,60,0.65)' }
+    ]},
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ labels:{color:'#5C6661',font:{size:10}} } },
+      scales:{ x:{grid:{display:false},ticks:{color:'#5C6661',font:{size:10}}}, y:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{color:'#5C6661',font:{size:10}}} } }
+  });
+  new Chart(document.getElementById('chartNlLists'), {
+    type:'doughnut',
+    data:{ labels:(br.lists||[]).map(l=>l.name), datasets:[{ data:(br.lists||[]).map(l=>l.subs), backgroundColor:['#6F94A6','#9FA55F','#A7DEF9'], borderWidth:0 }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ position:'right', labels:{color:'#5C6661',font:{size:10}} } } }
+  });
+  document.getElementById('nlEditionsTable').innerHTML = eds.length ? eds.map(e => `
+    <tr>
+      <td style="font-weight:500;max-width:360px">#${e.n} &mdash; ${e.subject}</td>
+      <td>${e.date||'-'}</td>
+      <td>${e.sent||0}</td>
+      <td style="color:var(--green);font-weight:600">${Math.round((e.open_rate||0)*100)}%</td>
+      <td>${Math.round((e.click_rate||0)*100)}%</td>
+    </tr>`).join('') : `<tr><td colspan="5" style="color:var(--text-dim)">Pas d'edition trackee dans Brevo</td></tr>`;
+
+  // ===== Hot leads =====
   document.getElementById('hotLeadsTable').innerHTML = acq.leads.hot_list.map(l => {
     const isUrgent = l.name.includes('Parmentier');
     return `<tr>
