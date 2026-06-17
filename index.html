@@ -1354,7 +1354,7 @@ function renderAcquisition() {
     const active = (n.ytd||cur) > 0;
     let sub;
     if (n.stats_source === 'roadmap_api') sub = 'Stats API a venir';
-    else if (active && n.impressions != null) sub = `vs M-1 ${momChip(n.mom_pct)} &middot; ${fmt(n.impressions)} impr (mois)`;
+    else if (active && n.impressions != null) sub = `vs M-1 ${momChip(n.mom_pct)} &middot; ${fmt(n.impressions)} ${n.network==='YouTube'?'vues':'impr'} (mois)`;
     else if (active) sub = `vs M-1 ${momChip(n.mom_pct)}`;
     else sub = 'a demarrer';
     return { label:`${n.network}${thisMonth}`, value: cur, sub,

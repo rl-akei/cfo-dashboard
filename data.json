@@ -1531,7 +1531,24 @@
               "count": 1
             }
           ],
-          "stats_source": "api"
+          "stats_source": "api",
+          "impressions": 249,
+          "subscribers": 10,
+          "total_views": 287,
+          "video_count": 3,
+          "watch_time_minutes": 486,
+          "top_videos": [
+            {
+              "video_id": "2hJr5bXBCEA",
+              "title": "J'ai code mon site en une nuit avec Claude X Notion",
+              "views": 247
+            },
+            {
+              "video_id": "ySatTvbuRwM",
+              "title": "Notion slide",
+              "views": 2
+            }
+          ]
         }
       ],
       "linkedin": {
