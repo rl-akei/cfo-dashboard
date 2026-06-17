@@ -1307,46 +1307,63 @@
   ],
   "acquisition": {
     "summary": {
+      "month": "2026-06",
+      "prev_month": "2026-05",
       "r1_this_month": 8,
       "r1_last_month": 13,
+      "r1_mom_pct": -0.385,
       "networks": [
         {
           "network": "LinkedIn",
           "connection": "LI@sylvain-ramaradjou",
-          "posts_published_2026": 146,
-          "key_metric_label": "Impressions",
-          "key_metric": 278185
+          "posts_this_month": 19,
+          "posts_last_month": 33,
+          "mom_pct": -0.424,
+          "key_metric_label": "Impressions (mois)",
+          "key_metric": 25245,
+          "ytd": 173
         },
         {
           "network": "Instagram",
           "connection": "IG@cafe.ramalogic",
-          "posts_published_2026": 0,
+          "posts_this_month": 0,
+          "posts_last_month": 0,
+          "mom_pct": null,
           "key_metric_label": "Posts",
-          "key_metric": 0
+          "key_metric": 0,
+          "ytd": 0
         },
         {
           "network": "TikTok",
           "connection": "TK@cafe.ramalogic",
-          "posts_published_2026": 0,
+          "posts_this_month": 0,
+          "posts_last_month": 0,
+          "mom_pct": null,
           "key_metric_label": "Posts",
-          "key_metric": 0
+          "key_metric": 0,
+          "ytd": 0
         },
         {
           "network": "YouTube",
           "connection": "YT@RamaLogic",
-          "posts_published_2026": 0,
+          "posts_this_month": 0,
+          "posts_last_month": 0,
+          "mom_pct": null,
           "key_metric_label": "Vues (API a venir)",
-          "key_metric": null
+          "key_metric": null,
+          "ytd": 0
         }
       ]
     },
     "site": {
       "summary": {
-        "clicks": 22,
-        "impressions": 70,
-        "position": 4.2,
-        "ctr": 0.314,
-        "organic_share": 0.066
+        "clicks": 19,
+        "impressions": 52,
+        "position": 2.8,
+        "ctr": 0.365,
+        "organic_share": 0.066,
+        "clicks_prev": 13,
+        "clicks_mom_pct": 0.462
       },
       "by_month": [
         {
@@ -1386,27 +1403,6 @@
           "position": 2.8
         }
       ],
-      "top_queries": [
-        {
-          "query": "sylvain ramaradjou",
-          "clicks": 0,
-          "impressions": 2,
-          "position": 2.0
-        },
-        {
-          "query": "ramatics",
-          "clicks": 0,
-          "impressions": 3,
-          "position": 31.3
-        },
-        {
-          "query": "rama relais",
-          "clicks": 0,
-          "impressions": 1,
-          "position": 39.0
-        }
-      ],
-      "striking_distance": [],
       "traffic_mix": [
         {
           "source": "LinkedIn",
@@ -1421,42 +1417,79 @@
           "views": 17
         }
       ],
-      "notes": "GSC 28j (latence ~2j) + Umami. SEO greenfield : 87% du trafic refere vient de LinkedIn, ~7% de Google. Aucune requete en striking-distance (pos 5-20) encore. Vieilles URLs Framer /fr/* a rediriger (301)."
+      "notes": "GSC : le site ne ressort QUE sur la marque (rama logic, sylvain ramaradjou). 0 position sur Notion/IA sur 90j -> c'est le chantier SEO. summary = mois courant (juin), comparatif M-1. Umami = part organique ~7% vs 87% LinkedIn.",
+      "target_queries": [
+        {
+          "term": "Notion",
+          "ranked": false,
+          "position": null,
+          "impressions": 0,
+          "clicks": 0
+        },
+        {
+          "term": "IA",
+          "ranked": false,
+          "position": null,
+          "impressions": 0,
+          "clicks": 0
+        },
+        {
+          "term": "Automatisation Notion",
+          "ranked": false,
+          "position": null,
+          "impressions": 0,
+          "clicks": 0
+        },
+        {
+          "term": "Agent IA",
+          "ranked": false,
+          "position": null,
+          "impressions": 0,
+          "clicks": 0
+        },
+        {
+          "term": "Consultant Notion",
+          "ranked": false,
+          "position": null,
+          "impressions": 0,
+          "clicks": 0
+        }
+      ]
     },
     "content": {
       "by_network": [
         {
           "network": "LinkedIn",
           "connection": "LI@sylvain-ramaradjou",
-          "posts_published_2026": 146,
-          "impressions": 278185,
-          "reactions": 1063,
-          "comments": 3432,
-          "shares": 3,
+          "posts_this_month": 19,
+          "posts_last_month": 33,
+          "mom_pct": -0.424,
+          "impressions": 25245,
+          "ytd": 173,
           "by_month": [
             {
               "month": "2026-01",
-              "count": 5
+              "count": 31
             },
             {
               "month": "2026-02",
-              "count": 11
+              "count": 31
             },
             {
               "month": "2026-03",
-              "count": 5
+              "count": 31
             },
             {
               "month": "2026-04",
-              "count": 41
+              "count": 28
             },
             {
               "month": "2026-05",
-              "count": 38
+              "count": 33
             },
             {
               "month": "2026-06",
-              "count": 10
+              "count": 19
             }
           ],
           "stats_source": "notion"
@@ -1464,33 +1497,42 @@
         {
           "network": "Instagram",
           "connection": "IG@cafe.ramalogic",
-          "posts_published_2026": 0,
+          "posts_this_month": 0,
+          "posts_last_month": 0,
+          "mom_pct": null,
+          "ytd": 0,
           "by_month": [],
           "stats_source": "notion_cadence"
         },
         {
           "network": "TikTok",
           "connection": "TK@cafe.ramalogic",
-          "posts_published_2026": 0,
+          "posts_this_month": 0,
+          "posts_last_month": 0,
+          "mom_pct": null,
+          "ytd": 0,
           "by_month": [],
           "stats_source": "notion_cadence"
         },
         {
           "network": "YouTube",
           "connection": "YT@RamaLogic",
-          "posts_published_2026": 0,
+          "posts_this_month": 0,
+          "posts_last_month": 0,
+          "mom_pct": null,
+          "ytd": 0,
           "by_month": [],
           "stats_source": "roadmap_api"
         }
       ],
       "linkedin": {
-        "posts_published_2026": 146,
+        "posts_published_2026": 173,
         "total_impressions": 278185,
         "total_reactions": 1063,
         "total_comments": 3432,
         "total_shares": 3,
         "kr7_target": 144,
-        "kr7_current": 146,
+        "kr7_current": 173,
         "posts_per_month": [
           {
             "month": "2026-01",

@@ -503,10 +503,10 @@ tr:hover td { background: var(--cream-2); }
         <canvas id="chartSiteTraffic"></canvas>
       </div>
     </div>
-    <div class="section-title" style="margin-top:24px"><div class="dot" style="background:var(--yellow)"></div> Requetes Google &mdash; top &amp; quick-wins</div>
+    <div class="section-title" style="margin-top:24px"><div class="dot" style="background:var(--yellow)"></div> Requetes cibles (Notion, IA) &mdash; statut de positionnement</div>
     <div class="table-card">
       <table>
-        <thead><tr><th>Requete</th><th>Position</th><th>Impressions</th><th>Clics</th></tr></thead>
+        <thead><tr><th>Requete cible</th><th>Position</th><th>Impressions</th><th>Clics</th></tr></thead>
         <tbody id="siteQueriesTable"></tbody>
       </table>
     </div>
@@ -1281,29 +1281,37 @@ function renderAcquisition() {
       ${c.icon ? `<div class="icon">${c.icon}</div>` : ''}
     </div>`;
 
-  // ===== HERO : reach par reseau + R1 =====
+  // helper : chip de variation vs mois precedent (en %)
+  const momChip = (pct) => {
+    if (pct == null) return '<span style="color:var(--text-dim)">&mdash;</span>';
+    const up = pct >= 0, col = up ? 'var(--green)' : 'var(--red)', arr = up ? '&#9650;' : '&#9660;';
+    return `<span style="color:${col};font-weight:600">${arr} ${up?'+':''}${Math.round(pct*100)}%</span>`;
+  };
+  const thisMonth = '<span style="font-weight:400;color:var(--text-dim);font-size:11px"> ce mois</span>';
+
+  // ===== HERO : reach par reseau (MOIS COURANT + variation M-1) + R1 =====
   const netCards = (su.networks||[]).map(n => {
-    const active = (n.posts_published_2026||0) > 0;
+    const cur = n.posts_this_month||0;
+    const active = (n.ytd||cur) > 0;
     const metric = n.key_metric == null ? 'API a venir' : fmt(n.key_metric);
-    return { label:n.network, value:n.posts_published_2026||0,
-      sub: active ? `${n.key_metric_label}: ${metric}` : 'a demarrer',
+    const sub = active ? `vs M-1 ${momChip(n.mom_pct)} &middot; ${n.key_metric_label}: ${metric}` : 'a demarrer';
+    return { label:`${n.network}${thisMonth}`, value: cur, sub,
       color: NETC[n.network]||'var(--ink)',
-      badge: active ? ['Actif','green'] : ['0 publie','orange'] };
+      badge: active ? [`YTD ${n.ytd||0}`,'blue'] : ['0 publie','orange'] };
   });
-  const r1d = (su.r1_this_month||0) - (su.r1_last_month||0);
-  const r1arrow = r1d > 0 ? `&#9650; +${r1d}` : (r1d < 0 ? `&#9660; ${r1d}` : '&middot; stable');
-  const r1col = r1d >= 0 ? 'var(--green)' : 'var(--red)';
+  const r1pct = (su.r1_mom_pct != null) ? su.r1_mom_pct
+    : (su.r1_last_month ? (su.r1_this_month - su.r1_last_month)/su.r1_last_month : null);
   const heroCards = netCards.concat([{
-    label:'R1 generes ce mois', value: (su.r1_this_month ?? '\u2014'),
-    sub:`M-1: ${su.r1_last_month ?? '\u2014'} &middot; <span style="color:${r1col};font-weight:600">${r1arrow}</span>`,
+    label:`R1 generes${thisMonth}`, value: (su.r1_this_month ?? '\u2014'),
+    sub:`vs M-1 (${su.r1_last_month ?? '\u2014'}) ${momChip(r1pct)}`,
     color:'var(--aloe-dark)', badge:['1er RDV','blue'], icon:'\uD83E\uDD1D' }]);
   document.getElementById('acqHeroGrid').innerHTML = heroCards.map(card).join('');
 
   // ===== 1. SITE (SEO) =====
   const ss = site.summary || {};
   const siteCards = [
-    { label:'Clics Google (28j)', value: ss.clicks ?? 0, sub:`CTR ${Math.round((ss.ctr||0)*100)}%`, color:'var(--blue)', badge:['GSC','blue'] },
-    { label:'Impressions (28j)', value: ss.impressions ?? 0, sub:'requetes affichees', color:'var(--cyan)' },
+    { label:`Clics Google${thisMonth}`, value: ss.clicks ?? 0, sub:`vs M-1 ${momChip(ss.clicks_mom_pct)} &middot; CTR ${Math.round((ss.ctr||0)*100)}%`, color:'var(--blue)', badge:['GSC','blue'] },
+    { label:'Impressions', value: ss.impressions ?? 0, sub:'requetes affichees', color:'var(--cyan)' },
     { label:'Position moyenne', value:(ss.position ?? 0).toFixed(1), sub:'sur les requetes', color:(ss.position||99)<=5?'var(--green)':'var(--orange)', badge:[(ss.position||99)<=5?'Top 5':'A pousser',(ss.position||99)<=5?'green':'orange'] },
     { label:'Part organique', value: Math.round((ss.organic_share||0)*100)+'%', sub:'vs LinkedIn (social)', color:'var(--purple)', badge:['Greenfield','orange'] }
   ];
@@ -1330,27 +1338,28 @@ function renderAcquisition() {
     options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ position:'right', labels:{color:'#5C6661',font:{size:10}} } } }
   });
 
-  const sq = site.top_queries || [];
-  document.getElementById('siteQueriesTable').innerHTML = sq.length ? sq.map(q => `
+  const tq = site.target_queries || [];
+  document.getElementById('siteQueriesTable').innerHTML = tq.length ? tq.map(q => `
     <tr>
-      <td style="font-weight:500">${q.query}</td>
-      <td>${q.position.toFixed(1)}</td>
-      <td>${q.impressions}</td>
-      <td>${q.clicks}</td>
-    </tr>`).join('') : `<tr><td colspan="4" style="color:var(--text-dim)">Aucune requete hors marque (SEO en amorcage)</td></tr>`;
+      <td style="font-weight:500">${q.term}</td>
+      <td>${q.ranked ? (q.position||0).toFixed(1) : '<span style="color:var(--red)">non positionne</span>'}</td>
+      <td>${q.impressions||0}</td>
+      <td>${q.clicks||0}</td>
+    </tr>`).join('') : `<tr><td colspan="4" style="color:var(--text-dim)">Pas encore positionne sur les requetes cibles</td></tr>`;
 
   // ===== 2. CONTENU (multi-reseaux) =====
   const byNet = content.by_network || [];
   const netDetailCards = byNet.map(n => {
-    const active = (n.posts_published_2026||0) > 0;
+    const cur = n.posts_this_month||0;
+    const active = (n.ytd||cur) > 0;
     let sub;
     if (n.stats_source === 'roadmap_api') sub = 'Stats API a venir';
-    else if (active && n.impressions != null) sub = `${fmt(n.impressions)} impr &middot; ${fmt(n.reactions||0)} react`;
-    else if (active) sub = 'cadence suivie';
+    else if (active && n.impressions != null) sub = `vs M-1 ${momChip(n.mom_pct)} &middot; ${fmt(n.impressions)} impr (mois)`;
+    else if (active) sub = `vs M-1 ${momChip(n.mom_pct)}`;
     else sub = 'a demarrer';
-    return { label:n.network, value:n.posts_published_2026||0, sub,
+    return { label:`${n.network}${thisMonth}`, value: cur, sub,
       color: NETC[n.network]||'var(--ink)',
-      badge: active ? ['Publie','green'] : (n.stats_source==='roadmap_api' ? ['Roadmap','blue'] : ['0','orange']) };
+      badge: active ? [`YTD ${n.ytd||0}`,'green'] : (n.stats_source==='roadmap_api' ? ['Roadmap','blue'] : ['0','orange']) };
   });
   document.getElementById('contentNetGrid').innerHTML = netDetailCards.map(card).join('');
 
