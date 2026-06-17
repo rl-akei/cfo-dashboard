@@ -1346,12 +1346,12 @@
         {
           "network": "YouTube",
           "connection": "YT@RamaLogic",
-          "posts_this_month": 0,
+          "posts_this_month": 1,
           "posts_last_month": 0,
           "mom_pct": null,
           "key_metric_label": "Vues (mois)",
           "key_metric": 249,
-          "ytd": 3
+          "ytd": 2
         }
       ]
     },
@@ -1517,11 +1517,20 @@
         {
           "network": "YouTube",
           "connection": "YT@RamaLogic",
-          "posts_this_month": 0,
+          "posts_this_month": 1,
           "posts_last_month": 0,
           "mom_pct": null,
-          "ytd": 3,
-          "by_month": [],
+          "ytd": 2,
+          "by_month": [
+            {
+              "month": "2026-02",
+              "count": 1
+            },
+            {
+              "month": "2026-06",
+              "count": 1
+            }
+          ],
           "stats_source": "api"
         }
       ],
