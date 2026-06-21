@@ -2837,5 +2837,65 @@
       "ebitda": 8532,
       "margin": 0.323
     }
+  },
+  "funnel_monthly": {
+    "source": "RL-Funnel Mensuel (Notion)",
+    "note": "R1 = RL-Contacts 3-1st RDV. Deals/CA = opportunites signees par mois. Impressions = somme posts publies RL-SM Contents par mois de pub (backfill partiel Fev/Mai/Juin). Leads & Opportunites a instrumenter. Complete chaque mois par cron.",
+    "months": [
+      {
+        "month": "2026-01",
+        "impressions": null,
+        "leads": null,
+        "r1": 16,
+        "opp": null,
+        "deals": 1,
+        "ca": 6400
+      },
+      {
+        "month": "2026-02",
+        "impressions": 210768,
+        "leads": null,
+        "r1": 11,
+        "opp": null,
+        "deals": 0,
+        "ca": 0
+      },
+      {
+        "month": "2026-03",
+        "impressions": null,
+        "leads": null,
+        "r1": 17,
+        "opp": null,
+        "deals": 2,
+        "ca": 2036
+      },
+      {
+        "month": "2026-04",
+        "impressions": null,
+        "leads": null,
+        "r1": 20,
+        "opp": null,
+        "deals": 2,
+        "ca": 8299
+      },
+      {
+        "month": "2026-05",
+        "impressions": 28651,
+        "leads": null,
+        "r1": 9,
+        "opp": null,
+        "deals": 2,
+        "ca": 2950
+      },
+      {
+        "month": "2026-06",
+        "impressions": 32919,
+        "leads": null,
+        "r1": 7,
+        "opp": null,
+        "deals": 3,
+        "ca": 9600
+      }
+    ]
   }
 }

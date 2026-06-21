@@ -118,6 +118,18 @@ body { font-family: var(--font-body); font-weight: 400; background: var(--bg); c
 .acq-arrow { display: flex; align-items: center; padding: 0 12px; color: var(--beige); font-size: 20px; }
 .acq-funnel-foot { flex-basis: 100%; width: 100%; font-size: 11px; color: var(--text-dim); margin-top: 14px; line-height: 1.5; }
 @media (max-width: 880px) { .acq-arrow { display: none; } .acq-stage { flex-basis: 45%; } }
+/* Funnel mensuel (matrice etapes x mois) */
+.fm-wrap { overflow-x: auto; }
+.fm-table { width: 100%; border-collapse: separate; border-spacing: 4px 6px; }
+.fm-table th, .fm-table td { padding: 11px 10px; text-align: center; font-size: 13px; }
+.fm-table thead th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--slate); font-weight: 500; }
+.fm-table .fm-stage { text-align: left; font-weight: 600; color: var(--aloe-dark); white-space: nowrap; }
+.fm-cell { font-family: var(--font-mono); font-weight: 600; border-radius: 8px; min-width: 64px; }
+.fm-up { background: rgba(106,141,126,0.16); color: var(--aloe-dark); }
+.fm-down { background: rgba(176,86,60,0.14); color: var(--crit); }
+.fm-flat { color: var(--ink); }
+.fm-empty { color: var(--beige); }
+.fm-arrow { font-size: 9px; vertical-align: 1px; }
 
 /* Chart containers */
 .chart-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 24px; }
@@ -262,7 +274,7 @@ tr:hover td { background: var(--cream-2); }
 
   <!-- Funnel d'acquisition (principal) -->
   <div class="section" id="acqFunnelSection">
-    <div class="section-title"><div class="dot" style="background:var(--aloe)"></div> Funnel d'acquisition &mdash; Leads &rarr; R1 &rarr; Opportunites &rarr; Deals signes</div>
+    <div class="section-title"><div class="dot" style="background:var(--aloe)"></div> Funnel d'acquisition par mois &mdash; variation vs mois precedent (rouge = ca decroche)</div>
     <div class="acq-funnel" id="acqFunnel"></div>
   </div>
 
@@ -1691,34 +1703,37 @@ function renderSubscriptions() {
 // FUNNEL ACQUISITION (dashboard principal)
 // ==========================================
 function renderAcqFunnel() {
-  const acq = DATA.acquisition || {};
-  const sales = DATA.sales || {};
-  const su = acq.summary || {};
-  const lead = acq.leads || {};
-  const openStages = ['Lead', 'Proposal to send', 'Awaiting signature'];
-  let oppCount = 0, oppAmount = 0;
-  (sales.pipeline_by_stage || []).forEach(s => {
-    if (openStages.includes(s.stage)) { oppCount += s.count || 0; oppAmount += s.amount || 0; }
-  });
-  const mom = su.r1_mom_pct;
-  const r1Chip = (mom == null) ? 'ce mois'
-    : `<span style="color:${mom >= 0 ? 'var(--green)' : 'var(--red)'};font-weight:600">${mom >= 0 ? '&#9650; +' : '&#9660; '}${Math.round(mom * 100)}%</span> vs M-1`;
-  const closing = sales.closing_rate;
+  const fm = DATA.funnel_monthly;
+  const host = document.getElementById('acqFunnel');
+  if (!host) return;
+  if (!fm || !fm.months || !fm.months.length) { host.innerHTML = ''; return; }
+  const MLAB = ['', 'janv', 'fevr', 'mars', 'avr', 'mai', 'juin', 'juil', 'aout', 'sept', 'oct', 'nov', 'dec'];
+  const months = fm.months;
   const stages = [
-    { label: 'Leads', value: lead.total_2026, sub: `${lead.last_30_days != null ? lead.last_30_days : '&mdash;'} sur 30j &middot; 2026`, color: 'var(--aloe-light)', w: 100 },
-    { label: 'R1 (rendez-vous)', value: su.r1_this_month, sub: r1Chip, color: 'var(--aloe)', w: 74 },
-    { label: 'Opportunites actives', value: oppCount, sub: `${fmt(oppAmount)} EUR &middot; pipeline ouvert`, color: 'var(--aloe-dark)', w: 52 },
-    { label: 'Deals signes', value: sales.signed_deals_2026, sub: `${fmt(sales.signed_2026)} EUR &middot; closing ${closing != null ? fmtPct(closing) : 'n/d'}`, color: 'var(--mindaro-dark)', w: 32 }
+    { key: 'impressions', label: 'Impressions', fmt: v => fmt(v) },
+    { key: 'leads', label: 'Leads', fmt: v => v },
+    { key: 'r1', label: 'R1 (rendez-vous)', fmt: v => v },
+    { key: 'opp', label: 'Opportunites', fmt: v => v },
+    { key: 'deals', label: 'Deals signes', fmt: v => v }
   ];
-  const cards = stages.map(s => `
-    <div class="acq-stage">
-      <div class="acq-bar" style="width:${s.w}%;background:${s.color}"></div>
-      <div class="acq-val">${s.value == null ? 'n/d' : s.value}</div>
-      <div class="acq-lab">${s.label}</div>
-      <div class="acq-sub">${s.sub}</div>
-    </div>`).join('<div class="acq-arrow">&rarr;</div>');
-  document.getElementById('acqFunnel').innerHTML = cards +
-    `<div class="acq-funnel-foot">Leads &amp; R1 = volumes (2026 / mois courant) &middot; Opportunites &amp; Deals = pipeline ouvert &amp; signes YTD 2026. La fiabilite du champ Leads s'ameliore avec le projet d'instrumentation du funnel en cours.</div>`;
+  const head = `<tr><th class="fm-stage"></th>${months.map(m => `<th>${MLAB[+m.month.split('-')[1]]}</th>`).join('')}</tr>`;
+  const body = stages.map(s => {
+    let prev = null;
+    const cells = months.map(m => {
+      const v = m[s.key];
+      if (v == null) { prev = null; return `<td class="fm-cell fm-empty">&mdash;</td>`; }
+      let cls = 'fm-flat', arr = '';
+      if (prev != null) {
+        if (v > prev) { cls = 'fm-up'; arr = ' <span class="fm-arrow">&#9650;</span>'; }
+        else if (v < prev) { cls = 'fm-down'; arr = ' <span class="fm-arrow">&#9660;</span>'; }
+      }
+      prev = v;
+      return `<td class="fm-cell ${cls}">${s.fmt(v)}${arr}</td>`;
+    }).join('');
+    return `<tr><td class="fm-stage">${s.label}</td>${cells}</tr>`;
+  }).join('');
+  host.innerHTML = `<div class="fm-wrap"><table class="fm-table"><thead>${head}</thead><tbody>${body}</tbody></table></div>` +
+    `<div class="acq-funnel-foot">${fm.note || ''}</div>`;
 }
 
 // ==========================================
