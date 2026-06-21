@@ -2840,14 +2840,14 @@
   },
   "funnel_monthly": {
     "source": "RL-Funnel Mensuel (Notion)",
-    "note": "R1 = RL-Log CRM Typology=R1 par mois (source de verite) = tous les 1ers RDV, qu'ils generent ou non une opportunite. Deals/CA = opportunites signees par mois (Date de signature). Impressions = somme posts publies RL-SM Contents par mois de pub (backfill partiel Fev/Mai/Juin). Leads & Opportunites = a instrumenter. Complete chaque mois par cron.",
+    "note": "R1 = RL-Log CRM Typology=R1 (tous les 1ers RDV). Opportunites = RL-Opportunity creees par mois (Created time). Deals/CA = opp signees par mois. Impressions = posts publies RL-SM Contents par mois de pub (backfill partiel). Leads = contacts RL-Contacts crees : NON FIABLE (noye par imports de masse Kondo/LinkedIn, ex 3471 le 2026-03-03), a redefinir. Complete par cron.",
     "months": [
       {
         "month": "2026-01",
         "impressions": null,
         "leads": null,
         "r1": 22,
-        "opp": null,
+        "opp": 2,
         "deals": 1,
         "ca": 6400
       },
@@ -2856,7 +2856,7 @@
         "impressions": 210768,
         "leads": null,
         "r1": 13,
-        "opp": null,
+        "opp": 2,
         "deals": 0,
         "ca": 0
       },
@@ -2865,7 +2865,7 @@
         "impressions": null,
         "leads": null,
         "r1": 31,
-        "opp": null,
+        "opp": 15,
         "deals": 2,
         "ca": 2036
       },
@@ -2874,7 +2874,7 @@
         "impressions": null,
         "leads": null,
         "r1": 26,
-        "opp": null,
+        "opp": 8,
         "deals": 2,
         "ca": 8299
       },
@@ -2883,7 +2883,7 @@
         "impressions": 28651,
         "leads": null,
         "r1": 13,
-        "opp": null,
+        "opp": 9,
         "deals": 2,
         "ca": 2950
       },
@@ -2892,7 +2892,7 @@
         "impressions": 32919,
         "leads": null,
         "r1": 14,
-        "opp": null,
+        "opp": 9,
         "deals": 3,
         "ca": 9600
       }

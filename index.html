@@ -130,6 +130,8 @@ body { font-family: var(--font-body); font-weight: 400; background: var(--bg); c
 .fm-flat { color: var(--ink); }
 .fm-empty { color: var(--beige); }
 .fm-arrow { font-size: 9px; vertical-align: 1px; }
+.fm-cell .fm-v { font-size: 15px; line-height: 1.1; }
+.fm-cell .fm-delta { font-size: 10px; font-weight: 600; margin-top: 3px; opacity: 0.9; }
 
 /* Chart containers */
 .chart-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 24px; }
@@ -1722,13 +1724,17 @@ function renderAcqFunnel() {
     const cells = months.map(m => {
       const v = m[s.key];
       if (v == null) { prev = null; return `<td class="fm-cell fm-empty">&mdash;</td>`; }
-      let cls = 'fm-flat', arr = '';
-      if (prev != null) {
-        if (v > prev) { cls = 'fm-up'; arr = ' <span class="fm-arrow">&#9650;</span>'; }
-        else if (v < prev) { cls = 'fm-down'; arr = ' <span class="fm-arrow">&#9660;</span>'; }
+      let cls = 'fm-flat', delta = '';
+      if (prev != null && prev !== 0) {
+        const pct = Math.round((v - prev) / prev * 100);
+        if (v > prev) { cls = 'fm-up'; delta = `<div class="fm-delta">&#9650; +${pct}%</div>`; }
+        else if (v < prev) { cls = 'fm-down'; delta = `<div class="fm-delta">&#9660; ${pct}%</div>`; }
+        else { delta = `<div class="fm-delta">= 0%</div>`; }
+      } else if (prev === 0 && v > 0) {
+        cls = 'fm-up'; delta = `<div class="fm-delta">&#9650; nouv.</div>`;
       }
       prev = v;
-      return `<td class="fm-cell ${cls}">${s.fmt(v)}${arr}</td>`;
+      return `<td class="fm-cell ${cls}"><div class="fm-v">${s.fmt(v)}</div>${delta}</td>`;
     }).join('');
     return `<tr><td class="fm-stage">${s.label}</td>${cells}</tr>`;
   }).join('');
