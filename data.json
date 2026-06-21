@@ -2840,7 +2840,7 @@
   },
   "funnel_monthly": {
     "source": "RL-Funnel Mensuel (Notion)",
-    "note": "R1 = RL-Log CRM Typology=R1 par mois (source de verite). ATTENTION: inclut des lignes-stub 'R1' sans deal (95/119 en 2026), donc gonfle vs R1 reels (~24 nommes). Deals/CA = opportunites signees par mois. Impressions = somme posts publies RL-SM Contents par mois de pub (backfill partiel). Leads & Opportunites a instrumenter. Complete chaque mois par cron.",
+    "note": "R1 = RL-Log CRM Typology=R1 par mois (source de verite) = tous les 1ers RDV, qu'ils generent ou non une opportunite. Deals/CA = opportunites signees par mois (Date de signature). Impressions = somme posts publies RL-SM Contents par mois de pub (backfill partiel Fev/Mai/Juin). Leads & Opportunites = a instrumenter. Complete chaque mois par cron.",
     "months": [
       {
         "month": "2026-01",
