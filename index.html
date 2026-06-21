@@ -108,6 +108,16 @@ body { font-family: var(--font-body); font-weight: 400; background: var(--bg); c
 .section-title { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--aloe-dark); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
 .section-title .dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
 .section-title::after { content: ""; flex: 1; height: 1px; background: var(--beige-soft); margin-left: 8px; }
+/* Funnel d'acquisition (dashboard principal) */
+.acq-funnel { display: flex; align-items: stretch; flex-wrap: wrap; gap: 0; }
+.acq-stage { flex: 1 1 0; min-width: 130px; background: var(--cream); border: 1px solid var(--beige-soft); border-radius: var(--r-card); padding: 16px 18px; display: flex; flex-direction: column; gap: 3px; box-shadow: var(--shadow-sm); }
+.acq-stage .acq-bar { height: 6px; border-radius: var(--r-pill); margin-bottom: 12px; min-width: 18px; }
+.acq-stage .acq-val { font-family: var(--font-display); font-size: 30px; font-weight: 600; line-height: 1; color: var(--ink); }
+.acq-stage .acq-lab { font-size: 11px; font-weight: 600; color: var(--aloe-dark); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+.acq-stage .acq-sub { font-size: 11.5px; color: var(--text-dim); line-height: 1.4; }
+.acq-arrow { display: flex; align-items: center; padding: 0 12px; color: var(--beige); font-size: 20px; }
+.acq-funnel-foot { flex-basis: 100%; width: 100%; font-size: 11px; color: var(--text-dim); margin-top: 14px; line-height: 1.5; }
+@media (max-width: 880px) { .acq-arrow { display: none; } .acq-stage { flex-basis: 45%; } }
 
 /* Chart containers */
 .chart-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 24px; }
@@ -249,6 +259,12 @@ tr:hover td { background: var(--cream-2); }
 
   <!-- KPI Cards -->
   <div class="kpi-grid" id="kpiGrid"></div>
+
+  <!-- Funnel d'acquisition (principal) -->
+  <div class="section" id="acqFunnelSection">
+    <div class="section-title"><div class="dot" style="background:var(--aloe)"></div> Funnel d'acquisition &mdash; Leads &rarr; R1 &rarr; Opportunites &rarr; Deals signes</div>
+    <div class="acq-funnel" id="acqFunnel"></div>
+  </div>
 
   <!-- 3 actions cash a entreprendre -->
   <div class="section" id="actionsSection" style="display:none">
@@ -1672,6 +1688,40 @@ function renderSubscriptions() {
 }
 
 // ==========================================
+// FUNNEL ACQUISITION (dashboard principal)
+// ==========================================
+function renderAcqFunnel() {
+  const acq = DATA.acquisition || {};
+  const sales = DATA.sales || {};
+  const su = acq.summary || {};
+  const lead = acq.leads || {};
+  const openStages = ['Lead', 'Proposal to send', 'Awaiting signature'];
+  let oppCount = 0, oppAmount = 0;
+  (sales.pipeline_by_stage || []).forEach(s => {
+    if (openStages.includes(s.stage)) { oppCount += s.count || 0; oppAmount += s.amount || 0; }
+  });
+  const mom = su.r1_mom_pct;
+  const r1Chip = (mom == null) ? 'ce mois'
+    : `<span style="color:${mom >= 0 ? 'var(--green)' : 'var(--red)'};font-weight:600">${mom >= 0 ? '&#9650; +' : '&#9660; '}${Math.round(mom * 100)}%</span> vs M-1`;
+  const closing = sales.closing_rate;
+  const stages = [
+    { label: 'Leads', value: lead.total_2026, sub: `${lead.last_30_days != null ? lead.last_30_days : '&mdash;'} sur 30j &middot; 2026`, color: 'var(--aloe-light)', w: 100 },
+    { label: 'R1 (rendez-vous)', value: su.r1_this_month, sub: r1Chip, color: 'var(--aloe)', w: 74 },
+    { label: 'Opportunites actives', value: oppCount, sub: `${fmt(oppAmount)} EUR &middot; pipeline ouvert`, color: 'var(--aloe-dark)', w: 52 },
+    { label: 'Deals signes', value: sales.signed_deals_2026, sub: `${fmt(sales.signed_2026)} EUR &middot; closing ${closing != null ? fmtPct(closing) : 'n/d'}`, color: 'var(--mindaro-dark)', w: 32 }
+  ];
+  const cards = stages.map(s => `
+    <div class="acq-stage">
+      <div class="acq-bar" style="width:${s.w}%;background:${s.color}"></div>
+      <div class="acq-val">${s.value == null ? 'n/d' : s.value}</div>
+      <div class="acq-lab">${s.label}</div>
+      <div class="acq-sub">${s.sub}</div>
+    </div>`).join('<div class="acq-arrow">&rarr;</div>');
+  document.getElementById('acqFunnel').innerHTML = cards +
+    `<div class="acq-funnel-foot">Leads &amp; R1 = volumes (2026 / mois courant) &middot; Opportunites &amp; Deals = pipeline ouvert &amp; signes YTD 2026. La fiabilite du champ Leads s'ameliore avec le projet d'instrumentation du funnel en cours.</div>`;
+}
+
+// ==========================================
 // INIT
 // ==========================================
 Chart.defaults.color = '#5C6661';
@@ -1684,6 +1734,7 @@ async function initDashboard() {
     document.getElementById('snapshotId').textContent = DATA.meta.snapshot_id;
     document.getElementById('snapshotDate').textContent = DATA.meta.generated_at.split('T')[0];
     renderKPIs();
+    renderAcqFunnel();
     renderAlerts();
     renderAllActions();
     renderFunnel();
