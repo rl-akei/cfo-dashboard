@@ -2844,7 +2844,7 @@
     "months": [
       {
         "month": "2026-01",
-        "impressions": null,
+        "impressions": 38427,
         "leads": null,
         "r1": 22,
         "opp": 2,
@@ -2862,7 +2862,7 @@
       },
       {
         "month": "2026-03",
-        "impressions": null,
+        "impressions": 134022,
         "leads": null,
         "r1": 31,
         "opp": 15,
@@ -2871,7 +2871,7 @@
       },
       {
         "month": "2026-04",
-        "impressions": null,
+        "impressions": 43478,
         "leads": null,
         "r1": 26,
         "opp": 8,
