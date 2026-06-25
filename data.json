@@ -2897,5 +2897,233 @@
         "ca": 9600
       }
     ]
+  },
+  "opex": {
+    "generated_at": "2026-06-25",
+    "currency": "EUR",
+    "period": {
+      "start": "2025-04-23",
+      "end": "2026-06-24",
+      "months": 15
+    },
+    "ytd_year": 2026,
+    "ytd_elapsed_fraction": 0.482,
+    "buckets": [
+      {
+        "key": "marketing",
+        "label": "Externe · Marketing",
+        "total_period": 13011,
+        "ytd": 9529,
+        "last_12m": 12821,
+        "projected_year": 19761,
+        "n": 18,
+        "share_pct": 48.0
+      },
+      {
+        "key": "saas",
+        "label": "Outils SaaS",
+        "total_period": 8619,
+        "ytd": 3602,
+        "last_12m": 8123,
+        "projected_year": 7470,
+        "n": 139,
+        "share_pct": 31.8
+      },
+      {
+        "key": "autre",
+        "label": "Externe · Autre",
+        "total_period": 5492,
+        "ytd": 4133,
+        "last_12m": 5153,
+        "projected_year": 8572,
+        "n": 23,
+        "share_pct": 20.2
+      }
+    ],
+    "total": {
+      "period": 27122,
+      "ytd": 17264,
+      "last_12m": 26097,
+      "projected_year": 35804,
+      "monthly_runrate": 2984
+    },
+    "by_month": [
+      {
+        "month": "2025-05",
+        "marketing": 0,
+        "saas": 0,
+        "autre": 220,
+        "total": 220
+      },
+      {
+        "month": "2025-06",
+        "marketing": 190,
+        "saas": 496,
+        "autre": 125,
+        "total": 812
+      },
+      {
+        "month": "2025-07",
+        "marketing": 260,
+        "saas": 1156,
+        "autre": 119,
+        "total": 1534
+      },
+      {
+        "month": "2025-08",
+        "marketing": 230,
+        "saas": 489,
+        "autre": 119,
+        "total": 838
+      },
+      {
+        "month": "2025-09",
+        "marketing": 738,
+        "saas": 510,
+        "autre": 119,
+        "total": 1367
+      },
+      {
+        "month": "2025-10",
+        "marketing": 738,
+        "saas": 575,
+        "autre": 261,
+        "total": 1574
+      },
+      {
+        "month": "2025-11",
+        "marketing": 0,
+        "saas": 887,
+        "autre": 277,
+        "total": 1164
+      },
+      {
+        "month": "2025-12",
+        "marketing": 1326,
+        "saas": 904,
+        "autre": 119,
+        "total": 2349
+      },
+      {
+        "month": "2026-01",
+        "marketing": 2000,
+        "saas": 742,
+        "autre": 487,
+        "total": 3229
+      },
+      {
+        "month": "2026-02",
+        "marketing": 1209,
+        "saas": 223,
+        "autre": 787,
+        "total": 2218
+      },
+      {
+        "month": "2026-03",
+        "marketing": 800,
+        "saas": 651,
+        "autre": 2418,
+        "total": 3869
+      },
+      {
+        "month": "2026-04",
+        "marketing": 800,
+        "saas": 1232,
+        "autre": 221,
+        "total": 2252
+      },
+      {
+        "month": "2026-05",
+        "marketing": 1400,
+        "saas": 415,
+        "autre": 221,
+        "total": 2036
+      },
+      {
+        "month": "2026-06",
+        "marketing": 3320,
+        "saas": 340,
+        "autre": 0,
+        "total": 3660
+      }
+    ],
+    "top_suppliers": {
+      "marketing": [
+        {
+          "name": "Suma AI",
+          "amount": 4800
+        },
+        {
+          "name": "Get Your Goals",
+          "amount": 4000
+        },
+        {
+          "name": "Maelie Grevin",
+          "amount": 2156
+        },
+        {
+          "name": "KAMAK",
+          "amount": 1920
+        },
+        {
+          "name": "LinkedIn",
+          "amount": 135
+        }
+      ],
+      "saas": [
+        {
+          "name": "Claude / Anthropic",
+          "amount": 835
+        },
+        {
+          "name": "LinkedIn",
+          "amount": 800
+        },
+        {
+          "name": "Kondo",
+          "amount": 713
+        },
+        {
+          "name": "Notion",
+          "amount": 573
+        },
+        {
+          "name": "Google Workspace",
+          "amount": 558
+        },
+        {
+          "name": "Circle",
+          "amount": 481
+        }
+      ],
+      "autre": [
+        {
+          "name": "Neovi (compta)",
+          "amount": 3867
+        },
+        {
+          "name": "Dougs (compta)",
+          "amount": 950
+        },
+        {
+          "name": "LO de Cha",
+          "amount": 275
+        },
+        {
+          "name": "La Poste",
+          "amount": 148
+        },
+        {
+          "name": "DHL",
+          "amount": 133
+        },
+        {
+          "name": "Sumup",
+          "amount": 87
+        }
+      ]
+    },
+    "hors_opex_period": 57750,
+    "note": "Ledger RL-Expenses incurred dedoublonne (485 doublons archives 25/06/2026). OPEX = depenses pilotables : outils SaaS + prestataires marketing/divers. Hors OPEX (impots, retraits perso, loyer, materiel, deplacements, repas, frais bancaires) exclu. Marketing = Suma (social), Kamak (SEO), Get Your Goals (prospection), Maelie (design), LinkedIn Ads."
   }
 }

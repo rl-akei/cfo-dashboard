@@ -415,6 +415,30 @@ tr:hover td { background: var(--cream-2); }
 </div>
 
 <div id="tab-subscriptions" class="tab-content">
+  <div class="section">
+    <div class="section-title"><div class="dot" style="background:#6A8D7E"></div> OPEX · Couts pilotables <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-dim)">· outils + prestataires (hors impots / perso / loyer)</span></div>
+    <div class="savings-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+        <div>
+          <div style="font-size:12px;color:var(--text-dim);margin-bottom:4px">OPEX PROJETE / AN (rythme 2026)</div>
+          <div class="big" id="opexProjected"></div>
+          <div style="font-size:13px;color:var(--text-dim);margin-top:4px" id="opexMonthly"></div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:12px;color:var(--text-dim);margin-bottom:4px">YTD 2026</div>
+          <div style="font-size:24px;font-weight:800;color:var(--blue)" id="opexYtd"></div>
+          <div style="font-size:13px;color:var(--text-dim);margin-top:4px" id="opexPeriod"></div>
+        </div>
+      </div>
+    </div>
+    <div id="opexBucketCards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:24px"></div>
+    <div class="chart-grid">
+      <div class="chart-card"><h3>OPEX par poste (projete annuel)</h3><canvas id="chartOpexBuckets"></canvas></div>
+      <div class="chart-card"><h3>OPEX mensuel par poste</h3><canvas id="chartOpexTrend"></canvas></div>
+    </div>
+    <div class="chart-grid" id="opexSuppliers" style="margin-top:16px"></div>
+    <div style="font-size:11px;color:var(--text-dim);margin-top:12px;line-height:1.5" id="opexNote"></div>
+  </div>
   <div class="section" id="subsActionsSection" style="display:none">
     <div class="section-title"><div class="dot" style="background:var(--mindaro-dark)"></div> 3 actions a entreprendre <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-dim)">· valider vers RL-To do</span></div>
     <div class="actions-list" id="subsActionsContainer"></div>
@@ -1742,6 +1766,55 @@ function renderAcqFunnel() {
 }
 
 // ==========================================
+// OPEX (couts pilotables)
+// ==========================================
+function renderOpex() {
+  const o = DATA.opex;
+  if (!o) return;
+  const C = { marketing: '#B0563C', saas: '#6F94A6', autre: '#9FA55F' };
+  document.getElementById('opexProjected').textContent = fmt(o.total.projected_year) + ' EUR/an';
+  document.getElementById('opexMonthly').textContent = '~' + fmt(o.total.monthly_runrate) + ' EUR/mois · rythme YTD ' + o.ytd_year;
+  document.getElementById('opexYtd').textContent = fmt(o.total.ytd) + ' EUR';
+  document.getElementById('opexPeriod').textContent = 'Periode ' + o.period.months + ' mois : ' + fmt(o.total.period) + ' EUR';
+
+  document.getElementById('opexBucketCards').innerHTML = o.buckets.map(b =>
+    `<div class="table-card" style="padding:16px;border-top:3px solid ${C[b.key]}">
+      <div style="font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.5px">${b.label}</div>
+      <div style="font-size:26px;font-weight:800;margin:4px 0;color:${C[b.key]}">${fmt(b.projected_year)} <span style="font-size:12px;font-weight:500;color:var(--text-dim)">EUR/an</span></div>
+      <div style="font-size:12px;color:var(--text-dim)">YTD ${o.ytd_year} : ${fmt(b.ytd)} · part ${b.share_pct}%</div>
+      <div style="font-size:11px;color:var(--text-dim);margin-top:2px">${b.n} lignes · periode ${fmt(b.total_period)} EUR</div>
+    </div>`).join('');
+
+  new Chart(document.getElementById('chartOpexBuckets'), {
+    type: 'doughnut',
+    data: { labels: o.buckets.map(b => b.label), datasets: [{ data: o.buckets.map(b => b.projected_year), backgroundColor: o.buckets.map(b => C[b.key]), borderWidth: 0 }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#5C6661', font: { size: 11 } } } } }
+  });
+
+  const m = o.by_month || [];
+  new Chart(document.getElementById('chartOpexTrend'), {
+    type: 'bar',
+    data: { labels: m.map(x => x.month.slice(2)), datasets: [
+      { label: 'Marketing', data: m.map(x => x.marketing), backgroundColor: C.marketing, stack: 's' },
+      { label: 'SaaS', data: m.map(x => x.saas), backgroundColor: C.saas, stack: 's' },
+      { label: 'Autre', data: m.map(x => x.autre), backgroundColor: C.autre, stack: 's' }
+    ] },
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: true, position: 'top', labels: { color: '#5C6661', font: { size: 10 } } } },
+      scales: { x: { stacked: true, grid: { display: false }, ticks: { color: '#5C6661', font: { size: 9 } } },
+                y: { stacked: true, ticks: { color: '#5C6661', font: { size: 10 } }, grid: { color: 'rgba(13,26,20,0.05)' } } } }
+  });
+
+  document.getElementById('opexSuppliers').innerHTML = o.buckets.map(b => {
+    const rows = (o.top_suppliers[b.key] || []).map(s =>
+      `<tr><td style="font-weight:600">${s.name}</td><td style="text-align:right">${fmt(s.amount)} EUR</td></tr>`).join('');
+    return `<div class="chart-card"><h3 style="color:${C[b.key]}">Top · ${b.label}</h3><div class="table-card" style="box-shadow:none;border:none"><table><tbody>${rows}</tbody></table></div></div>`;
+  }).join('');
+
+  document.getElementById('opexNote').textContent = o.note || '';
+}
+
+// ==========================================
 // INIT
 // ==========================================
 Chart.defaults.color = '#5C6661';
@@ -1769,6 +1842,7 @@ async function initDashboard() {
     renderAgingTable();
     renderTransactions();
     renderSubscriptions();
+    renderOpex();
     renderAcquisition();
     renderSales();
     renderDelivery();
