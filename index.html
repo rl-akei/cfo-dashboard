@@ -436,7 +436,7 @@ tr:hover td { background: var(--cream-2); }
       <div class="chart-card"><h3>OPEX par poste (projete annuel)</h3><canvas id="chartOpexBuckets"></canvas></div>
       <div class="chart-card"><h3>OPEX mensuel par poste</h3><canvas id="chartOpexTrend"></canvas></div>
     </div>
-    <div class="chart-grid" id="opexSuppliers" style="margin-top:16px"></div>
+    <div id="opexSuppliers" style="margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px"></div>
     <div style="font-size:11px;color:var(--text-dim);margin-top:12px;line-height:1.5" id="opexNote"></div>
   </div>
   <div class="section" id="subsActionsSection" style="display:none">
@@ -1808,7 +1808,7 @@ function renderOpex() {
   document.getElementById('opexSuppliers').innerHTML = o.buckets.map(b => {
     const rows = (o.top_suppliers[b.key] || []).map(s =>
       `<tr><td style="font-weight:600">${s.name}</td><td style="text-align:right">${fmt(s.amount)} EUR</td></tr>`).join('');
-    return `<div class="chart-card"><h3 style="color:${C[b.key]}">Top · ${b.label}</h3><div class="table-card" style="box-shadow:none;border:none"><table><tbody>${rows}</tbody></table></div></div>`;
+    return `<div class="chart-card"><h3 style="color:${C[b.key]}">Top · ${b.label} <span style="font-weight:400;color:var(--text-dim);font-size:11px">YTD ${o.ytd_year}</span></h3><div class="table-card" style="box-shadow:none;border:none"><table><tbody>${rows}</tbody></table></div></div>`;
   }).join('');
 
   document.getElementById('opexNote').textContent = o.note || '';

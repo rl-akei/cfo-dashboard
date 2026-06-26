@@ -2899,15 +2899,15 @@
     ]
   },
   "opex": {
-    "generated_at": "2026-06-25",
+    "generated_at": "2026-06-26",
     "currency": "EUR",
     "period": {
       "start": "2025-04-23",
-      "end": "2026-06-24",
+      "end": "2026-06-25",
       "months": 15
     },
     "ytd_year": 2026,
-    "ytd_elapsed_fraction": 0.482,
+    "ytd_elapsed_fraction": 0.485,
     "buckets": [
       {
         "key": "marketing",
@@ -2915,7 +2915,7 @@
         "total_period": 13011,
         "ytd": 9529,
         "last_12m": 12821,
-        "projected_year": 19761,
+        "projected_year": 19650,
         "n": 18,
         "share_pct": 48.0
       },
@@ -2925,7 +2925,7 @@
         "total_period": 8619,
         "ytd": 3602,
         "last_12m": 8123,
-        "projected_year": 7470,
+        "projected_year": 7428,
         "n": 139,
         "share_pct": 31.8
       },
@@ -2935,7 +2935,7 @@
         "total_period": 5492,
         "ytd": 4133,
         "last_12m": 5153,
-        "projected_year": 8572,
+        "projected_year": 8524,
         "n": 23,
         "share_pct": 20.2
       }
@@ -2944,8 +2944,8 @@
       "period": 27122,
       "ytd": 17264,
       "last_12m": 26097,
-      "projected_year": 35804,
-      "monthly_runrate": 2984
+      "projected_year": 35601,
+      "monthly_runrate": 2967
     },
     "by_month": [
       {
@@ -3050,16 +3050,12 @@
     "top_suppliers": {
       "marketing": [
         {
-          "name": "Suma AI",
-          "amount": 4800
-        },
-        {
           "name": "Get Your Goals",
           "amount": 4000
         },
         {
-          "name": "Maelie Grevin",
-          "amount": 2156
+          "name": "Suma AI",
+          "amount": 3600
         },
         {
           "name": "KAMAK",
@@ -3067,33 +3063,33 @@
         },
         {
           "name": "LinkedIn",
-          "amount": 135
+          "amount": 9
         }
       ],
       "saas": [
-        {
-          "name": "Claude / Anthropic",
-          "amount": 835
-        },
         {
           "name": "LinkedIn",
           "amount": 800
         },
         {
-          "name": "Kondo",
-          "amount": 713
+          "name": "Claude / Anthropic",
+          "amount": 563
         },
         {
-          "name": "Notion",
-          "amount": 573
+          "name": "Kanbox",
+          "amount": 449
+        },
+        {
+          "name": "Hostinger",
+          "amount": 366
+        },
+        {
+          "name": "Emergent",
+          "amount": 262
         },
         {
           "name": "Google Workspace",
-          "amount": 558
-        },
-        {
-          "name": "Circle",
-          "amount": 481
+          "amount": 261
         }
       ],
       "autre": [
@@ -3102,28 +3098,16 @@
           "amount": 3867
         },
         {
-          "name": "Dougs (compta)",
-          "amount": 950
-        },
-        {
-          "name": "LO de Cha",
-          "amount": 275
-        },
-        {
           "name": "La Poste",
           "amount": 148
         },
         {
-          "name": "DHL",
-          "amount": 133
-        },
-        {
-          "name": "Sumup",
-          "amount": 87
+          "name": "Dougs (compta)",
+          "amount": 119
         }
       ]
     },
-    "hors_opex_period": 57750,
+    "hors_opex_period": 58769,
     "note": "Ledger RL-Expenses incurred dedoublonne (485 doublons archives 25/06/2026). OPEX = depenses pilotables : outils SaaS + prestataires marketing/divers. Hors OPEX (impots, retraits perso, loyer, materiel, deplacements, repas, frais bancaires) exclu. Marketing = Suma (social), Kamak (SEO), Get Your Goals (prospection), Maelie (design), LinkedIn Ads."
   }
 }
