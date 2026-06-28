@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-06-28T21:12:18Z",
+    "generated_at": "2026-06-28T21:27:56Z",
     "snapshot_id": "S24-2026",
     "source": "Qonto + Notion + YouTube (pipeline Python deterministe)",
     "note": "Refresh deterministe 2026-06-28. Treso 23802 | CA encaisse YTD 33469 | CA signe 29285 | projection 68247 | runway 10.8M | YT 460 vues"
@@ -146,22 +146,22 @@
     ]
   },
   "kpis": {
-    "dso": 79,
+    "dso": 18,
     "margin_pct": 0.706,
     "burn_3m": 2200,
     "runway_months": 10.8,
     "top3_pct": 0.73,
     "top3_clients": "PAPPALARDO BARBAZA ASSOCIÉS, Station Krishna, Notion meeDIA",
-    "invoices_total": 53,
-    "invoices_paid": 36,
-    "invoices_unpaid": 11,
+    "invoices_total": 55,
+    "invoices_paid": 40,
+    "invoices_unpaid": 9,
     "invoices_canceled": 6
   },
   "aging": {
     "buckets": [
       {
         "label": "0-30j",
-        "amount": 2070
+        "amount": 0
       },
       {
         "label": "30-60j",
@@ -173,90 +173,55 @@
       },
       {
         "label": "90j+",
-        "amount": 15639
+        "amount": 16878
       }
     ],
-    "total": 17709,
+    "total": 16878,
     "details": [
       {
-        "ref": "09-FAC 21",
+        "ref": "2025-09-FAC 21",
         "client": "OPTRA",
-        "amount": 2412,
+        "amount": 2895,
         "due": "2025-09-16",
-        "days": 271
+        "days": 285
       },
       {
-        "ref": "09-FAC 22",
+        "ref": "2025-09-FAC 22",
         "client": "PROPERTY PARTNERS",
-        "amount": 2250,
+        "amount": 2700,
         "due": "2025-09-19",
-        "days": 268
+        "days": 282
       },
       {
-        "ref": "10-FAC 28",
+        "ref": "2025-10-FAC 28",
         "client": "PROPERTY PARTNERS",
-        "amount": 2250,
+        "amount": 2700,
         "due": "2025-10-06",
-        "days": 251
+        "days": 265
       },
       {
-        "ref": "10-FAC 27",
+        "ref": "2025-10-FAC 26",
         "client": "OPTRA",
-        "amount": 1490,
+        "amount": 2895,
         "due": "2025-10-31",
-        "days": 226
+        "days": 240
       },
       {
-        "ref": "10-FAC 26",
+        "ref": "2025-10-FAC 27",
         "client": "OPTRA",
-        "amount": 2412,
+        "amount": 1788,
         "due": "2025-10-31",
-        "days": 226
+        "days": 240
       },
       {
-        "ref": "11-FAC 38",
+        "ref": "2025-11-FAC 38",
         "client": "OPTRA",
-        "amount": 3250,
+        "amount": 3900,
         "due": "2025-12-02",
-        "days": 194
-      },
-      {
-        "ref": "12-FAC 47",
-        "client": "Firefightbox",
-        "amount": 1575,
-        "due": "2025-12-19",
-        "days": 177
-      },
-      {
-        "ref": "05-FAC 18",
-        "client": "OLYMPES",
-        "amount": 650,
-        "due": "2026-05-28",
-        "days": 17
-      },
-      {
-        "ref": "06-FAC 21",
-        "client": "Notion Lab",
-        "amount": 320,
-        "due": "2026-06-08",
-        "days": 6
-      },
-      {
-        "ref": "06-FAC 22",
-        "client": "MAIKERS",
-        "amount": 900,
-        "due": "2026-07-10",
-        "days": -26
-      },
-      {
-        "ref": "06-FAC 23",
-        "client": "DEV3PACK",
-        "amount": 200,
-        "due": "2026-07-11",
-        "days": -27
+        "days": 208
       }
     ],
-    "basis": "HT"
+    "basis": "TTC (factures Qonto)"
   },
   "tva": {
     "collected_mtd": 1202,
@@ -1804,7 +1769,7 @@
       ]
     },
     "youtube_channel": {
-      "subscribers": 60,
+      "subscribers": 61,
       "total_views": 539,
       "video_count": 4,
       "net_subscribers_month": 47
