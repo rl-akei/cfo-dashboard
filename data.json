@@ -1,23 +1,23 @@
 {
   "meta": {
-    "generated_at": "2026-06-12T11:00:00Z",
+    "generated_at": "2026-06-28T21:05:59Z",
     "snapshot_id": "S24-2026",
-    "source": "Qonto + Notion + Timing",
-    "note": "Refresh vendredi S24 12/06. Tresorerie: 27 945 EUR (-1 696 vs 10/06). Debits: get your goals -1 400 (11/06) + Amazon x3 -265 (12/06). Maikers: 8.73h juin, FAC-22 envoyee 10/06 (900 HT, due 10/07). KR7 LinkedIn ATTEINT: 146/144 (5 posts ce jour). FFN pivote 6 400 EUR formule unique (was 15-34K) -- presentation lundi 15/06 16h. Cerena on hold jusqu'en juillet. CA signe 2026: 28 300 EUR (+900 Maikers). Delivery 3M (avr-mai-jun): 255 EUR/h."
+    "source": "Qonto + Notion + YouTube (pipeline Python deterministe)",
+    "note": "Refresh deterministe 2026-06-28. Treso 23802 EUR | CA encaisse YTD 33469 | CA signe 2026 29285 | projection 68247 | runway 10.8M | YT 460 vues/mois"
   },
   "treasury": {
-    "total": 27944.96,
-    "principal": 27944.96,
+    "total": 23801.55,
+    "principal": 23801.55,
     "impots": 0,
     "are_mensuel": 2700
   },
   "revenue": {
-    "objective_2026": 150000,
-    "ytd": 35839,
-    "mtd": 7235,
-    "rolling_12m": 68065,
-    "projection_2026": 81000,
-    "ecart_objectif": -69000,
+    "objective_2026": 150000.0,
+    "ytd": 33469,
+    "mtd": 7980,
+    "rolling_12m": 69946,
+    "projection_2026": 68247,
+    "ecart_objectif": 81753,
     "by_month": [
       {
         "month": "2025-07",
@@ -154,7 +154,7 @@
     "dso": 79,
     "margin_pct": 0.706,
     "burn_3m": 2200,
-    "runway_months": 12.7,
+    "runway_months": 10.8,
     "top3_pct": 0.43,
     "top3_clients": "BLYYND, meedIA, Emathea",
     "invoices_total": 53,
@@ -1350,7 +1350,7 @@
           "posts_last_month": 0,
           "mom_pct": null,
           "key_metric_label": "Vues (mois)",
-          "key_metric": 249,
+          "key_metric": 460,
           "ytd": 2
         }
       ]
@@ -1807,6 +1807,12 @@
           "action": "Propale v2 envoyee 26/05. Deadline retour depassee. Relancer Oriane + Baptiste."
         }
       ]
+    },
+    "youtube_channel": {
+      "subscribers": 60,
+      "total_views": 539,
+      "video_count": 4,
+      "net_subscribers_month": 47
     }
   },
   "sales": {
@@ -1845,7 +1851,7 @@
     ],
     "closing_rate": 0.36,
     "closing_rate_strict": 0.22,
-    "signed_2026": 28300,
+    "signed_2026": 29285,
     "signed_deals_2026": 10,
     "deals_by_source": [
       {
@@ -2899,15 +2905,15 @@
     ]
   },
   "opex": {
-    "generated_at": "2026-06-26",
+    "generated_at": "2026-06-28",
     "currency": "EUR",
     "period": {
       "start": "2025-04-23",
-      "end": "2026-06-25",
+      "end": "2026-06-27",
       "months": 15
     },
     "ytd_year": 2026,
-    "ytd_elapsed_fraction": 0.485,
+    "ytd_elapsed_fraction": 0.49,
     "buckets": [
       {
         "key": "marketing",
@@ -2915,7 +2921,7 @@
         "total_period": 13011,
         "ytd": 9529,
         "last_12m": 12821,
-        "projected_year": 19650,
+        "projected_year": 19430,
         "n": 18,
         "share_pct": 48.0
       },
@@ -2925,7 +2931,7 @@
         "total_period": 8619,
         "ytd": 3602,
         "last_12m": 8123,
-        "projected_year": 7428,
+        "projected_year": 7345,
         "n": 139,
         "share_pct": 31.8
       },
@@ -2934,8 +2940,8 @@
         "label": "Externe · Autre",
         "total_period": 5492,
         "ytd": 4133,
-        "last_12m": 5153,
-        "projected_year": 8524,
+        "last_12m": 5147,
+        "projected_year": 8428,
         "n": 23,
         "share_pct": 20.2
       }
@@ -2943,9 +2949,9 @@
     "total": {
       "period": 27122,
       "ytd": 17264,
-      "last_12m": 26097,
-      "projected_year": 35601,
-      "monthly_runrate": 2967
+      "last_12m": 26090,
+      "projected_year": 35204,
+      "monthly_runrate": 2934
     },
     "by_month": [
       {
@@ -3107,7 +3113,7 @@
         }
       ]
     },
-    "hors_opex_period": 58769,
+    "hors_opex_period": 59089,
     "note": "Ledger RL-Expenses incurred dedoublonne (485 doublons archives 25/06/2026). OPEX = depenses pilotables : outils SaaS + prestataires marketing/divers. Hors OPEX (impots, retraits perso, loyer, materiel, deplacements, repas, frais bancaires) exclu. Marketing = Suma (social), Kamak (SEO), Get Your Goals (prospection), Maelie (design), LinkedIn Ads."
   }
 }
