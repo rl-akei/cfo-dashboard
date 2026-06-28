@@ -1,9 +1,9 @@
 {
   "meta": {
-    "generated_at": "2026-06-28T21:05:59Z",
+    "generated_at": "2026-06-28T21:12:18Z",
     "snapshot_id": "S24-2026",
     "source": "Qonto + Notion + YouTube (pipeline Python deterministe)",
-    "note": "Refresh deterministe 2026-06-28. Treso 23802 EUR | CA encaisse YTD 33469 | CA signe 2026 29285 | projection 68247 | runway 10.8M | YT 460 vues/mois"
+    "note": "Refresh deterministe 2026-06-28. Treso 23802 | CA encaisse YTD 33469 | CA signe 29285 | projection 68247 | runway 10.8M | YT 460 vues"
   },
   "treasury": {
     "total": 23801.55,
@@ -94,59 +94,54 @@
     ],
     "by_client": [
       {
-        "name": "BLYYND",
-        "amount": 15300,
-        "pct": 0.225
+        "name": "PAPPALARDO BARBAZA ASSOCIÉS",
+        "amount": 8500,
+        "pct": 0.29
       },
       {
-        "name": "meedIA",
-        "amount": 7680,
-        "pct": 0.113
+        "name": "Station Krishna",
+        "amount": 6400,
+        "pct": 0.219
       },
       {
-        "name": "Emathea",
-        "amount": 6000,
-        "pct": 0.088
+        "name": "Notion meeDIA",
+        "amount": 6400,
+        "pct": 0.219
       },
       {
-        "name": "PB-associes",
-        "amount": 5100,
-        "pct": 0.075
-      },
-      {
-        "name": "RC consulting",
-        "amount": 4800,
-        "pct": 0.071
-      },
-      {
-        "name": "VIYANA / Station Krishna",
-        "amount": 4572,
+        "name": "Olympes COO accompagnement 3 jrs",
+        "amount": 1950,
         "pct": 0.067
       },
       {
-        "name": "Notion Labs",
-        "amount": 3827,
-        "pct": 0.056
+        "name": "Nico-Accompagnement 6 semaines",
+        "amount": 1899,
+        "pct": 0.065
       },
       {
-        "name": "OPTRA",
-        "amount": 2895,
-        "pct": 0.043
+        "name": "Notion intervention",
+        "amount": 1034,
+        "pct": 0.035
       },
       {
-        "name": "Structude",
-        "amount": 2879,
-        "pct": 0.042
+        "name": "Notion - Intervention IA lab",
+        "amount": 1002,
+        "pct": 0.034
       },
       {
-        "name": "Firefightbox",
-        "amount": 2625,
-        "pct": 0.039
+        "name": "Olympes Pitch deck",
+        "amount": 1000,
+        "pct": 0.034
       },
       {
-        "name": "Autres",
-        "amount": 12367,
-        "pct": 0.182
+        "name": "Mashvp (via Maikers)",
+        "amount": 900,
+        "pct": 0.031
+      },
+      {
+        "name": "dev3pack — Workshop Notion + Automatisation création de contenu",
+        "amount": 200,
+        "pct": 0.007
       }
     ]
   },
@@ -155,8 +150,8 @@
     "margin_pct": 0.706,
     "burn_3m": 2200,
     "runway_months": 10.8,
-    "top3_pct": 0.43,
-    "top3_clients": "BLYYND, meedIA, Emathea",
+    "top3_pct": 0.73,
+    "top3_clients": "PAPPALARDO BARBAZA ASSOCIÉS, Station Krishna, Notion meeDIA",
     "invoices_total": 53,
     "invoices_paid": 36,
     "invoices_unpaid": 11,
@@ -1816,105 +1811,107 @@
     }
   },
   "sales": {
-    "pipeline_total": 95789,
+    "pipeline_total": 57740,
     "pipeline_by_stage": [
       {
         "stage": "Lead",
-        "count": 6,
-        "amount": 11600
+        "count": 7,
+        "amount": 0
       },
       {
         "stage": "Proposal to send",
-        "count": 5,
-        "amount": 29900
+        "count": 7,
+        "amount": 21900
       },
       {
         "stage": "Awaiting signature",
         "count": 5,
-        "amount": 33340
-      },
-      {
-        "stage": "Contract signed",
-        "count": 0,
-        "amount": 0
-      },
-      {
-        "stage": "Billing send",
-        "count": 1,
-        "amount": 3250
-      },
-      {
-        "stage": "Partial paid",
-        "count": 3,
-        "amount": 17699
+        "amount": 35840
       }
     ],
-    "closing_rate": 0.36,
+    "closing_rate": 0.37,
     "closing_rate_strict": 0.22,
     "signed_2026": 29285,
     "signed_deals_2026": 10,
     "deals_by_source": [
       {
-        "source": "Linkedin inbound",
+        "source": "Linkedin outboud",
         "count": 5,
-        "amount": 34849,
+        "amount": 80500,
         "won": 0,
-        "lost": 4
-      },
-      {
-        "source": "Event",
-        "count": 2,
-        "amount": 27150,
-        "won": 1,
-        "lost": 0
-      },
-      {
-        "source": "Reseau",
-        "count": 4,
-        "amount": 28300,
-        "won": 1,
-        "lost": 0
-      },
-      {
-        "source": "Recommandation",
-        "count": 3,
-        "amount": 13098,
-        "won": 1,
         "lost": 1
       },
       {
-        "source": "Non renseigne",
-        "count": 4,
-        "amount": 27649,
-        "won": 0,
+        "source": "Réseau",
+        "count": 20,
+        "amount": 75686,
+        "won": 8,
+        "lost": 6
+      },
+      {
+        "source": "Linkedin inbound",
+        "count": 9,
+        "amount": 59800,
+        "won": 1,
+        "lost": 7
+      },
+      {
+        "source": "Recommandation",
+        "count": 9,
+        "amount": 8698,
+        "won": 1,
         "lost": 2
+      },
+      {
+        "source": "Event",
+        "count": 4,
+        "amount": 2140,
+        "won": 0,
+        "lost": 0
+      },
+      {
+        "source": "?",
+        "count": 1,
+        "amount": 1000,
+        "won": 0,
+        "lost": 1
       }
     ],
     "deals_by_type": [
       {
         "type": "Notion",
-        "count": 12,
-        "amount": 91748
+        "count": 20,
+        "amount": 105539
       },
       {
-        "type": "COO/Service client",
-        "count": 3,
-        "amount": 81500
+        "type": "COO",
+        "count": 2,
+        "amount": 55050
+      },
+      {
+        "type": "?",
+        "count": 9,
+        "amount": 24550
+      },
+      {
+        "type": "Audit",
+        "count": 5,
+        "amount": 16400
       },
       {
         "type": "Automatisation",
-        "count": 2,
-        "amount": 15000
+        "count": 3,
+        "amount": 13500
       },
       {
-        "type": "Audit/Conseil/IA",
-        "count": 2,
-        "amount": 19600
+        "type": "Service client",
+        "count": 1,
+        "amount": 6400
       },
       {
         "type": "Formation Entreprise",
-        "count": 1,
-        "amount": 2000
+        "count": 7,
+        "amount": 4486
       },
       {
         "type": "Coaching",
@@ -1924,118 +1921,134 @@
     ],
     "deals_to_relaunch": [
       {
-        "name": "Journee Notion Philippe",
+        "name": "Kedge — Notion Entrepreneurship",
+        "status": "Awaiting signature",
+        "amount": 8400,
+        "days_idle": 63,
+        "action": "Relancer ou clore — 63 jours sans mouvement",
+        "priority": "critical"
+      },
+      {
+        "name": "Dauphine",
+        "status": "Awaiting signature",
+        "amount": 990,
+        "days_idle": 59,
+        "action": "Relancer ou clore — 59 jours sans mouvement",
+        "priority": "high"
+      },
+      {
+        "name": "Journée Notion Philppei",
         "status": "Proposal to send",
         "amount": 4000,
-        "days_idle": 85,
-        "action": "CLORE ou envoyer la prop immediatement — 83 jours de paralysie",
-        "priority": "critical"
+        "days_idle": 59,
+        "action": "Relancer ou clore — 59 jours sans mouvement",
+        "priority": "high"
       },
       {
-        "name": "Sparken - Structuration Notion",
+        "name": "Cerena — Setup fondation Notion + Claude",
         "status": "Awaiting signature",
-        "amount": 6400,
-        "days_idle": 80,
-        "action": "ULTIMATUM EXPIRE - Appel direct + deadline 24h. Clore si silence.",
-        "priority": "critical"
+        "amount": 11800,
+        "days_idle": 57,
+        "action": "Relancer ou clore — 57 jours sans mouvement",
+        "priority": "high"
       },
       {
-        "name": "Altercosmeto - Performance IA",
-        "status": "Proposal to send",
-        "amount": 14400,
-        "days_idle": 75,
-        "action": "Aucun mouvement depuis le 30/04. Dernier appel direct avec deadline 48h, sinon clore.",
-        "priority": "critical"
+        "name": "Formation Notion — L'Escalator (Incubateur Lille)",
+        "status": "Lead",
+        "amount": 0,
+        "days_idle": 52,
+        "action": "Relancer ou clore — 52 jours sans mouvement",
+        "priority": "high"
       },
       {
-        "name": "Peppit",
-        "status": "Awaiting signature",
-        "amount": 13500,
-        "days_idle": 64,
-        "action": "Proposer un call de cloture cette semaine. Plus gros levier B26-1.",
-        "priority": "warning"
-      },
-      {
-        "name": "EVMT V1",
-        "status": "Proposal to send",
-        "amount": 8400,
-        "days_idle": 35,
-        "action": "Relancer Jerome OGOR. Visio 08/05 positive, toujours pas signe.",
-        "priority": "warning"
-      },
-      {
-        "name": "Shika Consulting",
+        "name": "Shika Consulting — Audit + 2 processus revus",
         "status": "Proposal to send",
         "amount": 6400,
-        "days_idle": 25,
-        "action": "R2 le 18/05, 23 jours sans retour. Relancer Nouri cette semaine.",
-        "priority": "warning"
+        "days_idle": 48,
+        "action": "Relancer ou clore — 48 jours sans mouvement",
+        "priority": "high"
+      },
+      {
+        "name": "EVMT — Base Projet Notion + Répartition responsabilités",
+        "status": "Proposal to send",
+        "amount": 0,
+        "days_idle": 48,
+        "action": "Relancer ou clore — 48 jours sans mouvement",
+        "priority": "high"
+      },
+      {
+        "name": "Notion + Claude Multi-Sphères — Mathieu Leo",
+        "status": "Proposal to send",
+        "amount": 7500,
+        "days_idle": 47,
+        "action": "Relancer ou clore — 47 jours sans mouvement",
+        "priority": "high"
       }
     ],
     "top_deals": [
       {
         "rank": 1,
-        "name": "V2 implem (BLYYND)",
-        "amount": 26325,
-        "status": "Paid"
-      },
-      {
-        "rank": 2,
-        "name": "Altercosmeto",
-        "amount": 14400,
-        "status": "Proposal to send"
-      },
-      {
-        "rank": 3,
-        "name": "Notion X Peppit",
-        "amount": 13000,
-        "status": "Awaiting signature"
-      },
-      {
-        "rank": 4,
-        "name": "Cerena (Serena)",
-        "amount": 11800,
-        "status": "Awaiting signature"
-      },
-      {
-        "rank": 5,
-        "name": "PB-associes — Hub Notion",
+        "name": "Hub Notion PB-associés — Build 8 sem",
         "amount": 8500,
         "status": "Partial paid"
       },
       {
+        "rank": 2,
+        "name": "Station Krishna — Notion & Ops",
+        "amount": 6400,
+        "status": "Partial paid"
+      },
+      {
+        "rank": 3,
+        "name": "Notion meeDIA",
+        "amount": 6400,
+        "status": "Paid"
+      },
+      {
+        "rank": 4,
+        "name": "Olympes COO accompagnement 3 jrs",
+        "amount": 1950,
+        "status": "Partial paid"
+      },
+      {
+        "rank": 5,
+        "name": "Nico-Accompagnement 6 semaines",
+        "amount": 1899,
+        "status": "Partial paid"
+      },
+      {
         "rank": 6,
-        "name": "EVMT V1",
-        "amount": 8400,
-        "status": "Proposal to send"
+        "name": "Notion intervention",
+        "amount": 1034,
+        "status": "Paid"
       },
       {
         "rank": 7,
-        "name": "Mathieu Leo / La Clairiere",
-        "amount": 7500,
-        "status": "Proposal to send"
+        "name": "Notion - Intervention IA lab",
+        "amount": 1002,
+        "status": "Paid"
       },
       {
         "rank": 8,
-        "name": "Sparken",
-        "amount": 6400,
-        "status": "Awaiting signature"
+        "name": "Olympes Pitch deck",
+        "amount": 1000,
+        "status": "Paid"
       },
       {
         "rank": 9,
-        "name": "Shika Consulting",
-        "amount": 6400,
-        "status": "Proposal to send"
+        "name": "Maikers — Formation Mashvp",
+        "amount": 900,
+        "status": "BIlling send"
       },
       {
         "rank": 10,
-        "name": "Station Krishna",
-        "amount": 6400,
-        "status": "Partial paid"
+        "name": "dev3pack — Workshop Notion + Automatisation création de contenu",
+        "amount": 200,
+        "status": "Paid"
       }
     ],
-    "main_loss_reason": "Trop cher",
-    "loss_reason_count": 7
+    "main_loss_reason": "Trop chère",
+    "loss_reason_count": 8
   },
   "delivery": {
     "target_hourly_rate": 200,
