@@ -1178,7 +1178,7 @@
             "id": "C1",
             "title": ">=8 R1 bookes/mois trackes (cal.com/taap.it)",
             "target": 8,
-            "result": 21,
+            "result": 12,
             "status": "In progress",
             "due": "2026-09-30"
           },
@@ -1210,7 +1210,7 @@
       }
     ],
     "updated_at": "2026-07-03",
-    "note": "OKR live T3 2026. B26-2 CA T3 = 12 400/25 000 (50% au J+3). B1 taux 250 EUR/h (>cible 120). C1 R1 = 21/mois moy (avr26/mai13/juin25, source RL-Log CRM Typology=R1) tres au-dessus de 8, mais qualite a fiabiliser (doublons batch juin) et ratio R1->deal faible. C2 contenu video = 6 en T3 a date + 16 sur 30j glissants (source RL-SM, YT/IG/TikTok), cadence cafe.ramalogic lancee fin juin. B26-5 MRR = 0 (seul vrai trou)."
+    "note": "OKR live T3 2026. B26-2 CA T3 = 12 400/25 000 (50% au J+3). B1 taux 250 EUR/h. C1 R1 = 12/mois REELS (juin, valide manuellement Sylvain, 1 R1/personne: 12 vrais sur 25 bruts; juillet nouveau tracking = 1 confirme au 03/07). Cible 8 tenue. C2 contenu video = 6 T3 a date + 16/30j (RL-SM YT/IG/TikTok). B26-5 MRR = 0 (seul vrai trou)."
   },
   "alerts": [
     {
