@@ -1112,7 +1112,7 @@
             "id": "B1",
             "title": "Taux horaire effectif >=120 EUR/h T3 (Timing)",
             "target": 120,
-            "result": 210,
+            "result": 250,
             "status": "In progress",
             "due": "2026-09-30"
           },
@@ -2043,13 +2043,121 @@
     "loss_reason_count": 8
   },
   "delivery": {
-    "target_hourly_rate": 200,
+    "target_hourly_rate": 250,
     "hourly_rate_effective": 210,
     "hourly_rate_3m": 255,
     "hourly_rate_done_projects": 132,
     "total_client_hours_10m": 308.1,
     "total_tracked_hours_10m": 945.7,
     "projects": [
+      {
+        "name": "PB — Build Notion (8 sem)",
+        "hours": 17.0,
+        "ca_signed": 8500,
+        "ca_collected": null,
+        "hourly_rate_signed": null,
+        "hourly_rate_collected": null,
+        "status": "active",
+        "active_period": "Juin-Aout 2026",
+        "hours_estimated": null,
+        "overrun_flag": false
+      },
+      {
+        "name": "Kedge — Notion Entrepreneurship",
+        "hours": 0,
+        "ca_signed": 8400,
+        "ca_collected": null,
+        "hourly_rate_signed": null,
+        "hourly_rate_collected": null,
+        "status": "active_new",
+        "active_period": "Kickoff 08/07",
+        "hours_estimated": null,
+        "overrun_flag": false
+      },
+      {
+        "name": "Thiga — Audit Notion",
+        "hours": 0.8,
+        "ca_signed": 4000,
+        "ca_collected": null,
+        "hourly_rate_signed": null,
+        "hourly_rate_collected": null,
+        "status": "active",
+        "active_period": "Juil-Aout 2026",
+        "hours_estimated": null,
+        "overrun_flag": false
+      },
+      {
+        "name": "EDHEC — Audit",
+        "hours": 0,
+        "ca_signed": 1500,
+        "ca_collected": null,
+        "hourly_rate_signed": null,
+        "hourly_rate_collected": null,
+        "status": "active_new",
+        "active_period": "Audit 08/07",
+        "hours_estimated": null,
+        "overrun_flag": false
+      },
+      {
+        "name": "Station Krishna — Notion & Ops",
+        "hours": 19.7,
+        "ca_signed": 6400,
+        "ca_collected": null,
+        "hourly_rate_signed": 325,
+        "hourly_rate_collected": null,
+        "status": "active",
+        "active_period": "Avr-Juil 2026",
+        "hours_estimated": null,
+        "overrun_flag": false
+      },
+      {
+        "name": "Olympes",
+        "hours": 36.6,
+        "ca_signed": 2950,
+        "ca_collected": null,
+        "hourly_rate_signed": 81,
+        "hourly_rate_collected": null,
+        "status": "active",
+        "active_period": "Mai-Juil 2026",
+        "hours_estimated": null,
+        "overrun_flag": true
+      },
+      {
+        "name": "Notion meeDIA",
+        "hours": 25.2,
+        "ca_signed": 6400,
+        "ca_collected": 6400,
+        "hourly_rate_signed": 254,
+        "hourly_rate_collected": 254,
+        "status": "done",
+        "active_period": "Jan-Mar 2026",
+        "hours_estimated": null,
+        "overrun_flag": false
+      },
+      {
+        "name": "Nico — Accompagnement 6 sem",
+        "hours": 4.5,
+        "ca_signed": 1899,
+        "ca_collected": null,
+        "hourly_rate_signed": 422,
+        "hourly_rate_collected": null,
+        "status": "done",
+        "active_period": "Avr-Mai 2026",
+        "hours_estimated": null,
+        "overrun_flag": false
+      },
+      {
+        "name": "Maikers — Formation Mashvp",
+        "hours": 8.8,
+        "ca_signed": 900,
+        "ca_collected": null,
+        "hourly_rate_signed": 102,
+        "hourly_rate_collected": null,
+        "status": "done",
+        "active_period": "Juin 2026",
+        "hours_estimated": null,
+        "overrun_flag": true
+      },
       {
         "name": "OPTRA",
         "hours": 85.2,
@@ -2236,19 +2344,6 @@
         "note": "Coaching 6 semaines termine. Solde FAC-16 (1 078.80 TTC) encaisse 07/06 — integralement paye (2 279 TTC collecte)."
       },
       {
-        "name": "Olympes",
-        "hours": 29.4,
-        "ca_signed": 2950,
-        "ca_collected": 1650,
-        "hourly_rate_signed": 100,
-        "hourly_rate_collected": 56,
-        "status": "active",
-        "active_period": "Mai-Juin 2026",
-        "hours_estimated": null,
-        "overrun_flag": false,
-        "note": "17h mai + 12.4h juin (dont COO ~9.7h + pitch deck ~2.3h). Deal COO 53 100 = LOST 15/05. Actif: mini deck 1 000 HT (paye) + COO 3j 1 950 HT (650 paye). Reste 1 300 HT a facturer."
-      },
-      {
         "name": "Maikers",
         "hours": 8.73,
         "ca_signed": 900,
@@ -2348,7 +2443,8 @@
         "hourly_rate": 294
       }
     ],
-    "notes": "Taux 3M (avr-mai-jun): 255 EUR/h. Taux 10M: 210 EUR/h. Juin (1-12): 24.57h client / 52.2h trackees. Olympes 29.4h pour 2 950 signes = point noir rentabilite (100 EUR/h signe). Station Krishna 26h, 246 EUR/h signe. Maikers 8.73h, FAC-22 900 HT envoyee, orphelin CRM. OPTRA + Property Partners: 16 878 EUR creances douteuses. DSO: 79j."
+    "notes": "Heures 2026 rebranchees sur Timing (refresh 03/07). Actifs: PB 17h, Olympes 36,6h (81 EUR/h = sous-tarife), Station Krishna 19,7h (325), Thiga 0,8h (demarre). Kedge/EDHEC pas encore commences. Cible taux 250 EUR/h. Builds en cours = taux provisoire (heures incompletes). Historique 2025 conserve en bas.",
+    "updated_at": "2026-07-03"
   },
   "snapshots_history": [
     {
