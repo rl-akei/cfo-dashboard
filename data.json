@@ -1103,64 +1103,64 @@
     "objectives": [
       {
         "id": "O1",
-        "title": "Capitaliser 150K EUR dans la SASU et construire 2 lignes de revenu",
-        "status": "In progress",
-        "angle": "Croissance",
-        "period": "2026",
-        "key_results": [
-          {
-            "id": "KR1",
-            "title": "CA signe T1 2026",
-            "target": 15000,
-            "result": 8300,
-            "status": "Fail",
-            "due": "2026-03-31"
-          },
-          {
-            "id": "KR2",
-            "title": "CA signe T2 2026",
-            "target": 40000,
-            "result": 18101,
-            "status": "In progress",
-            "due": "2026-06-30"
-          },
-          {
-            "id": "KR3",
-            "title": "CA signe T3 2026",
-            "target": 40000,
-            "result": 0,
-            "status": "Not started",
-            "due": "2026-09-30"
-          },
-          {
-            "id": "KR4",
-            "title": "CA signe T4 2026",
-            "target": 35000,
-            "result": 0,
-            "status": "Not started",
-            "due": "2026-12-31"
-          },
-          {
-            "id": "KR5",
-            "title": "3 clients offre packagee COO/Notion <=25h",
-            "target": 3,
-            "result": 0,
-            "status": "Not started",
-            "due": "2026-09-30"
-          }
-        ]
-      },
-      {
-        "id": "O2",
-        "title": "Optimiser la machine Rama Logic : automatiser, reduire delivery, maximiser taux horaire",
+        "title": "Construire le systeme IA-first qui scale & optimise le delivery",
         "status": "In progress",
         "angle": "Qualite",
         "period": "2026",
         "key_results": [
           {
-            "id": "KR6",
-            "title": "Automatiser 100% CRM, facturation, suivi projet",
-            "target": 1,
+            "id": "B1",
+            "title": "Taux horaire effectif >=120 EUR/h T3 (Timing)",
+            "target": 120,
+            "result": 210,
+            "status": "In progress",
+            "due": "2026-09-30"
+          },
+          {
+            "id": "B3",
+            "title": "Taux horaire effectif >=150 EUR/h builds T4",
+            "target": 150,
+            "result": 0,
+            "status": "Not started",
+            "due": "2026-12-31"
+          }
+        ]
+      },
+      {
+        "id": "O2",
+        "title": "Capitaliser 150K EUR dans la SASU + 2 lignes de revenu",
+        "status": "In progress",
+        "angle": "Croissance",
+        "period": "2026",
+        "key_results": [
+          {
+            "id": "B26-2",
+            "title": "CA signe T3 2026 (cible 25K)",
+            "target": 25000,
+            "result": 12400,
+            "status": "In progress",
+            "due": "2026-09-30"
+          },
+          {
+            "id": "B26-5",
+            "title": "MRR recurrent Operate (cible 3K/mois)",
+            "target": 3000,
+            "result": 0,
+            "status": "Not started",
+            "due": "2026-09-30"
+          },
+          {
+            "id": "A3",
+            "title": "CA signe T4 2026 (cible 36K)",
+            "target": 36000,
+            "result": 0,
+            "status": "Not started",
+            "due": "2026-12-31"
+          },
+          {
+            "id": "A4",
+            "title": "MRR recurrent Operate fin T4 (cible 6K/mois)",
+            "target": 6000,
             "result": 0,
             "status": "Not started",
             "due": "2026-12-31"
@@ -1175,32 +1175,42 @@
         "period": "2026",
         "key_results": [
           {
-            "id": "KR7",
-            "title": "96 posts LinkedIn S1 2026",
-            "target": 144,
-            "result": 146,
-            "status": "Done",
-            "due": "2026-06-30"
+            "id": "C1",
+            "title": ">=8 R1 bookes/mois trackes (cal.com/taap.it)",
+            "target": 8,
+            "result": 0,
+            "status": "In progress",
+            "due": "2026-09-30"
           },
           {
-            "id": "KR8",
-            "title": "Newsletter 100 abonnes + 6 editions S1",
-            "target": 6,
-            "result": 6,
+            "id": "C2",
+            "title": "Cadence contenu >=12/trim (1 video YT/sem + IG)",
+            "target": 12,
+            "result": 0,
             "status": "In progress",
-            "due": "2026-06-30"
+            "due": "2026-09-30"
+          },
+          {
+            "id": "C3",
+            "title": ">=10 R1/mois + 1 attribution contenu->deal",
+            "target": 10,
+            "result": 0,
+            "status": "Not started",
+            "due": "2026-12-31"
+          },
+          {
+            "id": "C4",
+            "title": "Cadence contenu T4 (>=12/trim)",
+            "target": 12,
+            "result": 0,
+            "status": "Not started",
+            "due": "2026-12-31"
           }
         ]
-      },
-      {
-        "id": "O4",
-        "title": "Construire une offre scalable IA-first (sans dependance humaine)",
-        "status": "In progress",
-        "angle": "Croissance",
-        "period": "2026",
-        "key_results": []
       }
-    ]
+    ],
+    "updated_at": "2026-07-03",
+    "note": "OKR live T3 2026 (refonte 28/06). B26-2 = 12 400/25 000 = 50% des le J+3 (Kedge+Thiga signes T3). Instrumentation a brancher: B1 (proxy Timing 210), C1 (cal.com/taap.it), C2 (compteur contenu)."
   },
   "alerts": [
     {
