@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-03T08:38:12Z",
+    "generated_at": "2026-07-03T11:00:24Z",
     "snapshot_id": "S24-2026",
     "source": "Qonto + Notion + YouTube (pipeline Python deterministe)",
     "note": "Refresh deterministe 2026-07-03. Treso 22553 | CA encaisse YTD 33469 | CA signe 41685 | projection 66393 | runway 10.3M | YT 0 vues"
@@ -1796,7 +1796,7 @@
       ]
     },
     "youtube_channel": {
-      "subscribers": 103,
+      "subscribers": 104,
       "total_views": 902,
       "video_count": 4,
       "net_subscribers_month": 0
