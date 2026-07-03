@@ -2100,22 +2100,22 @@
       },
       {
         "name": "Station Krishna — Notion & Ops",
-        "hours": 19.7,
+        "hours": 26.4,
         "ca_signed": 6400,
         "ca_collected": null,
-        "hourly_rate_signed": 325,
+        "hourly_rate_signed": 242,
         "hourly_rate_collected": null,
         "status": "active",
         "active_period": "Avr-Juil 2026",
         "hours_estimated": null,
-        "overrun_flag": false
+        "overrun_flag": true
       },
       {
         "name": "Olympes",
-        "hours": 36.6,
+        "hours": 31.1,
         "ca_signed": 2950,
         "ca_collected": null,
-        "hourly_rate_signed": 81,
+        "hourly_rate_signed": 95,
         "hourly_rate_collected": null,
         "status": "active",
         "active_period": "Mai-Juil 2026",
@@ -2124,39 +2124,75 @@
       },
       {
         "name": "Notion meeDIA",
-        "hours": 25.2,
+        "hours": 31.9,
         "ca_signed": 6400,
         "ca_collected": 6400,
-        "hourly_rate_signed": 254,
-        "hourly_rate_collected": 254,
+        "hourly_rate_signed": 201,
+        "hourly_rate_collected": 201,
         "status": "done",
         "active_period": "Jan-Mar 2026",
         "hours_estimated": null,
-        "overrun_flag": false
+        "overrun_flag": true
       },
       {
         "name": "Nico — Accompagnement 6 sem",
-        "hours": 4.5,
+        "hours": 10.6,
         "ca_signed": 1899,
         "ca_collected": null,
-        "hourly_rate_signed": 422,
+        "hourly_rate_signed": 179,
         "hourly_rate_collected": null,
         "status": "done",
         "active_period": "Avr-Mai 2026",
         "hours_estimated": null,
-        "overrun_flag": false
+        "overrun_flag": true
       },
       {
         "name": "Maikers — Formation Mashvp",
-        "hours": 8.8,
+        "hours": 8.5,
         "ca_signed": 900,
         "ca_collected": null,
-        "hourly_rate_signed": 102,
+        "hourly_rate_signed": 106,
         "hourly_rate_collected": null,
         "status": "done",
         "active_period": "Juin 2026",
         "hours_estimated": null,
         "overrun_flag": true
+      },
+      {
+        "name": "Hush (archive)",
+        "hours": 21.7,
+        "ca_signed": null,
+        "ca_collected": null,
+        "hourly_rate_signed": null,
+        "hourly_rate_collected": null,
+        "status": "done",
+        "active_period": "Debut 2026",
+        "hours_estimated": null,
+        "overrun_flag": false
+      },
+      {
+        "name": "Jesse (archive)",
+        "hours": 5.6,
+        "ca_signed": null,
+        "ca_collected": null,
+        "hourly_rate_signed": null,
+        "hourly_rate_collected": null,
+        "status": "done",
+        "active_period": "2026",
+        "hours_estimated": null,
+        "overrun_flag": false
+      },
+      {
+        "name": "Riad (archive)",
+        "hours": 3.2,
+        "ca_signed": null,
+        "ca_collected": null,
+        "hourly_rate_signed": null,
+        "hourly_rate_collected": null,
+        "status": "done",
+        "active_period": "2026",
+        "hours_estimated": null,
+        "overrun_flag": false
       },
       {
         "name": "OPTRA",
@@ -2443,8 +2479,10 @@
         "hourly_rate": 294
       }
     ],
-    "notes": "Heures 2026 rebranchees sur Timing (refresh 03/07). Actifs: PB 17h, Olympes 36,6h (81 EUR/h = sous-tarife), Station Krishna 19,7h (325), Thiga 0,8h (demarre). Kedge/EDHEC pas encore commences. Cible taux 250 EUR/h. Builds en cours = taux provisoire (heures incompletes). Historique 2025 conserve en bas.",
-    "updated_at": "2026-07-03"
+    "notes": "Heures 2026 recomptees depuis les entrees Timing reelles + archives (fix du bug avril), 157h/181 entrees. Taux reel projets LIVRES 2026 (meeDIA/Nico/Maikers) = 180 EUR/h, sous la cible 250. meeDIA 201, Station Krishna 242, Nico 179, Maikers 106, Olympes 95 (le plus sous-tarife). PB 17h et Thiga 0,8h en cours (taux provisoire). Hush 21,7h sans CA signe = a verifier (travail non facture?).",
+    "updated_at": "2026-07-03",
+    "total_client_hours_2026": 157.1,
+    "hourly_rate_done_2026": 180
   },
   "snapshots_history": [
     {
