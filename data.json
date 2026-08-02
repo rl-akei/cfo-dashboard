@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-02T12:27:15Z",
+    "generated_at": "2026-08-02T12:52:58Z",
     "snapshot_id": "S24-2026",
     "source": "Qonto + Notion + YouTube (pipeline Python deterministe)",
     "note": "Refresh deterministe 2026-08-02. Treso 32444 | CA encaisse YTD 50909 | CA signe 66884 | projection 86831 | runway 14.7M | YT 0 vues"
@@ -188,15 +188,15 @@
     "top3_pct": 0.43,
     "top3_clients": "EVMT, PAPPALARDO BARBAZA ASSOCIÉS, Kedge — Notion Entrepreneurship",
     "invoices_total": 65,
-    "invoices_paid": 44,
-    "invoices_unpaid": 13,
+    "invoices_paid": 45,
+    "invoices_unpaid": 12,
     "invoices_canceled": 8
   },
   "aging": {
     "buckets": [
       {
         "label": "0-30j",
-        "amount": 2680
+        "amount": 280
       },
       {
         "label": "30-60j",
@@ -211,7 +211,7 @@
         "amount": 13378
       }
     ],
-    "total": 17618,
+    "total": 15218,
     "details": [
       {
         "ref": "2025-09-FAC 21",
@@ -266,13 +266,6 @@
         "ref": "2026-07-FAC 35",
         "client": "Notion Lab",
         "amount": 280,
-        "due": "2026-07-31",
-        "days": 2
-      },
-      {
-        "ref": "2026-07-FAC 26",
-        "client": "NUMERICOACH",
-        "amount": 2400,
         "due": "2026-07-31",
         "days": 2
       }
