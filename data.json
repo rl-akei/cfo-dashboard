@@ -1,23 +1,23 @@
 {
   "meta": {
-    "generated_at": "2026-07-27T05:33:19Z",
+    "generated_at": "2026-08-02T10:06:36Z",
     "snapshot_id": "S24-2026",
     "source": "Qonto + Notion + YouTube (pipeline Python deterministe)",
-    "note": "Refresh deterministe 2026-07-27. Treso 22080 | CA encaisse YTD 39509 | CA signe 66884 | projection 69331 | runway 10.0M | YT 709 vues"
+    "note": "Refresh deterministe 2026-08-02. Treso 32444 | CA encaisse YTD 50909 | CA signe 66884 | projection 86831 | runway 14.7M | YT 0 vues"
   },
   "treasury": {
-    "total": 22080.32,
-    "principal": 22080.32,
+    "total": 32444.19,
+    "principal": 32444.19,
     "impots": 0,
     "are_mensuel": 2700
   },
   "revenue": {
     "objective_2026": 150000.0,
-    "ytd": 39509,
-    "mtd": 6040,
-    "rolling_12m": 73025,
-    "projection_2026": 69331,
-    "ecart_objectif": 80669,
+    "ytd": 50909,
+    "mtd": 0,
+    "rolling_12m": 84425,
+    "projection_2026": 86831,
+    "ecart_objectif": 63169,
     "by_month": [
       {
         "month": "2025-07",
@@ -184,23 +184,23 @@
     "dso": 25,
     "margin_pct": 0.706,
     "burn_3m": 2200,
-    "runway_months": 10.0,
+    "runway_months": 14.7,
     "top3_pct": 0.43,
     "top3_clients": "EVMT, PAPPALARDO BARBAZA ASSOCIÉS, Kedge — Notion Entrepreneurship",
-    "invoices_total": 64,
-    "invoices_paid": 42,
-    "invoices_unpaid": 15,
-    "invoices_canceled": 7
+    "invoices_total": 65,
+    "invoices_paid": 44,
+    "invoices_unpaid": 13,
+    "invoices_canceled": 8
   },
   "aging": {
     "buckets": [
       {
         "label": "0-30j",
-        "amount": 10880
+        "amount": 2680
       },
       {
         "label": "30-60j",
-        "amount": 0
+        "amount": 1560
       },
       {
         "label": "60-90j",
@@ -211,76 +211,69 @@
         "amount": 13378
       }
     ],
-    "total": 24258,
+    "total": 17618,
     "details": [
       {
         "ref": "2025-09-FAC 21",
         "client": "OPTRA",
         "amount": 895,
         "due": "2025-09-16",
-        "days": 314
+        "days": 320
       },
       {
         "ref": "2025-09-FAC 22",
         "client": "PROPERTY PARTNERS",
         "amount": 1200,
         "due": "2025-09-19",
-        "days": 311
+        "days": 317
       },
       {
         "ref": "2025-10-FAC 28",
         "client": "PROPERTY PARTNERS",
         "amount": 2700,
         "due": "2025-10-06",
-        "days": 294
+        "days": 300
       },
       {
         "ref": "2025-10-FAC 26",
         "client": "OPTRA",
         "amount": 2895,
         "due": "2025-10-31",
-        "days": 269
+        "days": 275
       },
       {
         "ref": "2025-10-FAC 27",
         "client": "OPTRA",
         "amount": 1788,
         "due": "2025-10-31",
-        "days": 269
+        "days": 275
       },
       {
         "ref": "2025-11-FAC 38",
         "client": "OPTRA",
         "amount": 3900,
         "due": "2025-12-02",
-        "days": 237
+        "days": 243
       },
       {
         "ref": "2026-07-FAC 24",
         "client": "OLYMPES",
         "amount": 1560,
         "due": "2026-07-01",
-        "days": 26
+        "days": 32
       },
       {
-        "ref": "2026-07-FAC 29",
+        "ref": "2026-07-FAC 35",
         "client": "Notion Lab",
-        "amount": 320,
-        "due": "2026-07-17",
-        "days": 10
+        "amount": 280,
+        "due": "2026-07-31",
+        "days": 2
       },
       {
-        "ref": "2026-07-FAC 34",
-        "client": "EVMT",
-        "amount": 7200,
-        "due": "2026-07-22",
-        "days": 5
-      },
-      {
-        "ref": "2026-06-FAC 25",
-        "client": "EDHEC BUSINESS SCHOOL",
-        "amount": 1800,
-        "due": "2026-07-25",
+        "ref": "2026-07-FAC 26",
+        "client": "NUMERICOACH",
+        "amount": 2400,
+        "due": "2026-07-31",
         "days": 2
       }
     ],
@@ -1381,9 +1374,9 @@
           "connection": "YT@RamaLogic",
           "posts_this_month": 1,
           "posts_last_month": 0,
-          "mom_pct": 0.0275,
+          "mom_pct": -1.0,
           "key_metric_label": "Vues (mois)",
-          "key_metric": 709,
+          "key_metric": 0,
           "ytd": 2
         }
       ]
@@ -1842,14 +1835,14 @@
       ]
     },
     "youtube_channel": {
-      "subscribers": 157,
-      "total_views": 1433,
+      "subscribers": 156,
+      "total_views": 1445,
       "video_count": 5,
-      "net_subscribers_month": 70
+      "net_subscribers_month": 0
     }
   },
   "sales": {
-    "pipeline_total": 48340,
+    "pipeline_total": 62190,
     "pipeline_by_stage": [
       {
         "stage": "Lead",
@@ -1864,7 +1857,7 @@
       {
         "stage": "Awaiting signature",
         "count": 5,
-        "amount": 28940
+        "amount": 42790
       }
     ],
     "closing_rate": 0.45,
@@ -1903,7 +1896,7 @@
       {
         "source": "Event",
         "count": 4,
-        "amount": 5040,
+        "amount": 18890,
         "won": 1,
         "lost": 0
       },
@@ -1936,7 +1929,7 @@
       {
         "type": "?",
         "count": 11,
-        "amount": 24550
+        "amount": 38400
       },
       {
         "type": "Audit",
@@ -1974,64 +1967,64 @@
         "name": "Dauphine",
         "status": "Awaiting signature",
         "amount": 990,
-        "days_idle": 88,
-        "action": "Relancer ou clore — 88 jours sans mouvement",
+        "days_idle": 94,
+        "action": "Relancer ou clore — 94 jours sans mouvement",
         "priority": "critical"
       },
       {
         "name": "Journée Notion Philppei",
         "status": "Proposal to send",
         "amount": 4000,
-        "days_idle": 88,
-        "action": "Relancer ou clore — 88 jours sans mouvement",
+        "days_idle": 94,
+        "action": "Relancer ou clore — 94 jours sans mouvement",
         "priority": "critical"
       },
       {
         "name": "Cerena — Setup fondation Notion + Claude",
         "status": "Awaiting signature",
         "amount": 11800,
-        "days_idle": 86,
-        "action": "Relancer ou clore — 86 jours sans mouvement",
+        "days_idle": 92,
+        "action": "Relancer ou clore — 92 jours sans mouvement",
         "priority": "critical"
       },
       {
         "name": "Shika Consulting — Audit + 2 processus revus",
         "status": "Proposal to send",
         "amount": 6400,
-        "days_idle": 77,
-        "action": "Relancer ou clore — 77 jours sans mouvement",
+        "days_idle": 83,
+        "action": "Relancer ou clore — 83 jours sans mouvement",
         "priority": "critical"
       },
       {
         "name": "Notion + Claude Multi-Sphères — Mathieu Leo",
         "status": "Proposal to send",
         "amount": 7500,
-        "days_idle": 76,
-        "action": "Relancer ou clore — 76 jours sans mouvement",
-        "priority": "critical"
-      },
-      {
-        "name": "Cleany Dashboard",
-        "status": "Awaiting signature",
-        "amount": 1150,
-        "days_idle": 62,
-        "action": "Relancer ou clore — 62 jours sans mouvement",
+        "days_idle": 82,
+        "action": "Relancer ou clore — 82 jours sans mouvement",
         "priority": "critical"
       },
       {
         "name": "Qoonto — Fabrice Bellois",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 52,
-        "action": "Relancer ou clore — 52 jours sans mouvement",
+        "days_idle": 58,
+        "action": "Relancer ou clore — 58 jours sans mouvement",
         "priority": "high"
       },
       {
         "name": "Notion X Peppit",
         "status": "Awaiting signature",
         "amount": 13500,
-        "days_idle": 36,
-        "action": "Relancer ou clore — 36 jours sans mouvement",
+        "days_idle": 42,
+        "action": "Relancer ou clore — 42 jours sans mouvement",
+        "priority": "high"
+      },
+      {
+        "name": "Bpifrance - Notion KB 800 personnes",
+        "status": "Lead",
+        "amount": 0,
+        "days_idle": 39,
+        "action": "Relancer ou clore — 39 jours sans mouvement",
         "priority": "high"
       }
     ],
@@ -2040,7 +2033,7 @@
         "rank": 1,
         "name": "EVMT — Base Projet Notion + Répartition responsabilités",
         "amount": 12000,
-        "status": "Contract signed & Billing to send"
+        "status": "BIlling send"
       },
       {
         "rank": 2,
@@ -2052,13 +2045,13 @@
         "rank": 3,
         "name": "Kedge — Notion Entrepreneurship",
         "amount": 8400,
-        "status": "Contract signed & Billing to send"
+        "status": "BIlling send"
       },
       {
         "rank": 4,
         "name": "Holy — Creative Task Manager 2.0 Rebuild",
         "amount": 6400,
-        "status": "Contract signed & Billing to send"
+        "status": "BIlling send"
       },
       {
         "rank": 5,
@@ -2082,13 +2075,13 @@
         "rank": 8,
         "name": "Vert Durable — Refonte UX & pilotage Notion",
         "amount": 2900,
-        "status": "Contract signed & Billing to send"
+        "status": "BIlling send"
       },
       {
         "rank": 9,
         "name": "Argos Multilingual — Centralisation Notion & IA pour Data Services BU",
         "amount": 2399,
-        "status": "Contract signed & Billing to send"
+        "status": "BIlling send"
       },
       {
         "rank": 10,
@@ -3102,53 +3095,53 @@
     ]
   },
   "opex": {
-    "generated_at": "2026-07-27",
+    "generated_at": "2026-08-02",
     "currency": "EUR",
     "period": {
       "start": "2025-04-23",
-      "end": "2026-07-26",
-      "months": 16
+      "end": "2026-08-01",
+      "months": 17
     },
     "ytd_year": 2026,
-    "ytd_elapsed_fraction": 0.57,
+    "ytd_elapsed_fraction": 0.586,
     "buckets": [
       {
         "key": "marketing",
         "label": "Externe · Marketing",
-        "total_period": 26687,
-        "ytd": 19849,
-        "last_12m": 25787,
-        "projected_year": 34831,
-        "n": 34,
-        "share_pct": 51.4
+        "total_period": 13829,
+        "ytd": 10347,
+        "last_12m": 13379,
+        "projected_year": 17648,
+        "n": 21,
+        "share_pct": 47.5
       },
       {
         "key": "saas",
         "label": "Outils SaaS",
-        "total_period": 13667,
-        "ytd": 7016,
-        "last_12m": 11989,
-        "projected_year": 12313,
-        "n": 206,
-        "share_pct": 26.3
+        "total_period": 7893,
+        "ytd": 4522,
+        "last_12m": 6863,
+        "projected_year": 7713,
+        "n": 130,
+        "share_pct": 27.1
       },
       {
         "key": "autre",
         "label": "Externe · Autre",
-        "total_period": 11530,
-        "ytd": 9340,
-        "last_12m": 10828,
-        "projected_year": 16390,
-        "n": 40,
-        "share_pct": 22.2
+        "total_period": 7416,
+        "ytd": 6355,
+        "last_12m": 6833,
+        "projected_year": 10839,
+        "n": 25,
+        "share_pct": 25.5
       }
     ],
     "total": {
-      "period": 51884,
-      "ytd": 36205,
-      "last_12m": 48604,
-      "projected_year": 63533,
-      "monthly_runrate": 5294
+      "period": 29138,
+      "ytd": 21224,
+      "last_12m": 27076,
+      "projected_year": 36199,
+      "monthly_runrate": 3017
     },
     "by_month": [
       {
@@ -3160,116 +3153,120 @@
       },
       {
         "month": "2025-06",
-        "marketing": 380,
-        "saas": 685,
-        "autre": 244,
-        "total": 1309
+        "marketing": 190,
+        "saas": 332,
+        "autre": 125,
+        "total": 647
       },
       {
         "month": "2025-07",
-        "marketing": 520,
-        "saas": 1460,
-        "autre": 238,
-        "total": 2218
+        "marketing": 260,
+        "saas": 697,
+        "autre": 119,
+        "total": 1076
       },
       {
         "month": "2025-08",
-        "marketing": 460,
-        "saas": 785,
-        "autre": 238,
-        "total": 1483
+        "marketing": 230,
+        "saas": 386,
+        "autre": 119,
+        "total": 734
       },
       {
         "month": "2025-09",
-        "marketing": 1476,
-        "saas": 751,
-        "autre": 238,
-        "total": 2464
+        "marketing": 738,
+        "saas": 411,
+        "autre": 119,
+        "total": 1268
       },
       {
         "month": "2025-10",
-        "marketing": 1476,
-        "saas": 768,
-        "autre": 380,
-        "total": 2623
+        "marketing": 738,
+        "saas": 458,
+        "autre": 119,
+        "total": 1315
       },
       {
         "month": "2025-11",
         "marketing": 0,
-        "saas": 992,
-        "autre": 396,
-        "total": 1387
+        "saas": 494,
+        "autre": 122,
+        "total": 616
       },
       {
         "month": "2025-12",
-        "marketing": 2526,
-        "saas": 1210,
-        "autre": 238,
-        "total": 3974
+        "marketing": 1326,
+        "saas": 593,
+        "autre": 119,
+        "total": 2038
       },
       {
         "month": "2026-01",
-        "marketing": 4000,
-        "saas": 1253,
-        "autre": 827,
-        "total": 6079
+        "marketing": 2000,
+        "saas": 672,
+        "autre": 487,
+        "total": 3159
       },
       {
         "month": "2026-02",
-        "marketing": 2409,
-        "saas": 352,
-        "autre": 1574,
-        "total": 4335
+        "marketing": 1209,
+        "saas": 223,
+        "autre": 787,
+        "total": 2218
       },
       {
         "month": "2026-03",
-        "marketing": 1600,
-        "saas": 991,
-        "autre": 4835,
-        "total": 7426
+        "marketing": 800,
+        "saas": 545,
+        "autre": 2418,
+        "total": 3762
       },
       {
         "month": "2026-04",
-        "marketing": 1600,
-        "saas": 2444,
-        "autre": 442,
-        "total": 4486
+        "marketing": 800,
+        "saas": 1232,
+        "autre": 221,
+        "total": 2252
       },
       {
         "month": "2026-05",
-        "marketing": 2800,
-        "saas": 779,
-        "autre": 442,
-        "total": 4021
+        "marketing": 1400,
+        "saas": 414,
+        "autre": 221,
+        "total": 2035
       },
       {
         "month": "2026-06",
-        "marketing": 7440,
-        "saas": 828,
+        "marketing": 4130,
+        "saas": 650,
         "autre": 1221,
-        "total": 9488
+        "total": 6001
       },
       {
         "month": "2026-07",
-        "marketing": 0,
-        "saas": 369,
-        "autre": 0,
-        "total": 369
+        "marketing": 8,
+        "saas": 788,
+        "autre": 1001,
+        "total": 1797
       }
     ],
     "top_suppliers": {
       "marketing": [
         {
           "name": "Suma AI",
-          "amount": 8000
+          "amount": 4400
         },
         {
           "name": "Get Your Goals",
-          "amount": 8000
+          "amount": 4000
         },
         {
           "name": "KAMAK",
-          "amount": 3840
+          "amount": 1920
+        },
+        {
+          "name": "Google Workspace",
+          "amount": 18
         },
         {
           "name": "LinkedIn",
@@ -3279,49 +3276,57 @@
       "saas": [
         {
           "name": "LinkedIn",
-          "amount": 1600
+          "amount": 800
         },
         {
           "name": "Claude / Anthropic",
-          "amount": 942
+          "amount": 698
         },
         {
           "name": "Kanbox",
-          "amount": 898
+          "amount": 449
         },
         {
           "name": "Hostinger",
-          "amount": 731
+          "amount": 366
         },
         {
-          "name": "Google Workspace",
-          "amount": 535
+          "name": "Scheduled.so",
+          "amount": 350
         },
         {
-          "name": "Paddle (divers)",
-          "amount": 407
+          "name": "Notion",
+          "amount": 296
         }
       ],
       "autre": [
         {
           "name": "Neovi (compta)",
-          "amount": 7955
+          "amount": 4308
         },
         {
           "name": "Barret Paul Ei",
           "amount": 1000
         },
         {
-          "name": "Dougs (compta)",
-          "amount": 238
+          "name": "Ei Andriamanalina Tiana",
+          "amount": 540
+        },
+        {
+          "name": "Cabinet Cse",
+          "amount": 240
         },
         {
           "name": "La Poste",
           "amount": 148
+        },
+        {
+          "name": "Dougs (compta)",
+          "amount": 119
         }
       ]
     },
-    "hors_opex_period": 123651,
+    "hors_opex_period": 62375,
     "note": "Ledger RL-Expenses incurred dedoublonne (485 doublons archives 25/06/2026). OPEX = depenses pilotables : outils SaaS + prestataires marketing/divers. Hors OPEX (impots, retraits perso, loyer, materiel, deplacements, repas, frais bancaires) exclu. Marketing = Suma (social), Kamak (SEO), Get Your Goals (prospection), Maelie (design), LinkedIn Ads."
   }
 }
