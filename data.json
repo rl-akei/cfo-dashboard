@@ -1,9 +1,9 @@
 {
   "meta": {
-    "generated_at": "2026-08-02T13:17:58Z",
+    "generated_at": "2026-08-03T05:33:20Z",
     "snapshot_id": "S24-2026",
     "source": "Qonto + Notion + YouTube (pipeline Python deterministe)",
-    "note": "Refresh deterministe 2026-08-02. Treso 32444 | CA encaisse YTD 50909 | CA signe 66884 | projection 86831 | runway 14.7M | YT 0 vues"
+    "note": "Refresh deterministe 2026-08-03. Treso 32444 | CA encaisse YTD 50909 | CA signe 66884 | projection 86428 | runway 14.7M | YT 0 vues"
   },
   "treasury": {
     "total": 32444.19,
@@ -16,8 +16,8 @@
     "ytd": 50909,
     "mtd": 0,
     "rolling_12m": 84425,
-    "projection_2026": 86831,
-    "ecart_objectif": 63169,
+    "projection_2026": 86428,
+    "ecart_objectif": 63572,
     "by_month": [
       {
         "month": "2025-07",
@@ -196,7 +196,7 @@
     "buckets": [
       {
         "label": "0-30j",
-        "amount": 280
+        "amount": 15959
       },
       {
         "label": "30-60j",
@@ -211,63 +211,84 @@
         "amount": 13378
       }
     ],
-    "total": 15218,
+    "total": 30897,
     "details": [
       {
         "ref": "2025-09-FAC 21",
         "client": "OPTRA",
         "amount": 895,
         "due": "2025-09-16",
-        "days": 320
+        "days": 321
       },
       {
         "ref": "2025-09-FAC 22",
         "client": "PROPERTY PARTNERS",
         "amount": 1200,
         "due": "2025-09-19",
-        "days": 317
+        "days": 318
       },
       {
         "ref": "2025-10-FAC 28",
         "client": "PROPERTY PARTNERS",
         "amount": 2700,
         "due": "2025-10-06",
-        "days": 300
+        "days": 301
       },
       {
         "ref": "2025-10-FAC 26",
         "client": "OPTRA",
         "amount": 2895,
         "due": "2025-10-31",
-        "days": 275
+        "days": 276
       },
       {
         "ref": "2025-10-FAC 27",
         "client": "OPTRA",
         "amount": 1788,
         "due": "2025-10-31",
-        "days": 275
+        "days": 276
       },
       {
         "ref": "2025-11-FAC 38",
         "client": "OPTRA",
         "amount": 3900,
         "due": "2025-12-02",
-        "days": 243
+        "days": 244
       },
       {
         "ref": "2026-07-FAC 24",
         "client": "OLYMPES",
         "amount": 1560,
         "due": "2026-07-01",
-        "days": 32
+        "days": 33
       },
       {
         "ref": "2026-07-FAC 35",
         "client": "Notion Lab",
         "amount": 280,
         "due": "2026-07-31",
-        "days": 2
+        "days": 3
+      },
+      {
+        "ref": "2026-07-FAC 30",
+        "client": "ARGOS MULTILINGUAL",
+        "amount": 2399,
+        "due": "2026-08-02",
+        "days": 1
+      },
+      {
+        "ref": "2026-07-FAC 31",
+        "client": "HOLY Softdrinks GmbH",
+        "amount": 3200,
+        "due": "2026-08-02",
+        "days": 1
+      },
+      {
+        "ref": "2026-07-FAC 27",
+        "client": "GROUPE KEDGE BUSINESS SCHOOL",
+        "amount": 10080,
+        "due": "2026-08-02",
+        "days": 1
       }
     ],
     "basis": "TTC (factures Qonto)"
@@ -1828,7 +1849,7 @@
       ]
     },
     "youtube_channel": {
-      "subscribers": 156,
+      "subscribers": 155,
       "total_views": 1445,
       "video_count": 5,
       "net_subscribers_month": 0
@@ -1960,64 +1981,64 @@
         "name": "Dauphine",
         "status": "Awaiting signature",
         "amount": 990,
-        "days_idle": 94,
-        "action": "Relancer ou clore — 94 jours sans mouvement",
+        "days_idle": 95,
+        "action": "Relancer ou clore — 95 jours sans mouvement",
         "priority": "critical"
       },
       {
         "name": "Journée Notion Philppei",
         "status": "Proposal to send",
         "amount": 4000,
-        "days_idle": 94,
-        "action": "Relancer ou clore — 94 jours sans mouvement",
+        "days_idle": 95,
+        "action": "Relancer ou clore — 95 jours sans mouvement",
         "priority": "critical"
       },
       {
         "name": "Cerena — Setup fondation Notion + Claude",
         "status": "Awaiting signature",
         "amount": 11800,
-        "days_idle": 92,
-        "action": "Relancer ou clore — 92 jours sans mouvement",
+        "days_idle": 93,
+        "action": "Relancer ou clore — 93 jours sans mouvement",
         "priority": "critical"
       },
       {
         "name": "Shika Consulting — Audit + 2 processus revus",
         "status": "Proposal to send",
         "amount": 6400,
-        "days_idle": 83,
-        "action": "Relancer ou clore — 83 jours sans mouvement",
+        "days_idle": 84,
+        "action": "Relancer ou clore — 84 jours sans mouvement",
         "priority": "critical"
       },
       {
         "name": "Notion + Claude Multi-Sphères — Mathieu Leo",
         "status": "Proposal to send",
         "amount": 7500,
-        "days_idle": 82,
-        "action": "Relancer ou clore — 82 jours sans mouvement",
+        "days_idle": 83,
+        "action": "Relancer ou clore — 83 jours sans mouvement",
         "priority": "critical"
       },
       {
         "name": "Qoonto — Fabrice Bellois",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 58,
-        "action": "Relancer ou clore — 58 jours sans mouvement",
+        "days_idle": 59,
+        "action": "Relancer ou clore — 59 jours sans mouvement",
         "priority": "high"
       },
       {
         "name": "Notion X Peppit",
         "status": "Awaiting signature",
         "amount": 13500,
-        "days_idle": 42,
-        "action": "Relancer ou clore — 42 jours sans mouvement",
+        "days_idle": 43,
+        "action": "Relancer ou clore — 43 jours sans mouvement",
         "priority": "high"
       },
       {
         "name": "Bpifrance - Notion KB 800 personnes",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 39,
-        "action": "Relancer ou clore — 39 jours sans mouvement",
+        "days_idle": 40,
+        "action": "Relancer ou clore — 40 jours sans mouvement",
         "priority": "high"
       }
     ],
@@ -3088,15 +3109,15 @@
     ]
   },
   "opex": {
-    "generated_at": "2026-08-02",
+    "generated_at": "2026-08-03",
     "currency": "EUR",
     "period": {
       "start": "2025-04-23",
-      "end": "2026-08-01",
+      "end": "2026-08-02",
       "months": 17
     },
     "ytd_year": 2026,
-    "ytd_elapsed_fraction": 0.586,
+    "ytd_elapsed_fraction": 0.589,
     "buckets": [
       {
         "key": "marketing",
@@ -3104,7 +3125,7 @@
         "total_period": 13829,
         "ytd": 10347,
         "last_12m": 13379,
-        "projected_year": 17648,
+        "projected_year": 17565,
         "n": 21,
         "share_pct": 47.5
       },
@@ -3113,8 +3134,8 @@
         "label": "Outils SaaS",
         "total_period": 7893,
         "ytd": 4522,
-        "last_12m": 6863,
-        "projected_year": 7713,
+        "last_12m": 6844,
+        "projected_year": 7677,
         "n": 130,
         "share_pct": 27.1
       },
@@ -3124,7 +3145,7 @@
         "total_period": 7416,
         "ytd": 6355,
         "last_12m": 6833,
-        "projected_year": 10839,
+        "projected_year": 10789,
         "n": 25,
         "share_pct": 25.5
       }
@@ -3132,9 +3153,9 @@
     "total": {
       "period": 29138,
       "ytd": 21224,
-      "last_12m": 27076,
-      "projected_year": 36199,
-      "monthly_runrate": 3017
+      "last_12m": 27056,
+      "projected_year": 36031,
+      "monthly_runrate": 3003
     },
     "by_month": [
       {
@@ -3319,7 +3340,7 @@
         }
       ]
     },
-    "hors_opex_period": 62375,
+    "hors_opex_period": 62506,
     "note": "Ledger RL-Expenses incurred dedoublonne (485 doublons archives 25/06/2026). OPEX = depenses pilotables : outils SaaS + prestataires marketing/divers. Hors OPEX (impots, retraits perso, loyer, materiel, deplacements, repas, frais bancaires) exclu. Marketing = Suma (social), Kamak (SEO), Get Your Goals (prospection), Maelie (design), LinkedIn Ads."
   }
 }
