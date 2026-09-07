@@ -1,9 +1,9 @@
 {
   "meta": {
-    "generated_at": "2026-09-06T13:24:44Z",
+    "generated_at": "2026-09-07T05:33:18Z",
     "snapshot_id": "S24-2026",
     "source": "Qonto + Notion + YouTube (pipeline Python deterministe)",
-    "note": "Refresh deterministe 2026-09-06. Treso 32581 | CA encaisse YTD 61158 | CA signe 66884 | projection 89649 | runway 14.8M | YT 4 vues"
+    "note": "Refresh deterministe 2026-09-07. Treso 32581 | CA encaisse YTD 61158 | CA signe 68484 | projection 89291 | runway 14.8M | YT 6 vues"
   },
   "treasury": {
     "total": 32581.14,
@@ -16,8 +16,8 @@
     "ytd": 61158,
     "mtd": 0,
     "rolling_12m": 91778,
-    "projection_2026": 89649,
-    "ecart_objectif": 60351,
+    "projection_2026": 89291,
+    "ecart_objectif": 60709,
     "by_month": [
       {
         "month": "2025-07",
@@ -96,57 +96,62 @@
       {
         "name": "EVMT",
         "amount": 12000,
-        "pct": 0.179
+        "pct": 0.175
       },
       {
         "name": "PAPPALARDO BARBAZA ASSOCIÉS",
         "amount": 8500,
-        "pct": 0.127
+        "pct": 0.124
       },
       {
         "name": "Kedge — Notion Entrepreneurship",
         "amount": 8400,
-        "pct": 0.126
+        "pct": 0.123
       },
       {
         "name": "HOLY Softdrinks GmbH",
         "amount": 6400,
-        "pct": 0.096
+        "pct": 0.093
       },
       {
         "name": "Station Krishna",
         "amount": 6400,
-        "pct": 0.096
+        "pct": 0.093
       },
       {
         "name": "Notion meeDIA",
         "amount": 6400,
-        "pct": 0.096
+        "pct": 0.093
       },
       {
         "name": "Thiga",
         "amount": 4000,
-        "pct": 0.06
+        "pct": 0.058
       },
       {
         "name": "Vert Durable",
         "amount": 2900,
-        "pct": 0.043
+        "pct": 0.042
       },
       {
         "name": "Argos Multilingual — Centralisation Notion & IA pour Data Services BU",
         "amount": 2399,
-        "pct": 0.036
+        "pct": 0.035
       },
       {
         "name": "Olympes COO accompagnement 3 jrs",
         "amount": 1950,
-        "pct": 0.029
+        "pct": 0.028
       },
       {
         "name": "Nico-Accompagnement 6 semaines",
         "amount": 1899,
         "pct": 0.028
+      },
+      {
+        "name": "Notion — Start-up in the Box (AI operating kit for seed-stage startups)",
+        "amount": 1600,
+        "pct": 0.023
       },
       {
         "name": "EDHEC — Audit & architecture Notion équipe marketing",
@@ -185,7 +190,7 @@
     "margin_pct": 0.706,
     "burn_3m": 2200,
     "runway_months": 14.8,
-    "top3_pct": 0.43,
+    "top3_pct": 0.42,
     "top3_clients": "EVMT, PAPPALARDO BARBAZA ASSOCIÉS, Kedge — Notion Entrepreneurship",
     "invoices_total": 69,
     "invoices_paid": 50,
@@ -218,70 +223,70 @@
         "client": "OPTRA",
         "amount": 895,
         "due": "2025-09-16",
-        "days": 355
+        "days": 356
       },
       {
         "ref": "2025-09-FAC 22",
         "client": "PROPERTY PARTNERS",
         "amount": 1200,
         "due": "2025-09-19",
-        "days": 352
+        "days": 353
       },
       {
         "ref": "2025-10-FAC 26",
         "client": "OPTRA",
         "amount": 2895,
         "due": "2025-10-31",
-        "days": 310
+        "days": 311
       },
       {
         "ref": "2025-10-FAC 27",
         "client": "OPTRA",
         "amount": 1788,
         "due": "2025-10-31",
-        "days": 310
+        "days": 311
       },
       {
         "ref": "2025-11-FAC 38",
         "client": "OPTRA",
         "amount": 3900,
         "due": "2025-12-02",
-        "days": 278
+        "days": 279
       },
       {
         "ref": "2026-07-FAC 24",
         "client": "OLYMPES",
         "amount": 1560,
         "due": "2026-07-01",
-        "days": 67
+        "days": 68
       },
       {
         "ref": "2026-07-FAC 27",
         "client": "GROUPE KEDGE BUSINESS SCHOOL",
         "amount": 10080,
         "due": "2026-08-02",
-        "days": 35
+        "days": 36
       },
       {
         "ref": "2026-09-FAC 37",
         "client": "VIYANA",
         "amount": 1036,
         "due": "2026-09-05",
-        "days": 1
+        "days": 2
       },
       {
         "ref": "2026-08-FAC 39",
         "client": "NUMERICOACH",
         "amount": 2400,
         "due": "2026-09-05",
-        "days": 1
+        "days": 2
       },
       {
         "ref": "2026-08-FAC 38",
         "client": "HOLY Softdrinks GmbH",
         "amount": 3200,
         "due": "2026-09-05",
-        "days": 1
+        "days": 2
       }
     ],
     "basis": "TTC (factures Qonto)"
@@ -1381,9 +1386,9 @@
           "connection": "YT@RamaLogic",
           "posts_this_month": 1,
           "posts_last_month": 0,
-          "mom_pct": -0.9966,
+          "mom_pct": -0.9949,
           "key_metric_label": "Vues (mois)",
-          "key_metric": 4,
+          "key_metric": 6,
           "ytd": 2
         }
       ]
@@ -1849,7 +1854,7 @@
     }
   },
   "sales": {
-    "pipeline_total": 77501,
+    "pipeline_total": 75901,
     "pipeline_by_stage": [
       {
         "stage": "Lead",
@@ -1863,20 +1868,20 @@
       },
       {
         "stage": "Awaiting signature",
-        "count": 6,
-        "amount": 53200
+        "count": 5,
+        "amount": 51600
       }
     ],
-    "closing_rate": 0.41,
-    "closing_rate_strict": 0.28,
-    "signed_2026": 66884,
-    "signed_deals_2026": 17,
+    "closing_rate": 0.43,
+    "closing_rate_strict": 0.3,
+    "signed_2026": 68484,
+    "signed_deals_2026": 18,
     "deals_by_source": [
       {
         "source": "Réseau",
         "count": 24,
         "amount": 82685,
-        "won": 9,
+        "won": 10,
         "lost": 7
       },
       {
@@ -1971,68 +1976,68 @@
     ],
     "deals_to_relaunch": [
       {
-        "name": "Journée Notion Philppei",
-        "status": "Proposal to send",
-        "amount": 4000,
-        "days_idle": 129,
-        "action": "Relancer ou clore — 129 jours sans mouvement",
-        "priority": "critical"
-      },
-      {
-        "name": "Cerena — Setup fondation Notion + Claude",
-        "status": "Awaiting signature",
-        "amount": 11800,
-        "days_idle": 127,
-        "action": "Relancer ou clore — 127 jours sans mouvement",
-        "priority": "critical"
-      },
-      {
         "name": "Qoonto — Fabrice Bellois",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 93,
-        "action": "Relancer ou clore — 93 jours sans mouvement",
+        "days_idle": 94,
+        "action": "Relancer ou clore — 94 jours sans mouvement",
         "priority": "critical"
       },
       {
         "name": "Bpifrance - Notion KB 800 personnes",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 74,
-        "action": "Relancer ou clore — 74 jours sans mouvement",
+        "days_idle": 75,
+        "action": "Relancer ou clore — 75 jours sans mouvement",
         "priority": "critical"
       },
       {
         "name": "Tech4KIN — R1 Benjamin PARISOT",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 49,
-        "action": "Relancer ou clore — 49 jours sans mouvement",
-        "priority": "high"
-      },
-      {
-        "name": "Formation Notion — L'Escalator (Incubateur Lille)",
-        "status": "Awaiting signature",
-        "amount": 1500,
-        "days_idle": 48,
-        "action": "Relancer ou clore — 48 jours sans mouvement",
+        "days_idle": 50,
+        "action": "Relancer ou clore — 50 jours sans mouvement",
         "priority": "high"
       },
       {
         "name": "R1 - Camille Roy",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 44,
-        "action": "Relancer ou clore — 44 jours sans mouvement",
+        "days_idle": 45,
+        "action": "Relancer ou clore — 45 jours sans mouvement",
         "priority": "high"
       },
       {
         "name": "Kamak - Optimisation Notion (upsell 2026)",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 44,
-        "action": "Relancer ou clore — 44 jours sans mouvement",
+        "days_idle": 45,
+        "action": "Relancer ou clore — 45 jours sans mouvement",
         "priority": "high"
+      },
+      {
+        "name": "Dreamspark - Mission automatisation",
+        "status": "Lead",
+        "amount": 0,
+        "days_idle": 38,
+        "action": "Relancer ou clore — 38 jours sans mouvement",
+        "priority": "high"
+      },
+      {
+        "name": "Mashvp — Arnaud Boulin · LOGIC AI (post-formation IA)",
+        "status": "Lead",
+        "amount": 0,
+        "days_idle": 30,
+        "action": "Relancer ou clore — 30 jours sans mouvement",
+        "priority": "medium"
+      },
+      {
+        "name": "Scott Bouchet — Coaching Notion + IA",
+        "status": "Lead",
+        "amount": 0,
+        "days_idle": 24,
+        "action": "Relancer ou clore — 24 jours sans mouvement",
+        "priority": "medium"
       }
     ],
     "top_deals": [
@@ -3102,7 +3107,7 @@
     ]
   },
   "opex": {
-    "generated_at": "2026-09-06",
+    "generated_at": "2026-09-07",
     "currency": "EUR",
     "period": {
       "start": "2025-04-23",
@@ -3110,27 +3115,27 @@
       "months": 18
     },
     "ytd_year": 2026,
-    "ytd_elapsed_fraction": 0.682,
+    "ytd_elapsed_fraction": 0.685,
     "buckets": [
       {
         "key": "marketing",
         "label": "Externe · Marketing",
-        "total_period": 14629,
-        "ytd": 11147,
-        "last_12m": 13211,
-        "projected_year": 16340,
-        "n": 22,
-        "share_pct": 48.0
+        "total_period": 17349,
+        "ytd": 13867,
+        "last_12m": 15931,
+        "projected_year": 20245,
+        "n": 24,
+        "share_pct": 52.2
       },
       {
         "key": "saas",
         "label": "Outils SaaS",
-        "total_period": 8230,
-        "ytd": 4859,
-        "last_12m": 6796,
+        "total_period": 8249,
+        "ytd": 4879,
+        "last_12m": 6815,
         "projected_year": 7123,
-        "n": 134,
-        "share_pct": 27.0
+        "n": 135,
+        "share_pct": 24.8
       },
       {
         "key": "autre",
@@ -3138,17 +3143,17 @@
         "total_period": 7637,
         "ytd": 6576,
         "last_12m": 6935,
-        "projected_year": 9639,
+        "projected_year": 9601,
         "n": 26,
-        "share_pct": 25.0
+        "share_pct": 23.0
       }
     ],
     "total": {
-      "period": 30496,
-      "ytd": 22582,
-      "last_12m": 26942,
-      "projected_year": 33102,
-      "monthly_runrate": 2758
+      "period": 33235,
+      "ytd": 25321,
+      "last_12m": 29681,
+      "projected_year": 36969,
+      "monthly_runrate": 3081
     },
     "by_month": [
       {
@@ -3258,17 +3263,24 @@
       },
       {
         "month": "2026-08",
-        "marketing": 0,
+        "marketing": 800,
         "saas": 337,
         "autre": 221,
-        "total": 558
+        "total": 1358
+      },
+      {
+        "month": "2026-09",
+        "marketing": 1920,
+        "saas": 19,
+        "autre": 0,
+        "total": 1939
       }
     ],
     "top_suppliers": {
       "marketing": [
         {
           "name": "Suma AI",
-          "amount": 5200
+          "amount": 6000
         },
         {
           "name": "Get Your Goals",
@@ -3276,7 +3288,7 @@
         },
         {
           "name": "KAMAK",
-          "amount": 1920
+          "amount": 3840
         },
         {
           "name": "Google Workspace",
@@ -3310,7 +3322,7 @@
         },
         {
           "name": "Google Workspace",
-          "amount": 321
+          "amount": 341
         }
       ],
       "autre": [
@@ -3340,7 +3352,7 @@
         }
       ]
     },
-    "hors_opex_period": 79005,
+    "hors_opex_period": 80423,
     "note": "Ledger RL-Expenses incurred dedoublonne (485 doublons archives 25/06/2026). OPEX = depenses pilotables : outils SaaS + prestataires marketing/divers. Hors OPEX (impots, retraits perso, loyer, materiel, deplacements, repas, frais bancaires) exclu. Marketing = Suma (social), Kamak (SEO), Get Your Goals (prospection), Maelie (design), LinkedIn Ads."
   }
 }
