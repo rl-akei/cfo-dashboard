@@ -1,23 +1,23 @@
 {
   "meta": {
-    "generated_at": "2026-09-07T05:33:18Z",
+    "generated_at": "2026-09-08T14:13:50Z",
     "snapshot_id": "S24-2026",
     "source": "Qonto + Notion + YouTube (pipeline Python deterministe)",
-    "note": "Refresh deterministe 2026-09-07. Treso 32581 | CA encaisse YTD 61158 | CA signe 68484 | projection 89291 | runway 14.8M | YT 6 vues"
+    "note": "Refresh deterministe 2026-09-08. Treso 36763 | CA encaisse YTD 65358 | CA signe 68484 | projection 95043 | runway 16.7M | YT 9 vues"
   },
   "treasury": {
-    "total": 32581.14,
-    "principal": 32581.14,
+    "total": 36763.14,
+    "principal": 36763.14,
     "impots": 0,
     "are_mensuel": 2700
   },
   "revenue": {
     "objective_2026": 150000.0,
-    "ytd": 61158,
-    "mtd": 0,
-    "rolling_12m": 91778,
-    "projection_2026": 89291,
-    "ecart_objectif": 60709,
+    "ytd": 65358,
+    "mtd": 4200,
+    "rolling_12m": 95978,
+    "projection_2026": 95043,
+    "ecart_objectif": 54957,
     "by_month": [
       {
         "month": "2025-07",
@@ -186,14 +186,14 @@
     ]
   },
   "kpis": {
-    "dso": 31,
+    "dso": 32,
     "margin_pct": 0.706,
     "burn_3m": 2200,
-    "runway_months": 14.8,
+    "runway_months": 16.7,
     "top3_pct": 0.42,
     "top3_clients": "EVMT, PAPPALARDO BARBAZA ASSOCIÉS, Kedge — Notion Entrepreneurship",
-    "invoices_total": 69,
-    "invoices_paid": 50,
+    "invoices_total": 70,
+    "invoices_paid": 51,
     "invoices_unpaid": 10,
     "invoices_canceled": 9
   },
@@ -201,7 +201,7 @@
     "buckets": [
       {
         "label": "0-30j",
-        "amount": 6636
+        "amount": 3436
       },
       {
         "label": "30-60j",
@@ -216,77 +216,70 @@
         "amount": 10678
       }
     ],
-    "total": 28954,
+    "total": 25754,
     "details": [
       {
         "ref": "2025-09-FAC 21",
         "client": "OPTRA",
         "amount": 895,
         "due": "2025-09-16",
-        "days": 356
+        "days": 357
       },
       {
         "ref": "2025-09-FAC 22",
         "client": "PROPERTY PARTNERS",
         "amount": 1200,
         "due": "2025-09-19",
-        "days": 353
+        "days": 354
       },
       {
         "ref": "2025-10-FAC 26",
         "client": "OPTRA",
         "amount": 2895,
         "due": "2025-10-31",
-        "days": 311
+        "days": 312
       },
       {
         "ref": "2025-10-FAC 27",
         "client": "OPTRA",
         "amount": 1788,
         "due": "2025-10-31",
-        "days": 311
+        "days": 312
       },
       {
         "ref": "2025-11-FAC 38",
         "client": "OPTRA",
         "amount": 3900,
         "due": "2025-12-02",
-        "days": 279
+        "days": 280
       },
       {
         "ref": "2026-07-FAC 24",
         "client": "OLYMPES",
         "amount": 1560,
         "due": "2026-07-01",
-        "days": 68
+        "days": 69
       },
       {
         "ref": "2026-07-FAC 27",
         "client": "GROUPE KEDGE BUSINESS SCHOOL",
         "amount": 10080,
         "due": "2026-08-02",
-        "days": 36
+        "days": 37
       },
       {
         "ref": "2026-09-FAC 37",
         "client": "VIYANA",
         "amount": 1036,
         "due": "2026-09-05",
-        "days": 2
+        "days": 3
       },
       {
         "ref": "2026-08-FAC 39",
         "client": "NUMERICOACH",
         "amount": 2400,
         "due": "2026-09-05",
-        "days": 2
-      },
-      {
-        "ref": "2026-08-FAC 38",
-        "client": "HOLY Softdrinks GmbH",
-        "amount": 3200,
-        "due": "2026-09-05",
-        "days": 2
+        "days": 3
       }
     ],
     "basis": "TTC (factures Qonto)"
@@ -1386,9 +1379,9 @@
           "connection": "YT@RamaLogic",
           "posts_this_month": 1,
           "posts_last_month": 0,
-          "mom_pct": -0.9949,
+          "mom_pct": -0.9924,
           "key_metric_label": "Vues (mois)",
-          "key_metric": 6,
+          "key_metric": 9,
           "ytd": 2
         }
       ]
@@ -1848,7 +1841,7 @@
     },
     "youtube_channel": {
       "subscribers": 594,
-      "total_views": 2635,
+      "total_views": 2636,
       "video_count": 6,
       "net_subscribers_month": 0
     }
@@ -1979,64 +1972,64 @@
         "name": "Qoonto — Fabrice Bellois",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 94,
-        "action": "Relancer ou clore — 94 jours sans mouvement",
+        "days_idle": 95,
+        "action": "Relancer ou clore — 95 jours sans mouvement",
         "priority": "critical"
       },
       {
         "name": "Bpifrance - Notion KB 800 personnes",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 75,
-        "action": "Relancer ou clore — 75 jours sans mouvement",
+        "days_idle": 76,
+        "action": "Relancer ou clore — 76 jours sans mouvement",
         "priority": "critical"
       },
       {
         "name": "Tech4KIN — R1 Benjamin PARISOT",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 50,
-        "action": "Relancer ou clore — 50 jours sans mouvement",
+        "days_idle": 51,
+        "action": "Relancer ou clore — 51 jours sans mouvement",
         "priority": "high"
       },
       {
         "name": "R1 - Camille Roy",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 45,
-        "action": "Relancer ou clore — 45 jours sans mouvement",
+        "days_idle": 46,
+        "action": "Relancer ou clore — 46 jours sans mouvement",
         "priority": "high"
       },
       {
         "name": "Kamak - Optimisation Notion (upsell 2026)",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 45,
-        "action": "Relancer ou clore — 45 jours sans mouvement",
+        "days_idle": 46,
+        "action": "Relancer ou clore — 46 jours sans mouvement",
         "priority": "high"
       },
       {
         "name": "Dreamspark - Mission automatisation",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 38,
-        "action": "Relancer ou clore — 38 jours sans mouvement",
+        "days_idle": 39,
+        "action": "Relancer ou clore — 39 jours sans mouvement",
         "priority": "high"
       },
       {
         "name": "Mashvp — Arnaud Boulin · LOGIC AI (post-formation IA)",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 30,
-        "action": "Relancer ou clore — 30 jours sans mouvement",
-        "priority": "medium"
+        "days_idle": 31,
+        "action": "Relancer ou clore — 31 jours sans mouvement",
+        "priority": "high"
       },
       {
         "name": "Scott Bouchet — Coaching Notion + IA",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 24,
-        "action": "Relancer ou clore — 24 jours sans mouvement",
+        "days_idle": 25,
+        "action": "Relancer ou clore — 25 jours sans mouvement",
         "priority": "medium"
       }
     ],
@@ -3107,15 +3100,15 @@
     ]
   },
   "opex": {
-    "generated_at": "2026-09-07",
+    "generated_at": "2026-09-08",
     "currency": "EUR",
     "period": {
       "start": "2025-04-23",
-      "end": "2026-09-04",
+      "end": "2026-09-07",
       "months": 18
     },
     "ytd_year": 2026,
-    "ytd_elapsed_fraction": 0.685,
+    "ytd_elapsed_fraction": 0.688,
     "buckets": [
       {
         "key": "marketing",
@@ -3123,7 +3116,7 @@
         "total_period": 17349,
         "ytd": 13867,
         "last_12m": 15931,
-        "projected_year": 20245,
+        "projected_year": 20165,
         "n": 24,
         "share_pct": 52.2
       },
@@ -3132,8 +3125,8 @@
         "label": "Outils SaaS",
         "total_period": 8249,
         "ytd": 4879,
-        "last_12m": 6815,
-        "projected_year": 7123,
+        "last_12m": 6801,
+        "projected_year": 7095,
         "n": 135,
         "share_pct": 24.8
       },
@@ -3143,7 +3136,7 @@
         "total_period": 7637,
         "ytd": 6576,
         "last_12m": 6935,
-        "projected_year": 9601,
+        "projected_year": 9562,
         "n": 26,
         "share_pct": 23.0
       }
@@ -3151,9 +3144,9 @@
     "total": {
       "period": 33235,
       "ytd": 25321,
-      "last_12m": 29681,
-      "projected_year": 36969,
-      "monthly_runrate": 3081
+      "last_12m": 29667,
+      "projected_year": 36822,
+      "monthly_runrate": 3068
     },
     "by_month": [
       {
