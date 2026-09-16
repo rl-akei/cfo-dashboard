@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-16T07:40:05Z",
+    "generated_at": "2026-09-16T07:40:41Z",
     "snapshot_id": "S24-2026",
     "source": "Qonto + Notion + YouTube (pipeline Python deterministe)",
     "note": "Refresh deterministe 2026-09-16. Treso 45381 | CA encaisse YTD 76474 | CA signe 79784 | projection 107772 | runway 20.6M | YT 20 vues"
@@ -3093,7 +3093,7 @@
     "currency": "EUR",
     "period": {
       "start": "2025-04-23",
-      "end": "2026-09-15",
+      "end": "2026-09-16",
       "months": 18
     },
     "ytd_year": 2026,
@@ -3334,7 +3334,7 @@
         }
       ]
     },
-    "hors_opex_period": 82707,
+    "hors_opex_period": 84153,
     "note": "Ledger RL-Expenses incurred dedoublonne (485 doublons archives 25/06/2026). OPEX = depenses pilotables : outils SaaS + prestataires marketing/divers. Hors OPEX (impots, retraits perso, loyer, materiel, deplacements, repas, frais bancaires) exclu. Marketing = Suma (social), Kamak (SEO), Get Your Goals (prospection), Maelie (design), LinkedIn Ads."
   }
 }
