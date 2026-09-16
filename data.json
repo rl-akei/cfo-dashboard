@@ -1,23 +1,23 @@
 {
   "meta": {
-    "generated_at": "2026-09-14T05:33:13Z",
+    "generated_at": "2026-09-16T07:40:05Z",
     "snapshot_id": "S24-2026",
     "source": "Qonto + Notion + YouTube (pipeline Python deterministe)",
-    "note": "Refresh deterministe 2026-09-14. Treso 36746 | CA encaisse YTD 66394 | CA signe 79784 | projection 94295 | runway 16.7M | YT 18 vues"
+    "note": "Refresh deterministe 2026-09-16. Treso 45381 | CA encaisse YTD 76474 | CA signe 79784 | projection 107772 | runway 20.6M | YT 20 vues"
   },
   "treasury": {
-    "total": 36746.25,
-    "principal": 36746.25,
+    "total": 45380.93,
+    "principal": 45380.93,
     "impots": 0,
     "are_mensuel": 2700
   },
   "revenue": {
     "objective_2026": 150000.0,
-    "ytd": 66394,
-    "mtd": 5236,
-    "rolling_12m": 97014,
-    "projection_2026": 94295,
-    "ecart_objectif": 55705,
+    "ytd": 76474,
+    "mtd": 15316,
+    "rolling_12m": 106670,
+    "projection_2026": 107772,
+    "ecart_objectif": 42228,
     "by_month": [
       {
         "month": "2025-07",
@@ -94,14 +94,14 @@
     ],
     "by_client": [
       {
+        "name": "Argos Multilingual",
+        "amount": 12199,
+        "pct": 0.153
+      },
+      {
         "name": "EVMT",
         "amount": 12000,
         "pct": 0.15
-      },
-      {
-        "name": "Argos Multilingual — Notion Orchestration Layer (Phase 2)",
-        "amount": 9800,
-        "pct": 0.123
       },
       {
         "name": "PAPPALARDO BARBAZA ASSOCIÉS",
@@ -109,7 +109,7 @@
         "pct": 0.107
       },
       {
-        "name": "Kedge — Notion Entrepreneurship",
+        "name": "GROUPE KEDGE BUSINESS SCHOOL",
         "amount": 8400,
         "pct": 0.105
       },
@@ -137,11 +137,6 @@
         "name": "Vert Durable",
         "amount": 2900,
         "pct": 0.036
-      },
-      {
-        "name": "Argos Multilingual — Centralisation Notion & IA pour Data Services BU",
-        "amount": 2399,
-        "pct": 0.03
       },
       {
         "name": "Olympes COO accompagnement 3 jrs",
@@ -196,14 +191,14 @@
     ]
   },
   "kpis": {
-    "dso": 19,
+    "dso": 23,
     "margin_pct": 0.706,
     "burn_3m": 2200,
-    "runway_months": 16.7,
-    "top3_pct": 0.38,
-    "top3_clients": "EVMT, Argos Multilingual — Notion Orchestration Layer (Phase 2), PAPPALARDO BARBAZA ASSOCIÉS",
-    "invoices_total": 72,
-    "invoices_paid": 53,
+    "runway_months": 20.6,
+    "top3_pct": 0.41,
+    "top3_clients": "Argos Multilingual, EVMT, PAPPALARDO BARBAZA ASSOCIÉS",
+    "invoices_total": 73,
+    "invoices_paid": 54,
     "invoices_unpaid": 10,
     "invoices_canceled": 9
   },
@@ -211,11 +206,11 @@
     "buckets": [
       {
         "label": "0-30j",
-        "amount": 7300
+        "amount": 9580
       },
       {
         "label": "30-60j",
-        "amount": 10080
+        "amount": 0
       },
       {
         "label": "60-90j",
@@ -226,70 +221,70 @@
         "amount": 10678
       }
     ],
-    "total": 29618,
+    "total": 21818,
     "details": [
       {
         "ref": "2025-09-FAC 21",
         "client": "OPTRA",
         "amount": 895,
         "due": "2025-09-16",
-        "days": 363
+        "days": 365
       },
       {
         "ref": "2025-09-FAC 22",
         "client": "PROPERTY PARTNERS",
         "amount": 1200,
         "due": "2025-09-19",
-        "days": 360
+        "days": 362
       },
       {
         "ref": "2025-10-FAC 26",
         "client": "OPTRA",
         "amount": 2895,
         "due": "2025-10-31",
-        "days": 318
+        "days": 320
       },
       {
         "ref": "2025-10-FAC 27",
         "client": "OPTRA",
         "amount": 1788,
         "due": "2025-10-31",
-        "days": 318
+        "days": 320
       },
       {
         "ref": "2025-11-FAC 38",
         "client": "OPTRA",
         "amount": 3900,
         "due": "2025-12-02",
-        "days": 286
+        "days": 288
       },
       {
         "ref": "2026-07-FAC 24",
         "client": "OLYMPES",
         "amount": 1560,
         "due": "2026-07-01",
-        "days": 75
-      },
-      {
-        "ref": "2026-07-FAC 27",
-        "client": "GROUPE KEDGE BUSINESS SCHOOL",
-        "amount": 10080,
-        "due": "2026-08-02",
-        "days": 43
+        "days": 77
       },
       {
         "ref": "2026-08-FAC 39",
         "client": "NUMERICOACH",
         "amount": 2400,
         "due": "2026-09-05",
-        "days": 9
+        "days": 11
       },
       {
         "ref": "2026-09-FAC 40",
         "client": "ARGOS MULTILINGUAL",
         "amount": 4900,
         "due": "2026-09-08",
-        "days": 6
+        "days": 8
+      },
+      {
+        "ref": "2026-09-FAC 43",
+        "client": "Notion Labs, Ireland Limited",
+        "amount": 2280,
+        "due": "2026-09-15",
+        "days": 1
       }
     ],
     "basis": "TTC (factures Qonto)"
@@ -1389,9 +1384,9 @@
           "connection": "YT@RamaLogic",
           "posts_this_month": 1,
           "posts_last_month": 0,
-          "mom_pct": -0.9847,
+          "mom_pct": -0.9831,
           "key_metric_label": "Vues (mois)",
-          "key_metric": 18,
+          "key_metric": 20,
           "ytd": 2
         }
       ]
@@ -1851,9 +1846,9 @@
     },
     "youtube_channel": {
       "subscribers": 592,
-      "total_views": 2644,
+      "total_views": 2646,
       "video_count": 6,
-      "net_subscribers_month": -1
+      "net_subscribers_month": -2
     }
   },
   "sales": {
@@ -1861,12 +1856,12 @@
     "pipeline_by_stage": [
       {
         "stage": "Lead",
-        "count": 9,
+        "count": 6,
         "amount": 0
       },
       {
         "stage": "Proposal to send",
-        "count": 8,
+        "count": 9,
         "amount": 28501
       },
       {
@@ -1876,7 +1871,7 @@
       }
     ],
     "closing_rate": 0.45,
-    "closing_rate_strict": 0.31,
+    "closing_rate_strict": 0.32,
     "signed_2026": 79784,
     "signed_deals_2026": 20,
     "deals_by_source": [
@@ -1917,17 +1912,10 @@
       },
       {
         "source": "?",
-        "count": 7,
+        "count": 6,
         "amount": 5200,
         "won": 0,
         "lost": 1
-      },
-      {
-        "source": "SEO / Site",
-        "count": 1,
-        "amount": 0,
-        "won": 0,
-        "lost": 0
       },
       {
         "source": "Notion setup session",
@@ -1950,12 +1938,12 @@
       },
       {
         "type": "?",
-        "count": 13,
+        "count": 12,
         "amount": 42401
       },
       {
         "type": "Audit",
-        "count": 11,
+        "count": 10,
         "amount": 22698
       },
       {
@@ -1989,64 +1977,48 @@
         "name": "Qoonto — Fabrice Bellois",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 101,
-        "action": "Relancer ou clore — 101 jours sans mouvement",
+        "days_idle": 103,
+        "action": "Relancer ou clore — 103 jours sans mouvement",
         "priority": "critical"
       },
       {
         "name": "Bpifrance - Notion KB 800 personnes",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 82,
-        "action": "Relancer ou clore — 82 jours sans mouvement",
+        "days_idle": 84,
+        "action": "Relancer ou clore — 84 jours sans mouvement",
         "priority": "critical"
       },
       {
         "name": "Tech4KIN — R1 Benjamin PARISOT",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 57,
-        "action": "Relancer ou clore — 57 jours sans mouvement",
+        "days_idle": 59,
+        "action": "Relancer ou clore — 59 jours sans mouvement",
         "priority": "high"
       },
       {
         "name": "R1 - Camille Roy",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 52,
-        "action": "Relancer ou clore — 52 jours sans mouvement",
-        "priority": "high"
-      },
-      {
-        "name": "Kamak - Optimisation Notion (upsell 2026)",
-        "status": "Lead",
-        "amount": 0,
-        "days_idle": 52,
-        "action": "Relancer ou clore — 52 jours sans mouvement",
+        "days_idle": 54,
+        "action": "Relancer ou clore — 54 jours sans mouvement",
         "priority": "high"
       },
       {
         "name": "Dreamspark - Mission automatisation",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 45,
-        "action": "Relancer ou clore — 45 jours sans mouvement",
+        "days_idle": 47,
+        "action": "Relancer ou clore — 47 jours sans mouvement",
         "priority": "high"
       },
       {
         "name": "Mashvp — Arnaud Boulin · LOGIC AI (post-formation IA)",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 37,
-        "action": "Relancer ou clore — 37 jours sans mouvement",
-        "priority": "high"
-      },
-      {
-        "name": "Scott Bouchet — Coaching Notion + IA",
-        "status": "Lead",
-        "amount": 0,
-        "days_idle": 31,
-        "action": "Relancer ou clore — 31 jours sans mouvement",
+        "days_idle": 39,
+        "action": "Relancer ou clore — 39 jours sans mouvement",
         "priority": "high"
       }
     ],
@@ -2073,13 +2045,13 @@
         "rank": 4,
         "name": "Kedge — Notion Entrepreneurship",
         "amount": 8400,
-        "status": "BIlling send"
+        "status": "Paid"
       },
       {
         "rank": 5,
         "name": "Holy — Creative Task Manager 2.0 Rebuild",
         "amount": 6400,
-        "status": "Partial paid"
+        "status": "Paid"
       },
       {
         "rank": 6,
@@ -2103,13 +2075,13 @@
         "rank": 9,
         "name": "Vert Durable — Refonte UX & pilotage Notion",
         "amount": 2900,
-        "status": "BIlling send"
+        "status": "Partial paid"
       },
       {
         "rank": 10,
         "name": "Argos Multilingual — Centralisation Notion & IA pour Data Services BU",
         "amount": 2399,
-        "status": "BIlling send"
+        "status": "Paid"
       }
     ],
     "main_loss_reason": "Trop chère",
@@ -3117,15 +3089,15 @@
     ]
   },
   "opex": {
-    "generated_at": "2026-09-14",
+    "generated_at": "2026-09-16",
     "currency": "EUR",
     "period": {
       "start": "2025-04-23",
-      "end": "2026-09-12",
+      "end": "2026-09-15",
       "months": 18
     },
     "ytd_year": 2026,
-    "ytd_elapsed_fraction": 0.704,
+    "ytd_elapsed_fraction": 0.71,
     "buckets": [
       {
         "key": "marketing",
@@ -3133,19 +3105,19 @@
         "total_period": 17349,
         "ytd": 13867,
         "last_12m": 15931,
-        "projected_year": 19694,
+        "projected_year": 19542,
         "n": 24,
-        "share_pct": 52.2
+        "share_pct": 52.1
       },
       {
         "key": "saas",
         "label": "Outils SaaS",
-        "total_period": 8249,
-        "ytd": 4879,
-        "last_12m": 6801,
-        "projected_year": 6929,
-        "n": 135,
-        "share_pct": 24.8
+        "total_period": 8335,
+        "ytd": 4965,
+        "last_12m": 6887,
+        "projected_year": 6996,
+        "n": 136,
+        "share_pct": 25.0
       },
       {
         "key": "autre",
@@ -3153,17 +3125,17 @@
         "total_period": 7637,
         "ytd": 6576,
         "last_12m": 6935,
-        "projected_year": 9339,
+        "projected_year": 9267,
         "n": 26,
-        "share_pct": 23.0
+        "share_pct": 22.9
       }
     ],
     "total": {
-      "period": 33235,
-      "ytd": 25321,
-      "last_12m": 29667,
-      "projected_year": 35962,
-      "monthly_runrate": 2997
+      "period": 33321,
+      "ytd": 25407,
+      "last_12m": 29753,
+      "projected_year": 35805,
+      "monthly_runrate": 2984
     },
     "by_month": [
       {
@@ -3281,9 +3253,9 @@
       {
         "month": "2026-09",
         "marketing": 1920,
-        "saas": 19,
+        "saas": 105,
         "autre": 0,
-        "total": 1939
+        "total": 2025
       }
     ],
     "top_suppliers": {
@@ -3362,7 +3334,7 @@
         }
       ]
     },
-    "hors_opex_period": 81494,
+    "hors_opex_period": 82707,
     "note": "Ledger RL-Expenses incurred dedoublonne (485 doublons archives 25/06/2026). OPEX = depenses pilotables : outils SaaS + prestataires marketing/divers. Hors OPEX (impots, retraits perso, loyer, materiel, deplacements, repas, frais bancaires) exclu. Marketing = Suma (social), Kamak (SEO), Get Your Goals (prospection), Maelie (design), LinkedIn Ads."
   }
 }
