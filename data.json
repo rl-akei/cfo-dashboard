@@ -1,23 +1,23 @@
 {
   "meta": {
-    "generated_at": "2026-09-21T05:33:13Z",
+    "generated_at": "2026-09-28T05:33:14Z",
     "snapshot_id": "S24-2026",
     "source": "Qonto + Notion + YouTube (pipeline Python deterministe)",
-    "note": "Refresh deterministe 2026-09-21. Treso 46226 | CA encaisse YTD 79353 | CA signe 84463 | projection 109711 | runway 21.0M | YT 27 vues"
+    "note": "Refresh deterministe 2026-09-28. Treso 50569 | CA encaisse YTD 85718 | CA signe 84463 | projection 115450 | runway 23.0M | YT 37 vues"
   },
   "treasury": {
-    "total": 46226.46,
-    "principal": 46226.46,
+    "total": 50568.58,
+    "principal": 50568.58,
     "impots": 0,
     "are_mensuel": 2700
   },
   "revenue": {
     "objective_2026": 150000.0,
-    "ytd": 79353,
-    "mtd": 18195,
-    "rolling_12m": 107492,
-    "projection_2026": 109711,
-    "ecart_objectif": 40289,
+    "ytd": 85718,
+    "mtd": 24560,
+    "rolling_12m": 112555,
+    "projection_2026": 115450,
+    "ecart_objectif": 34550,
     "by_month": [
       {
         "month": "2025-07",
@@ -201,22 +201,22 @@
     ]
   },
   "kpis": {
-    "dso": 22,
+    "dso": 21,
     "margin_pct": 0.706,
     "burn_3m": 2200,
-    "runway_months": 21.0,
+    "runway_months": 23.0,
     "top3_pct": 0.39,
     "top3_clients": "Argos Multilingual, EVMT, PAPPALARDO BARBAZA ASSOCIÉS",
-    "invoices_total": 74,
-    "invoices_paid": 55,
-    "invoices_unpaid": 10,
+    "invoices_total": 75,
+    "invoices_paid": 58,
+    "invoices_unpaid": 8,
     "invoices_canceled": 9
   },
   "aging": {
     "buckets": [
       {
         "label": "0-30j",
-        "amount": 9580
+        "amount": 5800
       },
       {
         "label": "30-60j",
@@ -231,70 +231,63 @@
         "amount": 10678
       }
     ],
-    "total": 21818,
+    "total": 18038,
     "details": [
       {
         "ref": "2025-09-FAC 21",
         "client": "OPTRA",
         "amount": 895,
         "due": "2025-09-16",
-        "days": 370
+        "days": 377
       },
       {
         "ref": "2025-09-FAC 22",
         "client": "PROPERTY PARTNERS",
         "amount": 1200,
         "due": "2025-09-19",
-        "days": 367
+        "days": 374
       },
       {
         "ref": "2025-10-FAC 26",
         "client": "OPTRA",
         "amount": 2895,
         "due": "2025-10-31",
-        "days": 325
+        "days": 332
       },
       {
         "ref": "2025-10-FAC 27",
         "client": "OPTRA",
         "amount": 1788,
         "due": "2025-10-31",
-        "days": 325
+        "days": 332
       },
       {
         "ref": "2025-11-FAC 38",
         "client": "OPTRA",
         "amount": 3900,
         "due": "2025-12-02",
-        "days": 293
+        "days": 300
       },
       {
         "ref": "2026-07-FAC 24",
         "client": "OLYMPES",
         "amount": 1560,
         "due": "2026-07-01",
-        "days": 82
-      },
-      {
-        "ref": "2026-08-FAC 39",
-        "client": "NUMERICOACH",
-        "amount": 2400,
-        "due": "2026-09-05",
-        "days": 16
+        "days": 89
       },
       {
         "ref": "2026-09-FAC 40",
         "client": "ARGOS MULTILINGUAL",
         "amount": 4900,
         "due": "2026-09-08",
-        "days": 13
+        "days": 20
       },
       {
-        "ref": "2026-09-FAC 43",
-        "client": "Notion Labs, Ireland Limited",
-        "amount": 2280,
-        "due": "2026-09-15",
-        "days": 6
+        "ref": "2026-09-FAC 42",
+        "client": "L'ESCALATOR",
+        "amount": 900,
+        "due": "2026-09-23",
+        "days": 5
       }
     ],
     "basis": "TTC (factures Qonto)"
@@ -1394,9 +1387,9 @@
           "connection": "YT@RamaLogic",
           "posts_this_month": 1,
           "posts_last_month": 0,
-          "mom_pct": -0.9771,
+          "mom_pct": -0.9686,
           "key_metric_label": "Vues (mois)",
-          "key_metric": 27,
+          "key_metric": 37,
           "ytd": 2
         }
       ]
@@ -1855,33 +1848,33 @@
       ]
     },
     "youtube_channel": {
-      "subscribers": 589,
-      "total_views": 2654,
+      "subscribers": 588,
+      "total_views": 2663,
       "video_count": 6,
-      "net_subscribers_month": -4
+      "net_subscribers_month": -6
     }
   },
   "sales": {
-    "pipeline_total": 71800,
+    "pipeline_total": 58449,
     "pipeline_by_stage": [
       {
         "stage": "Lead",
-        "count": 8,
+        "count": 9,
         "amount": 0
       },
       {
         "stage": "Proposal to send",
-        "count": 7,
+        "count": 8,
         "amount": 31500
       },
       {
         "stage": "Awaiting signature",
-        "count": 4,
-        "amount": 40300
+        "count": 3,
+        "amount": 26949
       }
     ],
-    "closing_rate": 0.48,
-    "closing_rate_strict": 0.34,
+    "closing_rate": 0.47,
+    "closing_rate_strict": 0.33,
     "signed_2026": 84463,
     "signed_deals_2026": 22,
     "deals_by_source": [
@@ -1897,7 +1890,7 @@
         "count": 5,
         "amount": 80500,
         "won": 0,
-        "lost": 3
+        "lost": 4
       },
       {
         "source": "Linkedin inbound",
@@ -1908,7 +1901,7 @@
       },
       {
         "source": "Recommandation",
-        "count": 15,
+        "count": 16,
         "amount": 54097,
         "won": 6,
         "lost": 5
@@ -1916,13 +1909,13 @@
       {
         "source": "Event",
         "count": 4,
-        "amount": 18890,
+        "amount": 19039,
         "won": 1,
         "lost": 1
       },
       {
         "source": "?",
-        "count": 9,
+        "count": 10,
         "amount": 5200,
         "won": 0,
         "lost": 1
@@ -1948,8 +1941,8 @@
       },
       {
         "type": "?",
-        "count": 15,
-        "amount": 45400
+        "count": 16,
+        "amount": 45549
       },
       {
         "type": "Audit",
@@ -1958,7 +1951,7 @@
       },
       {
         "type": "Automatisation",
-        "count": 5,
+        "count": 6,
         "amount": 21900
       },
       {
@@ -1987,32 +1980,32 @@
         "name": "Dreamspark - Mission automatisation",
         "status": "Lead",
         "amount": 0,
-        "days_idle": 52,
-        "action": "Relancer ou clore — 52 jours sans mouvement",
+        "days_idle": 59,
+        "action": "Relancer ou clore — 59 jours sans mouvement",
         "priority": "high"
       },
       {
         "name": "Dreamspark - Chaîne facturation (client + fournisseur)",
         "status": "Proposal to send",
         "amount": 8400,
-        "days_idle": 15,
-        "action": "Relancer ou clore — 15 jours sans mouvement",
+        "days_idle": 22,
+        "action": "Relancer ou clore — 22 jours sans mouvement",
         "priority": "medium"
       },
       {
         "name": "Le Patio Opéra - Valérie (reco Appeal Agency)",
         "status": "Proposal to send",
         "amount": 6400,
-        "days_idle": 15,
-        "action": "Relancer ou clore — 15 jours sans mouvement",
+        "days_idle": 22,
+        "action": "Relancer ou clore — 22 jours sans mouvement",
         "priority": "medium"
       },
       {
         "name": "Cerena — Setup fondation Notion + Claude",
         "status": "Awaiting signature",
         "amount": 11800,
-        "days_idle": 15,
-        "action": "Relancer ou clore — 15 jours sans mouvement",
+        "days_idle": 22,
+        "action": "Relancer ou clore — 22 jours sans mouvement",
         "priority": "medium"
       }
     ],
@@ -3083,15 +3076,15 @@
     ]
   },
   "opex": {
-    "generated_at": "2026-09-21",
+    "generated_at": "2026-09-28",
     "currency": "EUR",
     "period": {
       "start": "2025-04-23",
-      "end": "2026-09-20",
+      "end": "2026-09-27",
       "months": 18
     },
     "ytd_year": 2026,
-    "ytd_elapsed_fraction": 0.723,
+    "ytd_elapsed_fraction": 0.742,
     "buckets": [
       {
         "key": "marketing",
@@ -3099,19 +3092,19 @@
         "total_period": 17349,
         "ytd": 13867,
         "last_12m": 15931,
-        "projected_year": 19172,
+        "projected_year": 18677,
         "n": 24,
-        "share_pct": 52.1
+        "share_pct": 52.0
       },
       {
         "key": "saas",
         "label": "Outils SaaS",
-        "total_period": 8335,
-        "ytd": 4965,
-        "last_12m": 6748,
-        "projected_year": 6864,
-        "n": 136,
-        "share_pct": 25.0
+        "total_period": 8353,
+        "ytd": 4983,
+        "last_12m": 6612,
+        "projected_year": 6711,
+        "n": 137,
+        "share_pct": 25.1
       },
       {
         "key": "autre",
@@ -3119,17 +3112,17 @@
         "total_period": 7637,
         "ytd": 6576,
         "last_12m": 6935,
-        "projected_year": 9092,
+        "projected_year": 8857,
         "n": 26,
         "share_pct": 22.9
       }
     ],
     "total": {
-      "period": 33321,
-      "ytd": 25407,
-      "last_12m": 29614,
-      "projected_year": 35127,
-      "monthly_runrate": 2927
+      "period": 33339,
+      "ytd": 25425,
+      "last_12m": 29478,
+      "projected_year": 34244,
+      "monthly_runrate": 2854
     },
     "by_month": [
       {
@@ -3247,9 +3240,9 @@
       {
         "month": "2026-09",
         "marketing": 1920,
-        "saas": 105,
+        "saas": 123,
         "autre": 0,
-        "total": 2025
+        "total": 2043
       }
     ],
     "top_suppliers": {
@@ -3293,12 +3286,12 @@
           "amount": 366
         },
         {
-          "name": "Scheduled.so",
-          "amount": 350
+          "name": "Google Workspace",
+          "amount": 359
         },
         {
-          "name": "Google Workspace",
-          "amount": 341
+          "name": "Scheduled.so",
+          "amount": 350
         }
       ],
       "autre": [
@@ -3328,7 +3321,7 @@
         }
       ]
     },
-    "hors_opex_period": 87365,
+    "hors_opex_period": 91202,
     "note": "Ledger RL-Expenses incurred dedoublonne (485 doublons archives 25/06/2026). OPEX = depenses pilotables : outils SaaS + prestataires marketing/divers. Hors OPEX (impots, retraits perso, loyer, materiel, deplacements, repas, frais bancaires) exclu. Marketing = Suma (social), Kamak (SEO), Get Your Goals (prospection), Maelie (design), LinkedIn Ads."
   }
 }
